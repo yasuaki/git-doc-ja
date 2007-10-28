@@ -1,0 +1,548 @@
+A tutorial introduction to git: part two
+========================================
+// = git チュートリアル：パート２
+
+You should work through link:tutorial.html[A tutorial introduction to
+git] before reading this tutorial.
+// 注意：このチュートリアルを読む前に link:tutorial.html[git チュートリアル]
+// を学習してください。
+
+The goal of this tutorial is to introduce two fundamental pieces of
+git's architecture--the object database and the index file--and to
+provide the reader with everything necessary to understand the rest
+of the git documentation.
+// このチュートリアルの目的は、git のアーキテクチャである２つの
+// 基本部品(オブジェクトデータベース、索引ファイル)を紹介することと、
+// git のドキュメントの残りの部分を理解する為に必要な全てを読者に
+// 伝えることです。
+
+The git object database
+-----------------------
+// == git のオブジェクトデータベース
+
+Let's start a new project and create a small amount of history:
+// 新規プロジェクトを開始し、少し履歴を作成しましょう。
+
+------------------------------------------------
+$ mkdir test-project
+$ cd test-project
+$ git init
+Initialized empty Git repository in .git/
+$ echo 'hello world' > file.txt
+$ git add .
+$ git commit -a -m "initial commit"
+Created initial commit 54196cc2703dc165cbd373a65a4dcf22d50ae7f7
+ create mode 100644 file.txt
+$ echo 'hello world!' >file.txt
+$ git commit -a -m "add emphasis"
+Created commit c4d59f390b9cfd4318117afde11d601c1085f241
+------------------------------------------------
+
+What are the 40 digits of hex that git responded to the commit with?
+// コミット時のメッセージに含まれる 40桁 の16進数は何でしょうか？
+
+We saw in part one of the tutorial that commits have names like this.
+It turns out that every object in the git history is stored under
+such a 40-digit hex name.  That name is the SHA1 hash of the object's
+contents; among other things, this ensures that git will never store
+the same data twice (since identical data is given an identical SHA1
+name), and that the contents of a git object will never change (since
+that would change the object's name as well).
+// 我々はチュートリアルのパート１で、コミットがこのような名前を持つことを見てきました。
+// これは、git の履歴内にある全てのオブジェクトが 40桁の16進数の名前で
+// 格納されていることを示しています。
+// この名前はオブジェクトのコンテンツの SHA1 ハッシュ値です；
+// それはつまり、git が同じデータを２回記録することが決してないことを
+// 保障しています(同一のデータは同じ SHA1 名となるからです)。
+// そして、git オブジェクトのコンテンツは、決して変わりません
+// (オブジェクトが変更された場合、その名前も同じように変更される為です)。
+
+It is expected that the content of the commit object you created while
+following the example above generates a different SHA1 hash than
+the one shown above because the commit object records the time when
+it was created and the name of the person performing the commit.
+// 上記例に従ってあなたが作成したコミットオブジェクトのコンテンツは、
+// 上記に表示されたものと異なる SHA1 ハッシュ値を生成するでしょう。
+// なぜなら、コミットオブジェクトは、作成日時とコミットした人の名前を
+// 記録するからです。
+
+We can ask git about this particular object with the cat-file
+command. Don't copy the 40 hex digits from this example but use those
+from your own version. Note that you can shorten it to only a few
+characters to save yourself typing all 40 hex digits:
+// git の cat-file コマンドを用いるとこの特定のオブジェクトについて調べることができます。
+// この例の 40桁の 16進数をコピーせず、あなた自身のバージョンの名前を
+// 使用してください。40桁全てではなく、最初の数桁をタイプするだけで
+// 良い点に注意してください。
+
+------------------------------------------------
+$ git-cat-file -t 54196cc2
+commit
+$ git-cat-file commit 54196cc2
+tree 92b8b694ffb1675e5975148e1121810081dbdffe
+author J. Bruce Fields <bfields@puzzle.fieldses.org> 1143414668 -0500
+committer J. Bruce Fields <bfields@puzzle.fieldses.org> 1143414668 -0500
+
+initial commit
+------------------------------------------------
+// == 最初のコミット
+
+A tree can refer to one or more "blob" objects, each corresponding to
+a file.  In addition, a tree can also refer to other tree objects,
+thus creating a directory hierarchy.  You can examine the contents of
+any tree using ls-tree (remember that a long enough initial portion
+of the SHA1 will also work):
+// ツリー(tree)は １つないし複数の "blob" オブジェクトを参照することができます。
+// 各 blob オブジェクトは１つのファイルに対応しています。
+// さらに、tree は 他の tree オブジェクトを参照しています。
+// このようにしてディレクトリ階層を作成しています。
+// ls-tree を使用すると任意のツリーのコンテンツを試すことができます。
+// (SHA1値の最初の数文字を使用すれば十分なことを思い出してください)
+
+------------------------------------------------
+$ git ls-tree 92b8b694
+100644 blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad    file.txt
+------------------------------------------------
+
+Thus we see that this tree has one file in it.  The SHA1 hash is a
+reference to that file's data:
+// このように、この tree は１つのファイルを持っていることがわかります。
+// SHA1 ハッシュ値はそのファイルのデータを参照しています。
+
+------------------------------------------------
+$ git cat-file -t 3b18e512
+blob
+------------------------------------------------
+
+A "blob" is just file data, which we can also examine with cat-file:
+// "blob" は単なるファイルデータです。
+// cat-file を使用することでそのことがわかります。
+
+------------------------------------------------
+$ git cat-file blob 3b18e512
+hello world
+------------------------------------------------
+
+Note that this is the old file data; so the object that git named in
+its response to the initial tree was a tree with a snapshot of the
+directory state that was recorded by the first commit.
+// これは過去のファイルデータであることに注意してください。；
+// つまり git は最初のツリーに対する自身の応答により名前をつけたオブジェクトは、
+// 最初のコミットによって記録されたディレクトリ状態のスナップショットを
+// 持ったツリーになっています。
+
+All of these objects are stored under their SHA1 names inside the git
+directory:
+// これらオブジェクトの全ては、git ディレクトリ内の SHA1値 に従い記録されています。
+
+------------------------------------------------
+$ find .git/objects/
+.git/objects/
+.git/objects/pack
+.git/objects/info
+.git/objects/3b
+.git/objects/3b/18e512dba79e4c8300dd08aeb37f8e728b8dad
+.git/objects/92
+.git/objects/92/b8b694ffb1675e5975148e1121810081dbdffe
+.git/objects/54
+.git/objects/54/196cc2703dc165cbd373a65a4dcf22d50ae7f7
+.git/objects/a0
+.git/objects/a0/423896973644771497bdc03eb99d5281615b51
+.git/objects/d0
+.git/objects/d0/492b368b66bdabf2ac1fd8c92b39d3db916e59
+.git/objects/c4
+.git/objects/c4/d59f390b9cfd4318117afde11d601c1085f241
+------------------------------------------------
+
+and the contents of these files is just the compressed data plus a
+header identifying their length and their type.  The type is either a
+blob, a tree, a commit, or a tag.
+// そして、これらファイルの中身は、圧縮されたデータと、それらの長さと種別を
+特定するヘッダで構成されています。
+// 種別には blob, tree, commit, tag があります。
+
+The simplest commit to find is the HEAD commit, which we can find
+from .git/HEAD:
+// 見つけることのできる最も単純な commit は HEAD の commit です。
+// それは、.git/HEAD で確認できます：
+
+------------------------------------------------
+$ cat .git/HEAD
+ref: refs/heads/master
+------------------------------------------------
+
+As you can see, this tells us which branch we're currently on, and it
+tells us this by naming a file under the .git directory, which itself
+contains a SHA1 name referring to a commit object, which we can
+examine with cat-file:
+// 既に見たように、これは、現在どのブランチにいるかを教えてくれています。
+// そして、ディレクトリ .git 配下のファイルに名前を付けることでこのことを教えてくれます。
+// それ自身 commit オブジェクトを参照する SHA1 名を含んでおり、
+// cat-firl により確認できます。
+
+------------------------------------------------
+$ cat .git/refs/heads/master
+c4d59f390b9cfd4318117afde11d601c1085f241
+$ git cat-file -t c4d59f39
+commit
+$ git cat-file commit c4d59f39
+tree d0492b368b66bdabf2ac1fd8c92b39d3db916e59
+parent 54196cc2703dc165cbd373a65a4dcf22d50ae7f7
+author J. Bruce Fields <bfields@puzzle.fieldses.org> 1143418702 -0500
+committer J. Bruce Fields <bfields@puzzle.fieldses.org> 1143418702 -0500
+
+add emphasis
+------------------------------------------------
+
+The "tree" object here refers to the new state of the tree:
+// この "tree" オブジェクトはツリーの新しい状態を参照しています：
+
+------------------------------------------------
+$ git ls-tree d0492b36
+100644 blob a0423896973644771497bdc03eb99d5281615b51    file.txt
+$ git cat-file blob a0423896
+hello world!
+------------------------------------------------
+
+and the "parent" object refers to the previous commit:
+// そして、"parent" オブジェクトは前のコミットを参照しています：
+
+------------------------------------------------
+$ git-cat-file commit 54196cc2
+tree 92b8b694ffb1675e5975148e1121810081dbdffe
+author J. Bruce Fields <bfields@puzzle.fieldses.org> 1143414668 -0500
+committer J. Bruce Fields <bfields@puzzle.fieldses.org> 1143414668 -0500
+
+initial commit
+------------------------------------------------
+
+The tree object is the tree we examined first, and this commit is
+unusual in that it lacks any parent.
+// この tree オブジェクトは最初に確認した tree です。
+// そして、このコミットは親が無く、通常と違っています。
+
+Most commits have only one parent, but it is also common for a commit
+to have multiple parents.   In that case the commit represents a
+merge, with the parent references pointing to the heads of the merged
+branches.
+// 大抵のコミットは１つだけ親を持ちますが、複数の親を持つコミットもまた
+// 一般に存在します。そのようなケースではコミットはマージを表現しており、
+// マージしたブランチの先頭を親として参照しています。
+
+Besides blobs, trees, and commits, the only remaining type of object
+is a "tag", which we won't discuss here; refer to gitlink:git-tag[1]
+for details.
+// blob, tree, commit の他に、説明していないオブジェクトは "tag" オブジェクト
+// だけです。 tag オブジェクトはここでは議論しません；
+// 詳細は gitlink:git-tag[1] を参照してください。
+
+So now we know how git uses the object database to represent a
+project's history:
+// さて、ここまでで、git がプロジェクトの履歴を表現するために
+// どのようにオブジェクトデータベースを使用するかを見てきました。
+
+  * "commit" objects refer to "tree" objects representing the
+    snapshot of a directory tree at a particular point in the
+    history, and refer to "parent" commits to show how they're
+    connected into the project history.
+//   * "commit" オブジェクトは、履歴の特定時点におけるディレクトリツリーの
+//     スナップショットを表現した "tree" オブジェクトを参照し、
+//     また、"parent" のコミットを参照し、プロジェクトの履歴がどのように接続されているかを
+//     教えてくれます。
+  * "tree" objects represent the state of a single directory,
+    associating directory names to "blob" objects containing file
+    data and "tree" objects containing subdirectory information.
+//   * "tree" オブジェクトは、１つのディレクトリ状態を表現し、
+//     ディレクトリの名前を、ファイルデータを含む "blob" オブジェクトと
+//     サブディレクトリの情報を含んだ "tree" オブジェクトと結び付けます。
+  * "blob" objects contain file data without any other structure.
+//   * "blob" オブジェクトは、ファイルの中身を含んでいて、それ以外の構造を持ちません。
+  * References to commit objects at the head of each branch are
+    stored in files under .git/refs/heads/.
+//   * 各ブランチの先端のコミットオブジェクトの参照は
+//     .git/refs/heads/ 下にあるファイルに記録されています。
+  * The name of the current branch is stored in .git/HEAD.
+//   * 現在いるブランチの名前は .git/HEAD に記録されています。
+
+Note, by the way, that lots of commands take a tree as an argument.
+But as we can see above, a tree can be referred to in many different
+ways--by the SHA1 name for that tree, by the name of a commit that
+refers to the tree, by the name of a branch whose head refers to that
+tree, etc.--and most such commands can accept any of these names.
+// 注意：ところで、多くのコマンドが tree を引数にとることに注意してください。
+// しかし、上記で見たように、tree は様々な方法で参照されています。
+// -- tree の SHA1名や、tree を参照する commit 名や、head が参照している
+// tree のブランチ名など。-- そして、多くのそのようなコマンドは
+// これらの名前を受け付けることができます。
+
+In command synopses, the word "tree-ish" is sometimes used to
+designate such an argument.
+// コマンドの使用法では、"tree-ish" という言葉で、そのような引数を
+// 表すことがあります。
+
+The index file
+--------------
+// == 索引ファイル
+
+The primary tool we've been using to create commits is "git commit
+-a", which creates a commit including every change you've made to
+your working tree.  But what if you want to commit changes only to
+certain files?  Or only certain changes to certain files?
+// コミットをする時に使用する主要なツールは "git commit -a" です。
+// このコマンドは、作業ツリーにて行った全ての変更を含んだコミットを作成します。
+// しかし、特定のファイルの変更だけをコミットに含めたい場合はありませんか？
+// もしくは、特定のファイルの特定の変更だけ？
+
+If we look at the way commits are created under the cover, we'll see
+that there are more flexible ways creating commits.
+// コミットが作成される手順を以下でみてゆくと、
+// コミットを作成するより柔軟な手順があることがわかります。
+
+Continuing with our test-project, let's modify file.txt again:
+// 先程の test-project に対して、再度 file.txt を修正しましょう：
+
+------------------------------------------------
+$ echo "hello world, again" >>file.txt
+------------------------------------------------
+
+but this time instead of immediately making the commit, let's take an
+intermediate step, and ask for diffs along the way to keep track of
+what's happening:
+// しかし、今回はすぐにはコミットせず、中間的段階をとりましょう。
+// 何がおきているかを追跡する為に diff をとります：
+
+------------------------------------------------
+$ git diff
+--- a/file.txt
++++ b/file.txt
+@@ -1 +1,2 @@
+ hello world!
++hello world, again
+$ git add file.txt
+$ git diff
+------------------------------------------------
+
+The last diff is empty, but no new commits have been made, and the
+head still doesn't contain the new line:
+// 最後の diff は空ですが、まだ新しいコミットは作成されていません。
+// head には 新しい行は含まれていません：
+
+------------------------------------------------
+$ git-diff HEAD
+diff --git a/file.txt b/file.txt
+index a042389..513feba 100644
+--- a/file.txt
++++ b/file.txt
+@@ -1 +1,2 @@
+ hello world!
++hello world, again
+------------------------------------------------
+
+So "git diff" is comparing against something other than the head.
+The thing that it's comparing against is actually the index file,
+which is stored in .git/index in a binary format, but whose contents
+we can examine with ls-files:
+// 従って "git diff" は head 以外の何かと比較していることになります。
+// 何に対して比較しているかというと、実のところ索引ファイルと比較しているのです。
+// 索引ファイルは .git/index にバイナリ形式で記録されていて、その中身は
+// ls-files を用いて確認できます：
+
+------------------------------------------------
+$ git ls-files --stage
+100644 513feba2e53ebbd2532419ded848ba19de88ba00 0       file.txt
+$ git cat-file -t 513feba2
+blob
+$ git cat-file blob 513feba2
+hello world!
+hello world, again
+------------------------------------------------
+
+So what our "git add" did was store a new blob and then put
+a reference to it in the index file.  If we modify the file again,
+we'll see that the new modifications are reflected in the "git-diff"
+output:
+// 従って "git add" をすると、新しい blob が記録され、
+// 索引ファイルにその参照が記録されます。
+// そのファイルが再び変更されたならば、その新しい変更は "git-diff" の
+// 出力に反映されます：
+
+------------------------------------------------
+$ echo 'again?' >>file.txt
+$ git diff
+index 513feba..ba3da7b 100644
+--- a/file.txt
++++ b/file.txt
+@@ -1,2 +1,3 @@
+ hello world!
+ hello world, again
++again?
+------------------------------------------------
+
+With the right arguments, git diff can also show us the difference
+between the working directory and the last commit, or between the
+index and the last commit:
+// 正しい引数を用いると、git diff は作業ディレクトリと最後のコミットとの
+// 差分や、索引と最後のコミットとの差分を表示することができます：
+
+------------------------------------------------
+$ git diff HEAD
+diff --git a/file.txt b/file.txt
+index a042389..ba3da7b 100644
+--- a/file.txt
++++ b/file.txt
+@@ -1 +1,3 @@
+ hello world!
++hello world, again
++again?
+$ git diff --cached
+diff --git a/file.txt b/file.txt
+index a042389..513feba 100644
+--- a/file.txt
++++ b/file.txt
+@@ -1 +1,2 @@
+ hello world!
++hello world, again
+------------------------------------------------
+
+At any time, we can create a new commit using "git commit" (without
+the -a option), and verify that the state committed only includes the
+changes stored in the index file, not the additional change that is
+still only in our working tree:
+// 任意の時点で (-a オプションを使用せずに) "git commit" を使用して
+// 新しいコミットを作成できます。
+// そして、その状態は索引ファイルに記録された変更だけを含んでいて、
+// 作業ディレクトリでだけ行われている追加の変更は含んでいないことを確認できます：
+
+------------------------------------------------
+$ git commit -m "repeat"
+$ git diff HEAD
+diff --git a/file.txt b/file.txt
+index 513feba..ba3da7b 100644
+--- a/file.txt
++++ b/file.txt
+@@ -1,2 +1,3 @@
+ hello world!
+ hello world, again
++again?
+------------------------------------------------
+
+So by default "git commit" uses the index to create the commit, not
+the working tree; the -a option to commit tells it to first update
+the index with all changes in the working tree.
+// 従ってデフォルトでは "git commit" はコミットを作成する際に索引を使用していて
+// 作業ツリーはしようしていないことがわかります；コミット時の -a オプションは
+// 最初に作業ツリー内の全ての変更を含むように索引を更新することを表しています。
+
+Finally, it's worth looking at the effect of "git add" on the index
+file:
+// 最後に、索引ファイルにおける "git add" の効果について見ておきましょう：
+
+------------------------------------------------
+$ echo "goodbye, world" >closing.txt
+$ git add closing.txt
+------------------------------------------------
+
+The effect of the "git add" was to add one entry to the index file:
+// "git add" の効果は、索引ファイルにひとつのエントリを追加することです：
+
+------------------------------------------------
+$ git ls-files --stage
+100644 8b9743b20d4b15be3955fc8d5cd2b09cd2336138 0       closing.txt
+100644 513feba2e53ebbd2532419ded848ba19de88ba00 0       file.txt
+------------------------------------------------
+
+And, as you can see with cat-file, this new entry refers to the
+current contents of the file:
+// そして、cat-file を用いてこれを確認できます。
+// この新しいエントリは、現在のファイルのコンテンツを参照しています：
+
+------------------------------------------------
+$ git cat-file blob 8b9743b2
+goodbye, world
+------------------------------------------------
+
+The "status" command is a useful way to get a quick summary of the
+situation:
+// "status" コマンドは状態の概要を迅速に取得する簡単な方法です：
+
+------------------------------------------------
+$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#       new file: closing.txt
+#
+# Changed but not updated:
+#   (use "git add <file>..." to update what will be committed)
+#
+#       modified: file.txt
+#
+------------------------------------------------
+
+Since the current state of closing.txt is cached in the index file,
+it is listed as "Changes to be committed".  Since file.txt has
+changes in the working directory that aren't reflected in the index,
+it is marked "changed but not updated".  At this point, running "git
+commit" would create a commit that added closing.txt (with its new
+contents), but that didn't modify file.txt.
+// closing.txt の現在の状態は索引ファイルにキャッシュされている為、
+// "Changes to be committed"(コミットされるべき変更)としてリストされます。
+// file.txt は作業ディレクトリ内で変更されているが索引ファイルに反映されていない為、
+// "changed but not updated"(変更されているが更新されていない) と印付けされています。
+// この観点から "git commit" を実行すると、closing.txt (新しいコンテンツを含む) が追加された、
+// コミットが作成され、file.txt の変更は含みないことがわかります。
+
+Also, note that a bare "git diff" shows the changes to file.txt, but
+not the addition of closing.txt, because the version of closing.txt
+in the index file is identical to the one in the working directory.
+// また、裸の "git diff" は file.txt の変更を表示するが、追加した closing.txt は
+// 含まないことに注意してください。何故なら索引ファイル内の closing.txt のバージョンは
+// 作業ディレクトリ内のものと同一だからです。
+
+In addition to being the staging area for new commits, the index file
+is also populated from the object database when checking out a
+branch, and is used to hold the trees involved in a merge operation.
+See the link:core-tutorial.html[core tutorial] and the relevant man
+pages for details.
+// 新しいコミットの為に終結した領域であるということに加えて、
+// 索引ファイルはブランチを作成する時にオブジェクトデータベースから利用されます。
+// そして、マージ操作によって引き起こされる tree を保持するためにも使用されます。
+// 詳細は link:core-tutorial.html[コア部分のチュートリアル] と 関連する man ページを
+// 参照してください。
+
+What next?
+----------
+// == その次は何？
+
+At this point you should know everything necessary to read the man
+pages for any of the git commands; one good place to start would be
+with the commands mentioned in link:everyday.html[Everyday git].  You
+should be able to find any unknown jargon in the
+link:glossary.html[Glossary].
+// この時点で、git コマンドの man ページを読む為に必要な全てを理解したはずです；
+// もうひとつの利用開始の為の良い場所は link:everyday.html[毎日の git] 内の
+// コマンドに対する説明です。また、全ての知らない専門用語は link:glossary.html[用語解説] 内に
+// 見つけることができるでしょう。
+
+The link:user-manual.html[Git User's Manual] provides a more
+comprehensive introduction to git.
+
+The link:cvs-migration.html[CVS migration] document explains how to
+import a CVS repository into git, and shows how to use git in a
+CVS-like way.
+// link:cvs-migration.html[CVS からの移行] のドキュメントは
+// CVS リポジトリを git にインポートする方法を説明しており、
+// CVS のような方法で git を使用する方法を示しています。
+
+For some interesting examples of git use, see the
+link:howto-index.html[howtos].
+// それ以外の git の使い方の面白い例は、link:howto-index.html[howtos] 
+// を参照してください。
+
+For git developers, the link:core-tutorial.html[Core tutorial] goes
+into detail on the lower-level git mechanisms involved in, for
+example, creating a new commit.
+// git 開発者は link:core-tutorial.html[Core tutorial] が
+// (例えば新しいコミットの作成のような)下位レベルの git メカニズムの
+// 詳細を説明しているので、そちらに進んでください。
