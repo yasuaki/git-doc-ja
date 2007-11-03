@@ -5326,19 +5326,28 @@ $ git gc
 [[todo]]
 Appendix B: Notes and todo list for this manual
 ===============================================
+// 付録 B: このマニュアルの覚え書きとTODOリスト
 
 This is a work in progress.
+// この仕事は作業中です。
 
 The basic requirements:
+// 基本要件：
 
 - It must be readable in order, from beginning to end, by someone
   intelligent with a basic grasp of the UNIX command line, but without
   any special knowledge of git.  If necessary, any other prerequisites
   should be specifically mentioned as they arise.
+// - UNIXコマンドラインの基礎知識があれば、git の前提知識がなくても
+// 最初から最後まで順番に読み進められること。必要なときは、
+// その都度、他の前提知識が必要であることが述べられること。
 - Whenever possible, section headings should clearly describe the task
   they explain how to do, in language that requires no more knowledge
   than necessary: for example, "importing patches into a project" rather
   than "the git-am command"
+// - 可能な時はいつでも、節の冒頭で方法を説明するタスクを明示的に説明するべきで、
+// 言語に関する知識は必要以上には要求しない：例えば、"git-am コマンド"
+// ではなく、"パッチをプロジェクトにインポートする" とする。
 
 Think about how to create a clear chapter dependency graph that will
 allow people to get to important topics without necessarily reading
@@ -5347,14 +5356,14 @@ everything in between.
 // 各章の依存関係を明確にしたグラフの作成方法を考えるべきです。
 
 Scan Documentation/ for other stuff left out; in particular:
+// Documentation/ ディレクトリをスキャンし、他の残項目を探す；特に：
 
 - howto's
 - some of technical/?
 - hooks
 - list of commands in gitlink:git[1]
-// Documentation/ ディレクトリをスキャンし、他の残項目を探す；特に：
 //	howto に関するもの
-//	technical/ のしたのいくつか？
+//	technical/ の下のいくつか？
 //	フック
 //	gitlink:git[1] 内のコマンドの一覧
 
