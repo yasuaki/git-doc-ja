@@ -3779,7 +3779,7 @@ options mentioned above.
 [[git-concepts]]
 Git concepts
 ============
-// == Git のコンセプト
+// == Git のコンセプト *翻訳中*
 
 Git is built on a small number of simple but powerful ideas.  While it
 is possible to get things done without understanding them, you will find
@@ -4552,7 +4552,7 @@ This is not the case if you did not commit your changes.
 [[low-level-operations]]
 Low-level git operations
 ========================
-// == 下位レベルの git 操作
+// == 下位レベルの git 操作 *翻訳中*
 
 Many of the higher-level commands were originally implemented as shell
 scripts using a smaller core of low-level git commands.  These can still
@@ -5002,7 +5002,7 @@ and that is what higher level `git merge -s resolve` is implemented with.
 [[hacking-git]]
 Hacking git
 ===========
-// == git をハックする
+// == git をハックする *未翻訳*
 
 This chapter covers internal details of the git implementation which
 probably only git developers need to understand.
@@ -5010,6 +5010,7 @@ probably only git developers need to understand.
 [[object-details]]
 Object storage format
 ---------------------
+// === Object storage format
 
 All objects have a statically determined "type" which identifies the
 format of the object (i.e. how it is used, and how it can refer to other
@@ -5042,6 +5043,7 @@ to just verifying their superficial consistency through the hash).
 [[birdview-on-the-source-code]]
 A birds-eye view of Git's source code
 -------------------------------------
+// === Git ソースコードの鳥瞰図
 
 It is not always easy for new developers to find their way through Git's
 source code.  This section gives you a little guidance to show where to
@@ -5254,6 +5256,7 @@ include::glossary.txt[]
 [[git-quick-start]]
 Appendix A: Git Quick Reference
 ===============================
+// == 付録Ａ：Git Quick Reference *未翻訳*
 
 This is a quick summary of the major commands; the previous chapters
 explain how these work in more detail.
@@ -5261,6 +5264,7 @@ explain how these work in more detail.
 [[quick-creating-a-new-repository]]
 Creating a new repository
 -------------------------
+// === Creating a new repository
 
 From a tarball:
 
@@ -5283,6 +5287,7 @@ $ cd project
 [[managing-branches]]
 Managing branches
 -----------------
+// === ブランチの管理
 
 -----------------------------------------------
 $ git branch	     # list all local branches in this repo
@@ -5346,6 +5351,7 @@ $ git branch -r			# list all remote branches
 [[exploring-history]]
 Exploring history
 -----------------
+// === Exploring history
 
 -----------------------------------------------
 $ gitk			    # visualize and browse history
@@ -5382,6 +5388,7 @@ $ git bisect bad		# if this revision is bad.
 [[making-changes]]
 Making changes
 --------------
+// === Making changes
 
 Make sure git knows who to blame:
 
@@ -5413,6 +5420,7 @@ $ git commit -a	   # use latest content of all tracked files
 [[merging]]
 Merging
 -------
+// === マージ
 
 -----------------------------------------------
 $ git merge test   # merge branch "test" into the current branch
@@ -5424,6 +5432,7 @@ $ git pull . test  # equivalent to git merge test
 [[sharing-your-changes]]
 Sharing your changes
 --------------------
+// === 変更の共有
 
 Importing or exporting patches:
 
@@ -5470,6 +5479,7 @@ $ git push example test
 [[repository-maintenance]]
 Repository maintenance
 ----------------------
+// === リポジトリのメンテナンス
 
 Check for corruption:
 
