@@ -3794,7 +3794,7 @@ database>> and the <<def_index,index>>.
 [[the-object-database]]
 The Object Database
 -------------------
-
+// === オブジェクトＤＢ
 
 We already saw in <<understanding-commits>> that all commits are stored
 under a 40-digit "object name".  In fact, all the information needed to
@@ -3839,6 +3839,7 @@ The object types in some more detail:
 [[commit-object]]
 Commit Object
 ~~~~~~~~~~~~~
+// ==== コミット オブジェクト
 
 The "commit" object links a physical state of a tree with a description
 of how we got there and why.  Use the --pretty=raw option to
@@ -3892,6 +3893,7 @@ taken from the content currently stored in the index.
 [[tree-object]]
 Tree Object
 ~~~~~~~~~~~
+// ==== Tree オブジェクト
 
 The ever-versatile gitlink:git-show[1] command can also be used to
 examine tree objects, but gitlink:git-ls-tree[1] will give you more
@@ -3932,6 +3934,7 @@ attention to the executable bit.
 [[blob-object]]
 Blob Object
 ~~~~~~~~~~~
+// ==== Blob オブジェクト
 
 You can use gitlink:git-show[1] to examine the contents of a blob; take,
 for example, the blob in the entry for "COPYING" from the tree above:
@@ -3962,6 +3965,7 @@ currently checked out.
 [[trust]]
 Trust
 ~~~~~
+// ==== Trust
 
 If you receive the SHA1 name of a blob from one source, and its contents
 from another (possibly untrusted) source, you can still trust that those
@@ -3992,6 +3996,7 @@ To assist in this, git also provides the tag object...
 [[tag-object]]
 Tag Object
 ~~~~~~~~~~
+// ==== タグ オブジェクト
 
 A tag object contains an object, object type, tag name, the name of the
 person ("tagger") who created the tag, and a message, which may contain
@@ -4022,6 +4027,7 @@ references whose names begin with "refs/tags/").
 [[pack-files]]
 How git stores objects efficiently: pack files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ==== How git stores objects efficiently: pack files
 
 Newly created objects are initially created in a file named after the
 object's SHA1 hash (stored in .git/objects).
@@ -4083,6 +4089,7 @@ you, so is normally the only high-level command you need.
 [[dangling-objects]]
 Dangling objects
 ~~~~~~~~~~~~~~~~
+// ==== Dangling オブジェクト
 
 The gitlink:git-fsck[1] command will sometimes complain about dangling
 objects.  They are not a problem.
@@ -4170,6 +4177,7 @@ repository is a *BAD* idea).
 [[the-index]]
 The index
 -----------
+// === インデックス
 
 The index is a binary file (generally kept in .git/index) containing a
 sorted list of path names, each with permissions and the SHA1 of a blob
@@ -4229,6 +4237,7 @@ information as long as you have the name of the tree that it described.
 [[submodules]]
 Submodules
 ==========
+// == サブモジュール
 
 Large projects are often composed of smaller, self-contained modules.  For
 example, an embedded Linux distribution's source tree would include every
@@ -4236,18 +4245,32 @@ piece of software in the distribution with some local modifications; a movie
 player might need to build against a specific, known-working version of a
 decompression library; several independent programs might all share the same
 build scripts.
+// 大きなプロジェクトは自己完結したより小さいプロジェクトを含む場合があります。
+// 例えば、組み込みLinuxディストリビュションのソースツリーは
+// ディストリビュション内にローカルに変更を加えられたソフトウェアのピースが
+// 含まれています；ムービープレーヤーは解凍ライブラリの特定のバージョンで
+// ビルドできるようにする必要があるかもしれません；幾つかの独立したプログラムは
+// 同じビルドスクリプトを共有しているかもしれません。
 
 With centralized revision control systems this is often accomplished by
 including every module in one single repository.  Developers can check out
 all modules or only the modules they need to work with.  They can even modify
 files across several modules in a single commit while moving things around
 or updating APIs and translations.
+// 集中型のリビジョン管理システムでは、１つのリポジトリ内に各モジュールを含む
+// ことによってこれを実現します。開発者は全てのモジュールあるいは必要なモジュール
+// だけをチェックアウトすることができます。API や翻訳の移動や更新といった
+// 幾つかのモジュールにまたがったファイルを1回のコミットで変更することができます。
 
 Git does not allow partial checkouts, so duplicating this approach in Git
 would force developers to keep a local copy of modules they are not
 interested in touching.  Commits in an enormous checkout would be slower
 than you'd expect as Git would have to scan every directory for changes.
 If modules have a lot of local history, clones would take forever.
+// Gitは部分的なチェックアウトを許可していない為、Git の複製アプローチでは
+// 開発者は興味のないモジュールのコピーまで取得しなくてはなりません。
+// Git は各ディレクトリの変更をスキャンしなくてはならず、
+// 莫大なコミットをチェックアウトすることで、想像以上に Git は遅くなります。
 
 On the plus side, distributed revision control systems can much better
 integrate with external sources.  In a centralized model, a single arbitrary
@@ -4256,6 +4279,13 @@ and then imported into the local revision control on a vendor branch.  All
 the history is hidden.  With distributed revision control you can clone the
 entire external history and much more easily follow development and re-merge
 local changes.
+// 一方プラスの面として、分散型のリビジョン管理システムは外部ソースを
+// より良い形で統合します。集中型モデルでは、外部プロジェクトの１つの任意の
+// スナップショットをそれ自身のリビジョン管理ツールからエクスポートし、
+// ローカルのリビジョン管理ツールにベンダーブランチとしてインポートします。
+// 変更履歴は全て隠れてしまいます。分散型のリビジョン管理システムでは
+// 外部の履歴全てを複製することができ、よりいっそう容易に開発を進め、
+// ローカルの変更を再マージすることもできます。
 
 Git's submodule support allows a repository to contain, as a subdirectory, a
 checkout of an external project.  Submodules maintain their own identity;
@@ -4264,14 +4294,28 @@ commit ID, so other developers who clone the containing project
 ("superproject") can easily clone all the submodules at the same revision.
 Partial checkouts of the superproject are possible: you can tell Git to
 clone none, some or all of the submodules.
+// Git のサブモジュール機能は外部のプロジェクトを
+// サブディレクトリとしてリポジトリに含ませることができます。
+// サブモジュールはそれ自身で独自性をもってメンテナンスされます；
+// これは、サブモジュールは自身のリポジトリとコミットIDとを持つということであり、
+// そのサブモジュールを含むプロジェクト("親プロジェクト")を複製した場合、
+// 同じリビジョンのサブモジュールを全て容易に複製できます。
+// 親プロジェクトの部分チェックアウトは可能です：サブモジュールを
+// 複製する、しないをサブモジュールごとにしていすることができます。
 
 The gitlink:git-submodule[1] command is available since Git 1.5.3.  Users
 with Git 1.5.2 can look up the submodule commits in the repository and
 manually check them out; earlier versions won't recognize the submodules at
 all.
+// gitlink:git-submodule[1] コマンドは Git 1.5.3 から利用可能になりました。
+// Git 1.5.2 を使用しているユーザもリポジトリ内のサブモジュールのコミットを
+// 参照し、それらをマニュアルでチェックアウトすることはできます；
+// 初期のバージョンでは全てのサブモジュールを認識することはできないでしょう。
 
 To see how submodule support works, create (for example) four example
 repositories that can be used later as a submodule:
+// サブモジュールがどのように利用できるかを見るため、
+// 例として４つのリポジトリを作成します：
 
 -------------------------------------------------
 $ mkdir ~/git
@@ -4289,6 +4333,7 @@ done
 -------------------------------------------------
 
 Now create the superproject and add all the submodules:
+// そして、親プロジェクトを作成し、全てのサブモジュールを追加します：
 
 -------------------------------------------------
 $ mkdir super
@@ -4301,8 +4346,10 @@ done
 -------------------------------------------------
 
 NOTE: Do not use local URLs here if you plan to publish your superproject!
+// 注意：親プロジェクトを公開する予定がある場合は、ローカルのURLは使用しないでください！
 
 See what files `git submodule` created:
+// `git submodule` がどのようなファイルを作成するか見ましょう：
 
 -------------------------------------------------
 $ ls -a
@@ -4310,21 +4357,30 @@ $ ls -a
 -------------------------------------------------
 
 The `git submodule add` command does a couple of things:
+// `git submodule add` コマンドは幾つかのことをしています：
 
 - It clones the submodule under the current directory and by default checks out
   the master branch.
+// - カレントディレクトリ下にサブモジュールの複製を作成し、デフォルトではマスターブランチを
+//   チェックアウトします。
 - It adds the submodule's clone path to the gitlink:gitmodules[5] file and
   adds this file to the index, ready to be committed.
+// - サブモジュールの複製パスを gitlink:gitmodules[5] ファイルに追加し、
+//   このファイルをインデックスに追加し、コミット可能な状態にします。
 - It adds the submodule's current commit ID to the index, ready to be
   committed.
+// - サブモジュールの現在のコミットID をインデックスに追加し、
+//   コミット可能な状態にします。
 
 Commit the superproject:
+// 親プロジェクトをコミットします：
 
 -------------------------------------------------
 $ git commit -m "Add submodules a, b, c and d."
 -------------------------------------------------
 
 Now clone the superproject:
+// そして、親プロジェクトを複製してみます：
 
 -------------------------------------------------
 $ cd ..
@@ -4333,6 +4389,7 @@ $ cd cloned
 -------------------------------------------------
 
 The submodule directories are there, but they're empty:
+// サブモジュールのディレクトリが作成されていますが、それらは空です：
 
 -------------------------------------------------
 $ ls -a a
@@ -4347,9 +4404,15 @@ $ git submodule status
 NOTE: The commit object names shown above would be different for you, but they
 should match the HEAD commit object names of your repositories.  You can check
 it by running `git ls-remote ../a`.
+// 注意：あなたの環境では、コミットオブジェクトの名前が上記のものとは
+// 違っているかもしれません。しかし、それらはあなたのリポジトリの HEAD コミットの
+// オブジェクト名と一致しているはずです。このことは `git ls-remote ../a` で
+// 確認できます。
 
 Pulling down the submodules is a two-step process. First run `git submodule
 init` to add the submodule repository URLs to `.git/config`:
+// サブモジュールの取得は２つの手順で行ないます。まず `git submodule init`
+// を実行しサブモジュールのリポジトリURLを `.git/config` に追加します：
 
 -------------------------------------------------
 $ git submodule init
@@ -4357,6 +4420,8 @@ $ git submodule init
 
 Now use `git submodule update` to clone the repositories and check out the
 commits specified in the superproject:
+// そして `git subumodule update` を実行すると、リポジトリの複製と
+// 親プロジェクトにて指定されているコミットをチェックアウトが行われます：
 
 -------------------------------------------------
 $ git submodule update
@@ -4369,6 +4434,11 @@ One major difference between `git submodule update` and `git submodule add` is
 that `git submodule update` checks out a specific commit, rather than the tip
 of a branch. It's like checking out a tag: the head is detached, so you're not
 working on a branch.
+// `git submodule update` と `git submodule add` の間の大きな違いは
+// `git submodule update` が特定のコミットをチェックアウトするのに対し
+// `git submodule add` はブランチの先端をチェックアウトするという点です。
+// それは、タグをチェックアウトするのに似ています：
+// つまり head から引き離され、ブランチ上に位置しません。
 
 -------------------------------------------------
 $ git branch
@@ -4380,18 +4450,23 @@ If you want to make a change within a submodule and you have a detached head,
 then you should create or checkout a branch, make your changes, publish the
 change within the submodule, and then update the superproject to reference the
 new commit:
+// head から引き離されているサブモジュール内で変更を加えたい場合は、
+// ブランチを作成またはチェックアウトし、変更を加え、サブモジュール内の変更を
+// 公開し、新しいコミットを参照するように親プロジェクトを更新します：
 
 -------------------------------------------------
 $ git checkout master
 -------------------------------------------------
 
 or
+// または
 
 -------------------------------------------------
 $ git checkout -b fix-up
 -------------------------------------------------
 
 then
+// そして、
 
 -------------------------------------------------
 $ echo "adding a line again" >> a.txt
@@ -4413,13 +4488,19 @@ $ git push
 
 You have to run `git submodule update` after `git pull` if you want to update
 submodules, too.
+// サブモジュールも更新したい場合は、
+// `git pull` をした後に `git submodule update` を実行します。
 
 Pitfalls with submodules
 ------------------------
+// === サブモジュールの落し穴
 
 Always publish the submodule change before publishing the change to the
 superproject that references it. If you forget to publish the submodule change,
 others won't be able to clone the repository:
+// サブモジュールを参照する親プロジェクトの変更を公開する前には
+// 必ずサブモジュールの変更を公開してください。もしサブモジュールの変更を
+// 公開し忘れた場合、リポジトリを複製できなくなるでしょう：
 
 -------------------------------------------------
 $ cd ~/git/super/a
@@ -4439,10 +4520,15 @@ Unable to checkout '261dfac35cb99d380eb966e102c1197139f7fa24' in submodule path 
 
 You also should not rewind branches in a submodule beyond commits that were
 ever recorded in any superproject.
+// 親プロジェクトにより記録されたコミットよりも手前にサブモジュールのブランチを
+// 巻き戻すべきではありません。
 
 It's not safe to run `git submodule update` if you've made and committed
 changes within a submodule without checking out a branch first. They will be
 silently overwritten:
+// そうした場合、ブランチを最初にチェックアウトせずにサブモジュール内の変更を
+// コミットした時に `git submodule update` は安全に動作しません。
+// 何も言わずに変更を上書きしてしまいます。
 
 -------------------------------------------------
 $ cat a.txt
@@ -4458,60 +4544,91 @@ module a
 -------------------------------------------------
 
 NOTE: The changes are still visible in the submodule's reflog.
+// 注意：変更はサブモジュールの reflog にまだ残っています。
 
 This is not the case if you did not commit your changes.
+// ただし、変更をコミットしていない場合は残っていません。
 
 [[low-level-operations]]
 Low-level git operations
 ========================
+// == 下位レベルの git 操作
 
 Many of the higher-level commands were originally implemented as shell
 scripts using a smaller core of low-level git commands.  These can still
 be useful when doing unusual things with git, or just as a way to
 understand its inner workings.
+// 多くの上位レベルコマンドは、より小さくコアとなっている下位レベルの git コマンド
+// を使用したシェルスクリプトで元々は実装されています。
+// 下位レベルのコマンドは通常は行なわないようなことを git で行なう場合や
+// 内部の仕組みを理解する手段として役に立つ場合があります。
 
 [[object-manipulation]]
 Object access and manipulation
 ------------------------------
+// === オブジェクトのアクセスと操作
 
 The gitlink:git-cat-file[1] command can show the contents of any object,
 though the higher-level gitlink:git-show[1] is usually more useful.
+// gitlink:git-cat-file[1] コマンドは任意のオブジェクトの中身を表示する
+// ことができますが、上位の gitlink:git-show[1] の方が通常は便利です。
 
 The gitlink:git-commit-tree[1] command allows constructing commits with
 arbitrary parents and trees.
+// gitlink:git-commit-tree[1] コマンドを用いると任意の親とツリーで
+// コミットを構成させることができます。
 
 A tree can be created with gitlink:git-write-tree[1] and its data can be
 accessed by gitlink:git-ls-tree[1].  Two trees can be compared with
 gitlink:git-diff-tree[1].
+// gitlink:git-write-tree[1] を用いるとツリーを作成することができ、
+// その中身は gitlink:git-ls-tree[1] でアクセスできます。２つのツリーは
+// gitlink:git-diff-tree[1] で比較することができます。
 
 A tag is created with gitlink:git-mktag[1], and the signature can be
 verified by gitlink:git-verify-tag[1], though it is normally simpler to
 use gitlink:git-tag[1] for both.
+// タグは gitlink:git-mktag[1] で作成でき、その署名は gitlink:git-verify-tag[1]
+// で検証することができます。しかし、これら２つは gitlink:git-tag[1] を
+// 使用すると同じようなことができます。
 
 [[the-workflow]]
 The Workflow
 ------------
+// === ワークフロー
 
 High-level operations such as gitlink:git-commit[1],
 gitlink:git-checkout[1] and gitlink:git-reset[1] work by moving data
 between the working tree, the index, and the object database.  Git
 provides low-level operations which perform each of these steps
 individually.
+// gitlink:git-commit[1]、gitlink:git-checkout[1]、gitlink:git-reset[1]
+// のような高レベルの操作は作業ツリー、インデックス、オブジェクトＤＢ間の
+// データを移動することによって仕事をします。
+// Git はこれらの各ステップを独立に行なう下位レベルの操作を提供しています。
 
 Generally, all "git" operations work on the index file. Some operations
 work *purely* on the index file (showing the current state of the
 index), but most operations move data between the index file and either
 the database or the working directory. Thus there are four main
 combinations:
+// 一般に、全ての "git" 操作はインデックスファイル上で作用します。
+// いくつかの操作は *純粋に* インデックスファイル(現在のインデックスの状態を表示)
+// 上で作用しますが、ほとんどの操作はインデックスファイルとデータベース又は
+// 作業ディレクトリ間のデータを移動します。従って、主に４つの組み合わせがあります：
 
 [[working-directory-to-index]]
 working directory -> index
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ==== 作業ディレクトリ → インデックス
 
 The gitlink:git-update-index[1] command updates the index with
 information from the working directory.  You generally update the
 index information by just specifying the filename you want to update,
 like so:
+// gitlink:git-update-index[1] コマンドは作業ディレクトリの情報を
+// インデックスに更新します。一般には更新したいファイルを特定して
+// インデックスの情報を更新します、次のように：
 
 -------------------------------------------------
 $ git update-index filename
@@ -4520,10 +4637,15 @@ $ git update-index filename
 but to avoid common mistakes with filename globbing etc, the command
 will not normally add totally new entries or remove old entries,
 i.e. it will normally just update existing cache entries.
+// しかし、ファイル名を補完した際などの間違いを防ぐため、
+// このコマンドは新しいエントリや削除された古いエントリを
+// 自動的に追加することはありません。即ち、存在するキャッシュエントリを単に更新するだけです。
 
 To tell git that yes, you really do realize that certain files no
 longer exist, or that new files should be added, you
 should use the `--remove` and `--add` flags respectively.
+// あるファイルを削除する場合は `--remove` フラグを、
+// 新しいファイルを追加する場合は `--add` フラグを使用します。
 
 NOTE! A `--remove` flag does 'not' mean that subsequent filenames will
 necessarily be removed: if the files still exist in your directory
@@ -4531,21 +4653,36 @@ structure, the index will be updated with their new status, not
 removed. The only thing `--remove` means is that update-cache will be
 considering a removed file to be a valid thing, and if the file really
 does not exist any more, it will update the index accordingly.
+// 注意！ `--remove` フラグを使用しても必ずしもそのファイルが削除される
+// わけではありません：ファイルがディレクトリ内にまだ存在する場合、
+// インデックスは新しいステータスに更新されますが、ファイルは削除されません。
+// `--remove` はファイルが削除されたのが正しいことであることが
+// キャッシュの更新時に考慮されることを意味しているだけであり、
+// もしファイルが本当に存在しないのならインデックスをそれに従い更新するだけです。
 
 As a special case, you can also do `git-update-index --refresh`, which
 will refresh the "stat" information of each index to match the current
 stat information. It will 'not' update the object status itself, and
 it will only update the fields that are used to quickly test whether
 an object still matches its old backing store object.
+// `git-update-index --refresh` という特別なオプションもあります。
+// これは現在の "stat" 情報に一致する各インデックスの "stat" 情報を
+// リフレッシュします。オブジェクトのステータス自身は更新せず、
+// オブジェクトが過去に格納されたオブジェクトとまだ一致している
+// かを素早くテストする為に使用されるフィールドだけを更新します。
 
 The previously introduced gitlink:git-add[1] is just a wrapper for
 gitlink:git-update-index[1].
+// 以前紹介した gitlink:git-add[1] は gitlink:git-update-index[1] の
+// 単なるラッパースクリプトです。
 
 [[index-to-object-database]]
 index -> object database
 ~~~~~~~~~~~~~~~~~~~~~~~~
+// ==== インデックス → オブジェクトＤＢ
 
 You write your current index file to a "tree" object with the program
+// 現在のインデックスファイルを "tree" オブジェクトに書く為には、プログラム
 
 -------------------------------------------------
 $ git write-tree
@@ -4556,15 +4693,23 @@ current index into the set of tree objects that describe that state,
 and it will return the name of the resulting top-level tree. You can
 use that tree to re-generate the index at any time by going in the
 other direction:
+// を使用します。これにはオプションがありません。-- これは
+// その状態を記述する現在のインデックスをツリーオブジェクトの集合へと
+// 書き出す役目をし、トップレベルのツリーの名前を返却します。
+// このツリーはいつでもインデックスを再生成する為に利用できます。
 
 [[object-database-to-index]]
 object database -> index
 ~~~~~~~~~~~~~~~~~~~~~~~~
+// ==== オブジェクトＤＢ → インデックス
 
 You read a "tree" file from the object database, and use that to
 populate (and overwrite--don't do this if your index contains any
 unsaved state that you might want to restore later!) your current
 index.  Normal operation is just
+// オブジェクトＤＢから "tree" ファイルを読み込み、現在のインデックスを
+// そのツリーの状態と同じにするには次のようにします。
+// (インデックスが後で元に戻す可能性がある未保存の状態を含む場合にはこれをしないでください！)
 
 -------------------------------------------------
 $ git-read-tree <sha1 of tree>
@@ -4573,10 +4718,14 @@ $ git-read-tree <sha1 of tree>
 and your index file will now be equivalent to the tree that you saved
 earlier. However, that is only your 'index' file: your working
 directory contents have not been modified.
+// これによりインデックスファイルは過去に保存したツリーと同じ状態になります。
+// しかし、それは 'index' ファイルに対してだけです：作業ディレクトリは
+// 何も変更されていません。
 
 [[index-to-working-directory]]
 index -> working directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ==== インデックス → 作業ディレクトリ
 
 You update your working directory from the index by "checking out"
 files. This is not a very common operation, since normally you'd just
@@ -4588,25 +4737,33 @@ However, if you decide to jump to a new version, or check out somebody
 else's version, or just restore a previous tree, you'd populate your
 index file with read-tree, and then you need to check out the result
 with
+// 次のようにすると、作業ディレクトリをインデックスの状態に
+// 更新することができます。
 
 -------------------------------------------------
 $ git-checkout-index filename
 -------------------------------------------------
 
 or, if you want to check out all of the index, use `-a`.
+// あるいは、全てのインデックスをチェックアウトしたい場合は `-a` を使用します。
 
 NOTE! git-checkout-index normally refuses to overwrite old files, so
 if you have an old version of the tree already checked out, you will
 need to use the "-f" flag ('before' the "-a" flag or the filename) to
 'force' the checkout.
-
+// 注意！ git-checkout-index は通常、古いファイルを上書きすることを居します。
+// 従って、チェックアウト済みの古いバージョンのツリーを持っている場合、
+// ("-a" フラグ又はファイル名の'前に') "-f" フラグを使用し、'強制的に'
+// チェックアウトする必要があります。
 
 Finally, there are a few odds and ends which are not purely moving
 from one representation to the other:
+// 最後に、一方から他方への純粋な移動ではないものを説明します：
 
 [[tying-it-all-together]]
 Tying it all together
 ~~~~~~~~~~~~~~~~~~~~~
+// ==== Tying it all together
 
 To commit a tree you have instantiated with "git-write-tree", you'd
 create a "commit" object that refers to that tree and the history
@@ -4683,6 +4840,7 @@ various pieces fit together.
 [[examining-the-data]]
 Examining the data
 ------------------
+// === データを試す
 
 You can examine the data represented in the object database and the
 index with various helper tools. For every object, you can use
@@ -4719,6 +4877,7 @@ to see what the top commit was.
 [[merging-multiple-trees]]
 Merging multiple trees
 ----------------------
+// === 複数のツリーをマージする
 
 Git helps you do a three-way merge, which you can expand to n-way by
 repeating the merge procedure arbitrary times until you finally
@@ -4771,6 +4930,7 @@ index file, and you can just write the result out with
 [[merging-multiple-trees-2]]
 Merging multiple trees, continued
 ---------------------------------
+// === 複数のツリーをマージする、続く
 
 Sadly, many merges aren't trivial. If there are files that have
 been added, moved or removed, or if both branches have modified the
@@ -4842,6 +5002,7 @@ and that is what higher level `git merge -s resolve` is implemented with.
 [[hacking-git]]
 Hacking git
 ===========
+// == git をハックする
 
 This chapter covers internal details of the git implementation which
 probably only git developers need to understand.
@@ -5326,7 +5487,7 @@ $ git gc
 [[todo]]
 Appendix B: Notes and todo list for this manual
 ===============================================
-// 付録 B: このマニュアルの覚え書きとTODOリスト
+// = 付録 B: このマニュアルの覚え書きとTODOリスト
 
 This is a work in progress.
 // この仕事は作業中です。
