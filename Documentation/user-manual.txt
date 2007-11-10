@@ -4093,12 +4093,20 @@ Dangling objects
 
 The gitlink:git-fsck[1] command will sometimes complain about dangling
 objects.  They are not a problem.
+// gitlink:git-fsck[1] コマンドは dangling オブジェクトに関する
+// メッセージを表示することがありますが、これは問題ではありません。
 
 The most common cause of dangling objects is that you've rebased a
 branch, or you have pulled from somebody else who rebased a branch--see
 <<cleaning-up-history>>.  In that case, the old head of the original
 branch still exists, as does everything it pointed to. The branch
 pointer itself just doesn't, since you replaced it with another one.
+// dangling オブジェクトが作成される主な原因は
+// ブランチをリベースした場合や、
+// 他のユーザがリベースしたブランチを pull した場合です。
+// -- <<cleaning-up-history>> 参照。この場合、ブランチの古い head は
+// まだ存在していて、head が参照していたオブジェクトも全て残っています。
+// ブランチのポインタは、他の場所に移しかえられているので、存在しませんが。
 
 There are also other situations that cause dangling objects. For
 example, a "dangling blob" may arise because you did a "git add" of a
@@ -4107,6 +4115,11 @@ bigger picture, you changed something else in that file and committed
 that *updated* thing--the old state that you added originally ends up
 not being pointed to by any commit or tree, so it's now a dangling blob
 object.
+// dangling オブジェクトが作成される他の例もあります。
+// 例えば、ファイルを "git add" したが、そのファイルに別の変更を加えて
+// コミットしたような場合です。
+// -- この場合、もともと add していた内容は、どのコミットとツリーにも
+// 参照されず、dangling blob オブジェクトとなります。
 
 Similarly, when the "recursive" merge strategy runs, and finds that
 there are criss-cross merges and thus more than one merge base (which is
@@ -4115,14 +4128,25 @@ midway tree (or possibly even more, if you had lots of criss-crossing
 merges and more than two merge bases) as a temporary internal merge
 base, and again, those are real objects, but the end result will not end
 up pointing to them, so they end up "dangling" in your repository.
+// 同様に、"再帰的に" マージを実行した際に、マージ内容が複雑で
+// 複数のマージベースが存在するような場合(あまり発生することはありませんが)には、
+// 中間状態のツリーが一時的に作成されます。これら中間状態の作成時に
+// オブジェクトが作成されますが、それらは最終的なマージ結果では
+// 参照されることがありません。従ってこれらも "dangling" となります。
 
 Generally, dangling objects aren't anything to worry about. They can
 even be very useful: if you screw something up, the dangling objects can
 be how you recover your old tree (say, you did a rebase, and realized
 that you really didn't want to--you can look at what dangling objects
 you have, and decide to reset your head to some old dangling state).
+// 一般に、dangling オブジェクトが存在しても心配する必要はありません。
+// どちらかといえば、それらは役に立つものです：何か操作間違いをした時に、
+// dangling オブジェクトを使用すると元の状態に戻すことができます。
+// (リベースした後に誤りに気が付いた時、
+// ある古い dangling の状態に head をリセットすることができます)
 
 For commits, you can just use:
+// commit の場合は、次のようにします：
 
 ------------------------------------------------
 $ gitk <dangling-commit-sha-goes-here> --not --all
@@ -4131,6 +4155,9 @@ $ gitk <dangling-commit-sha-goes-here> --not --all
 This asks for all the history reachable from the given commit but not
 from any branch, tag, or other reference.  If you decide it's something
 you want, you can always create a new reference to it, e.g.,
+// これは、指定したコミットから到達可能だが他のブランチやタグ、その他の参照からは
+// 到達できない履歴すべてを表示します。そのうちのどれかが望むものであるなら、
+// 新しい参照を作成します、例えば次のように。
 
 ------------------------------------------------
 $ git branch recovered-branch <dangling-commit-sha-goes-here>
@@ -4138,6 +4165,8 @@ $ git branch recovered-branch <dangling-commit-sha-goes-here>
 
 For blobs and trees, you can't do the same, but you can still examine
 them.  You can just do
+// blob と tree の場合は、同じようにはできませんが、
+// 次のようにして確認することができます。
 
 ------------------------------------------------
 $ git show <dangling-blob/tree-sha-goes-here>
@@ -4146,6 +4175,9 @@ $ git show <dangling-blob/tree-sha-goes-here>
 to show what the contents of the blob were (or, for a tree, basically
 what the "ls" for that directory was), and that may give you some idea
 of what the operation was that left that dangling object.
+// これは、blob の中身が何であるか(ツリーの場合、ディレクトリの "ls" の内容)
+// を表示するので、その dangling オブジェクトを残すのにどのような操作が
+// 必要となるかを教えてくれるでしょう。
 
 Usually, dangling blobs and trees aren't very interesting. They're
 almost always the result of either being a half-way mergebase (the blob
@@ -4154,9 +4186,15 @@ have had conflicting merges that you fixed up by hand), or simply
 because you interrupted a "git fetch" with ^C or something like that,
 leaving _some_ of the new objects in the object database, but just
 dangling and useless.
+// 通常、dangling blob と tree はあまり必要になることはありません。
+// 大抵はコンフリクトマーカのついたマージの途中状態であるか、
+// "git fetch" を Ctrl+C や何かで中断した際に作成されたもので、
+// 宙ぶらりんで役に立ちません。
 
 Anyway, once you are sure that you're not interested in any dangling
 state, you can just prune all unreachable objects:
+// いずれにしろ、dangling 状態に興味がないことを確認したのなら、
+// 到達できないオブジェクト全てを破棄することができます：
 
 ------------------------------------------------
 $ git prune
@@ -4165,6 +4203,9 @@ $ git prune
 and they'll be gone. But you should only run "git prune" on a quiescent
 repository--it's kind of like doing a filesystem fsck recovery: you
 don't want to do that while the filesystem is mounted.
+// "git prune" は必ず休止状態にあるリポジトリでだけ実行してください。
+// -- これはファイルシステムの fsck によるリカバリのようなものです：
+// ファイルシステムがマウントされている時には行なうべきではありません。
 
 (The same is true of "git-fsck" itself, btw, but since
 git-fsck never actually *changes* the repository, it just reports
@@ -4173,6 +4214,13 @@ Running it while somebody is actually changing the repository can cause
 confusing and scary messages, but it won't actually do anything bad. In
 contrast, running "git prune" while somebody is actively changing the
 repository is a *BAD* idea).
+// ("git-fsck" についてもこれと同じことが言えます。ところで、
+// git-fsck は実際に決してリポジトリを変更することはなく、
+// 検出されたものを報告するだけで、実行しても危険なものではありません。
+// 誰かがリポジトリを変更している最中に実行した場合、
+// 紛らわしく恐ろしいメッセージが表示されますが、悪いことは行なわれません。
+// それとは反対に "git prune" を他のユーザがリポジトリを変更している最中に
+// 実行するのは *悪い* アイデアです。)
 
 [[the-index]]
 The index
