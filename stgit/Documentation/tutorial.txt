@@ -1,0 +1,621 @@
+StGIT Tutorial
+##############
+// = StGIT チュートリアル
+
+
+StGIT is a Python application that provides functionality similar to
+quilt (i.e. pushing/popping patches to/from a stack) using GIT instead
+of 'diff' and 'patch'. StGIT stores its patches in a GIT repository as
+normal GIT commit objects.
+StGIT is not an SCM interface on top of GIT. For standard SCM
+operations, either use GIT's porcelain commands or the Cogito tool.
+StGIT is available for download at http://www.procode.org/stgit/ .
+This tutorial assumes you are already familiar with GIT. For more
+information on GIT, see the GIT_tutorial or git(7) .
+// StGIT は Python アプリケーションであり、機能的には quilt と同じような
+// ことをします (例えば、スタックへの push や pop を行ないます)。
+// 'diff' と 'patch' の代わりに GIT を使用しているという点が異なります。
+// StGIT はパッチを GIT リポジトリ内に通常のGITコミットオブジェクトとして
+// 格納します。
+// StGIT は GIT の上位の SCM インターフェースではありません。
+// 標準的な SCM 操作については、GIT のコマンド又は Cogito ツールを
+// 使用してください。
+// StGit は http://www.procode.org/stgit/ からダウンロードできます。
+// このチュートリアルは既に GIT を理解している人を対象にしています。
+// GIT の詳しい情報は GIT_tutorial 又は git(7) を参照してください。
+
+
+Basic Operation
+===============
+// == 基本操作
+
+Help
+----
+// === Help
+
+For a full list of StGIT commands:
+// StGIT コマンドの完全な一覧：
+
+  stg help
+
+For help on individual subcommands:
+// 各サブコマンドのヘルプ：
+
+  stg <cmd> (-h | --help)
+
+
+Repository initialisation
+-------------------------
+// === リポジトリの初期化
+
+In stand-alone mode, StGIT is used in conjunction with a GIT repository
+that is already initialised (using 'git-init-db'). StGIT cannot be used
+outside of a GIT repository.
+Any branch in a GIT repository may be managed by StGIT. Each branch
+managed by StGIT contains an independent series of StGIT patches.
+To initialise an existing GIT branch to be managed by StGIT, cd into the
+top of your GIT repository, check out the branch you'd like to manage
+with StGIT, and type:
+// スタンドアロンで動かす場合、StGIT は ('git-init-db'を使用して) 既に
+// 初期化された GIT リポジトリと結合して使用します。
+// StGIT は GIT リポジトリ無しには使用することはできません。
+// GIT リポジトリの任意のブランチを StGIT で管理することができます。
+// StGIT により管理される各ブランチは、独立した一連の StGIT のパッチを
+// 含んでいます。
+// 既存の GIT ブランチを StGIT の管理下にするには、
+// GIT リポジトリの最上位に移動し、StGIT により管理したいブランチをチェックアウト
+// した後、次のようにします：
+
+  stg init
+
+Run the 'stg init' command for any pre-existing GIT branches intended to
+be used with StGIT.
+You can switch between GIT branches with:
+// 'stg init' コマンドは、既に存在し StGit で管理する予定の
+// ブランチに対して実行してください。
+// 次のようにして GIT のブランチ間を切り替えることができます：
+
+  stg branch [<branch name>]
+
+This checks out the named branch and places you at the topmost applied
+StGIT patch in that branch.
+Alternately, you can create branches using only StGIT commands, which
+will automatically prepare them for use with StGIT:
+// これは指定した名前のブランチをチェックアウトし、
+// そのブランチ内に StGIT のパッチを適用した状態に移動します。
+// この代わりに、StGIT コマンドだけを使用してブランチを作成することもできます：
+
+  stg branch --create <new branch>
+
+
+Working with remote repositories
+--------------------------------
+// === リモートリポジトリとの作業
+
+With a single command, StGIT can create and initialize a GIT repository
+which mirrors a remote GIT repository. This is known as cloning. All GIT
+transports are supported.
+To clone a repository, use:
+// １つのコマンドで StGIT は GIT リポジトリの作成と初期化をすることができます。
+// これは複製(cloning)として知られていて、GIT で利用可能な全てのプロトコルが
+// サポートされています。
+// リポジトリを複製するには、次のようにします：
+
+  stg clone <repository> <local-dir>
+
+This creates a fresh local repository, initialises a GIT database in it,
+pulls the latest version of the remote, and creates and initialises a
+'master' branch for use with StGIT.
+At any time you can pull the latest changes from the remote repository.
+By default, StGIT pulls from the location stored in .git/branches/
+origin, and updates the base of the current branch.
+To pull the latest changes from a remote repository, use:
+// これは、GIT データベースの入った新しいローカルリポジトリを作成し、
+// リモートの最新のバージョンを pull し、StGIT が使用する 'master' ブランチを
+// 初期化します。
+// 何時でもリモートのリポジトリから最新の変更を pull することができます。
+// デフォルトでは、StGIT は .git/branches/origin 内に格納されている場所から
+// pull し、現在のブランチのベースを更新します。
+// 最新の変更をリモートのリポジトリから pull するには、次のようにします：
+
+  stg pull [<branch> or 'origin']
+
+This command removes all applied StGIT patches from the current branch,
+updates the branch's base commit, then attempts to re-apply the patches.
+Any merge conflicts will halt this process, allowing you to clean up the
+conflicts and continue (see below).
+If the maintainer of the remote repository includes one of your patches
+in the published repository that you pull from, StGIT can usually
+recognize that an incoming patch from the remote matches one of yours,
+and it turns your local version into an empty patch.
+To automatically delete empty patches after a pull, use:
+// このコマンドは現在のブランチから適用済みの StGIT のパッチ全てを削除し、
+// ブランチのベースコミットを更新し、再度パッチの適用を試みます。
+// マージ時にコンフリクトが発生すると、このプロセスは終了し、
+// コンフリクトを解消した後に続行することができます(以下を参照)。
+// リモートリポジトリの管理者があなたのパッチを公開用リポジトリに
+// 適用済みの場合は、StGIT は通常、リモートから来たパッチがあなたのパッチと
+// 一致していることを認識し、ローカルのバージョンを空のパッチへと変更します。
+// pull した後に空になったパッチを自動的に削除するには、次のようにします：
+
+  stg clean
+
+As a convention, you should avoid working in the 'master' branch and use
+it only as a reference, since it reflects someone else's work. If you
+decide to publish your GIT repository, you'll want your own work
+separated into its own branch to make it convenient for others to pull
+just your patches.
+// 慣例として、'master' ブランチは参照専用として使用し、変更は加えないで
+// ください。このブランチは他の人の作業を反映するためのものだからです。
+// 自分の GIT リポジトリを公開する場合は、自身のブランチに分けてその作業を
+// 記録し、他の人があなたのパッチだけを pull できるようにする方が
+// 便利です。
+
+Getting started: creating a patch
+---------------------------------
+// === はじめの一歩：パッチの作成
+
+Changes to your working directory are saved in a patch. An StGIT patch
+is simply a saved set of modifications to your working directory, plus a
+saved description. To create an empty StGIT patch in the current branch:
+// 作業ディレクトリに加えた変更はパッチとして保存します。
+// StGit のパッチは作業ディレクトリの変更を保存した単純な集合と、
+// それに説明が加わったものです。空の StGIT パッチを現在のブランチに作成
+// するには次のようにします：
+
+  stg new <name>
+
+To save the changes you've made (that is, to refresh a patch), use:
+// 変更を保存し(パッチを更新するには)、次のようにします：
+
+  stg refresh
+
+To discard changes in your working directory, use:
+// 作業ディレクトリ内の変更を消すには、次のようにします：
+
+  git checkout -f
+
+This restores your working directory to the state it was in the last
+time the patch was refreshed.
+Modified files that haven't been saved via a refresh operation can be
+viewed with:
+// これは、最後にパッチが更新されたときの状態に作業ディレクトリを
+// 戻します。
+// 保存されていない変更は、次のようにして確認できます：
+
+  stg status
+
+You can view modified files that have already been saved into a patch:
+// 既にパッチ内に保存した変更を参照するには、次のようにします：
+
+  stg files
+
+The 'stg refresh' command automatically notes changes to files that
+already exist in the working directory, but you have to tell StGIT
+explicitly if you add, remove, or rename files.
+To record the addition or deletion of files in your new patch:
+// 'stg refresh' コマンドは自動的に作業ディレクトリ内で実施した
+// ファイルの変更を記録します。ただし、ファイルの追加、削除、名前
+// 変更がある場合は、明示的に StGIT に伝える必要があります。
+// ファイルの追加や削除を新しいパッチに記録するには次のようにします：
+
+  stg add [<file>*]
+  stg rm [<file>*]
+
+To record the renaming of a file in your new patch, issue both of these
+commands:
+// ファイル名の変更を新しいパッチに記録するには、
+// これらのコマンドを両方実行します：
+
+  stg rm <oldfilename>
+  stg add <newfilename>
+
+
+Stack manipulation: managing multiple patches
+---------------------------------------------
+// === スタックの運用：複数のパッチを管理する
+
+StGIT can manage more than one patch at a time. A series of StGIT
+patches in a GIT branch are known collectively as a stack. The new patch
+you created above is now the topmost patch in your stack. You can always
+see the name of the topmost (current) patch with:
+// StGIT は１度に１つ以上のパッチを管理できます。
+// GIT ブランチ内の一連の StGIT のパッチは、集合的なスタックとして知られています
+// 上記で作成した新しいパッチは、現在あなたのスタック内の最上位のパッチです。
+// (現在の)最上位のパッチの名前は次のようにして確認できます：
+
+  stg top
+
+The topmost patch is used as the default patch for most StGIT
+operations. It is the default target of the 'stg refresh' command, for
+example.
+Patches that are pushed onto the stack are referred to as applied, and
+patches that are popped off the stack are referred to as unapplied.
+To push/pop a patch to/from a stack:
+// 最上位のパッチはほとんどの StGIT 操作がデフォルトのパッチとして
+// 使用します。例えば、'stg refresh' のデフォルトのターゲットとなります。
+// スタックに push されたパッチは適用され、
+// スタックから pop されたパッチは非適用になります。
+// パッチをスタックに push/pop するには次のようにします：
+
+  stg push [--all | <name>]
+  stg pop [--all]
+
+The last patch you pushed is the topmost patch. This patch is always in
+the applied list; StGIT can't operate on an unapplied patch unless you
+apply it first.
+You can display the order of patches in a stack with one of these
+commands:
+// push した最新のパッチは最上位のパッチとなります。このパッチは
+// 常に適用済みリストに含まれます；StGIT はパッチを適用しない限りは、
+// そのパッチに対する操作をすることはできません。
+// スタック内のパッチの順番を表示するには、次のコマンドを使用します：
+
+  stg series
+  stg applied
+  stg unapplied
+
+By default the 'stg push' command applies the first patch in the
+unapplied list, but you can push any patch in the unapplied list by
+giving the name of the patch. This is useful if you want to reorder the
+patches in a stack.
+// デフォルトでは、'stg push' コマンドは非適用リストの１つ目のパッチを
+// 適用しますが、パッチの名前を指定することで任意の未適用のパッチを
+// push することができます。これはスタック内のパッチの順番を変更する時に
+// 役に立ちます。
+During a push operation, merge conflicts can occur (especially if you
+are changing the order of the patches in your stack). If the push causes
+merge conflicts, they need to be fixed and 'stg resolved' run (see
+below). A 'push' operation can also be reverted with 'stg push --undo'.
+A few more stack basics; to rename a patch:
+// push 操作をすることにより、コンフリクトが発生することがあります
+// (特に、スタック内のパッチの順番を変更した場合に発生します)。
+// push によりコンフリクトが発生した場合は、コンフリクトを解消し、
+// 'stg resolved' を実行する必要があります(以下参照)。
+// 'push' 操作は 'stg push --undo' により取り消すこともできます。
+// その他のスタックの基礎；パッチ名の変更：
+
+  stg rename <old-name> <new-name>
+
+To delete a patch:
+// パッチを削除するには：
+
+  stg delete <name>
+
+This permanently discards the named patch. In other words, the patch no
+longer appears in either the applied or unapplied lists, and cannot be
+reapplied to the series.
+You may want to make patches in your stack a permanent part of your GIT
+repository, for example if you are publishing your repository to others.
+To do this, use:
+// これは指定した名前のパッチを恒久的に破棄します。言い換えると、
+// パッチはもはや適用、非適用のリストに表示されなくなり、
+// 再適用することはできなくなります。
+// スタックしているパッチを恒久的にGITリポジトリ内に入れたい場合が
+// あるかもしれません。例えば、リポジトリを他の人に公開するような場合です。
+// そうするには、次のようにします：
+
+  stg commit
+
+This merges all applied patches in your patch series into the GIT
+repository and removes them from your stack. Use this command only if
+you want to permanently store the applied patches and no longer manage
+them with StGIT.
+// これは適用済みの全てのパッチを GIT リポジトリにマージし、スタックから
+// 削除します。このコマンドは適用済みのパッチを恒久的に格納し、
+// もはや StGIT では管理しない場合にのみ使用してください。
+
+Converting between StGIT patches and text diffs
+-----------------------------------------------
+// === StGITパッチ と テキストdiff の変換
+
+As mentioned in the introduction, StGIT stores modifications to your
+working tree in the form of GIT commits. This means if you want to apply
+your changes to a tree not managed by GIT, or send your changes to
+someone else in e-mail, you need to convert your StGIT patches into
+normal textual diffs that can be applied with the GNU 'patch' command.
+The 'stg diff' command is a powerful way to generate and view textual
+diffs of patches managed by StGIT.
+To view a diff of the topmost patch:
+// 冒頭で述べたように、StGIT は作業ツリーの変更を GIT コミットの形式で
+// 格納します。この為、GIT で管理していないツリーに変更を適用したい場合や
+// 他の誰かに e-mail などで変更を送る場合には、StGIT のパッチを
+// GNU 'patch' コマンドで適用できる通常のテキストの diff に
+// 変換する必要があります。
+// 'stg diff' コマンドは強力な方法で StGIT が管理しているパッチを
+// テキスト形式の diff に変換することができます。
+// 最上位のパッチの diff を表示するには次のようにします：
+
+  stg diff -r /
+
+Observe that this does not show any changes in the working directory
+that have not been saved by a 'refresh'. To view just the changes you've
+made since the last refresh, use:
+// これは、'refresh' コマンドにより保存されていない作業ディレクトリの変更は
+// 表示しないことに注意してください。最後に refresh した後に行なった
+// 変更を参照するには、次のようにします：
+
+  stg diff -r /top
+
+If you want to see the changes made by the patch combined with any
+unsaved changes in the working directory, try:
+// パッチの変更と作業ディレクトリ内の未保存の変更とを一体化した
+// 差分を表示したい場合は、次のようにします：
+
+  stg diff -r /bottom
+
+You can also show the changes to any patch in your stack with:
+// スタック内の任意のパッチの変更を参照する場合、次のようにします：
+
+  stg diff -r <patch>/
+
+Use this command to view all the changes in your stack up through the
+current patch:
+// スタックにある現在のパッチの全ての変更を表示するには、次のようにします：
+
+  stg diff -r base
+
+The 'stg diff' command supports a number of other features that are very
+useful. Be sure to take a look at the help information for this command.
+To convert your StGIT patches into patch files:
+// 'stg diff' コマンドは他にも役に立つたくさんの機能をサポートしています。
+// このコマンドのヘルプは是非参照してください。
+// StGIT のパッチをパッチファイルに変換するには、次のようにします。
+
+  stg export [--range=[<patch1>[:<patch2>]]] [<dir-name>]
+
+The 'export' command supports options to automatically number the
+patches (-n) or add the '.diff' extension (-d). If you don't tell "stg
+export" where to put the patches, it will create directory named "patch-
+branchname" in your current directory, and store the patches there.
+To e-mail a patch or range of patches:
+// 'export' コマンドには自動的にパッチの番号を付けるオプション(-n)や、
+// '.diff' の拡張子を付けるオプション(-d) があります。
+// "stg export" はパッチの置き場所が指定されていない場合、"patch-ブランチ名"
+// のディレクトリをカレントディレクトリ内に作成し、パッチをそこに格納します。
+// パッチまたは一連のパッチを e-mail するには、次のようにします：
+
+  stg mail [--to=...] (--all | --range=[<patch1>[:<patch2>]] | <patch>)
+
+"stg mail" has a lot of options, so read the output of "stg mail -h" for
+more information.
+// "stg mail" はたくさんのオプションを持っています。詳しい情報は
+// "stg mail -h" の出力を参照してください。
+You can also import an existing GNU diff patch file as a new StGIT patch
+with a single command. "stg import" will automatically parse through the
+patch file and extract a patch description. Use:
+// GNU diff のパッチファイルを新しい StGIT パッチとしてインポートする
+// コマンドもあります。"stg import" は自動的にパッチファイルを読み込み
+// パッチの記述を抽出します。次のようにします：
+
+  stg import [<file>]
+
+This is the equivalent of "stg new" followed by "patch -i <file>", then
+"stg refresh -e".
+// これは、"patch -i <file>" した後に "stg new" を実行し、
+// "stg refresh -e" するのと同じです。
+Sometimes the patch file won't apply cleanly. In that case, "stg import"
+will leave you with an empty StGIT patch, to which you then apply the
+patch file by hand using "patch -i" and your favorite editor.
+To merge a GNU diff file (defaulting to the standard input) into the
+topmost patch:
+// 時々、パッチファイルがきれいに適用されない場合があります。
+// その場合、"stg import" は空の StGIT パッチを残すので、
+// "patch -i" を使用して手動でパッチファイルを適用し、好きなエディタで
+// 変更してください。
+// GNU diff ファイルを最上位のパッチにマージするには、次のようにします：
+
+  stg fold [<file>]
+
+This command supports a '--threeway' option which applies the patch onto
+the bottom of the topmost one and performs a three-way merge.
+// このコマンドは '--threeway' オプションをサポートしており、
+// パッチを最上位のパッチの底に適用し、3方向マージを実行します。
+// (訳注：ごめんなさい、意味がよくわかりませんでした。原文も載せます。
+// This command supports a '--threeway' option which applies the patch onto
+// the bottom of the topmost one and performs a three-way merge.)
+
+
+Advanced Usage
+==============
+// == 発展した使い方
+
+Handling merge conflicts
+------------------------
+// === マージ時のコンフリクトの取り扱い
+
+Pushing a patch on the stack can fail if the patch cannot be applied
+cleanly. This usually happens if there are overlapping changes in the
+tree, the patch depends on another patch which is not applied, or if a
+patch was not merged upstream in the exact form it was sent.
+// パッチをスタックに push するとき、パッチがきれいに適用できない場合
+// push は失敗します。これは通常、次のような場合に発生します。
+// ツリーの変更が重なっていて、未適用の他のパッチに依存している場合、
+// または、パッチが送られてきた内容では正しく上流にマージできない場合。
+The 'push' operation stops after the first patch with conflicts. The
+'status' command shows the conflict files by marking them with a 'C'. If
+the 'keeporig' options is set to 'yes' (the default), the original files
+involved in the merge operations are left in the tree as <file>.older,
+<file>.local and <file>.remote for better analysis of the conflict. If
+'diff3' is used as the merger (the default), markers are added to the
+conflicted files as well.
+// 'push' 操作は最初のパッチをコンフリクト状態で停止します。
+// 'status' コマンドはコンフリクトしたファイルに 'C' マークを付けて
+// 表示します。'keeporig' オプションが 'yes'(デフォルト) に設定されている
+// 場合、マージ対象のファイルの元の状態は、<file>.older の名前でツリーに
+// 残され、コンフリクトの解析をする為に <file>.local と <file>.remote が
+// 作成されます。
+// 'diff3' がマージツール(デフォルト)として指定された場合、
+// コンフリクトマーカーがコンフリクトしたファイルに同じように追加されます。
+Run the 'resolved' command to mark the conflicts resolved and remove the
+temporary merge files from the working tree. Then run the 'refresh'
+command to update the StGIT patch with the modifications you made to
+resolve the conflict.
+// 'resolved' コマンドはコンフリクトが解消したことを記録し、
+// 作業ツリーから一時作成されたマージファイルを削除します。
+// その後、'refresh' コマンドを実行するとコンフリクト解消後の修正結果で
+// StGIT パッチを更新します。
+
+
+Configuration file
+------------------
+// === 設定ファイル
+
+StGIT tries to read the configuration options from the following files:
+/etc/stgitrc, ~/.stgitrc and .git/stgitrc. The latter overrides the
+options in the former files. If no file is found, the defaults are used.
+An example configuration file with options description can be found in
+the examples/ directory. Most users would probably only define the
+'smtpserver' option used by the 'mail' command.
+The gitmergeonefile.py script does the three-way merging on individual
+files using the tool specified by the 'merger' option. The user can
+specify a smarter tool to be used.
+// StGIT は次のファイルから設定オプションを読み込みます：
+// /etc/stgitrc, ~/.stgitrc そして、.git/stgitrc。
+// 後のファイルが先に出てきたファイルの内容を上書きします。
+// ファイルが無いときは、システムのデフォルトが使用されます。
+// 設定ファイルの例は、examples/ ディレクトリ内にあります。
+// 多くのユーザは 'mail' コマンドが使用する 'smtpserver' オプションを
+// 定義するだけで十分でしょう。
+// gitmergeonefile.py スクリプトは 'merger' オプションによって特定した
+// ツールを使用して個々のファイルを3方向マージします。
+// ユーザはよりスマートなツールを使用するよう指定ができます。
+
+
+Templates
+---------
+// === テンプレート
+
+The 'export' and 'mail' commands use templates for generating the patch
+files or e-mails. The default templates are installed under <prefix>/
+share/stgit/templates/ and, combined with the extra options available
+for the commands, should be enough for most users. The template format
+uses the standard Python string formatting rules. The variables
+available are shown in the the help message for the commands.
+// 'export' と 'mail' コマンドはパッチファイルまたは e-mail を生成する際に
+// テンプレートを使用します。デフォルトのテンプレートは、
+// <prefix>/share/stgit/templates/ の下にインストールされていて、
+// これを追加オプションと組み合わせるれば、大抵のユーザは十分です。
+// テンプレートの形式は標準的な Python の文字列書式のルールを使用しています。
+// 利用できる変数はコマンドのヘルプメッセージで確認できます。
+The 'mail' command can also send an initial e-mail for which there is no
+default template. The <prefix>/share/stgit/examples/firstmail.tmpl file
+can be used as an example.
+// 'mail' コマンドはデフォルトのテンプレートがない場合に初期の e-mail を
+// 送信することもできます。<prefix>/share/stgit/examples/firstmail.tmpl
+// ファイルを例として使用することができます。
+A default description for new patches can be defined in the .git/
+patchdescr.tmpl file. This is useful for things like signed-off-by
+lines.
+// 新しいパッチのデフォルトの説明は .git/patchdescr.tmpl ファイルで
+// 定義することができます。signed-off-by 行のようなものを入れるのに
+// 役に立ちます。
+
+
+Merging two patches into one
+----------------------------
+// === ２つのパッチを１つにマージする
+
+There is no command to do this directly at the moment but one can export
+the patch to be merged and use the 'stg fold' command on the generated
+diff file. Assuming that the merged patch was not already applied, the
+operation will succeed. Pushing the merged patch onto the stack will
+result in an empty patch (StGIT notifying the user) that can be safely
+deleted.
+// 今のところ、これを直接行なうコマンドはありませんが、
+// マージすべき内容をパッチファイルにエクスポートし、'stg fold' コマンドを
+// 生成された diff ファイルに対して実行します。
+// マージされたパッチがまだ適用されていない場合は、その操作は成功します。
+// マージしたパッチをスタックに push すると、パッチは空のパッチになり
+// (StGIT はそのことをユーザに知らせます)、安全に削除することができます。
+
+
+Technical Information
+=====================
+// == 技術的な情報
+
+A bit of StGIT patch theory
+---------------------------
+// === StGIT パッチ理論の一部
+
+We assume that a patch is a diff between two nodes - bottom and top. A
+node is a commit SHA1 id or tree SHA1 id in the GIT terminology:
+// パッチは２つのノード間の差分であると想定します。- これを bottom, top とします。
+// １つのノードは GIT の専門用語の commit の SHA1 ID あるいは tree の SHA1 ID です：
+
+  P - patch
+  N - node
+
+  P = diff(Nt, Nb)
+
+  	Nb - bottom (start) node
+  	Nt - top (end) node
+  	Nf - first node (for log generation)
+
+For an ordered stack of patches:
+// パッチのスタックの並び順について：
+
+  P1 = diff(N1, N0)
+  P2 = diff(N2, N1)
+  ...
+
+
+  Ps = P1 + P2 + P3 + ... = diff(Nst, Nsb)
+
+  	Ps  - the big patch of the whole stack
+  	Nsb - bottom stack node (= N0)
+  	Nst - top stack node (= Nn)
+
+Applying (pushing) a patch on the stack (Nst can differ from Nb) is done
+by diff3 merging. The new patch becomes:
+// Applying (pushing) a patch on the stack (Nst can differ from Nb) is done
+// by diff3 merging. The new patch becomes:
+
+
+  P' = diff(Nt', Nb')
+  Nb' = Nst
+  Nt' = diff3(Nst, Nb, Nt)
+
+(note that the diff3 parameters order is: branch1, ancestor, branch2)
+The above operation allows easy patch re-ordering.
+Removing (popping) a patch from the stack is done by simply setting the
+Nst to Nb.
+// (note that the diff3 parameters order is: branch1, ancestor, branch2)
+// The above operation allows easy patch re-ordering.
+// Removing (popping) a patch from the stack is done by simply setting the
+// Nst to Nb.
+
+
+Layout of the .git directory
+----------------------------
+// === Layout of the .git directory
+
+  HEAD			-> refs/heads/<something>
+  objects/
+    ??/
+    ...
+  refs/
+    heads/
+      master		- the master commit id
+      ...
+    tags/
+      ...
+    branches/
+      ...
+    patches/
+      master/
+        applied		- list of applied patches
+        unapplied		- list of not-yet applied patches
+        current		- name of the topmost patch
+        patch1/
+          bottom		- the bottom id of the patch
+          top		- the top id of the patch
+  	description	- the patch description
+  	authname	- author's name
+  	authemail	- author's e-mail
+  	commname	- committer's name
+  	commemail	- committer's e-mail
+        patch2/
+          ...
+        ...
+      ...
