@@ -259,7 +259,7 @@ without its name also changing.
 In fact, in <<git-concepts>> we shall see that everything stored in git
 history, including file data and directory contents, is stored in an object
 with a name that is a hash of its contents.
-// 実際、<<git-concepts:gitのコンセプト>> では、git に格納されている全ての履歴が、
+// 実際、<<git-concepts,gitのコンセプト>> では、git に格納されている全ての履歴が、
 // ファイルデータとディレクトリの中身も含めて、その中身のハッシュの名前で
 // オブジェクトが格納されていることを見るでしょう。
 
@@ -2103,6 +2103,8 @@ $ git gc
 
 to recompress the archive.  This can be very time-consuming, so
 you may prefer to run git-gc when you are not doing other work.
+// アーカイブを圧縮する処理はたくさんの時間がかかるため、
+// git-gc をするときは、他の作業をしない方が良いでしょう。
 
 
 [[ensuring-reliability]]
@@ -3779,7 +3781,7 @@ options mentioned above.
 [[git-concepts]]
 Git concepts
 ============
-// == Git のコンセプト *翻訳中*
+// == Git のコンセプト
 
 Git is built on a small number of simple but powerful ideas.  While it
 is possible to get things done without understanding them, you will find
@@ -3790,6 +3792,8 @@ git much more intuitive if you do.
 
 We start with the most important, the  <<def_object_database,object
 database>> and the <<def_index,index>>.
+// 最も重要なコンセプトである <<def_object_database,オブジェクトデータベース>>
+// と <<def_index,インデックス>> の説明から開始しましょう、
 
 [[the-object-database]]
 The Object Database
@@ -3804,47 +3808,81 @@ contents of the object.  The SHA1 hash is a cryptographic hash function.
 What that means to us is that it is impossible to find two different
 objects with the same name.  This has a number of advantages; among
 others:
+// 既に <<understanding-commits>> で見てきたように、全てのコミットは
+// 40桁の "オブジェクト名" で格納されています。実際、プロジェクトの履歴を
+// 表現するのに必要な全ての情報は、そのような名前のオブジェクトとして格納されています。
+// それぞれの名前はオブジェクト内容の SHA1 ハッシュによって
+// 計算されています。SHA1ハッシュは暗号学的ハッシュ関数です。
+// それはつまり、同じ名前を持つ２つの異なるオブジェクトを見つけるのが
+// 不可能であることを意味します。このことは多くの利点を持っています。
+// とりわけ：
 
 - Git can quickly determine whether two objects are identical or not,
   just by comparing names.
+// - Git は２つのオブジェクトが同じであるかどうかを
+// 名前を比較するだけで高速に判断できます。
 - Since object names are computed the same way in every repository, the
   same content stored in two repositories will always be stored under
   the same name.
+// オブジェクト名が全てのリポジトリに対して同じ方法で計算されるので、
+// ２つのリポジトリに格納した同じ内容は、常に同じ名前で格納されます。
 - Git can detect errors when it reads an object, by checking that the
   object's name is still the SHA1 hash of its contents.
+// - オブジェクト名が自身の内容の SHA1 ハッシュ値と一致しているかを
+// 確認することで、Git はオブジェクトを読み込んだ時に、エラーを検出できます。
 
 (See <<object-details>> for the details of the object formatting and
 SHA1 calculation.)
+// (オブジェクトの形式と SHA1 計算の詳細は <<object-details>> を参照してください)
 
 There are four different types of objects: "blob", "tree", "commit", and
 "tag".
+// Gitが扱う オブジェクトには４種類あります："blob", "tree", "commit" そして "tag" です。
 
 - A <<def_blob_object,"blob" object>> is used to store file data.
+// - <<def_blob_object,"blob" オブジェクト>> はファイルデータを格納するのに使用されます。
 - A <<def_tree_object,"tree" object>> is an object that ties one or more
   "blob" objects into a directory structure. In addition, a tree object
   can refer to other tree objects, thus creating a directory hierarchy.
+// - <<def_tree_object,"tree" オブジェクト>> は１つ以上の "blob" オブジェクトに
+// リンクし、ディレクトリ構成を作ります。さらに、tree オブジェクトは
+// 他の tree オブジェクトを参照できます。従って、ディレクトリ階層を作成できます。
 - A <<def_commit_object,"commit" object>> ties such directory hierarchies
   together into a <<def_DAG,directed acyclic graph>> of revisions--each
   commit contains the object name of exactly one tree designating the
   directory hierarchy at the time of the commit. In addition, a commit
   refers to "parent" commit objects that describe the history of how we
   arrived at that directory hierarchy.
+// - <<def_commit_object,"commit" オブジェクト>>はディレクトリ階層とリンクし、
+// リビジョンの <<def_DAG,有向非巡回グラフ>>を作ります。-- 各コミットは
+// そのコミット時点でのディレクトリ階層を指し示すオブジェクトの名前を
+// 含みます。さらに、commit はそのディレクトリ階層に到った経路を示す
+// "親" のコミットオブジェクトを参照しています。
 - A <<def_tag_object,"tag" object>> symbolically identifies and can be
   used to sign other objects. It contains the object name and type of
   another object, a symbolic name (of course!) and, optionally, a
   signature.
+// - <<def_tag_object,"tag" オブジェクト>> はあるオブジェクトを特定する
+// シンボルの役目をし、また他のオブジェクトに署名をつける目的でも
+// 利用できます。"tag" オブジェクトは、他のオブジェクトの名前と型、
+// そして(もちろん)シンボリック名を持ち、時には署名も含んでいます。
 
 The object types in some more detail:
+// オブジェクトタイプの詳細：
 
 [[commit-object]]
 Commit Object
 ~~~~~~~~~~~~~
-// ==== コミット オブジェクト
+// ==== Commit オブジェクト
 
 The "commit" object links a physical state of a tree with a description
 of how we got there and why.  Use the --pretty=raw option to
 gitlink:git-show[1] or gitlink:git-log[1] to examine your favorite
 commit:
+// "commit" オブジェクトはツリーの物理的な状態にリンクし、
+// また、どのようにしてその記述に至ったかの情報も一緒に含んでいます。
+// --pretty=raw オプション付きで gitlink:git-show[1] または gitlink:git-log[1] を
+// 実行すると、特定のコミットの内容を確認できます：
 
 ------------------------------------------------
 $ git show -s --pretty=raw 2be7fcb476
@@ -3860,9 +3898,12 @@ committer Junio C Hamano <gitster@pobox.com> 1187591163 -0700
 ------------------------------------------------
 
 As you can see, a commit is defined by:
+// このように、コミットは次のように定義されています：
 
 - a tree: The SHA1 name of a tree object (as defined below), representing
   the contents of a directory at a certain point in time.
+// - tree： ある時点のディレクトリの中身を表現する
+// ツリーオブジェクト(以下で定義)の SHA1 名。
 - parent(s): The SHA1 name of some number of commits which represent the
   immediately prevoius step(s) in the history of the project.  The
   example above has one parent; merge commits may have more than
@@ -3870,13 +3911,26 @@ As you can see, a commit is defined by:
   represents the initial revision of a project.  Each project must have
   at least one root.  A project can also have multiple roots, though
   that isn't common (or necessarily a good idea).
+// - parent(s): プロジェクト履歴内のすぐ１つ前の状態を表している
+// 複数のコミットの SHA1 名。上記例では１つの parent があります；
+// マージコミットでは、１つ以上の場合があります。
+// parent のないコミットは "root" コミットと呼ばれ、
+// プロジェクトの初期リビジョンを表します。各プロジェクトは最低１つの root を
+// 持つ必要があります。プロジェクトは複数の root を持つこともできますが、
+// あまり一般的ではありません(良いアイデアではありません)
 - an author: The name of the person responsible for this change, together
   with its date.
+// - author: この変更に対する責任者の名前と日付。
 - a committer: The name of the person who actually created the commit,
   with the date it was done.  This may be different from the author, for
   example, if the author was someone who wrote a patch and emailed it
   to the person who used it to create the commit.
+// - committer: このコミットを実際に作成した担当者と日付。
+// committer は author とは一致しないかもしれません、例えば、
+// author がパッチを作成しそれを E-Mailで別の人がそのパッチをコミットする
+// ことがあります。
 - a comment describing this commit.
+// - このコメントに関するコメント。
 
 Note that a commit does not itself contain any information about what
 actually changed; all changes are calculated by comparing the contents
@@ -3885,10 +3939,18 @@ its parents.  In particular, git does not attempt to record file renames
 explicitly, though it can identify cases where the existence of the same
 file data at changing paths suggests a rename.  (See, for example, the
 -M option to gitlink:git-diff[1]).
+// 注意：コミット自身は実際にどのような変更がされたかの情報を持っていません；
+// 全ての変更はコミットが参照しているツリーとparents から連想されるツリーとの比較
+// によって計算されます。特に、git はファイル名の変更を明示的には記録しようと
+// しません。しかし、同じデータをもつファイルが存在する場合に名前変更であると
+// 認識する方法があります。(例えば、gitlink:git-diff[1] の -M オプションを参照)
 
 A commit is usually created by gitlink:git-commit[1], which creates a
 commit whose parent is normally the current HEAD, and whose tree is
 taken from the content currently stored in the index.
+// コミットは通常 gitlink:git-commit[1] によって作成されます。
+// デフォルトではその親を現在のHEADとしたコミットが作成され、
+// そのツリーは現在のインデックスに格納されている内容が使用されます。
 
 [[tree-object]]
 Tree Object
@@ -3898,6 +3960,9 @@ Tree Object
 The ever-versatile gitlink:git-show[1] command can also be used to
 examine tree objects, but gitlink:git-ls-tree[1] will give you more
 details:
+// gitlink:git-show[1] コマンドは tree オブジェクトに対しても
+// 使用することができますが、gitlink:git-ls-tree[1] の方が
+// より詳細な情報を表示します：
 
 ------------------------------------------------
 $ git ls-tree fb3a8bdd0ce
@@ -3915,6 +3980,9 @@ $ git ls-tree fb3a8bdd0ce
 As you can see, a tree object contains a list of entries, each with a
 mode, object type, SHA1 name, and name, sorted by name.  It represents
 the contents of a single directory tree.
+// このように、tree オブジェクトは名前順でソートされたエントリの一覧を含んでおり、
+// 各エントリは mode, オブジェクトタイプ、SHA1名、名前を持っています。
+// tree は １つのディレクトリツリーの中身を表現します。
 
 The object type may be a blob, representing the contents of a file, or
 another tree, representing the contents of a subdirectory.  Since trees
@@ -3924,12 +3992,22 @@ contents (including, recursively, the contents of all subdirectories)
 are identical.  This allows git to quickly determine the differences
 between two related tree objects, since it can ignore any entries with
 identical object names.
+// オブジェクトタイプが blob の場合はファイルデータであることを表し、
+// tree である場合は、サブディレクトリであることを表しています。
+// tree と blob は他のオブジェクトと同じようにその中身の SHA1値によって
+// 名前が付けられていて、その中身が(全てのサブディレクトリの内容も含めて)同じ場合
+// にのみ同じ SHA1 名となります。この仕組みにより git は２つの関連する
+// tree オブジェクト間の差分を高速に調べることができます。
 
 (Note: in the presence of submodules, trees may also have commits as
 entries.  See <<submodules>> for documentation.)
+// (注意：サブモジュールが存在する場合、tree は commit をエントリに
+// 持つことがあります。<<submodules>> のドキュメントを参照。)
 
 Note that the files all have mode 644 or 755: git actually only pays
 attention to the executable bit.
+// 注意：ファイルは全て 644 または 755 のモードとなります：実際、git は
+// 実行パーミッションだけを管理しています。
 
 [[blob-object]]
 Blob Object
@@ -3938,6 +4016,8 @@ Blob Object
 
 You can use gitlink:git-show[1] to examine the contents of a blob; take,
 for example, the blob in the entry for "COPYING" from the tree above:
+// gitlink:git-show[1] を使用すると blob の内容を参照できます；
+// 例として、上記ツリーの blob エントリ "COPYING" を確認します：
 
 ------------------------------------------------
 $ git show 6ff87c4664
@@ -3950,17 +4030,28 @@ $ git show 6ff87c4664
 
 A "blob" object is nothing but a binary blob of data.  It doesn't refer
 to anything else or have attributes of any kind.
+// "blob" オブジェクトはバイナリの blob データであるにすぎません。
+// 参照や属性といったものは持っていません。
 
 Since the blob is entirely defined by its data, if two files in a
 directory tree (or in multiple different versions of the repository)
 have the same contents, they will share the same blob object. The object
 is totally independent of its location in the directory tree, and
 renaming a file does not change the object that file is associated with.
+// blob はそれ自身のデータによって完全に定義されるため、
+// ディレクトリツリー内(またはリポジトリ内の異なるバージョン)に
+// ２つのファイルがあり、それらが同じ内容であるなら、同じ blob オブジェクトを
+// 共有します。オブジェクトはディレクトリツリーの位置に完全に独立しており、
+// ファイル名を変更してもそれに対応するオブジェクトは変更されません。
 
 Note that any tree or blob object can be examined using
 gitlink:git-show[1] with the <revision>:<path> syntax.  This can
 sometimes be useful for browsing the contents of a tree that is not
 currently checked out.
+// 注意：全ての tree と blob オブジェクトは gitlink:git-show[1] に
+// <revision>:<path> の引数を付けて実行することができます。
+// これにより、現在チェックアウトしていないツリーの中身を
+// ブラウズすることができます。
 
 [[trust]]
 Trust
@@ -3972,6 +4063,10 @@ from another (possibly untrusted) source, you can still trust that those
 contents are correct as long as the SHA1 name agrees.  This is because
 the SHA1 is designed so that it is infeasible to find different contents
 that produce the same hash.
+// あるソースから blob の SHA1値と(信頼できないかもしれない)ソースの中身
+// を受け取ったとします。この場合でも SHA1値が一致する限りはその内容が
+// 正しいと信頼することができます。何故なら SHA1値は同じハッシュ値を生成
+// する異なるファイルを見つけることが困難なように設計されているからです。
 
 Similarly, you need only trust the SHA1 name of a top-level tree object
 to trust the contents of the entire directory that it refers to, and if
@@ -3979,19 +4074,32 @@ you receive the SHA1 name of a commit from a trusted source, then you
 can easily verify the entire history of commits reachable through
 parents of that commit, and all of those contents of the trees referred
 to by those commits.
+// 同様に、トップレベルのツリーオブジェクトの SHA1値を信頼するだけで
+// それが参照する全ディレクトリの内容を信頼することができます。
+// また、信頼するソースからコミットのSHA1値を受け取ったなら、
+// そのコミットの親から到達可能なコミットの全履歴とコミットが参照する
+// ツリーの内容全てを容易に信頼することができます。
 
 So to introduce some real trust in the system, the only thing you need
 to do is to digitally sign just 'one' special note, which includes the
 name of a top-level commit.  Your digital signature shows others
 that you trust that commit, and the immutability of the history of
 commits tells others that they can trust the whole history.
+// 従ってトップレベルのコミット名を含む '一つの' 特定のノートに
+// デジタル署名するだけで、システムに信頼性を持たせることができます。
+// デジタル署名はあなたがそのコミットを信頼していることを示し、
+// コミット履歴の不変性は全ての履歴が信頼できることを示しています。
 
 In other words, you can easily validate a whole archive by just
 sending out a single email that tells the people the name (SHA1 hash)
 of the top commit, and digitally sign that email using something
 like GPG/PGP.
+// 言い換えると、トップレベルのコミットのSHA1値を伝えるメールを作成し、
+// GPG/PGPでデジタル署名するだけで、容易に全ての履歴の妥当性を示す
+// ことができるということです。
 
 To assist in this, git also provides the tag object...
+// この仕組みを支援するため、gitはtagオブジェクトも用意しています。
 
 [[tag-object]]
 Tag Object
@@ -4001,6 +4109,9 @@ Tag Object
 A tag object contains an object, object type, tag name, the name of the
 person ("tagger") who created the tag, and a message, which may contain
 a signature, as can be seen using the gitlink:git-cat-file[1]:
+// tag オブジェクトはオブジェクトとオブジェクトタイプ、タグ名、
+// タグの作成者、メッセージ(これには署名が付けられることがあります)を
+// 含んでいます。このことは gitlink:git-cat-file[1] で確認できます:
 
 ------------------------------------------------
 $ git cat-file tag v1.5.0
@@ -4023,17 +4134,27 @@ See the gitlink:git-tag[1] command to learn how to create and verify tag
 objects.  (Note that gitlink:git-tag[1] can also be used to create
 "lightweight tags", which are not tag objects at all, but just simple
 references whose names begin with "refs/tags/").
+// タグの作成方法と検証方法は gitlink:git-tag[1] コマンドを参照してください。
+// (注意: gitlink:git-tag[1] は'軽量'タグを作成することもできます。
+// これは、tagオブジェクトとは全く異なるもので、'refs/tags/'で始まる
+// 単なる参照です)
+
 
 [[pack-files]]
 How git stores objects efficiently: pack files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// ==== How git stores objects efficiently: pack files
+// ==== gitがどのようにオブジェクトを効率的に保管するか： packファイル
 
 Newly created objects are initially created in a file named after the
 object's SHA1 hash (stored in .git/objects).
+// 新規作成されたオブジェクトは最初はオブジェクトの SHA1ハッシュ値の
+// 名前でファイルとして保存されます(.git/objects 内に保管されます)。
 
 Unfortunately this system becomes inefficient once a project has a
 lot of objects.  Try this on an old project:
+// 残念なことに、プロジェクトに大量のオブジェクトが作成されると、
+// この仕組みでは不十分になります。古いプロジェクトで以下を実行
+// してみてください:
 
 ------------------------------------------------
 $ git count-objects
@@ -4043,13 +4164,22 @@ $ git count-objects
 The first number is the number of objects which are kept in
 individual files.  The second is the amount of space taken up by
 those "loose" objects.
+// 最初の数字はファイルとして保管されているオブジェクト数です。
+// 二つ目の数字はこれらの "遊離した" オブジェクトによって消費される
+// 容量の合計値です。
 
 You can save space and make git faster by moving these loose objects in
 to a "pack file", which stores a group of objects in an efficient
 compressed format; the details of how pack files are formatted can be
 found in link:technical/pack-format.txt[technical/pack-format.txt].
+// これら遊離したオブジェクトを "packファイル" に移動することで
+// ディスク容量を節約し、またgitを高速化することができます。
+// pack ファイルはオブジェクトのグループを十分に圧縮した形式で保管します:
+// packファイル形式の詳細は link:technical/pack-format.txt[technical/pack-format.txt]
+// を参照してください。
 
 To put the loose objects into a pack, just run git repack:
+// 遊離したオブジェクトを pack に移動するには、git repack を実行するだけです:
 
 ------------------------------------------------
 $ git repack
@@ -4064,6 +4194,7 @@ Pack pack-3e54ad29d5b2e05838c75df582c65257b8d08e1c created.
 ------------------------------------------------
 
 You can then run
+// その後、
 
 ------------------------------------------------
 $ git prune
@@ -4074,6 +4205,11 @@ pack.  This will also remove any unreferenced objects (which may be
 created when, for example, you use "git reset" to remove a commit).
 You can verify that the loose objects are gone by looking at the
 .git/objects directory or by running
+// を実行すると pack に含まれる全ての "遊離した" オブジェクトは削除されます。
+// この操作は参照されていないオブジェクト(例えば、"git reset" によって
+// コミットを削除した場合などに作成される)も全て削除します
+// 遊離したオブジェクトが削除されたことは .git/objects ディレクトリを
+// 見るか、次のコマンドを実行することで確認できます。
 
 ------------------------------------------------
 $ git count-objects
@@ -4082,9 +4218,13 @@ $ git count-objects
 
 Although the object files are gone, any commands that refer to those
 objects will work exactly as they did before.
+// オブジェクトファイルが削除されても、そのオブジェクトを参照する
+// 全てのコマンドは以前と同じように動作します。
 
 The gitlink:git-gc[1] command performs packing, pruning, and more for
 you, so is normally the only high-level command you need.
+// The gitlink:git-gc[1] コマンドは repack、prune などを実行してくれるので
+// 通常は高レベルであるこのコマンドのみ使用します。
 
 [[dangling-objects]]
 Dangling objects
@@ -4230,6 +4370,9 @@ The index
 The index is a binary file (generally kept in .git/index) containing a
 sorted list of path names, each with permissions and the SHA1 of a blob
 object; gitlink:git-ls-files[1] can show you the contents of the index:
+// インデックスはバイナリファイル(通常 .git/index 内に保管)であり、
+// ソートされたパス名と、パーミッション、blob の SHA1値の一覧を含んでいます；
+// gitlink:git-ls-files[1] を使用するとインデックスの中身を参照できます：
 
 -------------------------------------------------
 $ git ls-files --stage
@@ -4247,6 +4390,9 @@ $ git ls-files --stage
 Note that in older documentation you may see the index called the
 "current directory cache" or just the "cache".  It has three important
 properties:
+// 古いドキュメントでは、"現在のディレクトリキャッシュ" または単に
+// "キャッシュ" と呼んでいることがあります。インデックスには３つの重要な
+// 性質があります：
 
 1. The index contains all the information necessary to generate a single
 (uniquely determined) tree object.
@@ -4254,6 +4400,12 @@ properties:
 For example, running gitlink:git-commit[1] generates this tree object
 from the index, stores it in the object database, and uses it as the
 tree object associated with the new commit.
+// 1. インデックスは１つの(ユニークに決定される)ツリーオブジェクトを
+// 生成するのに必要な情報全てを含んでいます。
+// +
+// 例えば、gitlink:git-commit[1] を実行すると、インデックスから
+// 新しいコミットが参照する tree オブジェクトを生成し、オブジェクトＤＢに
+// 格納します。
 
 2. The index enables fast comparisons between the tree object it defines
 and the working tree.
@@ -4264,6 +4416,15 @@ stored in the created tree object, but it can be used to determine
 quickly which files in the working directory differ from what was
 stored in the index, and thus save git from having to read all of the
 data from such files to look for changes.
+// 2. インデックスはインデックスが定義する tree オブジェクトと
+// 作業ツリーとを高速に比較することができます。
+// +
+// これは、各エントリに対する追加情報(最終更新日のようなもの)を
+// 格納することで行なわれます。このデータは上記には表示されず、
+// tree オブジェクトを作成する時には格納されませんが、
+// 変更されているファイルとインデックスに格納されているファイルを
+// 高速に確認するために使用できます。この仕組みが git がデータの
+// 全てを読み込み変更を探す作業を手助けします。
 
 3. It can efficiently represent information about merge conflicts
 between different tree objects, allowing each pathname to be
@@ -4275,12 +4436,25 @@ store multiple versions of a single file (called "stages").  The third
 column in the gitlink:git-ls-files[1] output above is the stage
 number, and will take on values other than 0 for files with merge
 conflicts.
+// 3. 異なるツリーオブジェクト間のコンフリクトの情報を表現することができ、
+// 各パス名は3-way マージを行なうときに作成されるツリーの情報を
+// 持つことができます。
+// +
+// <<conflict-resolution>> で見たように、マージしている間、
+// 1つのファイルの("ステージ"と呼ばれる)複数のバージョンを格納する
+// ことができます。gitlink:git-ls-files[1] の出力の3つ目のカラムは
+// ステージの番号で、コンフリクトしたファイルには０より大きい値が
+// 付けられます。
 
 The index is thus a sort of temporary staging area, which is filled with
 a tree which you are in the process of working on.
+// このようにインデックスは一時的な作業エリアの役割をし、
+// 作業中のツリーの内容が詰められています。
 
 If you blow the index away entirely, you generally haven't lost any
 information as long as you have the name of the tree that it described.
+// インデックスを完全に消し去ると、それを記述していたツリーの名前を
+// 持っていない限りは、全ての情報を失ってしまいます。
 
 [[submodules]]
 Submodules
@@ -4600,7 +4774,7 @@ This is not the case if you did not commit your changes.
 [[low-level-operations]]
 Low-level git operations
 ========================
-// == 下位レベルの git 操作 *翻訳中*
+// == 下位レベルの git 操作
 
 Many of the higher-level commands were originally implemented as shell
 scripts using a smaller core of low-level git commands.  These can still
@@ -4811,25 +4985,36 @@ from one representation to the other:
 [[tying-it-all-together]]
 Tying it all together
 ~~~~~~~~~~~~~~~~~~~~~
-// ==== Tying it all together
+// ==== 機能間の連携
 
 To commit a tree you have instantiated with "git-write-tree", you'd
 create a "commit" object that refers to that tree and the history
 behind it--most notably the "parent" commits that preceded it in
 history.
+// "git-write-tree" で作成したツリーをコミットするには、
+// そのツリーと背後にある履歴(つまり、その履歴とつながる"親の"コミット)
+// を参照する "commit" オブジェクトを作成します。
 
 Normally a "commit" has one parent: the previous state of the tree
 before a certain change was made. However, sometimes it can have two
 or more parent commits, in which case we call it a "merge", due to the
 fact that such a commit brings together ("merges") two or more
 previous states represented by other commits.
+// 通常 "commit" は一つの親を持ちます：これはある変更を行った一つ前の
+// ツリー状態を指しています。しかしながら時には二つ以上の親を持つこと
+// もあります。それは "マージ" と言われる場合であり、そのようなコミットは
+// 二つ以上の状態を一つに纏めます。
 
 In other words, while a "tree" represents a particular directory state
 of a working directory, a "commit" represents that state in "time",
 and explains how we got there.
+// 言い換えると、ツリーがある作業ディレクトリの特定の状態を表す一方、
+// コミットはその状態の時刻とそこに至った経緯を表します。
 
 You create a commit object by giving it the tree that describes the
 state at the time of the commit, and a list of parents:
+// コミットを作成するには、コミット時点の状態を表すツリーと親のリストを
+// 渡すことで作成することができます:
 
 -------------------------------------------------
 $ git-commit-tree <tree> -p <parent> [-p <parent2> ..]
@@ -4837,6 +5022,8 @@ $ git-commit-tree <tree> -p <parent> [-p <parent2> ..]
 
 and then giving the reason for the commit on stdin (either through
 redirection from a pipe or file, or by just typing it at the tty).
+// コミット時のコメントは標準入力(あるいはパイプやファイルのリダイレクト)
+// で指定します。
 
 git-commit-tree will return the name of the object that represents
 that commit, and you should save it away for later use. Normally,
@@ -4844,9 +5031,14 @@ you'd commit a new `HEAD` state, and while git doesn't care where you
 save the note about that state, in practice we tend to just write the
 result to the file pointed at by `.git/HEAD`, so that we can always see
 what the last committed state was.
+// git-commit-tree は作成したコミットのオブジェクト名を返却します。
+// 通常、この名前は `.git/HEAD` ファイルに保存され、その結果、
+// 最後のコミットが何であるかを確認できます。
 
 Here is an ASCII art by Jon Loeliger that illustrates how
 various pieces fit together.
+// 以下は Jon Loeliger が作成したテキストのイラストで、
+// 項目間の関係を示しています。
 
 ------------
 
@@ -4888,12 +5080,15 @@ various pieces fit together.
 [[examining-the-data]]
 Examining the data
 ------------------
-// === データを試す
+// === データの中身を参照する
 
 You can examine the data represented in the object database and the
 index with various helper tools. For every object, you can use
 gitlink:git-cat-file[1] to examine details about the
 object:
+// 様々なヘルパーツールを用いることでオブジェクトDBと
+// インデックスの中身を確認することができます。
+// 各オブジェクトの中身は gitlink:git-cat-file[1] で確認します:
 
 -------------------------------------------------
 $ git-cat-file -t <objectname>
@@ -4901,6 +5096,8 @@ $ git-cat-file -t <objectname>
 
 shows the type of the object, and once you have the type (which is
 usually implicit in where you find the object), you can use
+// これはオブジェクトのタイプを表示し、タイプを確認した後は
+// 次のようにして、中身を確認することができます。
 
 -------------------------------------------------
 $ git-cat-file blob|tree|commit|tag <objectname>
@@ -4910,11 +5107,18 @@ to show its contents. NOTE! Trees have binary content, and as a result
 there is a special helper for showing that content, called
 `git-ls-tree`, which turns the binary content into a more easily
 readable form.
+// 注意！ Tree はバイナリであり、その中身を見るには `git-ls-tree` という
+// 特別なツールを使用します。これは、バイナリの内容をより読みやすい形式に
+// 変換してくれます。
 
 It's especially instructive to look at "commit" objects, since those
 tend to be small and fairly self-explanatory. In particular, if you
 follow the convention of having the top commit name in `.git/HEAD`,
 you can do
+// "commit" オブジェクトの中身を見ることはとても教育的です。
+// それらは小さく、一目瞭然です。特に、
+// 最新のコミット名が `.git/HEAD` にあるという規約を使用し、
+// 次のようにすると、最新のコミットの中身を確認できます。
 
 -------------------------------------------------
 $ git-cat-file commit HEAD
@@ -4932,14 +5136,24 @@ repeating the merge procedure arbitrary times until you finally
 "commit" the state.  The normal situation is that you'd only do one
 three-way merge (two parents), and commit it, but if you like to, you
 can do multiple parents in one go.
+// Git は 3方向マージを行なう手助けをします。これは
+// 任意の回数繰り返すことにより n方向マージに拡張することができます。
+// 通常は3方向マージ(2つの親によるマージ)のみを行ないますが、
+// 複数の親を1回でマージすることもできます。
 
 To do a three-way merge, you need the two sets of "commit" objects
 that you want to merge, use those to find the closest common parent (a
 third "commit" object), and then use those commit objects to find the
 state of the directory ("tree" object) at these points.
+// 3方向マージをするには、マージする2組の "commit" オブジェクトが
+// 必要です。これを使用し共通の親(3番目の"commit"オブジェクト)を見つけ、
+// それら commit オブジェクトを使用してディレクトリ("tree" オブジェクト)
+// の状態を探します。
 
 To get the "base" for the merge, you first look up the common parent
 of two commits with
+// マージの "ベース" を得るには、まず次のようにして
+// ２つのコミットの共通の親を見つけます。
 
 -------------------------------------------------
 $ git-merge-base <commit1> <commit2>
@@ -4948,6 +5162,9 @@ $ git-merge-base <commit1> <commit2>
 which will return you the commit they are both based on.  You should
 now look up the "tree" objects of those commits, which you can easily
 do with (for example)
+// これは、共通のベースコミットを返却します。
+// これらコミットの "tree" オブジェクトは次のようにして
+// 容易に見つけることができます。(例えば)
 
 -------------------------------------------------
 $ git-cat-file commit <commitname> | head -1
@@ -4955,6 +5172,8 @@ $ git-cat-file commit <commitname> | head -1
 
 since the tree object information is always the first line in a commit
 object.
+// tree オブジェクトの情報は、コミットオブジェクトの１行目に
+// 常に記述されています。
 
 Once you know the three trees you are going to merge (the one "original"
 tree, aka the common tree, and the two "result" trees, aka the branches
@@ -4963,8 +5182,16 @@ complain if it has to throw away your old index contents, so you should
 make sure that you've committed those--in fact you would normally
 always do a merge against your last commit (which should thus match what
 you have in your current index anyway).
+// マージしようとする３つのツリー(１つは "original"の tree いわゆる 共通の tree、
+// ２つの "結果" tree、いわゆるマージしたいブランチ)を知った後は、
+// インデックスに読み込んでそれらを "マージ" します。
+// 古いインデックスの中身を破棄しなくてはならない場合、エラーを表示します。
+// 従ってそれらをコミットしたか確認してください。-- 実際、通常は常に
+// 最後にコミットした内容をもとにマージします(そのコミットは従って
+// 現在のインデックスの内容と一致します)
 
 To do the merge, do
+// マージをするには次のひょうにします。
 
 -------------------------------------------------
 $ git-read-tree -m -u <origtree> <yourtree> <targettree>
@@ -4973,12 +5200,14 @@ $ git-read-tree -m -u <origtree> <yourtree> <targettree>
 which will do all trivial merge operations for you directly in the
 index file, and you can just write the result out with
 `git-write-tree`.
+// これにより、自明のマージ操作は直接インデックスファイルに行なわれ、
+// `git-write-tree` を用いてその結果を書き込むことができます。
 
 
 [[merging-multiple-trees-2]]
 Merging multiple trees, continued
 ---------------------------------
-// === 複数のツリーをマージする、続く
+// === 複数のツリーをマージする、続き
 
 Sadly, many merges aren't trivial. If there are files that have
 been added, moved or removed, or if both branches have modified the
@@ -4986,9 +5215,17 @@ same file, you will be left with an index tree that contains "merge
 entries" in it. Such an index tree can 'NOT' be written out to a tree
 object, and you will have to resolve any such merge clashes using
 other tools before you can write out the result.
+// 残念なことに、多くのマージは自明ではありませんん。
+// 追加や移動、削除されたファイルがある場合や、あるいは両方のブランチ
+// で同じファイルが変更されている場合、"マージエントリ" を含んだ
+// インデックスツリーが残されます。このようなインデックスツリーは
+// tree オブジェクトには書き込むことができません。その結果を書き込む前に
+// 他のツールを使用してコンフリクトを解消する必要があります。
 
 You can examine such index state with `git-ls-files --unmerged`
 command.  An example:
+// このようなインデックス状態は `git-ls-files --unmerged` を
+// 用いると確認できます。例えば：
 
 ------------------------------------------------
 $ git-read-tree -m $orig HEAD $target
@@ -5003,6 +5240,11 @@ the blob mode bits, blob SHA1, 'stage number', and the
 filename.  The 'stage number' is git's way to say which tree it
 came from: stage 1 corresponds to `$orig` tree, stage 2 `HEAD`
 tree, and stage3 `$target` tree.
+// `git-ls-files --unmerged` の出力の各行は blob のモードビット、
+// blob の SHA1、'stage番号'、そしてファイル番号で始まります。
+// 'stage番号' はそれがどの tree から来たかを表す git のやり方です：
+// stage 1 は `$orig` ツリーに対応し、stege 2 は `HEAD` の tree
+// stage 3 `$target` tree です。
 
 Earlier we said that trivial merges are done inside
 `git-read-tree -m`.  For example, if the file did not change
@@ -5014,6 +5256,15 @@ above example shows is that file `hello.c` was changed from
 You could resolve this by running your favorite 3-way merge
 program, e.g.  `diff3`, `merge`, or git's own merge-file, on
 the blob objects from these three stages yourself, like this:
+// 既に自明のマージは `git-read-tree -m` にて行なわれたことを
+// 説明しました。例えば、ファイルが `HEAD と `$target` のどちらでも
+// 変更されていない場合や、`HEAD` と `$target` が同じ内容の場合は
+// 明らかに最終的な結果は `HEAD` のものと同じです。
+// 上記の例では `hello.c` は `HEAD` で変更されていて `$target`でも
+// 別の変更が行なわれている場合です。
+// 好きな3方向マージツールを実行してこれを解決することができます。
+// 例えば `diff3`、`merge` あるいは git 自身の merge-file などを使用し
+// これら３つのstage 上のファイルを次のようにしてマージします。
 
 ------------------------------------------------
 $ git-cat-file blob 263414f... >hello.c~1
@@ -5026,6 +5277,10 @@ This would leave the merge result in `hello.c~2` file, along
 with conflict markers if there are conflicts.  After verifying
 the merge result makes sense, you can tell git what the final
 merge result for this file is by:
+// これはマージ結果は `hello.c~2` ファイルに保存し、
+// コンフリクトがあるときは、コンフリクトマーカが付けられます。
+// マージ結果を確認した後、このファイルの最終的なマージ結果を
+// git に次のようにして伝えます：
 
 -------------------------------------------------
 $ mv -f hello.c~2 hello.c
@@ -5034,18 +5289,26 @@ $ git-update-index hello.c
 
 When a path is in unmerged state, running `git-update-index` for
 that path tells git to mark the path resolved.
+// ファイルにマージ済みになっていない時は、`git-update-index` は
+// ファイルに解決済みのマークを付けます。
 
 The above is the description of a git merge at the lowest level,
 to help you understand what conceptually happens under the hood.
 In practice, nobody, not even git itself, uses three `git-cat-file`
 for this.  There is `git-merge-index` program that extracts the
 stages to temporary files and calls a "merge" script on it:
+// 上記は下位レベルにおける git のマージ動作の解説で、
+// 水面下でどのようなことが起きているかの概念を理解する手助けになります。
+// 実際、誰も、git 自身でさえ、3つの `git-cat-file` を使用しません。
+// `git-merge-index` プログラムがあり、これが stage を一時ファイルとして
+// 抽出し、"merge" スクリプトをコールします：
 
 -------------------------------------------------
 $ git-merge-index git-merge-one-file hello.c
 -------------------------------------------------
 
 and that is what higher level `git merge -s resolve` is implemented with.
+// そして、上位レベルとして `git merge -s resolve` が実装されています。
 
 [[hacking-git]]
 Hacking git
@@ -5300,6 +5563,7 @@ itself!
 
 [[glossary]]
 include::glossary.txt[]
+// include::glossary.txt[]
 
 [[git-quick-start]]
 Appendix A: Git Quick Reference
