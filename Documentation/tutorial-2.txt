@@ -85,7 +85,6 @@ committer J. Bruce Fields <bfields@puzzle.fieldses.org> 1143414668 -0500
 
 initial commit
 ------------------------------------------------
-// == 最初のコミット
 
 A tree can refer to one or more "blob" objects, each corresponding to
 a file.  In addition, a tree can also refer to other tree objects,

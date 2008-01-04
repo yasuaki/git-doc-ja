@@ -567,10 +567,14 @@ part of the name that is long enough to uniquely identify the commit:
 // 用いる方法です。
 
 -------------------------------------
-$ git show c82a22c39c	# the first few characters of the name are	# コミット名の最初の数文字で
-			# usually enough				# 大抵は十分です
-$ git show HEAD		# the tip of the current branch			# 現在のブランチの先端(tip)
-$ git show experimental	# the tip of the "experimental" branch		# ブランチ "experimental" の先端(tip)
+$ git show c82a22c39c	# the first few characters of the name are
+//			# コミット名の最初の数文字で
+			# usually enough
+//			# 大抵は十分です
+$ git show HEAD		# the tip of the current branch
+//			# 現在のブランチの先端(tip)
+$ git show experimental	# the tip of the "experimental" branch
+//			# ブランチ "experimental" の先端(tip)
 -------------------------------------
 
 Every commit usually has one "parent" commit
@@ -579,17 +583,22 @@ which points to the previous state of the project:
 // それはプロジェクトの１つ前の状態を指し示します：
 
 -------------------------------------
-$ git show HEAD^  # to see the parent of HEAD			# HEAD の親を表示
-$ git show HEAD^^ # to see the grandparent of HEAD		# HEAD の祖父を表示
-$ git show HEAD~4 # to see the great-great grandparent of HEAD	# HEAD の４つ前を表示
+$ git show HEAD^  # to see the parent of HEAD
+//		  # HEAD の親を表示
+$ git show HEAD^^ # to see the grandparent of HEAD
+//		  # HEAD の祖父を表示
+$ git show HEAD~4 # to see the great-great grandparent of HEAD
+//		  # HEAD の４つ前を表示
 -------------------------------------
 
 Note that merge commits may have more than one parent:
 // マージコミットは１つ以上の親を持つ場合があることに注意してください：
 
 -------------------------------------
-$ git show HEAD^1 # show the first parent of HEAD (same as HEAD^)	# HEAD の１つ目の親を表示(HEADと同じ)
-$ git show HEAD^2 # show the second parent of HEAD			# HEAD の２つ目の親を表示
+$ git show HEAD^1 # show the first parent of HEAD (same as HEAD^)
+//		  # HEAD の１つ目の親を表示(HEADと同じ)
+$ git show HEAD^2 # show the second parent of HEAD
+//		  # HEAD の２つ目の親を表示
 -------------------------------------
 
 You can also give commits names of your own; after running
@@ -615,11 +624,16 @@ names.  For example:
 // 例えば以下のとおりです:
 
 -------------------------------------
-$ git diff v2.5 HEAD	 # compare the current HEAD to v2.5		# 現在の HEAD を v2.5 と比較
-$ git branch stable v2.5 # start a new branch named "stable" based	# v2.5の位置に "stable" という名前の新しい
-			 # at v2.5					# ブランチを作成
-$ git reset --hard HEAD^ # reset your current branch and working	# 現在のブランチと作業ディレクトリをリセットし、
-			 # directory to its state at HEAD^		# HEAD^ の状態にします
+$ git diff v2.5 HEAD	 # compare the current HEAD to v2.5
+//			 # 現在の HEAD を v2.5 と比較
+$ git branch stable v2.5 # start a new branch named "stable" based
+//			 # v2.5の位置に "stable" という名前の新しい
+			 # at v2.5
+//			 # ブランチを作成
+$ git reset --hard HEAD^ # reset your current branch and working
+//			 # 現在のブランチと作業ディレクトリをリセットし、
+			 # directory to its state at HEAD^
+//			 # HEAD^ の状態にします
 -------------------------------------
 
 Be careful with that last command: in addition to losing any changes
@@ -673,11 +687,16 @@ in a number of ways.  Here are some examples with git log:
 // 以下は、git log における使用例です。
 
 -------------------------------------
-$ git log v2.5..v2.6            # commits between v2.5 and v2.6		# v2.5 から 2.6 までのコミット
-$ git log v2.5..                # commits since v2.5			# v2.5 以降のコミット
-$ git log --since="2 weeks ago" # commits from the last 2 weeks		# 最近２週間のコミット
-$ git log v2.5.. Makefile       # commits since v2.5 which modify	# v2.5 以降に Makefile を
-				# Makefile				# 変更しているコミット
+$ git log v2.5..v2.6            # commits between v2.5 and v2.6
+//				# v2.5 から 2.6 までのコミット
+$ git log v2.5..                # commits since v2.5
+//				# v2.5 以降のコミット
+$ git log --since="2 weeks ago" # commits from the last 2 weeks
+//				# 最近２週間のコミット
+$ git log v2.5.. Makefile       # commits since v2.5 which modify
+//				# v2.5 以降に Makefile を
+				# Makefile
+//				# 変更しているコミット
 -------------------------------------
 
 You can also give git log a "range" of commits where the first is not
