@@ -158,7 +158,7 @@ and the contents of these files is just the compressed data plus a
 header identifying their length and their type.  The type is either a
 blob, a tree, a commit, or a tag.
 // そして、これらファイルの中身は、圧縮されたデータと、それらの長さと種別を
-特定するヘッダで構成されています。
+// 特定するヘッダで構成されています。
 // 種別には blob, tree, commit, tag があります。
 
 The simplest commit to find is the HEAD commit, which we can find
