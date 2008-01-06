@@ -2,7 +2,6 @@ Git User's Manual (for version 1.5.3 or newer)
 ______________________________________________
 // = Git ユーザマニュアル (バージョン 1.5.3 以降用)
 
-
 // (訳注：この資料は、http://www.kernel.org/pub/software/scm/git/docs/user-manual.html に掲載されている
 // 内容を日本語訳したものです。
 // 英語が得意でないので、誤訳があるかもしれません。
@@ -72,9 +71,11 @@ project in mind, here are some interesting examples:
 // 既存のリポジトリのコピーをダウンロードすることです。
 
 ------------------------------------------------
-	# git itself (approx. 10MB download):		# git 自身 (ダウンロードサイズは約10MB)：
+	# git itself (approx. 10MB download):
+//	# git 自身 (ダウンロードサイズは約10MB)：
 $ git clone git://git.kernel.org/pub/scm/git/git.git
-	# the linux kernel (approx. 150MB download):	# linux カーネル (ダウンロードサイズは150MB)：
+	# the linux kernel (approx. 150MB download):
+//	# linux カーネル (ダウンロードサイズは150MB)：
 $ git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux-2.6.git
 ------------------------------------------------
 
@@ -83,14 +84,16 @@ will only need to clone once.
 // 初めてのclone(複製)では大きなプロジェクトの場合、時間をかなり消費するかもしれませんが、
 // clone は１回行なうだけで良いです。
 
-The clone command creates a new directory named after the project
-("git" or "linux-2.6" in the examples above).  After you cd into this
+The clone command creates a new directory named after the project ("git"
+or "linux-2.6" in the examples above).  After you cd into this
 directory, you will see that it contains a copy of the project files,
-together with a special top-level directory named ".git", which
-contains all the information about the history of the project.
-// clone コマンドはそのプロジェクトの名前の新しいディレクトリを作成します(上記例では "git" 又は "linux-2.6")。
-// このディレクトリの中に移動すると、プロジェクトのファイルのコピーと一緒に
-// ".git" という特別なトップレベルのディレクトリが含まれていることに気がつくはずです。
+called the <<def_working_tree,working tree>>, together with a special
+top-level directory named ".git", which contains all the information
+about the history of the project.
+// clone コマンドはそのプロジェクトにちなんだ新しいディレクトリを作成します (上記例では "git" 又は "linux-2.6")。
+// このディレクトリ内にはプロジェクトファイルのコピーが存在し
+// (これは <<def_working_tree,作業ツリー>> といいます)、
+// それと一緒に ".git" という特別なトップレベルディレクトリが存在します。
 // ".git" ディレクトリにはプロジェクトの履歴の全てが含まれています。
 
 [[how-to-check-out]]
@@ -107,14 +110,23 @@ version is called a <<def_commit,commit>>.
 // プロジェクトの内容を相互に関連したスナップショットとして格納します。
 // git ではこれらのバージョンを <<def_commit,コミット>> と呼びます。
 
-A single git repository may contain multiple branches.  It keeps track
-of them by keeping a list of <<def_head,heads>> which reference the
+Those snapshots aren't necessarily all arranged in a single line from
+oldest to newest; instead, work may simultaneously proceed along
+parallel lines of development, called <<def_branch,branches>>, which may
+merge and diverge.
+// それらのスナップショットは必ずしもすべてが古いものから最新のものに
+// 単線で並んでいるとは限りません；その代り、開発ラインが並行して
+// 進むことがあります (これは <<def_branch,ブランチ>> といいます)。
+// ブランチは分岐し統合されます。
+
+A single git repository can track development on multiple branches.  It
+does this by keeping a list of <<def_head,heads>> which reference the
 latest commit on each branch; the gitlink:git-branch[1] command shows
 you the list of branch heads:
-// １つの git リポジトリは、複数のブランチを持つことができます。
-// 各ブランチの最新バージョンを参照する <<def_head,heads>> のリストを保つことで、
-// ブランチの履歴を追跡します； the gitlink:git-branch[1] コマンドは
-// ブランチの先端のリストを表示します。
+// １つの git リポジトリは複数のブランチを追跡することができます。
+// Git は 各ブランチの最新のコミットの参照を <<def_head,ヘッド>> の
+// 一覧に保管することで複数のブランチを追跡します；
+// gitlink:git-branch[1] コマンドはブランチの一覧を表示します：
 
 ------------------------------------------------
 $ git branch
@@ -688,11 +700,11 @@ Bisecting: 3537 revisions left to test after this
 If you run "git branch" at this point, you'll see that git has
 temporarily moved you to a new branch named "bisect".  This branch
 points to a commit (with commit id 65934...) that is reachable from
-v2.6.19 but not from v2.6.18.  Compile and test it, and see whether
+"master" but not from v2.6.18.  Compile and test it, and see whether
 it crashes.  Assume it does crash.  Then:
 // この時点で "git branch" を実行すると、git は一時的に "bisect" という
 // 名前の新しいブランチに移動していることがわかります。
-// このブランチは、v2.6.19 からは到達可能だが、v2.6.18 からは到達できない
+// このブランチは、"master" からは到達可能だが、v2.6.18 からは到達できない
 // コミット(id が 65934... のコミット)を指しています。
 // コンパイルとテストをし、クラッシュするかを確認します。
 // もしクラッシュするのなら、以下のように：
@@ -790,11 +802,16 @@ name revisions.  Some examples:
 // 確認できます。
 
 -------------------------------------------------
-$ git show fb47ddb2 # the first few characters of the object name	# オブジェクト名の先頭の数文字は
-		    # are usually enough to specify it uniquely		# そのコミットを特定するのに通常は十分です。
-$ git show HEAD^    # the parent of the HEAD commit		# HEAD コミットの親
-$ git show HEAD^^   # the grandparent				# 祖父母
-$ git show HEAD~4   # the great-great-grandparent		# 祖父母の祖父母
+$ git show fb47ddb2 # the first few characters of the object name
+// 		    # オブジェクト名の先頭の数文字は
+		    # are usually enough to specify it uniquely
+// 		    # そのコミットを特定するのに通常は十分です。
+$ git show HEAD^    # the parent of the HEAD commit
+//		    # HEAD コミットの親
+$ git show HEAD^^   # the grandparent
+//		    # 祖父母
+$ git show HEAD~4   # the great-great-grandparent
+//		    # 祖父母の祖父母
 -------------------------------------------------
 
 Recall that merge commits may have more than one parent; by default,
@@ -805,8 +822,10 @@ also choose:
 // 次のように指定することもできます；
 
 -------------------------------------------------
-$ git show HEAD^1   # show the first parent of HEAD	# HEAD の１つ目の親
-$ git show HEAD^2   # show the second parent of HEAD	# HEAD の２つ目の親
+$ git show HEAD^1   # show the first parent of HEAD
+//		    # HEAD の１つ目の親
+$ git show HEAD^2   # show the second parent of HEAD
+//		    # HEAD の２つ目の親
 -------------------------------------------------
 
 In addition to HEAD, there are several other special names for
@@ -891,16 +910,26 @@ can also make more specific requests:
 // しかし、さらに特定のリクエストをすることもできます：
 
 -------------------------------------------------
-$ git log v2.5..	# commits since (not reachable from) v2.5	# v2.5以降のコミット(v2.5から到達不能なコミット)
-$ git log test..master	# commits reachable from master but not test	# master から到達可能だが、test からは到達可能でないコミット
-$ git log master..test	# ...reachable from test but not master		# test から到達可能だが、master からは到達可能でないコミット
-$ git log master...test	# ...reachable from either test or master,	# test または master から到達可能だが、
-			#    but not both				# 両方からは到達可能でない...
-$ git log --since="2 weeks ago" # commits from the last 2 weeks		# 最近２週間のコミット
-$ git log Makefile      # commits which modify Makefile			# Makefile を修正しているコミット
-$ git log fs/		# ... which modify any file under fs/		# fs/ 配下のファイルを修正している...
-$ git log -S'foo()'	# commits which add or remove any file data	# 文字列 'foo()' に一致する全てのファイルを
-			# matching the string 'foo()'			# 追加または削除しているコミット
+$ git log v2.5..	# commits since (not reachable from) v2.5
+//			# v2.5以降のコミット(v2.5から到達不能なコミット)
+$ git log test..master	# commits reachable from master but not test
+//			# master から到達可能だが、test からは到達可能でないコミット
+$ git log master..test	# ...reachable from test but not master
+//			# test から到達可能だが、master からは到達可能でないコミット
+$ git log master...test	# ...reachable from either test or master,
+//			# test または master から到達可能だが、
+			#    but not both
+//			# 両方からは到達可能でない...
+$ git log --since="2 weeks ago" # commits from the last 2 weeks
+//			# 最近２週間のコミット
+$ git log Makefile      # commits which modify Makefile
+//			# Makefile を修正しているコミット
+$ git log fs/		# ... which modify any file under fs/
+//			# fs/ 配下のファイルを修正している...
+$ git log -S'foo()'	# commits which add or remove any file data
+//			# 文字列 'foo()' に一致する全てのファイルを
+			# matching the string 'foo()'
+//			# 追加または削除しているコミット
 -------------------------------------------------
 
 And of course you can combine all of these; the following finds
@@ -947,21 +976,30 @@ gitlink:git-diff[1]:
 $ git diff master..test
 -------------------------------------------------
 
-Sometimes what you want instead is a set of patches:
-// 差分ではなくパッチの集合が必要になる場合もあるかもしれません：
+That will produce the diff between the tips of the two branches.  If
+you'd prefer to find the diff from their common ancestor to test, you
+can use three dots instead of two:
+// これは２つのブランチの先端の間の差分を表示します。
+// ２つのブランチの共通の祖先から test までの差分を表示したい場合は
+// ドットを２つではなく３つとし、次のようにします：
+
+-------------------------------------------------
+$ git diff master...test
+-------------------------------------------------
+
+Sometimes what you want instead is a set of patches; for this you can
+use gitlink:git-format-patch[1]:
+// 時には差分ではなく各パッチの集合が必要な場合もあります；その際には
+// gitlink:git-format-patch[1]: を使用します：
 
 -------------------------------------------------
 $ git format-patch master..test
 -------------------------------------------------
 
 will generate a file with a patch for each commit reachable from test
-but not from master.  Note that if master also has commits which are
-not reachable from test, then the combined result of these patches
-will not be the same as the diff produced by the git-diff example.
+but not from master.
 // このようにすると、test から到達可能だが、master からは到達できない各コミットの
-// パッチを含むファイルを生成できます。master には test からは到達できない
-// コミットを持っている場合は、これらパッチを組み合わせた結果は
-// git-diff の例が生成する 差分とは同じにならないことに注意してください。
+// パッチを含むファイルを生成できます。
 
 [[viewing-old-file-versions]]
 Viewing old file versions
@@ -1202,6 +1240,7 @@ We can get just the branch-head names, and remove "master", with
 the help of the standard utilities cut and grep:
 // ブランチヘッドの名前を取得し、"master" の行を削除しすることができます。
 // 標準ユーティリティである cut と grep の助けを使用して：
+
 -------------------------------------------------
 $ git show-ref --heads | cut -d' ' -f2 | grep -v '^refs/heads/master'
 refs/heads/core-tutorial
@@ -1363,7 +1402,8 @@ If you have some initial content (say, a tarball):
 $ tar -xzvf project.tar.gz
 $ cd project
 $ git init
-$ git add . # include everything below ./ in the first commit:	# ./ 以下にある全てを最初のコミットに含めます
+$ git add . # include everything below ./ in the first commit:
+// 	    # ./ 以下にある全てを最初のコミットに含めます
 $ git commit
 -------------------------------------------------
 
@@ -1484,14 +1524,22 @@ about to commit:
 // 役に立ちます：
 
 -------------------------------------------------
-$ git diff --cached # difference between HEAD and the index; what	# HEAD とインデックス間の差分；
-		    # would be committed if you ran "commit" now.	# つまり、"commit" を実行したときにコミットされる内容
-$ git diff	    # difference between the index file and your	# インデックスと作業ディレクトリ間の差分；
-		    # working directory; changes that would not		# つまり、"commit" を実行したときに含まれない
-		    # be included if you ran "commit" now.		# 変更内容
-$ git diff HEAD	    # difference between HEAD and working tree; what	# HEAD と作業ツリー間の差分：
-		    # would be committed if you ran "commit -a" now.	# つまり、"commit -a" を実行したときにコミットされる内容
-$ git status	    # a brief per-file summary of the above.		# 上記のサマリをファイル毎に簡潔に表示
+$ git diff --cached # difference between HEAD and the index; what
+//		    # HEAD とインデックス間の差分；
+		    # would be committed if you ran "commit" now.
+//		    # つまり、"commit" を実行したときにコミットされる内容
+$ git diff	    # difference between the index file and your
+//		    # インデックスと作業ディレクトリ間の差分；
+		    # working directory; changes that would not
+//		    # つまり、"commit" を実行したときに含まれない
+		    # be included if you ran "commit" now.
+//		    # 変更内容
+$ git diff HEAD	    # difference between HEAD and working tree; what
+//		    # HEAD と作業ツリー間の差分：
+		    # would be committed if you ran "commit -a" now.
+//		    # つまり、"commit -a" を実行したときにコミットされる内容
+$ git status	    # a brief per-file summary of the above.
+//		    # 上記のサマリをファイル毎に簡潔に表示
 -------------------------------------------------
 
 You can also use gitlink:git-gui[1] to create commits, view changes in
@@ -1520,7 +1568,6 @@ body.
 // そうすることで、例えばコミットした内容を E-Mail に変更するツールにて、
 // Subjectに最初の行を使用し、残りの行を本文にすることができます。
 
-
 [[ignoring-files]]
 Ignoring files
 --------------
@@ -1547,14 +1594,19 @@ in the top level of your working directory, with contents such as:
 // 無視するファイルを git に伝えることができます。
 
 -------------------------------------------------
-# Lines starting with '#' are considered comments.	# '#' で始まる行は無視されます
-# Ignore foo.txt.					# foo.txt を無視する
+# Lines starting with '#' are considered comments.
+// # '#' で始まる行は無視されます
+# Ignore any file named foo.txt.
+// # foo.txt という名前の全てのファイルを無視する
 foo.txt
-# Ignore (generated) html files,			# (生成された) html ファイルは無視する
+# Ignore (generated) html files,
+// # (生成された) html ファイルは無視する
 *.html
-# except foo.html which is maintained by hand.		# foo.html は例外とし、手でメンテナンスします
+# except foo.html which is maintained by hand.
+// # foo.html は例外とし、手でメンテナンスします
 !foo.html
-# Ignore objects and archives.				# object と archive ファイルは無視する
+# Ignore objects and archives.
+// # object と archive ファイルは無視する
 *.[oa]
 -------------------------------------------------
 
@@ -1595,7 +1647,7 @@ How to merge
 You can rejoin two diverging branches of development using
 gitlink:git-merge[1]:
 // ２つの分散した開発ブランチは gitlink:git-merge[1] を使用して
-マージできます：
+// マージできます：
 
 -------------------------------------------------
 $ git merge branchname
@@ -1733,11 +1785,16 @@ these three "file stages" represents a different version of the file:
 // この３つはそれぞれファイルの異なる３つの "ファイルステージ" を表現しています：
 
 -------------------------------------------------
-$ git show :1:file.txt	# the file in a common ancestor of both branches	# 両方のブランチの共通祖先のファイル
-$ git show :2:file.txt	# the version from HEAD, but including any		# HEAD にあるが、MERGE_HEAD からコンフリクトしない全ての
-			# nonconflicting changes from MERGE_HEAD		# 変更だけを含んでいるバージョン
-$ git show :3:file.txt	# the version from MERGE_HEAD, but including any	# MERGE_HEAD にあり、HEAD にあるコンフリクトしない全ての
-			# nonconflicting changes from HEAD.			# 変更だけを含んでいるバージョン
+$ git show :1:file.txt	# the file in a common ancestor of both branches
+// 			# 両方のブランチの共通祖先のファイル
+$ git show :2:file.txt	# the version from HEAD, but including any
+			# nonconflicting changes from MERGE_HEAD
+// 			# HEAD にあるが、MERGE_HEAD からコンフリクトしない全ての
+// 			# 変更だけを含んでいるバージョン
+$ git show :3:file.txt	# the version from MERGE_HEAD, but including any
+			# nonconflicting changes from HEAD.
+// 			# MERGE_HEAD にあり、HEAD にあるコンフリクトしない全ての
+// 			# 変更だけを含んでいるバージョン
 -------------------------------------------------
 
 Since the stage 2 and stage 3 versions have already been updated with
@@ -1793,12 +1850,18 @@ any of these stages:
 // 作業ディレクトリとの差分を表示することができます。
 
 -------------------------------------------------
-$ git diff -1 file.txt		# diff against stage 1		# ステージ１との diff
-$ git diff --base file.txt	# same as the above		# 上記と同じ
-$ git diff -2 file.txt		# diff against stage 2		# ステージ２との diff
-$ git diff --ours file.txt	# same as the above		# 上記と同じ
-$ git diff -3 file.txt		# diff against stage 3		# ステージ３との diff
-$ git diff --theirs file.txt	# same as the above.		# 上記と同じ
+$ git diff -1 file.txt		# diff against stage 1
+// 				# ステージ１との diff
+$ git diff --base file.txt	# same as the above
+// 				# 上記と同じ
+$ git diff -2 file.txt		# diff against stage 2
+// 				# ステージ２との diff
+$ git diff --ours file.txt	# same as the above
+// 				# 上記と同じ
+$ git diff -3 file.txt		# diff against stage 3
+// 				# ステージ３との diff
+$ git diff --theirs file.txt	# same as the above.
+// 				# 上記と同じ
 -------------------------------------------------
 
 The gitlink:git-log[1] and gitk[1] commands also provide special help
@@ -1906,7 +1969,7 @@ fundamentally different ways to fix the problem:
 // ２つの異なる解決方法があります：
 
 	1. You can create a new commit that undoes whatever was done
-	by the previous commit.  This is the correct thing if your
+	by the old commit.  This is the correct thing if your
 	mistake has already been made public.
 //	1. 変更を取り消す新しいコミットを作成する。
 //	既に間違いを公開してしまった場合にはこれは正しいやり方です。
@@ -1960,10 +2023,10 @@ resolving a merge>>.
 // している場合は、<<resolving-a-merge,マージの解決>> の場合と同じく、
 // コンフリクトを手動で解決するよう促されます。
 
-[[fixing-a-mistake-by-editing-history]]
-Fixing a mistake by editing history
+[[fixing-a-mistake-by-rewriting-history]]
+Fixing a mistake by rewriting history
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// ==== 履歴を編集して間違いを訂正する
+// ==== 履歴を再編集して間違いを訂正する
 
 If the problematic commit is the most recent commit, and you have not
 yet made that commit public, then you may just
@@ -1995,11 +2058,11 @@ that case.
 // 決してこの操作を行わないでください；その場合は、gitlink:git-revert[1]
 // を使用してください。
 
-It is also possible to edit commits further back in the history, but
+It is also possible to replace commits further back in the history, but
 this is an advanced topic to be left for
 <<cleaning-up-history,another chapter>>.
-// 履歴内のさらに過去のコミットを編集することもできますが、
-// <<cleaning-up-history,次章>> の上級のトピックスとして残しておきます。
+// 履歴内のさらに過去のコミットを置き換えることもできますが、
+// <<cleaning-up-history,次章>> の上級トピックスとして残しておきます。
 
 [[checkout-of-path]]
 Checking out an old version of a file
@@ -2159,6 +2222,16 @@ other git operations are in progress in the same repository.
 // git-gc を使用した場合を含む) と違って他の git 操作を同じリポジトリ内で
 // 実行している最中に prune を実行するのは安全ではありません。
 
+If gitlink:git-fsck[1] complains about sha1 mismatches or missing
+objects, you may have a much more serious problem; your best option is
+probably restoring from backups.  See
+<<recovering-from-repository-corruption>> for a detailed discussion.
+// gitlink:git-fsck[1] が sha1 の不一致やオブジェクトの紛失に関する
+// エラーを表示した場合、よりいっそう深刻な問題が起きているかもしれません；
+// 最善の選択はおそらく、バックアップから復旧させることでしょう。
+// 詳細な議論は <<recovering-from-repository-corruption,リポジトリの破損からの復旧>>
+// を参照してください。
+
 [[recovering-lost-changes]]
 Recovering lost changes
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -2187,19 +2260,24 @@ old history using, for example,
 $ git log master@{1}
 -------------------------------------------------
 
-This lists the commits reachable from the previous version of the head.
-This syntax can be used to with any git command that accepts a commit,
-not just with git log.  Some other examples:
-// このコマンドは head の前のバージョンから到達可能なコミットの一覧を表示します。
+This lists the commits reachable from the previous version of the
+"master" branch head.  This syntax can be used with any git command
+that accepts a commit, not just with git log.  Some other examples:
+// このコマンドは "master" ブランチヘッドの１つ前のバージョンから到達可能なコミットの一覧を表示します。
 // この構文は git log 以外にもコミットを引数に持つ任意の git コマンドに利用
 // できます。以下は例です：
 
 -------------------------------------------------
-$ git show master@{2}		# See where the branch pointed 2,	# ２つ前のブランチの状態を表示
-$ git show master@{3}		# 3, ... changes ago.			# ３つ前のブランチの状態を表示
-$ gitk master@{yesterday}	# See where it pointed yesterday,	# 昨日の状態を表示
-$ gitk master@{"1 week ago"}	# ... or last week			# １週間前の状態を表示
-$ git log --walk-reflogs master	# show reflog entries for master	# master に対する reflog エントリを表示します
+$ git show master@{2}		# See where the branch pointed 2,
+// 				# ２つ前のブランチの状態を表示
+$ git show master@{3}		# 3, ... changes ago.
+// 				# ３つ前のブランチの状態を表示
+$ gitk master@{yesterday}	# See where it pointed yesterday,
+// 				# 昨日の状態を表示
+$ gitk master@{"1 week ago"}	# ... or last week
+// 				# １週間前の状態を表示
+$ git log --walk-reflogs master	# show reflog entries for master
+// 				# master に対する reflog エントリを表示します
 -------------------------------------------------
 
 A separate reflog is kept for the HEAD, so
@@ -2358,10 +2436,6 @@ gitlink:git-checkout[1], to learn how to control these defaults.
 // それらデフォルト値のコントロール方法を理解するには、
 // gitlink:git-config[1] の branch.<name>.remote と branch.<name>.merge のオプション
 // の記述と、gitlink:git-checkout[1] の `--track` オプションの説明を参照してください。
-
--------------------------------------------------
-$ git checkout --track -b maint origin/maint
--------------------------------------------------
 
 In addition to saving you keystrokes, "git pull" also helps you by
 producing a default commit message documenting the branch and
@@ -2710,19 +2784,11 @@ $ git push ssh://yourserver.com/~you/proj.git master
 -------------------------------------------------
 
 // を実行します。
-As with git-fetch, git-push will complain if this does not result in
-a <<fast-forwards,fast forward>>.  Normally this is a sign of
-something wrong.  However, if you are sure you know what you're
-doing, you may force git-push to perform the update anyway by
-preceding the branch name by a plus sign:
+As with git-fetch, git-push will complain if this does not result in a
+<<fast-forwards,fast forward>>; see the following section for details on
+handling this case.
 // git-fetch と同じように git-push は <<fast-forwards,fast forward>> されない場合に
-// 文句を言います。通常これは何かが間違っているサインです。
-// しかし、何をしているかを理解している場合にはプラス(+)記号をブランチ名につけることで
-// 強制的に git-push を実行し、更新することができます：
-
--------------------------------------------------
-$ git push ssh://yourserver.com/~you/proj.git +master
--------------------------------------------------
+// 文句を言います；このような場合の対応については次節を参照してください。
 
 Note that the target of a "push" is normally a
 <<def_bare_repository,bare>> repository.  You can also push to a
@@ -2759,6 +2825,75 @@ and remote.<name>.push options in gitlink:git-config[1] for
 details.
 // remote.<name>.url, branch.<name>.remote, remote.<name>.push の詳細は
 // gitlink:git-config[1] のオプションを参照してください。
+
+[[forcing-push]]
+What to do when a push fails
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ==== push に失敗した場合の対処
+
+If a push would not result in a <<fast-forwards,fast forward>> of the
+remote branch, then it will fail with an error like:
+// push の結果がリモートブランチの <<fast-forwards,fast forward>> とならない場合、
+// 次のようなエラーが発生して push は失敗します：
+
+-------------------------------------------------
+error: remote 'refs/heads/master' is not an ancestor of
+ local  'refs/heads/master'.
+ Maybe you are not up-to-date and need to pull first?
+error: failed to push to 'ssh://yourserver.com/~you/proj.git'
+-------------------------------------------------
+
+This can happen, for example, if you:
+// これは、例えば次のような場合におきます：
+
+	- use `git reset --hard` to remove already-published commits, or
+//	- `git reset --hard` を使用し、すでに発行していたコミットを削除した場合、または
+	- use `git commit --amend` to replace already-published commits
+	  (as in <<fixing-a-mistake-by-rewriting-history>>), or
+//	- `git commit --amend` を使用し、すでに発行していたコミットを差し替えた場合
+//	  （<<fixing-a-mistake-by-rewriting-history,履歴を再編集して間違いを訂正する>>の手順で）、または
+	- use `git rebase` to rebase any already-published commits (as
+	  in <<using-git-rebase>>).
+//	- `git rebase` を使用し、すでに発行したこみっちをリベースした場合
+//	  （<<using-git-rebase,git-rebase を使用する>> の手順で）
+
+You may force git-push to perform the update anyway by preceding the
+branch name with a plus sign:
+// ブランチ名の前に＋記号を付けることで、強制的に git-push を実行
+// することができます：
+
+-------------------------------------------------
+$ git push ssh://yourserver.com/~you/proj.git +master
+-------------------------------------------------
+
+Normally whenever a branch head in a public repository is modified, it
+is modified to point to a descendant of the commit that it pointed to
+before.  By forcing a push in this situation, you break that convention.
+(See <<problems-with-rewriting-history>>.)
+// 通常、公開したリポジトリ内のブランチヘッドを修正した時はいつでも、
+// 以前指し示していた祖先のコミットを指し示すように変更されます。
+// このような場合に強制的に push を行うと、規約を壊すことになります)
+// (<<problems-with-rewriting-history,履歴の書き換えによって生じる問題>> を参照)
+
+Nevertheless, this is a common practice for people that need a simple
+way to publish a work-in-progress patch series, and it is an acceptable
+compromise as long as you warn other developers that this is how you
+intend to manage the branch.
+// にもかかわらず、この方法は作業中の一連のパッチを簡単な方法で発行する必要がある場合に
+// 一般に行われる方法であり、あなたがブランチを管理する方針を他の開発者に
+// 伝えている限りは許容できるでしょう。
+
+It's also possible for a push to fail in this way when other people have
+the right to push to the same repository.  In that case, the correct
+solution is to retry the push after first updating your work by either a
+pull or a fetch followed by a rebase; see the
+<<setting-up-a-shared-repository,next section>> and
+link:cvs-migration.html[git for CVS users] for more.
+// push が失敗するもう一つのケースとして、同じリポジトリの push 権限を他の人にも
+// 与えている場合が考えられます。その場合、はじめに pull するか
+// rebase によって変更を取得した後に再度 push を試みてください；
+// 詳しくは <<setting-up-a-shared-repository,次の節>> と link:cvs-migration.html[CVSユーザの為のgit入門]
+// を参照してください。
 
 [[setting-up-a-shared-repository]]
 Setting up a shared repository
@@ -3096,9 +3231,12 @@ Here are some of the scripts that simplify all this even further.
 
 -------------------------------------------------
 ==== update script ====
-# Update a branch in my GIT tree.  If the branch to be updated	# GIT ツリーのブランチを更新する。更新すべきブランチが
-# is origin, then pull from kernel.org.  Otherwise merge	# origin の場合、kernel.org から pull する。そうでない時は
-# origin/master branch into test|release branch			# origin/master ブランチを test|release ブランチにマージします。
+# Update a branch in my GIT tree.  If the branch to be updated
+// # GIT ツリーのブランチを更新する。更新すべきブランチが
+# is origin, then pull from kernel.org.  Otherwise merge
+// # origin の場合、kernel.org から pull する。そうでない時は
+# origin/master branch into test|release branch
+// # origin/master ブランチを test|release ブランチにマージします。
 
 case "$1" in
 test|release)
@@ -3122,7 +3260,8 @@ esac
 
 -------------------------------------------------
 ==== merge script ====
-# Merge a branch into either the test or release branch		# ブランチを test または release ブランチにマージ
+# Merge a branch into either the test or release branch
+// # ブランチを test または release ブランチにマージ
 
 pname=$0
 
@@ -3154,7 +3293,8 @@ esac
 
 -------------------------------------------------
 ==== status script ====
-# report on status of my ia64 GIT tree		# ia64 GIT ツリーの状態をレポートする
+# report on status of my ia64 GIT tree
+// # ia64 GIT ツリーの状態をレポートする
 
 gb=$(tput setab 2)
 rb=$(tput setab 1)
@@ -3347,6 +3487,7 @@ patches to the new mywork.  The result will look like:
 // mywork を origin の最新バージョンの位置に更新し、その後で保存した
 // 各パッチを新しい mywork ブランチに適用します。結果は次のようになります：
 
+
 ................................................
  o--o--O--o--o--o <-- origin
 		 \
@@ -3378,14 +3519,14 @@ return mywork to the state it had before you started the rebase:
 $ git rebase --abort
 -------------------------------------------------
 
-[[modifying-one-commit]]
-Modifying a single commit
+[[rewriting-one-commit]]
+Rewriting a single commit
 -------------------------
-// === １つのコミットを修正する
+// === １つのコミットを再編集する
 
-We saw in <<fixing-a-mistake-by-editing-history>> that you can replace the
+We saw in <<fixing-a-mistake-by-rewriting-history>> that you can replace the
 most recent commit using
-// <<fixing-a-mistake-by-editing-history>> で見てきたように直前のコミットを
+// <<fixing-a-mistake-by-rewriting-history,履歴を再編集して間違いを訂正する>> で見てきたように直前のコミットを
 // 以下のようにして修正することができます。
 
 -------------------------------------------------
@@ -3397,10 +3538,13 @@ changes, giving you a chance to edit the old commit message first.
 // この操作は、過去のコミットをあなたが変更を受け入れる新しいコミットに
 // 置き換え、過去のコミットメッセージを編集する機会を与えてくれます。
 
-You can also use a combination of this and gitlink:git-rebase[1] to edit
-commits further back in your history.  First, tag the problematic commit with
-// これと gitlink:git-rebase[1] を組み合わせることで、あなたのさらに過去の履歴についても
-// 編集することができます。初めに、次のようにして問題のあるコミットにタグを付けます。
+You can also use a combination of this and gitlink:git-rebase[1] to
+replace a commit further back in your history and recreate the
+intervening changes on top of it.  First, tag the problematic commit
+with
+// これと gitlink:git-rebase[1] を組み合わせることで、履歴内のさらに過去のコミットについても
+// 置き換えをし、その先頭の変更に立ち入ることができます。
+// 初めに、次のようにして問題のあるコミットにタグを付けます。
 
 -------------------------------------------------
 $ git tag bad mywork~5
@@ -3418,7 +3562,8 @@ branch, but instead we're using a <<detached-head,detached head>>):
 
 -------------------------------------------------
 $ git checkout bad
-$ # make changes here and update the index	# ここで変更とインデックスの更新をします
+$ # make changes here and update the index
+// # ここで変更とインデックスの更新をします
 $ git commit --amend
 $ git rebase --onto HEAD bad mywork
 -------------------------------------------------
@@ -3567,6 +3712,112 @@ For true distributed development that supports proper merging,
 published branches should never be rewritten.
 // 適切なマージをサポートする本来の分散開発では、
 // 公開されたブランチは決して再編集されるべきではありません。
+
+[[bisect-merges]]
+Why bisecting merge commits can be harder than bisecting linear history
+-----------------------------------------------------------------------
+// === マージコミットの分割が１本線の履歴の分割よりも困難となる理由
+
+The gitlink:git-bisect[1] command correctly handles history that
+includes merge commits.  However, when the commit that it finds is a
+merge commit, the user may need to work harder than usual to figure out
+why that commit introduced a problem.
+// gitlink:git-bisect[1] コマンドはマージコミットを含んだ履歴を正確に扱います。
+// しかし、コミットがマージコミットである時は、そのコミットが何故問題を起こしている
+// かの原因を見つけ出すのに苦労することがあります。
+
+Imagine this history:
+// 次の履歴を考えてください：
+
+................................................
+      ---Z---o---X---...---o---A---C---D
+          \                       /
+           o---o---Y---...---o---B
+................................................
+
+Suppose that on the upper line of development, the meaning of one
+of the functions that exists at Z is changed at commit X.  The
+commits from Z leading to A change both the function's
+implementation and all calling sites that exist at Z, as well
+as new calling sites they add, to be consistent.  There is no
+bug at A.
+// 上側の開発ライン上のコミットXにて Zから存在する関数の意味が
+// 変更されたとします。ZからAにつながるコミットは、関数の実装を変更し、
+// Zの時点で存在する全コール箇所と新しく追加したコール箇所の両方を変更して、
+// 矛盾のない状態にしていたとします。
+// A の時点ではバグはありません。
+
+Suppose that in the meantime on the lower line of development somebody
+adds a new calling site for that function at commit Y.  The
+commits from Z leading to B all assume the old semantics of that
+function and the callers and the callee are consistent with each
+other.  There is no bug at B, either.
+// それと同時に下側の開発ラインではコミットYにてその関数の新しい
+// コール箇所を追加していたとします。
+// ZからBにつながるコミットの全ては、その関数の古い動作を想定していて
+// コール元とコール先は互いに矛盾していません。Bにもバグはありません。
+
+Suppose further that the two development lines merge cleanly at C,
+so no conflict resolution is required.
+// ２つの開発ラインがきれいにマージできたとすると、
+// コンフリクトの解消要求はありません。
+
+Nevertheless, the code at C is broken, because the callers added
+on the lower line of development have not been converted to the new
+semantics introduced on the upper line of development.  So if all
+you know is that D is bad, that Z is good, and that
+gitlink:git-bisect[1] identifies C as the culprit, how will you
+figure out that the problem is due to this change in semantics?
+// にもかかわらず、Cのソースは壊れています。なぜなら
+// 下側の開発ラインは上側の開発ラインで行われた新しい動作に変換
+// されていないからです。
+// したがって、gitlink:git-bisect[1] は D に問題があり、
+// Z には問題ないこと、そしてC が問題の原因であると伝えます。
+// どのようにしたら、問題が動作変更によるものだと見つけることが
+// できるでしょうか？
+
+When the result of a git-bisect is a non-merge commit, you should
+normally be able to discover the problem by examining just that commit.
+Developers can make this easy by breaking their changes into small
+self-contained commits.  That won't help in the case above, however,
+because the problem isn't obvious from examination of any single
+commit; instead, a global view of the development is required.  To
+make matters worse, the change in semantics in the problematic
+function may be just one small part of the changes in the upper
+line of development.
+// git-bisect の結果が非マージコミットの場合、通常、単にそのコミットを
+// 確認するだけで問題を見つけることができます。
+// 開発者はコミットを自己完結したより小さいものに分割することで
+// これを容易に行うことができます。しかし、
+// 上記場合には１つのコミットを確認することでは問題が明らかにならない為、
+// このような方法では解決の役に立ちません；その代わりに開発の大局的な視点が
+// 必要となります。さらに悪いことに、問題となっている関数の動作変更が
+// 上側の開発ラインの単なる小さな部分の変更であるかもしれません。
+
+On the other hand, if instead of merging at C you had rebased the
+history between Z to B on top of A, you would have gotten this
+linear history:
+// その一方で、C のマージをする代わりに、ZからBの履歴を Aの先頭
+// にリベースした場合、次のような１行の履歴を取得することができます：
+
+................................................................
+    ---Z---o---X--...---o---A---o---o---Y*--...---o---B*--D*
+................................................................
+
+Bisecting between Z and D* would hit a single culprit commit Y*,
+and understanding why Y* was broken would probably be easier.
+// Z と D* の間を git-bisect すると、１つの問題の原因となるコミット Y*
+// を見つけることができ、Y* が何故問題を引き起こしている理由を
+// 容易に理解することができるでしょう。
+
+Partly for this reason, many experienced git users, even when
+working on an otherwise merge-heavy project, keep the history
+linear by rebasing against the latest upstream version before
+publishing.
+// 部分的にですが、この理由により、たくさん経験を積んだ git ユーザは
+// マージが頻繁に行われるプロジェクトで作業する場合でさえも
+// 最新の上流バージョンに対するリベースを行うことによって
+// 履歴を１ラインに保つようにしています。
 
 [[advanced-branch-management]]
 Advanced branch management
@@ -3800,6 +4051,7 @@ The Object Database
 -------------------
 // === オブジェクトＤＢ
 
+
 We already saw in <<understanding-commits>> that all commits are stored
 under a 40-digit "object name".  In fact, all the information needed to
 represent the history of a project is stored in objects with such names.
@@ -3905,7 +4157,7 @@ As you can see, a commit is defined by:
 // - tree： ある時点のディレクトリの中身を表現する
 // ツリーオブジェクト(以下で定義)の SHA1 名。
 - parent(s): The SHA1 name of some number of commits which represent the
-  immediately prevoius step(s) in the history of the project.  The
+  immediately previous step(s) in the history of the project.  The
   example above has one parent; merge commits may have more than
   one.  A commit with no parents is called a "root" commit, and
   represents the initial revision of a project.  Each project must have
@@ -4139,7 +4391,6 @@ references whose names begin with "refs/tags/").
 // これは、tagオブジェクトとは全く異なるもので、'refs/tags/'で始まる
 // 単なる参照です)
 
-
 [[pack-files]]
 How git stores objects efficiently: pack files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4361,6 +4612,177 @@ repository is a *BAD* idea).
 // 紛らわしく恐ろしいメッセージが表示されますが、悪いことは行なわれません。
 // それとは反対に "git prune" を他のユーザがリポジトリを変更している最中に
 // 実行するのは *悪い* アイデアです。)
+
+[[recovering-from-repository-corruption]]
+Recovering from repository corruption
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ==== リポジトリの破損からの復旧
+
+By design, git treats data trusted to it with caution.  However, even in
+the absence of bugs in git itself, it is still possible that hardware or
+operating system errors could corrupt data.
+// git は意図的にデータを慎重に扱います。しかし、git 自身にバグがなかったとしても
+// ハードウェアやオペレーティングシステムのエラーによりデータが壊れることがあります。
+
+The first defense against such problems is backups.  You can back up a
+git directory using clone, or just using cp, tar, or any other backup
+mechanism.
+// そのような問題に対する第１の防御はバックアップです。
+// clone コマンドを使用するか cp, tar または他のバックアップメカニズムを
+// 使用して git ディレクトリをバックアップすることができます。
+
+As a last resort, you can search for the corrupted objects and attempt
+to replace them by hand.  Back up your repository before attempting this
+in case you corrupt things even more in the process.
+// 最後の手段は、破損したオブジェクトを探し出して手作業で置き換えることです。
+// 破損しかかっている最中であっても、作業をする前にリポジトリを
+// バックアップしてください。
+
+We'll assume that the problem is a single missing or corrupted blob,
+which is sometimes a solvable problem.  (Recovering missing trees and
+especially commits is *much* harder).
+// １つの blob が紛失または破損している場合を考えます。
+// そのような場合は時に解決できることがあります。
+// (ツリー、そして特にコミットの紛失から復旧する場合はより困難です)
+
+Before starting, verify that there is corruption, and figure out where
+it is with gitlink:git-fsck[1]; this may be time-consuming.
+// 開始する前に、破損している箇所を gitlink:git-fsck[1] を使用して
+// 確認します；これには多大な時間を必要とするかもしれません。
+
+Assume the output looks like this:
+// 次のように出力されたとします：
+
+------------------------------------------------
+$ git-fsck --full
+broken link from    tree 2d9263c6d23595e7cb2a21e5ebbb53655278dff8
+              to    blob 4b9458b3786228369c63936db65827de3cc06200
+missing blob 4b9458b3786228369c63936db65827de3cc06200
+------------------------------------------------
+
+(Typically there will be some "dangling object" messages too, but they
+aren't interesting.)
+// (通常、これらと一緒に "dangling オブジェクト" のメッセージも表示
+// されますが、これらは興味深いものではありません)
+
+Now you know that blob 4b9458b3 is missing, and that the tree 2d9263c6
+points to it.  If you could find just one copy of that missing blob
+object, possibly in some other repository, you could move it into
+.git/objects/4b/9458b3... and be done.  Suppose you can't.  You can
+still examine the tree that pointed to it with gitlink:git-ls-tree[1],
+which might output something like:
+// 4b9458b3 の blob が紛失しており、2d9263c6 のツリーが
+// それを参照していることがわかります。その紛失したblobのコピーを
+// 他のリポジトリなどから見つけることができるなら、それを
+// .git/objects/4b/9458b3... に移動すれば修復は完了です。もしそれが
+// できない場合でも、gitlink:git-ls-tree[1] を用いて、それが何を指し示して
+// いるかを確認することができます：
+
+------------------------------------------------
+$ git ls-tree 2d9263c6d23595e7cb2a21e5ebbb53655278dff8
+100644 blob 8d14531846b95bfa3564b58ccfb7913a034323b8	.gitignore
+100644 blob ebf9bf84da0aab5ed944264a5db2a65fe3a3e883	.mailmap
+100644 blob ca442d313d86dc67e0a2e5d584b465bd382cbf5c	COPYING
+...
+100644 blob 4b9458b3786228369c63936db65827de3cc06200	myfile
+...
+------------------------------------------------
+
+So now you know that the missing blob was the data for a file named
+"myfile".  And chances are you can also identify the directory--let's
+say it's in "somedirectory".  If you're lucky the missing copy might be
+the same as the copy you have checked out in your working tree at
+"somedirectory/myfile"; you can test whether that's right with
+gitlink:git-hash-object[1]:
+// これにより、紛失した blob が "myfile" という名前のファイルデータであることが
+// わかります。そして、それがあるディレクトリも特定できたとします--
+// "somedirectory" とします。運よくチェックアウトした作業ツリー内の
+// "somedirectory/myfile" にそれと同じコピーがあるのなら、
+// gitlink:git-hash-object[1] を用いてそれが正しいかどうかをテストできます。
+
+------------------------------------------------
+$ git hash-object -w somedirectory/myfile
+------------------------------------------------
+
+which will create and store a blob object with the contents of
+somedirectory/myfile, and output the sha1 of that object.  if you're
+extremely lucky it might be 4b9458b3786228369c63936db65827de3cc06200, in
+which case you've guessed right, and the corruption is fixed!
+// これにより、somedirectory/myfile の内容をもった blob オブジェクトを
+// 作成して格納し、そのオブジェクトの sha1 を表示します。
+// その値が 4b9458b3786228369c63936db65827de3cc06200 であったなら
+// あなたは非常に幸運です。この場合、あなたの推測は正しく、破損は
+// 修復されました！
+
+Otherwise, you need more information.  How do you tell which version of
+the file has been lost?
+// 一致しなかった場合、より詳しい情報が必要になります。
+// そのファイルのどのバージョンを無くしたかを確認します。
+
+The easiest way to do this is with:
+// 最も簡単な方法は、次のとおりです：
+
+------------------------------------------------
+$ git log --raw --all --full-history -- somedirectory/myfile
+------------------------------------------------
+
+Because you're asking for raw output, you'll now get something like
+// 生データを出力しているため、次のような出力が得られます
+
+------------------------------------------------
+commit abc
+Author:
+Date:
+...
+:100644 100644 4b9458b... newsha... M somedirectory/myfile
+
+
+commit xyz
+Author:
+Date:
+
+...
+:100644 100644 oldsha... 4b9458b... M somedirectory/myfile
+------------------------------------------------
+
+This tells you that the immediately preceding version of the file was
+"newsha", and that the immediately following version was "oldsha".
+You also know the commit messages that went with the change from oldsha
+to 4b9458b and with the change from 4b9458b to newsha.
+// これはすぐ前のファイルのバージョンが "newsha" であり、すぐ後のバージョンが
+// "oldsha1" であることを示しています。
+// また、oldsha から 4b9458b の変更点と 4b9458b から newsha での変更点
+// のコミットメッセージについても知ることができます。
+
+If you've been committing small enough changes, you may now have a good
+shot at reconstructing the contents of the in-between state 4b9458b.
+// 変更内容が十分小さい場合、4b9458b の状態の内容を再作成することが
+// できるかもしれません。
+
+If you can do that, you can now recreate the missing object with
+// もしそれができたのなら、紛失したオブジェクトを次のようにして
+// 再作成することができます。
+
+------------------------------------------------
+$ git hash-object -w <recreated-file>
+------------------------------------------------
+
+and your repository is good again!
+// これにより、リポジトリは正常に戻ります！
+
+(Btw, you could have ignored the fsck, and started with doing a
+// (ところで、fsck を無視することもできます。次のようにして、
+
+------------------------------------------------
+$ git log --raw --all
+------------------------------------------------
+
+and just looked for the sha of the missing object (4b9458b..) in that
+whole thing. It's up to you - git does *have* a lot of information, it is
+just missing one particular blob version.
+// 紛失したオブジェクト(4b9458b..)の sha を探し出します。
+// - git はたくさんの情報を持っていますが、紛失したのは１つの特定の blob
+// バージョンであるにすぎません)
 
 [[the-index]]
 The index
@@ -4872,14 +5294,14 @@ should use the `--remove` and `--add` flags respectively.
 NOTE! A `--remove` flag does 'not' mean that subsequent filenames will
 necessarily be removed: if the files still exist in your directory
 structure, the index will be updated with their new status, not
-removed. The only thing `--remove` means is that update-cache will be
+removed. The only thing `--remove` means is that update-index will be
 considering a removed file to be a valid thing, and if the file really
 does not exist any more, it will update the index accordingly.
 // 注意！ `--remove` フラグを使用しても必ずしもそのファイルが削除される
 // わけではありません：ファイルがディレクトリ内にまだ存在する場合、
 // インデックスは新しいステータスに更新されますが、ファイルは削除されません。
 // `--remove` はファイルが削除されたのが正しいことであることが
-// キャッシュの更新時に考慮されることを意味しているだけであり、
+// インデックスの更新時に考慮されることを意味しているだけであり、
 // もしファイルが本当に存在しないのならインデックスをそれに従い更新するだけです。
 
 As a special case, you can also do `git-update-index --refresh`, which
@@ -4977,6 +5399,7 @@ need to use the "-f" flag ('before' the "-a" flag or the filename) to
 // 従って、チェックアウト済みの古いバージョンのツリーを持っている場合、
 // ("-a" フラグ又はファイル名の'前に') "-f" フラグを使用し、'強制的に'
 // チェックアウトする必要があります。
+
 
 Finally, there are a few odds and ends which are not purely moving
 from one representation to the other:
@@ -5891,5 +6314,11 @@ Write a chapter on using plumbing and writing scripts.
 Alternates, clone -reference, etc.
 // 交互の、clone -reference, など
 
-git unpack-objects -r for recovery
-// 再帰的に行なうための git unpack-objects -r
+More on recovery from repository corruption.  See:
+	http://marc.theaimsgroup.com/?l=git&m=117263864820799&w=2
+	http://marc.theaimsgroup.com/?l=git&m=117147855503798&w=2
+	http://marc.theaimsgroup.com/?l=git&m=117147855503798&w=2
+// リポジトリの破損からの復旧についてより詳しく。参照：
+// 	http://marc.theaimsgroup.com/?l=git&m=117263864820799&w=2
+// 	http://marc.theaimsgroup.com/?l=git&m=117147855503798&w=2
+// 	http://marc.theaimsgroup.com/?l=git&m=117147855503798&w=2
