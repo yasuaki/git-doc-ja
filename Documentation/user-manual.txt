@@ -5991,17 +5991,20 @@ include::glossary.txt[]
 [[git-quick-start]]
 Appendix A: Git Quick Reference
 ===============================
-// == 付録Ａ：Git Quick Reference *未翻訳*
+// == 付録Ａ：Git Quick Reference
 
 This is a quick summary of the major commands; the previous chapters
 explain how these work in more detail.
+// この章は主要コマンドのクイックサマリです；
+// 詳細はこれまでの章の説明を参照してください。
 
 [[quick-creating-a-new-repository]]
 Creating a new repository
 -------------------------
-// === Creating a new repository
+// === 新規リポジトリの作成
 
 From a tarball:
+// tar ボールから：
 
 -----------------------------------------------
 $ tar xzf project.tar.gz
@@ -6013,6 +6016,7 @@ $ git commit
 -----------------------------------------------
 
 From a remote repository:
+// リモートのリポジトリから：
 
 -----------------------------------------------
 $ git clone git://example.com/pub/project.git
@@ -6026,32 +6030,46 @@ Managing branches
 
 -----------------------------------------------
 $ git branch	     # list all local branches in this repo
+//		     # リポジトリ内のすべてのローカルブランチを表示
 $ git checkout test  # switch working directory to branch "test"
+//		     # 作業ディレクトリをブランチ "test" に切り替え
 $ git branch new     # create branch "new" starting at current HEAD
+//		     # 現在の HEAD から始まる "new" ブランチを作成
 $ git branch -d new  # delete branch "new"
+//		     # "new" ブランチの削除
 -----------------------------------------------
 
 Instead of basing a new branch on current HEAD (the default), use:
+// 現在の HEAD (デフォルト)以外の場所から始まるブランチを作成するには、次のようにします：
 
 -----------------------------------------------
 $ git branch new test    # branch named "test"
+//			 # "test" ブランチのHEADから開始するブランチ "new" を作成
 $ git branch new v2.6.15 # tag named v2.6.15
+//			 # タグ v2.6.15 から開始するブランチ "new" を作成
 $ git branch new HEAD^   # commit before the most recent
+//			 # 最新のコミットの１つ前の位置から分岐するブランチを作成
 $ git branch new HEAD^^  # commit before that
+//			 # 最新のコミットの２つ前の位置から分岐するブランチを作成
 $ git branch new test~10 # ten commits before tip of branch "test"
+//			 # ブランチ "test" の１０個前の位置から分岐するブランチを作成
 -----------------------------------------------
 
 Create and switch to a new branch at the same time:
+// 新しいブランチの作成と切り替えを同時に行うには：
 
 -----------------------------------------------
 $ git checkout -b new v2.6.15
 -----------------------------------------------
 
 Update and examine branches from the repository you cloned from:
+// 複製(clone)元のリポジトリのブランチを更新しテストするには：
 
 -----------------------------------------------
 $ git fetch		# update
+//			# 更新
 $ git branch -r		# list
+//			# リモートブランチの一覧を表示
   origin/master
   origin/next
   ...
@@ -6060,6 +6078,8 @@ $ git checkout -b masterwork origin/master
 
 Fetch a branch from a different repository, and give it a new
 name in your repository:
+// 他のリポジトリ上にあるブランチを取得(fetch)し、
+// そのブランチに対して名前を付けるには：
 
 -----------------------------------------------
 $ git fetch git://example.com/project.git theirbranch:mybranch
@@ -6067,65 +6087,93 @@ $ git fetch git://example.com/project.git v2.6.15:mybranch
 -----------------------------------------------
 
 Keep a list of repositories you work with regularly:
+// リポジトリの一覧を管理し、定期的にそこから変更を取得するには：
 
 -----------------------------------------------
 $ git remote add example git://example.com/project.git
 $ git remote			# list remote repositories
+//				# リモートリポジトリの一覧を表示
 example
 origin
 $ git remote show example	# get details
+//				# 詳細を表示
 * remote example
   URL: git://example.com/project.git
   Tracked remote branches
     master next ...
 $ git fetch example		# update branches from example
+//				# example のブランチを更新
 $ git branch -r			# list all remote branches
+//				# すべてのリモートブランチの一覧を表示
 -----------------------------------------------
 
 
 [[exploring-history]]
 Exploring history
 -----------------
-// === Exploring history
+// === 履歴の探索
 
 -----------------------------------------------
 $ gitk			    # visualize and browse history
+//			    # 履歴を視覚的にブラウズする
 $ git log		    # list all commits
+//			    # すべてのコミットを一覧表示する
 $ git log src/		    # ...modifying src/
+//			    # src/ 配下のファイルを変更している・・・
 $ git log v2.6.15..v2.6.16  # ...in v2.6.16, not in v2.6.15
+//			    # v2.6.16 には含まれているが、v2.6.15 には含まれていない・・・
 $ git log master..test	    # ...in branch test, not in branch master
+//			    # test ブランチに含まれているが、master ブランチには含まれていない・・・
 $ git log test..master	    # ...in branch master, but not in test
+//			    # master ブランチに含まれているが、test ブランチには含まれていない・・・
 $ git log test...master	    # ...in one branch, not in both
+//			    # 片方のブランチには含まれているが、両方のブランチには含まれていない・・・
 $ git log -S'foo()'	    # ...where difference contain "foo()"
+//			    # 差分に "foo()" を含んでいる・・・
 $ git log --since="2 weeks ago"
 $ git log -p		    # show patches as well
+//			    # パッチも表示する
 $ git show		    # most recent commit
+//			    # 最新のコミットを表示
 $ git diff v2.6.15..v2.6.16 # diff between two tagged versions
+//			    # ２つのタグ付されたバージョン間の差分
 $ git diff v2.6.15..HEAD    # diff with current head
+//			    # 現在の head との差分
 $ git grep "foo()"	    # search working directory for "foo()"
+//			    # 作業ディレクトリ内で "foo()" を検索する
 $ git grep v2.6.15 "foo()"  # search old tree for "foo()"
+//			    # 過去のツリー内で "foo()" を検索する
 $ git show v2.6.15:a.txt    # look at old version of a.txt
+//			    # a.txt の過去のバージョンを表示する
 -----------------------------------------------
 
 Search for regressions:
+// 回帰点を探す：
 
 -----------------------------------------------
 $ git bisect start
 $ git bisect bad		# current version is bad
+//				# 現在のバージョンは bad
 $ git bisect good v2.6.13-rc2	# last known good revision
+//				# 最新の good なリビジョンを知らせる
 Bisecting: 675 revisions left to test after this
 				# test here, then:
+//				# ここからテストを行う
 $ git bisect good		# if this revision is good, or
+//				# このリビジョンが good の場合
 $ git bisect bad		# if this revision is bad.
+//				# このリビジョンが bad の場合
 				# repeat until done.
+//				# 回帰点を見つけるまで続ける
 -----------------------------------------------
 
 [[making-changes]]
 Making changes
 --------------
-// === Making changes
+// === 変更する
 
 Make sure git knows who to blame:
+// 誰の変更であるかを git に知らせる：
 
 ------------------------------------------------
 $ cat >>~/.gitconfig <<\EOF
@@ -6137,19 +6185,27 @@ EOF
 
 Select file contents to include in the next commit, then make the
 commit:
+// 次のコミットに含めるファイルの内容を指定し、
+// コミットする：
 
 -----------------------------------------------
 $ git add a.txt    # updated file
+//		   # 更新したファイル
 $ git add b.txt    # new file
+//		   # 新しいファイル
 $ git rm c.txt     # old file
+//		   # 削除したファイル
 $ git commit
 -----------------------------------------------
 
 Or, prepare and create the commit in one step:
+// コミットの準備と実行を一度に行う：
 
 -----------------------------------------------
 $ git commit d.txt # use latest content only of d.txt
+//		   # d.txt の最後の内容のみをコミット
 $ git commit -a	   # use latest content of all tracked files
+//		   # 管理対象の全ファイルの最新の状態をコミット
 -----------------------------------------------
 
 [[merging]]
@@ -6159,9 +6215,12 @@ Merging
 
 -----------------------------------------------
 $ git merge test   # merge branch "test" into the current branch
+//		   # "test" ブランチを現在のブランチにマージ
 $ git pull git://example.com/project.git master
 		   # fetch and merge in remote branch
+//		   # リモートブランチの変更を取得し、マージ
 $ git pull . test  # equivalent to git merge test
+//		   # git merge test と同じ
 -----------------------------------------------
 
 [[sharing-your-changes]]
@@ -6170,15 +6229,21 @@ Sharing your changes
 // === 変更の共有
 
 Importing or exporting patches:
+// パッチをインポートし、エクスポートするには：
 
 -----------------------------------------------
 $ git format-patch origin..HEAD # format a patch for each commit
+//				# HEAD に存在するが origin には存在しない
 				# in HEAD but not in origin
+//				# 各コミットのパッチを整形する
 $ git am mbox # import patches from the mailbox "mbox"
+//	      # メールボックス "mbox" からパッチをインポートする
 -----------------------------------------------
 
 Fetch a branch in a different git repository, then merge into the
 current branch:
+// 他の git リポジトリ内のブランチから変更を取得し、
+// 現在のブランチにマージする：
 
 -----------------------------------------------
 $ git pull git://example.com/project.git theirbranch
@@ -6186,6 +6251,7 @@ $ git pull git://example.com/project.git theirbranch
 
 Store the fetched branch into a local branch before merging into the
 current branch:
+// 現在のブランチにマージする前にローカルブランチに変更を格納する：
 
 -----------------------------------------------
 $ git pull git://example.com/project.git theirbranch:mybranch
@@ -6193,18 +6259,22 @@ $ git pull git://example.com/project.git theirbranch:mybranch
 
 After creating commits on a local branch, update the remote
 branch with your commits:
+// ローカルブランチ上でコミットした後に、リモートブランチに
+// その内容を反映させる：
 
 -----------------------------------------------
 $ git push ssh://example.com/project.git mybranch:theirbranch
 -----------------------------------------------
 
 When remote and local branch are both named "test":
+// リモートブランチとローカルブランチの名前が両方とも "test" である場合：
 
 -----------------------------------------------
 $ git push ssh://example.com/project.git test
 -----------------------------------------------
 
 Shortcut version for a frequently used remote repository:
+// よく使用するリモートリポジトリに対して略称を付ける：
 
 -----------------------------------------------
 $ git remote add example ssh://example.com/project.git
@@ -6217,12 +6287,14 @@ Repository maintenance
 // === リポジトリのメンテナンス
 
 Check for corruption:
+// 破損していないか検査する：
 
 -----------------------------------------------
 $ git fsck
 -----------------------------------------------
 
 Recompress, remove unused cruft:
+// リポジトリを圧縮し、使用していないゴミを削除する：
 
 -----------------------------------------------
 $ git gc
