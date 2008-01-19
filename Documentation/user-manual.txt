@@ -64,10 +64,10 @@ It will be useful to have a git repository to experiment with as you
 read this manual.
 // このマニュアルを読む際には、実験用のリポジトリを取得しておくと便利です。
 
-The best way to get one is by using the gitlink:git-clone[1] command to
+The best way to get one is by using the linkgit:git-clone[1] command to
 download a copy of an existing repository.  If you don't already have a
 project in mind, here are some interesting examples:
-// 実験用リポジトリを取得する一番良い方法は gitlink:git-clone[1] コマンドを使用し、
+// 実験用リポジトリを取得する一番良い方法は linkgit:git-clone[1] コマンドを使用し、
 // 既存のリポジトリのコピーをダウンロードすることです。
 
 ------------------------------------------------
@@ -121,12 +121,12 @@ merge and diverge.
 
 A single git repository can track development on multiple branches.  It
 does this by keeping a list of <<def_head,heads>> which reference the
-latest commit on each branch; the gitlink:git-branch[1] command shows
+latest commit on each branch; the linkgit:git-branch[1] command shows
 you the list of branch heads:
 // １つの git リポジトリは複数のブランチを追跡することができます。
 // Git は 各ブランチの最新のコミットの参照を <<def_head,ヘッド>> の
 // 一覧に保管することで複数のブランチを追跡します；
-// gitlink:git-branch[1] コマンドはブランチの一覧を表示します：
+// linkgit:git-branch[1] コマンドはブランチの一覧を表示します：
 
 ------------------------------------------------
 $ git branch
@@ -142,10 +142,10 @@ the project referred to by that branch head.
 
 Most projects also use <<def_tag,tags>>.  Tags, like heads, are
 references into the project's history, and can be listed using the
-gitlink:git-tag[1] command:
+linkgit:git-tag[1] command:
 // 多くのプロジェクトは <<def_tag,tags>> も使用しています。
 // tag は head のようにプロジェクトの履歴を参照していて、
-// gitlink:git-tag[1] コマンドを用いてリスト表示できます。
+// linkgit:git-tag[1] コマンドを用いてリスト表示できます。
 
 ------------------------------------------------
 $ git tag -l
@@ -167,20 +167,20 @@ while heads are expected to advance as development progresses.
 // head は開発が進むに従い更新されていきます。
 
 Create a new branch head pointing to one of these versions and check it
-out using gitlink:git-checkout[1]:
+out using linkgit:git-checkout[1]:
 // あるバージョンを指し示す新しいブランチの head を作成し、
-// そのブランチの head をチェックアウトするには gitlink:git-checkout[1] を使用します：
+// そのブランチの head をチェックアウトするには linkgit:git-checkout[1] を使用します：
 
 ------------------------------------------------
 $ git checkout -b new v2.6.13
 ------------------------------------------------
 
 The working directory then reflects the contents that the project had
-when it was tagged v2.6.13, and gitlink:git-branch[1] shows two
+when it was tagged v2.6.13, and linkgit:git-branch[1] shows two
 branches, with an asterisk marking the currently checked-out branch:
 // この時、作業ディレクトリは v2.6.13 の tag を付けた時に
 // プロジェクトのもっていた内容が反映されています。
-// そして、gitlink:git-branch[1] すると２つのブランチが表示され、
+// そして、linkgit:git-branch[1] すると２つのブランチが表示され、
 // 現在チェックアウトしているブランチのマークがアスタリスク(*)で表示されます。
 
 ------------------------------------------------
@@ -212,10 +212,10 @@ Understanding History: Commits
 // === 履歴の理解：コミット
 
 Every change in the history of a project is represented by a commit.
-The gitlink:git-show[1] command shows the most recent commit on the
+The linkgit:git-show[1] command shows the most recent commit on the
 current branch:
 // プロジェクトの全ての変更履歴は、commit として表現されます。
-// gitlink:git-show[1] コマンドは現在のブランチ上で最後にコミットした
+// linkgit:git-show[1] コマンドは現在のブランチ上で最後にコミットした
 // 履歴を表示します：
 
 ------------------------------------------------
@@ -299,10 +299,10 @@ of development leading to that point.
 // "マージ" と呼ばれます。その為、マージを表現するコミットは１つ以上の親を持ち、
 // 各親はその点につながる開発ラインの最新コミットを表現しています。
 
-The best way to see how this works is using the gitlink:gitk[1]
+The best way to see how this works is using the linkgit:gitk[1]
 command; running gitk now on a git repository and looking for merge
 commits will help understand how the git organizes history.
-// これがどのように作業するかを見る最良の方法は gitlink:gitk[1] コマンドを
+// これがどのように作業するかを見る最良の方法は linkgit:gitk[1] コマンドを
 // 使用することです；git リポジトリ上で gitk を実行し、マージコミットを
 // 探すことで、git が履歴をどのように整理しているかを理解することができます。
 
@@ -488,13 +488,13 @@ The "master" branch that was created at the time you cloned is a copy
 of the HEAD in the repository that you cloned from.  That repository
 may also have had other branches, though, and your local repository
 keeps branches which track each of those remote branches, which you
-can view using the "-r" option to gitlink:git-branch[1]:
+can view using the "-r" option to linkgit:git-branch[1]:
 // 複製(clone)した時に作成される "master" ブランチは、
 // 複製元リポジトリのヘッドのコピーです。
 // しかし複製元リポジトリにはそれ以外にもブランチがあるかもしれません。
 // ローカルリポジトリは、リモート(複製元)ブランチのそれぞれを追跡する為の
 // ブランチを持っています。
-// それらのブランチは "-r" オプションを付けて gitlink:git-branch[1] を実行すると
+// それらのブランチは "-r" オプションを付けて linkgit:git-branch[1] を実行すると
 // 確認できます：
 
 ------------------------------------------------
@@ -551,10 +551,10 @@ exists a tag and a branch with the same name.
 (Newly created refs are actually stored in the .git/refs directory,
 under the path given by their name.  However, for efficiency reasons
 they may also be packed together in a single file; see
-gitlink:git-pack-refs[1]).
+linkgit:git-pack-refs[1]).
 // (新しく作成された参照は .git/refs ディレクトリ内にその参照の
 // 名前で格納されています。しかし、効率性の理由により、
-// １つのファイルに纏めて圧縮されることもあります；gitlink:git-pack-refs[1] 参照)
+// １つのファイルに纏めて圧縮されることもあります；linkgit:git-pack-refs[1] 参照)
 
 As another useful shortcut, the "HEAD" of a repository can be referred
 to just using the name of that repository.  So, for example, "origin"
@@ -566,10 +566,10 @@ is usually a shortcut for the HEAD branch in the repository "origin".
 For the complete list of paths which git checks for references, and
 the order it uses to decide which to choose when there are multiple
 references with the same shorthand name, see the "SPECIFYING
-REVISIONS" section of gitlink:git-rev-parse[1].
+REVISIONS" section of linkgit:git-rev-parse[1].
 // 参照先として git がチェックするパスの完全なリストと、
 // 同じ略記をもつ複数の参照がある場合の選択規則については
-// gitlink:git-rev-parse[1] の "SPECIFYING REVISIONS" の節を
+// linkgit:git-rev-parse[1] の "SPECIFYING REVISIONS" の節を
 // 確認してください。
 
 [[Updating-a-repository-with-git-fetch]]
@@ -599,9 +599,9 @@ Fetching branches from other repositories
 // === 他のリポジトリからのブランチの取得
 
 You can also track branches from repositories other than the one you
-cloned from, using gitlink:git-remote[1]:
+cloned from, using linkgit:git-remote[1]:
 // 複製元以外のリポジトリにあるブランチを追跡することもできます。
-// そうするには gitlink:git-remote[1] を使用します：
+// そうするには linkgit:git-remote[1] を使用します：
 
 -------------------------------------------------
 $ git remote add linux-nfs git://linux-nfs.org/pub/nfs-2.6.git
@@ -643,11 +643,11 @@ $ cat .git/config
 This is what causes git to track the remote's branches; you may modify
 or delete these configuration options by editing .git/config with a
 text editor.  (See the "CONFIGURATION FILE" section of
-gitlink:git-config[1] for details.)
+linkgit:git-config[1] for details.)
 // これは、git がリモートブランチを追跡する為に作成したものです；
 // テキストエディタで .git/config を編集し、これらの設定オプションを
 // 変更、削除することもできます。
-// (詳細は gitlink:git-config[1] の "CONFIGURATION FILE" を参照してください)
+// (詳細は linkgit:git-config[1] の "CONFIGURATION FILE" を参照してください)
 
 [[exploring-git-history]]
 Exploring git history
@@ -682,12 +682,12 @@ Suppose version 2.6.18 of your project worked, but the version at
 "master" crashes.  Sometimes the best way to find the cause of such a
 regression is to perform a brute-force search through the project's
 history to find the particular commit that caused the problem.  The
-gitlink:git-bisect[1] command can help you do this:
+linkgit:git-bisect[1] command can help you do this:
 // プロジェクトのバージョン 2.6.18 では動作するが、"master" ブランチの
 // 最新バージョンではクラッシュするとしましょう。
 // そのようなリグレッションの原因を探し出す最良の方法は
 // プロジェクトの履歴を総当たりで検索し、問題を引き起こす特定のコミットを見つけることです。
-// gitlink:git-bisect[1] コマンドはこの作業の手伝いをしてくれます：
+// linkgit:git-bisect[1] コマンドはこの作業の手伝いをしてくれます：
 
 -------------------------------------------------
 $ git bisect start
@@ -725,10 +725,10 @@ half each time.
 
 After about 13 tests (in this case), it will output the commit id of
 the guilty commit.  You can then examine the commit with
-gitlink:git-show[1], find out who wrote it, and mail them your bug
+linkgit:git-show[1], find out who wrote it, and mail them your bug
 report with the commit id.  Finally, run
 // (今回の場合では)約13回テストした後、罪を犯したコミットの id を
-// 見つけることができます。そのコミットに対して gitlink:git-show[1] を実行し、
+// 見つけることができます。そのコミットに対して linkgit:git-show[1] を実行し、
 // 誰がそのコミットを書いたかを見つけ出し、コミットの id を添えて、
 // バグレポートをメールします。最後に、
 
@@ -795,10 +795,10 @@ We have seen several ways of naming commits already:
 //	- HEAD：現在のブランチの head を参照します
 
 There are many more; see the "SPECIFYING REVISIONS" section of the
-gitlink:git-rev-parse[1] man page for the complete list of ways to
+linkgit:git-rev-parse[1] man page for the complete list of ways to
 name revisions.  Some examples:
 // 他にもたくさんあります；リビジョンの呼び方の完全なリストは
-// gitlink:git-rev-parse[1] の man ページにある "SPECIFYING REVISIONS" の節で
+// linkgit:git-rev-parse[1] の man ページにある "SPECIFYING REVISIONS" の節で
 // 確認できます。
 
 -------------------------------------------------
@@ -860,10 +860,10 @@ branch.
 // これは、現在のブランチにマージしようとしているもう一方のブランチを
 // 参照しています。
 
-The gitlink:git-rev-parse[1] command is a low-level command that is
+The linkgit:git-rev-parse[1] command is a low-level command that is
 occasionally useful for translating some name for a commit to the object
 name for that commit:
-// gitlink:git-rev-parse[1] コマンドは、低レベルのコマンドであり
+// linkgit:git-rev-parse[1] コマンドは、低レベルのコマンドであり
 // コミットに対する名前をコミットのオブジェクト名に変換するのに役立ちます。
 
 -------------------------------------------------
@@ -890,22 +890,22 @@ You can use stable-1 to refer to the commit 1b2e1d63ff.
 
 This creates a "lightweight" tag.  If you would also like to include a
 comment with the tag, and possibly sign it cryptographically, then you
-should create a tag object instead; see the gitlink:git-tag[1] man page
+should create a tag object instead; see the linkgit:git-tag[1] man page
 for details.
 // これは "軽量" タグと呼ばれるものです。
 // タグにコメントを含めたい場合や、暗号化して署名したい場合には、
 // その代わりにタグオブジェクトを作成することができます；詳細は
-// gitlink:git-tag[1] の man ページを参照してください。
+// linkgit:git-tag[1] の man ページを参照してください。
 
 [[browsing-revisions]]
 Browsing revisions
 ------------------
 // === リビジョンの閲覧方法
 
-The gitlink:git-log[1] command can show lists of commits.  On its
+The linkgit:git-log[1] command can show lists of commits.  On its
 own, it shows all commits reachable from the parent commit; but you
 can also make more specific requests:
-// gitlink:git-log[1] コマンドはコミットの一覧を表示します。
+// linkgit:git-log[1] コマンドはコミットの一覧を表示します。
 // 現在のブランチ上にある親コミットから到達可能な全てのコミットを表示します。；
 // しかし、さらに特定のリクエストをすることもできます：
 
@@ -949,9 +949,9 @@ You can also ask git log to show patches:
 $ git log -p
 -------------------------------------------------
 
-See the "--pretty" option in the gitlink:git-log[1] man page for more
+See the "--pretty" option in the linkgit:git-log[1] man page for more
 display options.
-// 他の表示オプションについては gitlink:git-log[1] の man ページにある "--pretty" オプション
+// 他の表示オプションについては linkgit:git-log[1] の man ページにある "--pretty" オプション
 // を参照してください。
 
 Note that git log starts with the most recent commit and works
@@ -968,8 +968,8 @@ Generating diffs
 // === 差分の生成方法
 
 You can generate diffs between any two versions using
-gitlink:git-diff[1]:
-// gitlink:git-diff[1] を使用すると２つのバージョン間の差分を
+linkgit:git-diff[1]:
+// linkgit:git-diff[1] を使用すると２つのバージョン間の差分を
 // 生成することができます：
 
 -------------------------------------------------
@@ -988,9 +988,9 @@ $ git diff master...test
 -------------------------------------------------
 
 Sometimes what you want instead is a set of patches; for this you can
-use gitlink:git-format-patch[1]:
+use linkgit:git-format-patch[1]:
 // 時には差分ではなく各パッチの集合が必要な場合もあります；その際には
-// gitlink:git-format-patch[1]: を使用します：
+// linkgit:git-format-patch[1]: を使用します：
 
 -------------------------------------------------
 $ git format-patch master..test
@@ -1044,9 +1044,9 @@ $ git log --pretty=oneline origin..mybranch | wc -l
 -------------------------------------------------
 
 Alternatively, you may often see this sort of thing done with the
-lower-level command gitlink:git-rev-list[1], which just lists the SHA1's
+lower-level command linkgit:git-rev-list[1], which just lists the SHA1's
 of all the given commits:
-// あるいは、下位レベルのコマンド gitlink:git-rev-list[1] を使用し、
+// あるいは、下位レベルのコマンド linkgit:git-rev-list[1] を使用し、
 // 指定したコミットすべての SHA1 をリスト表示することで行うこともできます：
 
 -------------------------------------------------
@@ -1120,10 +1120,10 @@ You could just visually inspect the commits since e05db0fd:
 $ gitk e05db0fd..
 -------------------------------------------------
 
-Or you can use gitlink:git-name-rev[1], which will give the commit a
+Or you can use linkgit:git-name-rev[1], which will give the commit a
 name based on any tag it finds pointing to one of the commit's
 descendants:
-// あるいは gitlink:git-name-rev[1] を使用し、あるタグに基づいた
+// あるいは linkgit:git-name-rev[1] を使用し、あるタグに基づいた
 // そのコミットの祖先の１つを指し示す名前を表示することができます：
 // (訳注：訳が不正確かな)
 
@@ -1132,9 +1132,9 @@ $ git name-rev --tags e05db0fd
 e05db0fd tags/v1.5.0-rc1^0~23
 -------------------------------------------------
 
-The gitlink:git-describe[1] command does the opposite, naming the
+The linkgit:git-describe[1] command does the opposite, naming the
 revision using a tag on which the given commit is based:
-// gitlink:git-describe[1] コマンドはこれとは反対のことをします。
+// linkgit:git-describe[1] コマンドはこれとは反対のことをします。
 // 指定したコミットのベースになるタグ名を使用してそのリビジョンの名前を
 // 表示します。
 
@@ -1149,9 +1149,9 @@ given commit.
 // 推測する手助けになります。
 
 If you just want to verify whether a given tagged version contains a
-given commit, you could use gitlink:git-merge-base[1]:
+given commit, you could use linkgit:git-merge-base[1]:
 // 指定したタグ付けされたバージョンが特定のコミットを含むかどうかを
-// 確認したい場合は、gitlink:git-merge-base[1] を使用します：
+// 確認したい場合は、linkgit:git-merge-base[1] を使用します：
 
 -------------------------------------------------
 $ git merge-base e05db0fd v1.5.0-rc1
@@ -1179,11 +1179,11 @@ because it outputs only commits that are not reachable from v1.5.0-rc1.
 // とすると、v1.5.0-rc1 が e05db0fd を含んでいる場合に限り何も出力をしません、
 // 何故なら v1.5.0-rc1 から到達できないコミットだけが表示されるからです。
 
-As yet another alternative, the gitlink:git-show-branch[1] command lists
+As yet another alternative, the linkgit:git-show-branch[1] command lists
 the commits reachable from its arguments with a display on the left-hand
 side that indicates which arguments that commit is reachable from.  So,
 you can run something like
-// As yet another alternative, the gitlink:git-show-branch[1] command lists
+// As yet another alternative, the linkgit:git-show-branch[1] command lists
 // the commits reachable from its arguments with a display on the left-hand
 // side that indicates which arguments that commit is reachable from.  So,
 // you can run something like
@@ -1223,8 +1223,8 @@ head named "master" but not from any other head in your repository.
 // 他のヘッドからは到達できないコミットを全て参照したいとします。
 
 We can list all the heads in this repository with
-gitlink:git-show-ref[1]:
-// gitlink:git-show-ref[1] を使用するとこのリポジトリの全てのヘッドを
+linkgit:git-show-ref[1]:
+// linkgit:git-show-ref[1] を使用するとこのリポジトリの全てのヘッドを
 // 一覧表示できます：
 
 -------------------------------------------------
@@ -1268,9 +1268,9 @@ commits reachable from some head but not from any tag in the repository:
 $ gitk $( git show-ref --heads ) --not  $( git show-ref --tags )
 -------------------------------------------------
 
-(See gitlink:git-rev-parse[1] for explanations of commit-selecting
+(See linkgit:git-rev-parse[1] for explanations of commit-selecting
 syntax such as `--not`.)
-// (`--not` のようなコミットを選択する構文の説明は gitlink:git-rev-parse[1]
+// (`--not` のようなコミットを選択する構文の説明は linkgit:git-rev-parse[1]
 // を参照してください)
 
 [[making-a-release]]
@@ -1278,9 +1278,9 @@ Creating a changelog and tarball for a software release
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // ==== チェンジログとソフトウェアリリース用の tarball を作成する
 
-The gitlink:git-archive[1] command can create a tar or zip archive from
+The linkgit:git-archive[1] command can create a tar or zip archive from
 any version of a project; for example:
-// gitlink:git-archive[1] コマンドはどのプロジェクトのバージョンからも
+// linkgit:git-archive[1] コマンドはどのプロジェクトのバージョンからも
 // tar 又は zip アーカイブを作成できます；例えば：
 
 -------------------------------------------------
@@ -1346,10 +1346,10 @@ $  git log --raw --abbrev=40 --pretty=oneline |
 -------------------------------------------------
 
 Figuring out why this works is left as an exercise to the (advanced)
-student.  The gitlink:git-log[1], gitlink:git-diff-tree[1], and
-gitlink:git-hash-object[1] man pages may prove helpful.
+student.  The linkgit:git-log[1], linkgit:git-diff-tree[1], and
+linkgit:git-hash-object[1] man pages may prove helpful.
 // これが何故動作するかの説明は、(上級の)学生の演習として残しておきます。
-// gitlink:git-log[1]、gitlink:git-diff-tree[1] そして、gitlink:git-hash-object[1]
+// linkgit:git-log[1]、linkgit:git-diff-tree[1] そして、linkgit:git-hash-object[1]
 // の man ページが理解の助けになります。
 
 [[Developing-with-git]]
@@ -1375,9 +1375,9 @@ file named .gitconfig in your home directory:
 	email = you@yourdomain.example.com
 ------------------------------------------------
 
-(See the "CONFIGURATION FILE" section of gitlink:git-config[1] for
+(See the "CONFIGURATION FILE" section of linkgit:git-config[1] for
 details on the configuration file.)
-// (設定ファイルの詳細は gitlink:git-config[1] の "CONFIGURATION FILE" 節を
+// (設定ファイルの詳細は linkgit:git-config[1] の "CONFIGURATION FILE" 節を
 // 参照してください)
 
 
@@ -1542,11 +1542,11 @@ $ git status	    # a brief per-file summary of the above.
 //		    # 上記のサマリをファイル毎に簡潔に表示
 -------------------------------------------------
 
-You can also use gitlink:git-gui[1] to create commits, view changes in
+You can also use linkgit:git-gui[1] to create commits, view changes in
 the index and the working tree files, and individually select diff hunks
 for inclusion in the index (by right-clicking on the diff hunk and
 choosing "Stage Hunk For Commit").
-// これらのことをするために gitlink:git-gui[1] を使用することもできます。
+// これらのことをするために linkgit:git-gui[1] を使用することもできます。
 // git-gui は コミットの作成や、インデックスと作業ツリー間の差分の参照、
 // インデックスに含めるべき差分ハンクを個々に選択する(差分ハンクを右クリックして、
 // "Stage Hunk For Commit" を選択する) ことができます。
@@ -1610,14 +1610,14 @@ foo.txt
 *.[oa]
 -------------------------------------------------
 
-See gitlink:gitignore[5] for a detailed explanation of the syntax.  You can
+See linkgit:gitignore[5] for a detailed explanation of the syntax.  You can
 also place .gitignore files in other directories in your working tree, and they
 will apply to those directories and their subdirectories.  The `.gitignore`
 files can be added to your repository like any other files (just run `git add
 .gitignore` and `git commit`, as usual), which is convenient when the exclude
 patterns (such as patterns matching build output files) would also make sense
 for other users who clone your repository.
-// 記述形式の詳細は gitlink:gitignore[5] を参照してください。
+// 記述形式の詳細は linkgit:gitignore[5] を参照してください。
 // 作業ツリーの他のディレクトリに .gitignore を置くこともできます。
 // その場合、そのディレクトリとサブディレクトリに適用されます。
 // `.gitignore` ファイルは他のファイルと同様、リポジトリに追加することができます
@@ -1631,13 +1631,13 @@ If you wish the exclude patterns to affect only certain repositories
 them in a file in your repository named .git/info/exclude, or in any file
 specified by the `core.excludesfile` configuration variable.  Some git
 commands can also take exclude patterns directly on the command line.
-See gitlink:gitignore[5] for the details.
+See linkgit:gitignore[5] for the details.
 // (プロジェクトの全てのリポジトリの代わりに)ある特定のリポジトリでだけ
 // 除外パターンを適用したい場合は、リポジトリ内の .git/info/exclude という場所に
 // それらを置くか、コンフィグレーション変数 `core.excludesfile` によって
 // 指定することができます。git コマンドによってはコマンドラインで除外するパターンを
 // 直接指定することもできます。
-// 詳細は gitlink:gitignore[5] を参照してください。
+// 詳細は linkgit:gitignore[5] を参照してください。
 
 [[how-to-merge]]
 How to merge
@@ -1645,8 +1645,8 @@ How to merge
 // === マージの方法
 
 You can rejoin two diverging branches of development using
-gitlink:git-merge[1]:
-// ２つの分散した開発ブランチは gitlink:git-merge[1] を使用して
+linkgit:git-merge[1]:
+// ２つの分散した開発ブランチは linkgit:git-merge[1] を使用して
 // マージできます：
 
 -------------------------------------------------
@@ -1699,10 +1699,10 @@ information you need to help resolve the merge.
 // くれます。
 
 Files with conflicts are marked specially in the index, so until you
-resolve the problem and update the index, gitlink:git-commit[1] will
+resolve the problem and update the index, linkgit:git-commit[1] will
 fail:
 // コンフリクトしたファイルは、インデックス内で特別なマージが付けられ、
-// その為問題を解決しインデックスを更新するまで、gitlink:git-commit[1] は
+// その為問題を解決しインデックスを更新するまで、linkgit:git-commit[1] は
 // 失敗します：
 
 -------------------------------------------------
@@ -1710,9 +1710,9 @@ $ git commit
 file.txt: needs merge
 -------------------------------------------------
 
-Also, gitlink:git-status[1] will list those files as "unmerged", and the
+Also, linkgit:git-status[1] will list those files as "unmerged", and the
 files with conflicts will have conflict markers added, like this:
-// また、gitlink:git-status[1] はそれらのファイルを "unmerged" として表示し、
+// また、linkgit:git-status[1] はそれらのファイルを "unmerged" として表示し、
 // コンフリクトしたファイルには以下のようなコンフリクトマーカーが追加されています：
 
 -------------------------------------------------
@@ -1750,10 +1750,10 @@ Getting conflict-resolution help during a merge
 // === コンフリクトを解消する為の助けを得る
 
 All of the changes that git was able to merge automatically are
-already added to the index file, so gitlink:git-diff[1] shows only
+already added to the index file, so linkgit:git-diff[1] shows only
 the conflicts.  It uses an unusual syntax:
 // git が自動的にマージできた全ての変更は既にインデックスファイルに
-// 追加されています。そして gitlink:git-diff[1] はコンフリクトだけを
+// 追加されています。そして linkgit:git-diff[1] はコンフリクトだけを
 // 表示します。そうするには通常の構文を使用します：
 
 -------------------------------------------------
@@ -1799,10 +1799,10 @@ $ git show :3:file.txt	# the version from MERGE_HEAD, but including any
 
 Since the stage 2 and stage 3 versions have already been updated with
 nonconflicting changes, the only remaining differences between them are
-the important ones; thus gitlink:git-diff[1] can use the information in
+the important ones; thus linkgit:git-diff[1] can use the information in
 the index to show only those conflicts.
 // ステージ２とステージ３のバージョンはコンフリクトしていない変更で既に更新されているので、
-// それらの間に残っている変更は重要なものだけです；従って gitlink:git-diff[1] を使用して
+// それらの間に残っている変更は重要なものだけです；従って linkgit:git-diff[1] を使用して
 // それらコンフリクトしているところの情報だけを表示することができます。
 
 The diff above shows the differences between the working-tree version of
@@ -1811,13 +1811,13 @@ each line by a single "+" or "-", it now uses two columns: the first
 column is used for differences between the first parent and the working
 directory copy, and the second for differences between the second parent
 and the working directory copy.  (See the "COMBINED DIFF FORMAT" section
-of gitlink:git-diff-files[1] for a details of the format.)
+of linkgit:git-diff-files[1] for a details of the format.)
 // 上記の差分は file.txt の作業ツリーのバージョンとステージ２とステージ３の
 // バージョン間の差分を表示します。その為、各行の先頭に１つの "+" または "-" が
 // 付けられるかわりに、２つの列が使用されます：１つ目は
 // １つ目の親と作業ディレクトリコピーの間の差分を表すのに利用され、
 // ２つ目は２つ目の親と作業ディレクトリコピーの間の差分を表示するのに利用されます。
-// (このフォーマットの詳細は gitlink:git-diff-files[1] の "COMBINED DIFF FORMAT" の
+// (このフォーマットの詳細は linkgit:git-diff-files[1] の "COMBINED DIFF FORMAT" の
 // 節を参照してください)
 
 After resolving the conflict in the obvious way (but before updating the
@@ -1864,9 +1864,9 @@ $ git diff --theirs file.txt	# same as the above.
 // 				# 上記と同じ
 -------------------------------------------------
 
-The gitlink:git-log[1] and gitk[1] commands also provide special help
+The linkgit:git-log[1] and gitk[1] commands also provide special help
 for merges:
-// gitlink:git-log[1] と gitlink:gitk[1] コマンドもまた
+// linkgit:git-log[1] と linkgit:gitk[1] コマンドもまた
 // merge の手助けをしてくれます。
 
 -------------------------------------------------
@@ -1879,9 +1879,9 @@ MERGE_HEAD, and which touch an unmerged file.
 // これらは、HEAD または MERGE_HEAD にだけ存在する全てのコミットを表示し、
 // マージされていないファイルを表示します。
 
-You may also use gitlink:git-mergetool[1], which lets you merge the
+You may also use linkgit:git-mergetool[1], which lets you merge the
 unmerged files using external tools such as emacs or kdiff3.
-// gitlink:git-mergetool を利用することもできます。これを利用すると
+// linkgit:git-mergetool を利用することもできます。これを利用すると
 // emacs や kdiff3 のような外部ツールを使用してマージを行うことができます。
 
 Each time you resolve the conflicts in a file and update the index:
@@ -1991,10 +1991,10 @@ Fixing a mistake with a new commit
 // ==== 新しいコミットで間違いを修正する
 
 Creating a new commit that reverts an earlier change is very easy;
-just pass the gitlink:git-revert[1] command a reference to the bad
+just pass the linkgit:git-revert[1] command a reference to the bad
 commit; for example, to revert the most recent commit:
 // 前の変更を取り消す新しいコミットを作成するのはとても簡単です；
-// 単に gitlink:git-revert[1] コマンドに間違ったコミットへの参照を
+// 単に linkgit:git-revert[1] コマンドに間違ったコミットへの参照を
 // 渡すだけです；例えば、直前のコミットを元に戻すには：
 
 -------------------------------------------------
@@ -2052,10 +2052,10 @@ changes, giving you a chance to edit the old commit message first.
 // 過去にコミットしたメッセージを編集することもできます。
 
 Again, you should never do this to a commit that may already have
-been merged into another branch; use gitlink:git-revert[1] instead in
+been merged into another branch; use linkgit:git-revert[1] instead in
 that case.
 // 再注意となりますが、他のブランチに既にマージしているコミットに対しては
-// 決してこの操作を行わないでください；その場合は、gitlink:git-revert[1]
+// 決してこの操作を行わないでください；その場合は、linkgit:git-revert[1]
 // を使用してください。
 
 It is also possible to replace commits further back in the history, but
@@ -2071,10 +2071,10 @@ Checking out an old version of a file
 
 In the process of undoing a previous bad change, you may find it
 useful to check out an older version of a particular file using
-gitlink:git-checkout[1].  We've used git checkout before to switch
+linkgit:git-checkout[1].  We've used git checkout before to switch
 branches, but it has quite different behavior if it is given a path
 name: the command
-// 以前の間違った変更を取消作業の中で、gitlink:git-checkout[1] を使用して
+// 以前の間違った変更を取消作業の中で、linkgit:git-checkout[1] を使用して
 // 特定ファイルの古いバージョンをチェックアウトすると便利な場合があるかもしれません。
 // これまで branch を切り替える際に git checkout を使用してきましたが、
 // パス名が与えられた場合には全くことなる動作をします：
@@ -2091,9 +2091,9 @@ also updates the index to match.  It does not change branches.
 
 If you just want to look at an old version of the file, without
 modifying the working directory, you can do that with
-gitlink:git-show[1]:
+linkgit:git-show[1]:
 // 単にそのファイルの古いバージョンを参照したいだけの時は、
-// gitlink:git-show[1] を使用すると、作業ディレクトリを修正せずに
+// linkgit:git-show[1] を使用すると、作業ディレクトリを修正せずに
 // そのバージョンのファイルを表示できます：
 
 -------------------------------------------------
@@ -2109,13 +2109,13 @@ Temporarily setting aside work in progress
 
 While you are in the middle of working on something complicated, you
 find an unrelated but obvious and trivial bug.  You would like to fix it
-before continuing.  You can use gitlink:git-stash[1] to save the current
+before continuing.  You can use linkgit:git-stash[1] to save the current
 state of your work, and after fixing the bug (or, optionally after doing
 so on a different branch and then coming back), unstash the
 work-in-progress changes.
 // あなたが何か複雑な作業をしている途中に、今の作業とは関係のない明らかなバグを
 // みつけたとします。作業を中断してそのバグを処置したいとします。
-// gitlink:git-stash[1] を使用すると、現在の作業状態を保存し、
+// linkgit:git-stash[1] を使用すると、現在の作業状態を保存し、
 // バグ処置をした後 (あるいは、異なるブランチ上で処置を行い、元に戻り)、
 // 作業中の状態に戻すことができます。
 
@@ -2156,9 +2156,9 @@ information from taking up too much space on disk or in memory.
 // 履歴の情報を圧縮して管理することができます。
 
 This compression is not performed automatically.  Therefore you
-should occasionally run gitlink:git-gc[1]:
+should occasionally run linkgit:git-gc[1]:
 // この圧縮は自動的には行なわれません。従って
-// 時々 gitlink:git-gc[1] を実行する必要があります：
+// 時々 linkgit:git-gc[1] を実行する必要があります：
 
 -------------------------------------------------
 $ git gc
@@ -2180,10 +2180,10 @@ Checking the repository for corruption
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // ==== リポジトリの不正を確認する
 
-The gitlink:git-fsck[1] command runs a number of self-consistency checks
+The linkgit:git-fsck[1] command runs a number of self-consistency checks
 on the repository, and reports on any problems.  This may take some
 time.  The most common warning by far is about "dangling" objects:
-// gitlink:git-fsck[1] コマンドはリポジトリに対してたくさんの自己一貫性チェックを
+// linkgit:git-fsck[1] コマンドはリポジトリに対してたくさんの自己一貫性チェックを
 // 実行し、あらゆる問題を報告します。この作業にはいくらかの時間が
 // かかります。最も多い警告は "dangling" オブジェクトに関するものです：
 
@@ -2203,12 +2203,12 @@ dangling tree b24c2473f1fd3d91352a624795be026d64c8841f
 Dangling objects are not a problem.  At worst they may take up a little
 extra disk space.  They can sometimes provide a last-resort method for
 recovering lost work--see <<dangling-objects>> for details.  However, if
-you wish, you can remove them with gitlink:git-prune[1] or the `--prune`
-option to gitlink:git-gc[1]:
+you wish, you can remove them with linkgit:git-prune[1] or the `--prune`
+option to linkgit:git-gc[1]:
 // Dangling オブジェクトは無害です。悪くとも幾らかのディスクスペースを
 // 余計に消費するだけです。これらは時に紛失した作業内容を復旧させる
 // 最後の機会を与えてくれます -- 詳細は <<dangling-objects>> を参照してください。
-// しかし、望むなら gitlink:git-prune[1] を使用するか gitlink:git-gc[1] に
+// しかし、望むなら linkgit:git-prune[1] を使用するか linkgit:git-gc[1] に
 // `--prune` オプションを付けることでそれらを削除できます。
 
 -------------------------------------------------
@@ -2222,11 +2222,11 @@ other git operations are in progress in the same repository.
 // git-gc を使用した場合を含む) と違って他の git 操作を同じリポジトリ内で
 // 実行している最中に prune を実行するのは安全ではありません。
 
-If gitlink:git-fsck[1] complains about sha1 mismatches or missing
+If linkgit:git-fsck[1] complains about sha1 mismatches or missing
 objects, you may have a much more serious problem; your best option is
 probably restoring from backups.  See
 <<recovering-from-repository-corruption>> for a detailed discussion.
-// gitlink:git-fsck[1] が sha1 の不一致やオブジェクトの紛失に関する
+// linkgit:git-fsck[1] が sha1 の不一致やオブジェクトの紛失に関する
 // エラーを表示した場合、よりいっそう深刻な問題が起きているかもしれません；
 // 最善の選択はおそらく、バックアップから復旧させることでしょう。
 // 詳細な議論は <<recovering-from-repository-corruption,リポジトリの破損からの復旧>>
@@ -2242,10 +2242,10 @@ Reflogs
 ^^^^^^^
 // ===== 参照ログ(Reflogs)
 
-Say you modify a branch with `gitlink:git-reset[1] --hard`, and then
+Say you modify a branch with `linkgit:git-reset[1] --hard`, and then
 realize that the branch was the only reference you had to that point in
 history.
-// `gitlink:git-reset[1] --hard` を使用してブランチを修正した後に
+// `linkgit:git-reset[1] --hard` を使用してブランチを修正した後に
 // 履歴上でそれを参照しているのがそのブランチであることに気がついたと
 // します。
 
@@ -2295,13 +2295,13 @@ you've checked out.
 // これにより、チェックアウトしていた場所の履歴を確認することができます。
 
 The reflogs are kept by default for 30 days, after which they may be
-pruned.  See gitlink:git-reflog[1] and gitlink:git-gc[1] to learn
+pruned.  See linkgit:git-reflog[1] and linkgit:git-gc[1] to learn
 how to control this pruning, and see the "SPECIFYING REVISIONS"
-section of gitlink:git-rev-parse[1] for details.
+section of linkgit:git-rev-parse[1] for details.
 // reflog はデフォルトでは30日間保存され、その後削除されます。
-// gitlink:git-reflog[1] と gitlink:git-gc[1] を参照すると、
+// linkgit:git-reflog[1] と linkgit:git-gc[1] を参照すると、
 // reflog がどのように削除されるかを学ぶことができます。
-// 詳細は gitlink:git-rev-parse[1] の "SPECIFYING REVISIONS" の節を参照してください。
+// 詳細は linkgit:git-rev-parse[1] の "SPECIFYING REVISIONS" の節を参照してください。
 
 Note that the reflog history is very different from normal git history.
 While normal history is shared by every repository that works on the
@@ -2393,10 +2393,10 @@ into your own work.
 // マージしたいと思うでしょう。
 
 We have already seen <<Updating-a-repository-with-git-fetch,how to
-keep remote tracking branches up to date>> with gitlink:git-fetch[1],
+keep remote tracking branches up to date>> with linkgit:git-fetch[1],
 and how to merge two branches.  So you can merge in changes from the
 original repository's master branch with:
-// 既に gitlink:git-fetch[1] を用いて
+// 既に linkgit:git-fetch[1] を用いて
 // <<Updating-a-repository-with-git-fetch,外部追跡ブランチを最新に保つ方法>>
 // と２つのブランチをマージする方法を見てきました。
 // 従って、元のリポジトリのマスターブランチの変更をマージすることができます：
@@ -2406,9 +2406,9 @@ $ git fetch
 $ git merge origin/master
 -------------------------------------------------
 
-However, the gitlink:git-pull[1] command provides a way to do this in
+However, the linkgit:git-pull[1] command provides a way to do this in
 one step:
-// しかし、gitlink:git-pull[1] コマンドを使用すれば、１回のステップで
+// しかし、linkgit:git-pull[1] コマンドを使用すれば、１回のステップで
 // この操作を行うことができます。
 
 -------------------------------------------------
@@ -2429,13 +2429,13 @@ $ git pull
 More generally, a branch that is created from a remote branch will pull
 by default from that branch.  See the descriptions of the
 branch.<name>.remote and branch.<name>.merge options in
-gitlink:git-config[1], and the discussion of the `--track` option in
-gitlink:git-checkout[1], to learn how to control these defaults.
+linkgit:git-config[1], and the discussion of the `--track` option in
+linkgit:git-checkout[1], to learn how to control these defaults.
 // より一般的には、リモートブランチで作成されたブランチは、
 // デフォルトではそのブランチから pull されます。
 // それらデフォルト値のコントロール方法を理解するには、
-// gitlink:git-config[1] の branch.<name>.remote と branch.<name>.merge のオプション
-// の記述と、gitlink:git-checkout[1] の `--track` オプションの説明を参照してください。
+// linkgit:git-config[1] の branch.<name>.remote と branch.<name>.merge のオプション
+// の記述と、linkgit:git-checkout[1] の `--track` オプションの説明を参照してください。
 
 In addition to saving you keystrokes, "git pull" also helps you by
 producing a default commit message documenting the branch and
@@ -2476,8 +2476,8 @@ just be to send them as patches in email:
 // 行なった変更を投稿する一番簡単な方法は email でパッチとして
 // それらの変更を送信することです。
 
-First, use gitlink:git-format-patch[1]; for example:
-// 初めに、gitlink:git-format-patch[1] を使用します。；例えば：
+First, use linkgit:git-format-patch[1]; for example:
+// 初めに、linkgit:git-format-patch[1] を使用します。；例えば：
 
 -------------------------------------------------
 $ git format-patch origin
@@ -2490,12 +2490,12 @@ for each patch in the current branch but not in origin/HEAD.
 
 You can then import these into your mail client and send them by
 hand.  However, if you have a lot to send at once, you may prefer to
-use the gitlink:git-send-email[1] script to automate the process.
+use the linkgit:git-send-email[1] script to automate the process.
 Consult the mailing list for your project first to determine how they
 prefer such patches be handled.
 // これらをあなたのメールクライアントにインポートし、手作業でそれらを
 // 送信できます。しかし、一度にたくさん送信したい時は、むしろ
-// gitlink:git-send-email[1] スクリプトを使用してこの作業を自動化させたいでしょう。
+// linkgit:git-send-email[1] スクリプトを使用してこの作業を自動化させたいでしょう。
 // メーリングリストで助言を求め、あなたのプロジェクトがそのようなパッチを
 // どのように扱うことを望むのか決定すると良いでしょう。
 
@@ -2504,11 +2504,11 @@ Importing patches to a project
 ------------------------------
 // === プロジェクトにパッチをインポートする
 
-Git also provides a tool called gitlink:git-am[1] (am stands for
+Git also provides a tool called linkgit:git-am[1] (am stands for
 "apply mailbox"), for importing such an emailed series of patches.
 Just save all of the patch-containing messages, in order, into a
 single mailbox file, say "patches.mbox", then run
-// Git は gitlink:git-am[1] (am は "apply mailbox(メールボックスを適用する" という意味です)
+// Git は linkgit:git-am[1] (am は "apply mailbox(メールボックスを適用する" という意味です)
 // と呼ばれるツールを提供しており、このようなメールされた一連のパッチを
 // インポートすることができます。
 // パッチが含まれるメッセージ全部を順番に１つの mailbox ファイル、"patches.mbox" と言います、
@@ -2557,12 +2557,12 @@ Public git repositories
 
 Another way to submit changes to a project is to tell the maintainer
 of that project to pull the changes from your repository using
-gitlink:git-pull[1].  In the section "<<getting-updates-with-git-pull,
+linkgit:git-pull[1].  In the section "<<getting-updates-with-git-pull,
 Getting updates with git pull>>" we described this as a way to get
 updates from the "main" repository, but it works just as well in the
 other direction.
 // プロジェクトに変更を投稿するもう一つの方法はプロジェクトの管理者に
-// あなたのリポジトリから gitlink:git-pull[1] を使用して変更を pull してもらうことです。
+// あなたのリポジトリから linkgit:git-pull[1] を使用して変更を pull してもらうことです。
 // "<<getting-updates-with-git-pull, git pull を使用して更新する>>" のセクションで
 // 我々は "main" リポジトリから更新を取得する方法を説明してきましたが、
 // 逆の方向についても同じことができます。
@@ -2684,22 +2684,22 @@ repository>>", below.
 // "<<pushing-changes-to-a-public-repository,公開リポジトリへ変更を push する>>"
 // のセクションに進んでください。
 
-Otherwise, all you need to do is start gitlink:git-daemon[1]; it will
+Otherwise, all you need to do is start linkgit:git-daemon[1]; it will
 listen on port 9418.  By default, it will allow access to any directory
 that looks like a git directory and contains the magic file
 git-daemon-export-ok.  Passing some directory paths as git-daemon
 arguments will further restrict the exports to those paths.
-// そうでない場合にあなたがすべき事は gitlink:git-daemon[1] を開始することだけです；
+// そうでない場合にあなたがすべき事は linkgit:git-daemon[1] を開始することだけです；
 // このデーモンは 9418 ポートを使用します。デフォルトでは、git ディレクトリと思われ、
 // git-daemon-export-ok ファイルが存在する全てのディレクトリへのアクセスを許可します。
 // git-daemon の引数にディレクトリのパスを与えることで、
 // それらパスに対してさらに制限をかけることができます。
 
 You can also run git-daemon as an inetd service; see the
-gitlink:git-daemon[1] man page for details.  (See especially the
+linkgit:git-daemon[1] man page for details.  (See especially the
 examples section.)
 // git-daemon は inetd サービスで動かすこともできます；
-// 詳細は gitlink:git-daemon[1] を参照してください。
+// 詳細は linkgit:git-daemon[1] を参照してください。
 // (特に、例 のセクションを参照)
 
 [[exporting-via-http]]
@@ -2728,9 +2728,9 @@ $ chmod a+x hooks/post-update
 -------------------------------------------------
 
 (For an explanation of the last two lines, see
-gitlink:git-update-server-info[1], and the documentation
+linkgit:git-update-server-info[1], and the documentation
 link:hooks.html[Hooks used by git].)
-// (最後の２行の説明は、gitlink:git-update-server-info[1] と、
+// (最後の２行の説明は、linkgit:git-update-server-info[1] と、
 // link:hooks.html[git でフックを使用する] のドキュメントを参照してください。)
 
 Advertise the URL of proj.git.  Anybody else should then be able to
@@ -2766,10 +2766,10 @@ latest changes created in your private repository.
 // それらを編集することはできません。
 // 個人用リポジトリで行なった最新の変更を公開リポジトリに反映するには編集操作が必要です。
 
-The simplest way to do this is using gitlink:git-push[1] and ssh; to
+The simplest way to do this is using linkgit:git-push[1] and ssh; to
 update the remote branch named "master" with the latest state of your
 branch named "master", run
-// 編集を行なう一番簡単な方法は  gitlink:git-push[1] と ssh を使用する方法です；
+// 編集を行なう一番簡単な方法は  linkgit:git-push[1] と ssh を使用する方法です；
 // あなたのブランチ "master" の最新の状態で、リモートブランチ "master" を更新するには、
 
 -------------------------------------------------
@@ -2821,10 +2821,10 @@ $ git push public-repo master
 -------------------------------------------------
 
 See the explanations of the remote.<name>.url, branch.<name>.remote,
-and remote.<name>.push options in gitlink:git-config[1] for
+and remote.<name>.push options in linkgit:git-config[1] for
 details.
 // remote.<name>.url, branch.<name>.remote, remote.<name>.push の詳細は
-// gitlink:git-config[1] のオプションを参照してください。
+// linkgit:git-config[1] のオプションを参照してください。
 
 [[forcing-push]]
 What to do when a push fails
@@ -3011,22 +3011,22 @@ $ cd work
 -------------------------------------------------
 
 Linus's tree will be stored in the remote branch named origin/master,
-and can be updated using gitlink:git-fetch[1]; you can track other
-public trees using gitlink:git-remote[1] to set up a "remote" and
-gitlink:git-fetch[1] to keep them up-to-date; see
+and can be updated using linkgit:git-fetch[1]; you can track other
+public trees using linkgit:git-remote[1] to set up a "remote" and
+linkgit:git-fetch[1] to keep them up-to-date; see
 <<repositories-and-branches>>.
 // Linus のツリーは origin/master という名前のリモートブランチに格納され、
-// gitlink:git-fetch[1] を使用して更新できます；他の公開ツリーも
-// gitlink:git-remote[1] を使用して "remote" を設定し gitlink:git-fetch[1] で
+// linkgit:git-fetch[1] を使用して更新できます；他の公開ツリーも
+// linkgit:git-remote[1] を使用して "remote" を設定し linkgit:git-fetch[1] で
 // それらを最新に保ちます；<<repositories-and-branches>> を参照してください。
 
 Now create the branches in which you are going to work; these start out
 at the current tip of origin/master branch, and should be set up (using
-the --track option to gitlink:git-branch[1]) to merge changes in from
+the --track option to linkgit:git-branch[1]) to merge changes in from
 Linus by default.
 // さて、あなたが作業する為のブランチを作成しました；
 // このブランチは origin/master ブランチの現在の先端から開始していて、
-// (gitlink:git-branch[1] の --track オプションを使用して)
+// (linkgit:git-branch[1] の --track オプションを使用して)
 // デフォルトでは Linus からの変更をマージする設定にすべきです。
 
 -------------------------------------------------
@@ -3034,8 +3034,8 @@ $ git branch --track test origin/master
 $ git branch --track release origin/master
 -------------------------------------------------
 
-These can be easily kept up to date using gitlink:git-pull[1].
-// これらは gitlink:git-pull[1] を用いて簡単に最新に保つことができます。
+These can be easily kept up to date using linkgit:git-pull[1].
+// これらは linkgit:git-pull[1] を用いて簡単に最新に保つことができます。
 
 -------------------------------------------------
 $ git checkout test && git pull
@@ -3057,10 +3057,10 @@ from the release branch.
 // これらノイズとなるコミットはあなたが Linus にリリースブランチへの pull
 // を依頼するときに恒久的な履歴の一部になってしまいます。
 
-A few configuration variables (see gitlink:git-config[1]) can
+A few configuration variables (see linkgit:git-config[1]) can
 make it easy to push both branches to your public tree.  (See
 <<setting-up-a-public-repository>>.)
-// 幾つかの設定変数(gitlink:git-config[1] 参照)は
+// 幾つかの設定変数(linkgit:git-config[1] 参照)は
 // 両方のブランチをあなたの公開ツリーに push するのを容易にしてくれます。
 // (<<setting-up-a-public-repository>> 参照。)
 
@@ -3074,8 +3074,8 @@ EOF
 -------------------------------------------------
 
 Then you can push both the test and release trees using
-gitlink:git-push[1]:
-// 上記により test と release の両方のツリーに gitlink:git-push[1] を
+linkgit:git-push[1]:
+// 上記により test と release の両方のツリーに linkgit:git-push[1] を
 // 使用して push することができるようになります：
 
 -------------------------------------------------
@@ -3469,9 +3469,9 @@ the result would create a new merge commit, like this:
 
 However, if you prefer to keep the history in mywork a simple series of
 commits without any merges, you may instead choose to use
-gitlink:git-rebase[1]:
+linkgit:git-rebase[1]:
 // しかし、自分の履歴をマージ操作の無い、単純な一連のコミットの状態で
-// 保ちたいのであれば、その代わりに gitlink:git-rebase[1] を使用すると
+// 保ちたいのであれば、その代わりに linkgit:git-rebase[1] を使用すると
 // 良いでしょう。
 
 -------------------------------------------------
@@ -3539,11 +3539,11 @@ changes, giving you a chance to edit the old commit message first.
 // この操作は、過去のコミットをあなたが変更を受け入れる新しいコミットに
 // 置き換え、過去のコミットメッセージを編集する機会を与えてくれます。
 
-You can also use a combination of this and gitlink:git-rebase[1] to
+You can also use a combination of this and linkgit:git-rebase[1] to
 replace a commit further back in your history and recreate the
 intervening changes on top of it.  First, tag the problematic commit
 with
-// これと gitlink:git-rebase[1] を組み合わせることで、履歴内のさらに過去のコミットについても
+// これと linkgit:git-rebase[1] を組み合わせることで、履歴内のさらに過去のコミットについても
 // 置き換えをし、その先頭の変更に立ち入ることができます。
 // 初めに、次のようにして問題のあるコミットにタグを付けます。
 
@@ -3592,11 +3592,11 @@ Reordering or selecting from a patch series
 -------------------------------------------
 // === 一連のパッチの並び替えや選択
 
-Given one existing commit, the gitlink:git-cherry-pick[1] command
+Given one existing commit, the linkgit:git-cherry-pick[1] command
 allows you to apply the change introduced by that commit and create a
 new commit that records it.  So, for example, if "mywork" points to a
 series of patches on top of "origin", you might do something like:
-// 存在するコミットを引数にして gitlink:git-cherry-pick[1] コマンドを
+// 存在するコミットを引数にして linkgit:git-cherry-pick[1] コマンドを
 // 実行すると、そのコミットが行なった変更を適用し、新しいコミットを
 // 作成することができます。従って、例えば、"mywork" が "origin" の先頭の
 // 一連のパッチを指しているなら、以下のようにすることができます：
@@ -3609,13 +3609,13 @@ $ gitk origin..mywork &
 and browse through the list of patches in the mywork branch using gitk,
 applying them (possibly in a different order) to mywork-new using
 cherry-pick, and possibly modifying them as you go using `commit --amend`.
-The gitlink:git-gui[1] command may also help as it allows you to
+The linkgit:git-gui[1] command may also help as it allows you to
 individually select diff hunks for inclusion in the index (by
 right-clicking on the diff hunk and choosing "Stage Hunk for Commit").
 // そして、gitk を使用して mywork ブランチのパッチの一覧を表示し、
 // cherry-pick を使用して mywork-new にそれらを(可能なら異なる順番で)適用し、
 // 可能であるなら `commit --amend` を使用してそれらを修正します。
-// gitlink:git-gui[1] コマンドは個々の選択した diff ハンクをインデックスに含めるかどうかを
+// linkgit:git-gui[1] コマンドは個々の選択した diff ハンクをインデックスに含めるかどうかを
 // 選択するのに役に立つかもしれません。(diff ハンクを右クリックし、
 // "Stage Hunk for Commit" を選択します)
 
@@ -3630,8 +3630,8 @@ $ git reset --hard origin
 -------------------------------------------------
 
 Then modify, reorder, or eliminate patches as preferred before applying
-them again with gitlink:git-am[1].
-// そして、修正し、順番を並び替え、取り除き gitlink:git-am[1] を使用して
+them again with linkgit:git-am[1].
+// そして、修正し、順番を並び替え、取り除き linkgit:git-am[1] を使用して
 // 再びパッチを適用します。
 
 [[patch-series-tools]]
@@ -3719,11 +3719,11 @@ Why bisecting merge commits can be harder than bisecting linear history
 -----------------------------------------------------------------------
 // === マージコミットの分割が１本線の履歴の分割よりも困難となる理由
 
-The gitlink:git-bisect[1] command correctly handles history that
+The linkgit:git-bisect[1] command correctly handles history that
 includes merge commits.  However, when the commit that it finds is a
 merge commit, the user may need to work harder than usual to figure out
 why that commit introduced a problem.
-// gitlink:git-bisect[1] コマンドはマージコミットを含んだ履歴を正確に扱います。
+// linkgit:git-bisect[1] コマンドはマージコミットを含んだ履歴を正確に扱います。
 // しかし、コミットがマージコミットである時は、そのコミットが何故問題を起こしている
 // かの原因を見つけ出すのに苦労することがあります。
 
@@ -3767,12 +3767,12 @@ Nevertheless, the code at C is broken, because the callers added
 on the lower line of development have not been converted to the new
 semantics introduced on the upper line of development.  So if all
 you know is that D is bad, that Z is good, and that
-gitlink:git-bisect[1] identifies C as the culprit, how will you
+linkgit:git-bisect[1] identifies C as the culprit, how will you
 figure out that the problem is due to this change in semantics?
 // にもかかわらず、Cのソースは壊れています。なぜなら
 // 下側の開発ラインは上側の開発ラインで行われた新しい動作に変換
 // されていないからです。
-// したがって、gitlink:git-bisect[1] は D に問題があり、
+// したがって、linkgit:git-bisect[1] は D に問題があり、
 // Z には問題ないこと、そしてC が問題の原因であると伝えます。
 // どのようにしたら、問題が動作変更によるものだと見つけることが
 // できるでしょうか？
@@ -3830,10 +3830,10 @@ Fetching individual branches
 ----------------------------
 // === 個々のブランチをフェッチする
 
-Instead of using gitlink:git-remote[1], you can also choose just
+Instead of using linkgit:git-remote[1], you can also choose just
 to update one branch at a time, and to store it locally under an
 arbitrary name:
-// gitlink:git-remote[1] を使用する代わりに、時には１つのブランチだけを
+// linkgit:git-remote[1] を使用する代わりに、時には１つのブランチだけを
 // 更新し、任意の名前でローカルに保存することもできます：
 
 -------------------------------------------------
@@ -3956,10 +3956,10 @@ Configuring remote branches
 We saw above that "origin" is just a shortcut to refer to the
 repository that you originally cloned from.  This information is
 stored in git configuration variables, which you can see using
-gitlink:git-config[1]:
+linkgit:git-config[1]:
 // 既に説明したように、"origin" はクローン元のリポジトリを参照する
 // ショートカットです。この情報は git の構成ファイルに格納されており、
-// gitlink:git-config[1] を使用して参照することができます：
+// linkgit:git-config[1] を使用して参照することができます：
 
 -------------------------------------------------
 $ git config -l
@@ -4020,13 +4020,13 @@ throwing away commits on mybranch.
 
 Also note that all of the above configuration can be performed by
 directly editing the file .git/config instead of using
-gitlink:git-config[1].
-// また、上記の構成全ては、gitlink:git-config[1] を使用する代わりに
+linkgit:git-config[1].
+// また、上記の構成全ては、linkgit:git-config[1] を使用する代わりに
 // 直接 .git/config ファイルを編集して登録することもできます。
 
-See gitlink:git-config[1] for more details on the configuration
+See linkgit:git-config[1] for more details on the configuration
 options mentioned above.
-// 詳細は gitlink:git-config[1] 内の 構成オプションについて触れられている
+// 詳細は linkgit:git-config[1] 内の 構成オプションについて触れられている
 // 箇所を参照してください。
 
 
@@ -4130,11 +4130,11 @@ Commit Object
 
 The "commit" object links a physical state of a tree with a description
 of how we got there and why.  Use the --pretty=raw option to
-gitlink:git-show[1] or gitlink:git-log[1] to examine your favorite
+linkgit:git-show[1] or linkgit:git-log[1] to examine your favorite
 commit:
 // "commit" オブジェクトはツリーの物理的な状態にリンクし、
 // また、どのようにしてその記述に至ったかの情報も一緒に含んでいます。
-// --pretty=raw オプション付きで gitlink:git-show[1] または gitlink:git-log[1] を
+// --pretty=raw オプション付きで linkgit:git-show[1] または linkgit:git-log[1] を
 // 実行すると、特定のコミットの内容を確認できます：
 
 ------------------------------------------------
@@ -4191,17 +4191,17 @@ of the tree referred to by this commit with the trees associated with
 its parents.  In particular, git does not attempt to record file renames
 explicitly, though it can identify cases where the existence of the same
 file data at changing paths suggests a rename.  (See, for example, the
--M option to gitlink:git-diff[1]).
+-M option to linkgit:git-diff[1]).
 // 注意：コミット自身は実際にどのような変更がされたかの情報を持っていません；
 // 全ての変更はコミットが参照しているツリーとparents から連想されるツリーとの比較
 // によって計算されます。特に、git はファイル名の変更を明示的には記録しようと
 // しません。しかし、同じデータをもつファイルが存在する場合に名前変更であると
-// 認識する方法があります。(例えば、gitlink:git-diff[1] の -M オプションを参照)
+// 認識する方法があります。(例えば、linkgit:git-diff[1] の -M オプションを参照)
 
-A commit is usually created by gitlink:git-commit[1], which creates a
+A commit is usually created by linkgit:git-commit[1], which creates a
 commit whose parent is normally the current HEAD, and whose tree is
 taken from the content currently stored in the index.
-// コミットは通常 gitlink:git-commit[1] によって作成されます。
+// コミットは通常 linkgit:git-commit[1] によって作成されます。
 // デフォルトではその親を現在のHEADとしたコミットが作成され、
 // そのツリーは現在のインデックスに格納されている内容が使用されます。
 
@@ -4210,11 +4210,11 @@ Tree Object
 ~~~~~~~~~~~
 // ==== Tree オブジェクト
 
-The ever-versatile gitlink:git-show[1] command can also be used to
-examine tree objects, but gitlink:git-ls-tree[1] will give you more
+The ever-versatile linkgit:git-show[1] command can also be used to
+examine tree objects, but linkgit:git-ls-tree[1] will give you more
 details:
-// gitlink:git-show[1] コマンドは tree オブジェクトに対しても
-// 使用することができますが、gitlink:git-ls-tree[1] の方が
+// linkgit:git-show[1] コマンドは tree オブジェクトに対しても
+// 使用することができますが、linkgit:git-ls-tree[1] の方が
 // より詳細な情報を表示します：
 
 ------------------------------------------------
@@ -4267,9 +4267,9 @@ Blob Object
 ~~~~~~~~~~~
 // ==== Blob オブジェクト
 
-You can use gitlink:git-show[1] to examine the contents of a blob; take,
+You can use linkgit:git-show[1] to examine the contents of a blob; take,
 for example, the blob in the entry for "COPYING" from the tree above:
-// gitlink:git-show[1] を使用すると blob の内容を参照できます；
+// linkgit:git-show[1] を使用すると blob の内容を参照できます；
 // 例として、上記ツリーの blob エントリ "COPYING" を確認します：
 
 ------------------------------------------------
@@ -4298,10 +4298,10 @@ renaming a file does not change the object that file is associated with.
 // ファイル名を変更してもそれに対応するオブジェクトは変更されません。
 
 Note that any tree or blob object can be examined using
-gitlink:git-show[1] with the <revision>:<path> syntax.  This can
+linkgit:git-show[1] with the <revision>:<path> syntax.  This can
 sometimes be useful for browsing the contents of a tree that is not
 currently checked out.
-// 注意：全ての tree と blob オブジェクトは gitlink:git-show[1] に
+// 注意：全ての tree と blob オブジェクトは linkgit:git-show[1] に
 // <revision>:<path> の引数を付けて実行することができます。
 // これにより、現在チェックアウトしていないツリーの中身を
 // ブラウズすることができます。
@@ -4361,10 +4361,10 @@ Tag Object
 
 A tag object contains an object, object type, tag name, the name of the
 person ("tagger") who created the tag, and a message, which may contain
-a signature, as can be seen using the gitlink:git-cat-file[1]:
+a signature, as can be seen using the linkgit:git-cat-file[1]:
 // tag オブジェクトはオブジェクトとオブジェクトタイプ、タグ名、
 // タグの作成者、メッセージ(これには署名が付けられることがあります)を
-// 含んでいます。このことは gitlink:git-cat-file[1] で確認できます:
+// 含んでいます。このことは linkgit:git-cat-file[1] で確認できます:
 
 ------------------------------------------------
 $ git cat-file tag v1.5.0
@@ -4383,12 +4383,12 @@ nLE/L9aUXdWeTFPron96DLA=
 -----END PGP SIGNATURE-----
 ------------------------------------------------
 
-See the gitlink:git-tag[1] command to learn how to create and verify tag
-objects.  (Note that gitlink:git-tag[1] can also be used to create
+See the linkgit:git-tag[1] command to learn how to create and verify tag
+objects.  (Note that linkgit:git-tag[1] can also be used to create
 "lightweight tags", which are not tag objects at all, but just simple
 references whose names begin with "refs/tags/").
-// タグの作成方法と検証方法は gitlink:git-tag[1] コマンドを参照してください。
-// (注意: gitlink:git-tag[1] は'軽量'タグを作成することもできます。
+// タグの作成方法と検証方法は linkgit:git-tag[1] コマンドを参照してください。
+// (注意: linkgit:git-tag[1] は'軽量'タグを作成することもできます。
 // これは、tagオブジェクトとは全く異なるもので、'refs/tags/'で始まる
 // 単なる参照です)
 
@@ -4473,9 +4473,9 @@ objects will work exactly as they did before.
 // オブジェクトファイルが削除されても、そのオブジェクトを参照する
 // 全てのコマンドは以前と同じように動作します。
 
-The gitlink:git-gc[1] command performs packing, pruning, and more for
+The linkgit:git-gc[1] command performs packing, pruning, and more for
 you, so is normally the only high-level command you need.
-// The gitlink:git-gc[1] コマンドは repack、prune などを実行してくれるので
+// The linkgit:git-gc[1] コマンドは repack、prune などを実行してくれるので
 // 通常は高レベルであるこのコマンドのみ使用します。
 
 [[dangling-objects]]
@@ -4483,9 +4483,9 @@ Dangling objects
 ~~~~~~~~~~~~~~~~
 // ==== Dangling オブジェクト
 
-The gitlink:git-fsck[1] command will sometimes complain about dangling
+The linkgit:git-fsck[1] command will sometimes complain about dangling
 objects.  They are not a problem.
-// gitlink:git-fsck[1] コマンドは dangling オブジェクトに関する
+// linkgit:git-fsck[1] コマンドは dangling オブジェクトに関する
 // メッセージを表示することがありますが、これは問題ではありません。
 
 The most common cause of dangling objects is that you've rebased a
@@ -4647,8 +4647,8 @@ especially commits is *much* harder).
 // (ツリー、そして特にコミットの紛失から復旧する場合はより困難です)
 
 Before starting, verify that there is corruption, and figure out where
-it is with gitlink:git-fsck[1]; this may be time-consuming.
-// 開始する前に、破損している箇所を gitlink:git-fsck[1] を使用して
+it is with linkgit:git-fsck[1]; this may be time-consuming.
+// 開始する前に、破損している箇所を linkgit:git-fsck[1] を使用して
 // 確認します；これには多大な時間を必要とするかもしれません。
 
 Assume the output looks like this:
@@ -4670,13 +4670,13 @@ Now you know that blob 4b9458b3 is missing, and that the tree 2d9263c6
 points to it.  If you could find just one copy of that missing blob
 object, possibly in some other repository, you could move it into
 .git/objects/4b/9458b3... and be done.  Suppose you can't.  You can
-still examine the tree that pointed to it with gitlink:git-ls-tree[1],
+still examine the tree that pointed to it with linkgit:git-ls-tree[1],
 which might output something like:
 // 4b9458b3 の blob が紛失しており、2d9263c6 のツリーが
 // それを参照していることがわかります。その紛失したblobのコピーを
 // 他のリポジトリなどから見つけることができるなら、それを
 // .git/objects/4b/9458b3... に移動すれば修復は完了です。もしそれが
-// できない場合でも、gitlink:git-ls-tree[1] を用いて、それが何を指し示して
+// できない場合でも、linkgit:git-ls-tree[1] を用いて、それが何を指し示して
 // いるかを確認することができます：
 
 ------------------------------------------------
@@ -4694,12 +4694,12 @@ So now you know that the missing blob was the data for a file named
 say it's in "somedirectory".  If you're lucky the missing copy might be
 the same as the copy you have checked out in your working tree at
 "somedirectory/myfile"; you can test whether that's right with
-gitlink:git-hash-object[1]:
+linkgit:git-hash-object[1]:
 // これにより、紛失した blob が "myfile" という名前のファイルデータであることが
 // わかります。そして、それがあるディレクトリも特定できたとします--
 // "somedirectory" とします。運よくチェックアウトした作業ツリー内の
 // "somedirectory/myfile" にそれと同じコピーがあるのなら、
-// gitlink:git-hash-object[1] を用いてそれが正しいかどうかをテストできます。
+// linkgit:git-hash-object[1] を用いてそれが正しいかどうかをテストできます。
 
 ------------------------------------------------
 $ git hash-object -w somedirectory/myfile
@@ -4792,10 +4792,10 @@ The index
 
 The index is a binary file (generally kept in .git/index) containing a
 sorted list of path names, each with permissions and the SHA1 of a blob
-object; gitlink:git-ls-files[1] can show you the contents of the index:
+object; linkgit:git-ls-files[1] can show you the contents of the index:
 // インデックスはバイナリファイル(通常 .git/index 内に保管)であり、
 // ソートされたパス名と、パーミッション、blob の SHA1値の一覧を含んでいます；
-// gitlink:git-ls-files[1] を使用するとインデックスの中身を参照できます：
+// linkgit:git-ls-files[1] を使用するとインデックスの中身を参照できます：
 
 -------------------------------------------------
 $ git ls-files --stage
@@ -4820,13 +4820,13 @@ properties:
 1. The index contains all the information necessary to generate a single
 (uniquely determined) tree object.
 +
-For example, running gitlink:git-commit[1] generates this tree object
+For example, running linkgit:git-commit[1] generates this tree object
 from the index, stores it in the object database, and uses it as the
 tree object associated with the new commit.
 // 1. インデックスは１つの(ユニークに決定される)ツリーオブジェクトを
 // 生成するのに必要な情報全てを含んでいます。
 // +
-// 例えば、gitlink:git-commit[1] を実行すると、インデックスから
+// 例えば、linkgit:git-commit[1] を実行すると、インデックスから
 // 新しいコミットが参照する tree オブジェクトを生成し、オブジェクトＤＢに
 // 格納します。
 
@@ -4856,7 +4856,7 @@ you can create a three-way merge between them.
 +
 We saw in <<conflict-resolution>> that during a merge the index can
 store multiple versions of a single file (called "stages").  The third
-column in the gitlink:git-ls-files[1] output above is the stage
+column in the linkgit:git-ls-files[1] output above is the stage
 number, and will take on values other than 0 for files with merge
 conflicts.
 // 3. 異なるツリーオブジェクト間のコンフリクトの情報を表現することができ、
@@ -4865,7 +4865,7 @@ conflicts.
 // +
 // <<conflict-resolution>> で見たように、マージしている間、
 // 1つのファイルの("ステージ"と呼ばれる)複数のバージョンを格納する
-// ことができます。gitlink:git-ls-files[1] の出力の3つ目のカラムは
+// ことができます。linkgit:git-ls-files[1] の出力の3つ目のカラムは
 // ステージの番号で、コンフリクトしたファイルには０より大きい値が
 // 付けられます。
 
@@ -4948,11 +4948,11 @@ clone none, some or all of the submodules.
 // 親プロジェクトの部分チェックアウトは可能です：サブモジュールを
 // 複製する、しないをサブモジュールごとにしていすることができます。
 
-The gitlink:git-submodule[1] command is available since Git 1.5.3.  Users
+The linkgit:git-submodule[1] command is available since Git 1.5.3.  Users
 with Git 1.5.2 can look up the submodule commits in the repository and
 manually check them out; earlier versions won't recognize the submodules at
 all.
-// gitlink:git-submodule[1] コマンドは Git 1.5.3 から利用可能になりました。
+// linkgit:git-submodule[1] コマンドは Git 1.5.3 から利用可能になりました。
 // Git 1.5.2 を使用しているユーザもリポジトリ内のサブモジュールのコミットを
 // 参照し、それらをマニュアルでチェックアウトすることはできます；
 // 初期のバージョンでは全てのサブモジュールを認識することはできないでしょう。
@@ -5008,9 +5008,9 @@ The `git submodule add` command does a couple of things:
   the master branch.
 // - カレントディレクトリ下にサブモジュールの複製を作成し、デフォルトではマスターブランチを
 //   チェックアウトします。
-- It adds the submodule's clone path to the gitlink:gitmodules[5] file and
+- It adds the submodule's clone path to the linkgit:gitmodules[5] file and
   adds this file to the index, ready to be committed.
-// - サブモジュールの複製パスを gitlink:gitmodules[5] ファイルに追加し、
+// - サブモジュールの複製パスを linkgit:gitmodules[5] ファイルに追加し、
 //   このファイルをインデックスに追加し、コミット可能な状態にします。
 - It adds the submodule's current commit ID to the index, ready to be
   committed.
@@ -5213,28 +5213,28 @@ Object access and manipulation
 ------------------------------
 // === オブジェクトのアクセスと操作
 
-The gitlink:git-cat-file[1] command can show the contents of any object,
-though the higher-level gitlink:git-show[1] is usually more useful.
-// gitlink:git-cat-file[1] コマンドは任意のオブジェクトの中身を表示する
-// ことができますが、上位の gitlink:git-show[1] の方が通常は便利です。
+The linkgit:git-cat-file[1] command can show the contents of any object,
+though the higher-level linkgit:git-show[1] is usually more useful.
+// linkgit:git-cat-file[1] コマンドは任意のオブジェクトの中身を表示する
+// ことができますが、上位の linkgit:git-show[1] の方が通常は便利です。
 
-The gitlink:git-commit-tree[1] command allows constructing commits with
+The linkgit:git-commit-tree[1] command allows constructing commits with
 arbitrary parents and trees.
-// gitlink:git-commit-tree[1] コマンドを用いると任意の親とツリーで
+// linkgit:git-commit-tree[1] コマンドを用いると任意の親とツリーで
 // コミットを構成させることができます。
 
-A tree can be created with gitlink:git-write-tree[1] and its data can be
-accessed by gitlink:git-ls-tree[1].  Two trees can be compared with
-gitlink:git-diff-tree[1].
-// gitlink:git-write-tree[1] を用いるとツリーを作成することができ、
-// その中身は gitlink:git-ls-tree[1] でアクセスできます。２つのツリーは
-// gitlink:git-diff-tree[1] で比較することができます。
+A tree can be created with linkgit:git-write-tree[1] and its data can be
+accessed by linkgit:git-ls-tree[1].  Two trees can be compared with
+linkgit:git-diff-tree[1].
+// linkgit:git-write-tree[1] を用いるとツリーを作成することができ、
+// その中身は linkgit:git-ls-tree[1] でアクセスできます。２つのツリーは
+// linkgit:git-diff-tree[1] で比較することができます。
 
-A tag is created with gitlink:git-mktag[1], and the signature can be
-verified by gitlink:git-verify-tag[1], though it is normally simpler to
-use gitlink:git-tag[1] for both.
-// タグは gitlink:git-mktag[1] で作成でき、その署名は gitlink:git-verify-tag[1]
-// で検証することができます。しかし、これら２つは gitlink:git-tag[1] を
+A tag is created with linkgit:git-mktag[1], and the signature can be
+verified by linkgit:git-verify-tag[1], though it is normally simpler to
+use linkgit:git-tag[1] for both.
+// タグは linkgit:git-mktag[1] で作成でき、その署名は linkgit:git-verify-tag[1]
+// で検証することができます。しかし、これら２つは linkgit:git-tag[1] を
 // 使用すると同じようなことができます。
 
 [[the-workflow]]
@@ -5242,12 +5242,12 @@ The Workflow
 ------------
 // === ワークフロー
 
-High-level operations such as gitlink:git-commit[1],
-gitlink:git-checkout[1] and gitlink:git-reset[1] work by moving data
+High-level operations such as linkgit:git-commit[1],
+linkgit:git-checkout[1] and linkgit:git-reset[1] work by moving data
 between the working tree, the index, and the object database.  Git
 provides low-level operations which perform each of these steps
 individually.
-// gitlink:git-commit[1]、gitlink:git-checkout[1]、gitlink:git-reset[1]
+// linkgit:git-commit[1]、linkgit:git-checkout[1]、linkgit:git-reset[1]
 // のような高レベルの操作は作業ツリー、インデックス、オブジェクトＤＢ間の
 // データを移動することによって仕事をします。
 // Git はこれらの各ステップを独立に行なう下位レベルの操作を提供しています。
@@ -5267,11 +5267,11 @@ working directory -> index
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 // ==== 作業ディレクトリ → インデックス
 
-The gitlink:git-update-index[1] command updates the index with
+The linkgit:git-update-index[1] command updates the index with
 information from the working directory.  You generally update the
 index information by just specifying the filename you want to update,
 like so:
-// gitlink:git-update-index[1] コマンドは作業ディレクトリの情報を
+// linkgit:git-update-index[1] コマンドは作業ディレクトリの情報を
 // インデックスに更新します。一般には更新したいファイルを特定して
 // インデックスの情報を更新します、次のように：
 
@@ -5316,9 +5316,9 @@ an object still matches its old backing store object.
 // オブジェクトが過去に格納されたオブジェクトとまだ一致している
 // かを素早くテストする為に使用されるフィールドだけを更新します。
 
-The previously introduced gitlink:git-add[1] is just a wrapper for
-gitlink:git-update-index[1].
-// 以前紹介した gitlink:git-add[1] は gitlink:git-update-index[1] の
+The previously introduced linkgit:git-add[1] is just a wrapper for
+linkgit:git-update-index[1].
+// 以前紹介した linkgit:git-add[1] は linkgit:git-update-index[1] の
 // 単なるラッパースクリプトです。
 
 [[index-to-object-database]]
@@ -5508,11 +5508,11 @@ Examining the data
 
 You can examine the data represented in the object database and the
 index with various helper tools. For every object, you can use
-gitlink:git-cat-file[1] to examine details about the
+linkgit:git-cat-file[1] to examine details about the
 object:
 // 様々なヘルパーツールを用いることでオブジェクトDBと
 // インデックスの中身を確認することができます。
-// 各オブジェクトの中身は gitlink:git-cat-file[1] で確認します:
+// 各オブジェクトの中身は linkgit:git-cat-file[1] で確認します:
 
 -------------------------------------------------
 $ git-cat-file -t <objectname>
@@ -6484,11 +6484,11 @@ Scan Documentation/ for other stuff left out; in particular:
 - howto's
 - some of technical/?
 - hooks
-- list of commands in gitlink:git[1]
+- list of commands in linkgit:git[1]
 //	howto に関するもの
 //	technical/ の下のいくつか？
 //	フック
-//	gitlink:git[1] 内のコマンドの一覧
+//	linkgit:git[1] 内のコマンドの一覧
 
 Scan email archives for other stuff left out
 // E-mail のアーカイブをスキャンし、他の残項目を探す。

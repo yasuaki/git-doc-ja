@@ -64,8 +64,8 @@ directory created, named ".git".
 // ディレクトリが作成されたことに気がつくでしょう。
 
 Next, tell git to take a snapshot of the contents of all files under the
-current directory (note the '.'), with gitlink:git-add[1]:
-// 次に、gitlink:git-add[1] を使用して カレントディレクトリ下の
+current directory (note the '.'), with linkgit:git-add[1]:
+// 次に、linkgit:git-add[1] を使用して カレントディレクトリ下の
 // すべてのファイルのスナップショットを取得するように git に依頼します ('.'があることに注意)：
 
 ------------------------------------------------
@@ -74,9 +74,9 @@ $ git add .
 
 This snapshot is now stored in a temporary staging area which git calls
 the "index".  You can permanently store the contents of the index in the
-repository with gitlink:git-commit[1]:
+repository with linkgit:git-commit[1]:
 // このスナップショットは "インデックス" と呼ばれる一時エリアに
-// 格納されます。gitlink:git-commit[1] を用いるとリポジトリにインデックスの
+// 格納されます。linkgit:git-commit[1] を用いるとリポジトリにインデックスの
 // 中身を永続的に格納させることができます：
 
 ------------------------------------------------
@@ -100,19 +100,19 @@ $ git add file1 file2 file3
 ------------------------------------------------
 
 You are now ready to commit.  You can see what is about to be committed
-using gitlink:git-diff[1] with the --cached option:
-// これでコミットする準備ができました。gitlink:git-diff[1] を --cached オプション付きで
+using linkgit:git-diff[1] with the --cached option:
+// これでコミットする準備ができました。linkgit:git-diff[1] を --cached オプション付きで
 // 実行するとコミットされる内容を確認できます：
 
 ------------------------------------------------
 $ git diff --cached
 ------------------------------------------------
 
-(Without --cached, gitlink:git-diff[1] will show you any changes that
+(Without --cached, linkgit:git-diff[1] will show you any changes that
 you've made but not yet added to the index.)  You can also get a brief
-summary of the situation with gitlink:git-status[1]:
-// (--cashed を指定しない場合、gitlink:git-diff[1] は修正されているがまだインデックスに
-// 追加されていない変更を表示します。) gitlink:git-status[1] を使用すると
+summary of the situation with linkgit:git-status[1]:
+// (--cashed を指定しない場合、linkgit:git-diff[1] は修正されているがまだインデックスに
+// 追加されていない変更を表示します。) linkgit:git-status[1] を使用すると
 // 簡潔なまとめを表示することもできます。
 
 ------------------------------------------------
@@ -489,10 +489,10 @@ $ git config --get remote.origin.url
 -------------------------------------
 
 (The complete configuration created by git-clone is visible using
-"git config -l", and the gitlink:git-config[1] man page
+"git config -l", and the linkgit:git-config[1] man page
 explains the meaning of each option.)
 // (git-clone により作成された完全な構成は "git config -l" を使用する
-// と確認できます。また、gitlink:git-config[1] の man ページにて
+// と確認できます。また、linkgit:git-config[1] の man ページにて
 // 各オプションの意味が説明されています)
 
 Git also keeps a pristine copy of Alice's master branch under the
@@ -515,17 +515,17 @@ $ git clone alice.org:/home/alice/project myrepo
 -------------------------------------
 
 Alternatively, git has a native protocol, or can use rsync or http;
-see gitlink:git-pull[1] for details.
+see linkgit:git-pull[1] for details.
 // 代わりに、gitが持っているネイティブなプロトコルか、rsync, http を
 // 使用することもできます；
-// 詳細は gitlink:git-pull[1] を参照してください。
+// 詳細は linkgit:git-pull[1] を参照してください。
 
 Git can also be used in a CVS-like mode, with a central repository
-that various users push changes to; see gitlink:git-push[1] and
+that various users push changes to; see linkgit:git-push[1] and
 link:cvs-migration.html[git for CVS users].
 // git はまた、CVS ライクなモードで使用することもできます。
 // つまり、中央リポジトリを持ち、様々なユーザが変更を push するような使用法です。
-// それらの詳細は gitlink:git-push[1] と link:cvs-migration.html[git for CVS users] を
+// それらの詳細は linkgit:git-push[1] と link:cvs-migration.html[git for CVS users] を
 // 参照してください。
 
 Exploring history
@@ -611,11 +611,11 @@ $ git-tag v2.5 1b2e1d63ff
 you can refer to 1b2e1d63ff by the name "v2.5".  If you intend to
 share this name with other people (for example, to identify a release
 version), you should create a "tag" object, and perhaps sign it; see
-gitlink:git-tag[1] for details.
+linkgit:git-tag[1] for details.
 // を実行すると、"v2.5" という名前で 1b2e1d63ff を参照できるようになります。
 // この名前を(例えば、リリースバージョンを特定する為に)他の人々と共有するには、
 // "tag" オブジェクトを作成し、それに署名をつけるべきです。；
-// 詳細は gitlink:git-tag[1] を参照してください。
+// 詳細は linkgit:git-tag[1] を参照してください。
 
 Any git command that needs to know a commit can take any of these
 names.  For example:
@@ -642,7 +642,7 @@ this branch.  If this branch is the only branch containing those
 commits, they will be lost.  Also, don't use "git reset" on a
 publicly-visible branch that other developers pull from, as it will
 force needless merges on other developers to clean up the history.
-If you need to undo changes that you have pushed, use gitlink:git-revert[1]
+If you need to undo changes that you have pushed, use linkgit:git-revert[1]
 instead.
 // 上記の最後のコマンドに注意してください：
 // 作業ディレクトリ内の変更を失うことに加えて、このブランチから
@@ -652,7 +652,7 @@ instead.
 // また、他の開発者がそこから pull するような公的に目に見えるブランチでは
 // "git reset" は使用しないでください。もしそうすると、他の開発者に
 // 履歴をきれいにするために、不必要なマージを強制させることになります。
-// あなたが push した変更を元に戻す必要があるなら、gitlink:git-revert[1] を
+// あなたが push した変更を元に戻す必要があるなら、linkgit:git-revert[1] を
 // その代わりに使用してください。
 
 The git grep command can search for strings in any version of your
@@ -813,22 +813,22 @@ digressions that may be interesting at this point are:
 // もしそれらを正しい手順で考察するのが嫌な場合は、
 // これらの点に関する面白い脱線として、他には以下のものがあります：
 
-  * gitlink:git-format-patch[1], gitlink:git-am[1]: These convert
+  * linkgit:git-format-patch[1], linkgit:git-am[1]: These convert
     series of git commits into emailed patches, and vice versa,
     useful for projects such as the linux kernel which rely heavily
     on emailed patches.
-//   * gitlink:git-format-patch[1], gitlink:git-am[1]: これらは
+//   * linkgit:git-format-patch[1], linkgit:git-am[1]: これらは
 //     一連の git のコミットを E-mail のパッチに変換し、またその逆を
 //     行います。Linux カーネルのように E-mail のパッチに強く依存している
 //     プロジェクトで役に立ちます。
 
-  * gitlink:git-bisect[1]: When there is a regression in your
+  * linkgit:git-bisect[1]: When there is a regression in your
     project, one way to track down the bug is by searching through
     the history to find the exact commit that's to blame.  Git bisect
     can help you perform a binary search for that commit.  It is
     smart enough to perform a close-to-optimal search even in the
     case of complex non-linear history with lots of merged branches.
-//   * gitlink:git-bisect[1]: プロジェクトに後戻りがあった時に、
+//   * linkgit:git-bisect[1]: プロジェクトに後戻りがあった時に、
 //     そのバグを追跡する方法としては、履歴を検索し原因となる適切なコミットを
 //     見つけ出す方法があります。
 //     git bisect はそのコミットをバイナリ検索する手助けをします。

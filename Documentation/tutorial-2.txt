@@ -229,11 +229,11 @@ branches.
 // マージしたブランチの先頭を親として参照しています。
 
 Besides blobs, trees, and commits, the only remaining type of object
-is a "tag", which we won't discuss here; refer to gitlink:git-tag[1]
+is a "tag", which we won't discuss here; refer to linkgit:git-tag[1]
 for details.
 // blob, tree, commit の他に、説明していないオブジェクトは "tag" オブジェクト
 // だけです。 tag オブジェクトはここでは議論しません；
-// 詳細は gitlink:git-tag[1] を参照してください。
+// 詳細は linkgit:git-tag[1] を参照してください。
 
 So now we know how git uses the object database to represent a
 project's history:
