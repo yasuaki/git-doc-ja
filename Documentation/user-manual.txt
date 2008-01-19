@@ -6449,7 +6449,7 @@ $ git gc
 [[todo]]
 Appendix B: Notes and todo list for this manual
 ===============================================
-// = 付録 B: このマニュアルの覚え書きとTODOリスト
+// == 付録 B: このマニュアルの覚え書きとTODOリスト
 
 This is a work in progress.
 // この仕事は作業中です。
