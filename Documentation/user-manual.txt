@@ -5736,20 +5736,26 @@ and that is what higher level `git merge -s resolve` is implemented with.
 [[hacking-git]]
 Hacking git
 ===========
-// == git をハックする *未翻訳*
+// == git をハックする
 
 This chapter covers internal details of the git implementation which
 probably only git developers need to understand.
+// この章では git の実装内部の詳細について説明します。
+// これらの内容はおそらく git の開発者のみが必要となる内容です。
 
 [[object-details]]
 Object storage format
 ---------------------
-// === Object storage format
+// === オブジェクトの保管形式
 
 All objects have a statically determined "type" which identifies the
 format of the object (i.e. how it is used, and how it can refer to other
 objects).  There are currently four different object types: "blob",
 "tree", "commit", and "tag".
+// すべてのオブジェクトは静的に決定された "種別" を持っており、
+// それによりオブジェクトの形式が特定されます(例えば、どのように使用され
+// どのように他のオブジェクトを参照するかなど)。現在のところ、オブジェクト
+// 種別は４つ存在します： "blob", "tree", "commit", "tag" です。
 
 Regardless of object type, all objects share the following
 characteristics: they are all deflated with zlib, and have a header
@@ -5760,6 +5766,12 @@ plus this header, so `sha1sum` 'file' does not match the object name
 for 'file'.
 (Historical note: in the dawn of the age of git the hash
 was the sha1 of the 'compressed' object.)
+// オブジェクトの種別に関係なく、すべてのオブジェクトは次の特徴を持ちます：
+// オブジェクトは全て zlib で圧縮され、ヘッダにはオブジェクトの種別だけでなく、
+// オブジェクトデータのサイズの情報が含まれています。
+// なお、オブジェクトの名前に使用されている SHA1 ハッシュ値は元データ＋このヘッダの
+// ハッシュ値となっています。従ってファイルの `sha1sum` の結果は
+// そのオブジェクトの名前とは一致しません。
 
 As a result, the general consistency of an object can always be tested
 independently of the contents or the type of the object: all objects can
@@ -5767,12 +5779,22 @@ be validated by verifying that (a) their hashes match the content of the
 file and (b) the object successfully inflates to a stream of bytes that
 forms a sequence of <ascii type without space> {plus} <space> {plus} <ascii decimal
 size> {plus} <byte\0> {plus} <binary object data>.
+// その結果、オブジェクトの一般的な一貫性はその中身やオブジェクト種別とは
+// 常に独立してテストすることができます：全ておオブジェクトは次のようにして
+// 検証することができます。(a)それらのハッシュ値がファイルの中身と一致していること。そして、
+// (b)オブジェクトを解凍することができ、解凍したデータは <オブジェクトの種別> + 空白 +
+// <サイズ> ＋ <byte\0> + <オブジェクトのバイナリデータ> の順番となっていること。
 
 The structured objects can further have their structure and
 connectivity to other objects verified. This is generally done with
 the `git-fsck` program, which generates a full dependency graph
 of all objects, and verifies their internal consistency (in addition
 to just verifying their superficial consistency through the hash).
+// 構造化されたオブジェクトの場合は、さらにその構造と他のオブジェクトの
+// 連結性によって懸賞することができます。これらは `git-fsck` プログラムが
+// 通常行っている内容であり、全オブジェクトの完全な依存グラフを生成し、
+// それらの内部一貫性を検証します(さらに、単にハッシュを使用した表面的な
+// 一貫性の検証も行います)
 
 [[birdview-on-the-source-code]]
 A birds-eye view of Git's source code
@@ -5782,8 +5804,12 @@ A birds-eye view of Git's source code
 It is not always easy for new developers to find their way through Git's
 source code.  This section gives you a little guidance to show where to
 start.
+// 新しい開発者にとっては Git のソースコードの構成を理解するのは必ずしも
+// 容易ではないでしょう。このセクションでは、どこから開始したら良いかを
+// 示す小さなガイダンスです。
 
 A good place to start is with the contents of the initial commit, with:
+// 手始めとして良い場所は、初期コミットの内容を見ることです。次のように取得します：
 
 ----------------------------------------------------
 $ git checkout e83c5163
@@ -5791,18 +5817,30 @@ $ git checkout e83c5163
 
 The initial revision lays the foundation for almost everything git has
 today, but is small enough to read in one sitting.
+// 初期コミットには現在の git のほとんど全ての基礎ができていますが、
+// ざっと読みとおすのには十分な小ささです。
 
 Note that terminology has changed since that revision.  For example, the
 README in that revision uses the word "changeset" to describe what we
 now call a <<def_commit_object,commit>>.
+// 現在ではこのリビジョンの頃から用語が変更されています。例えば、
+// このリビジョンの README では現在 <<def_commit_object,コミット>> と呼んでいる
+// ものを "チェンジセット" と呼んでいます。
 
 Also, we do not call it "cache" any more, but "index", however, the
 file is still called `cache.h`.  Remark: Not much reason to change it now,
 especially since there is no good single name for it anyway, because it is
 basically _the_ header file which is included by _all_ of Git's C sources.
+// また、現在は "キャッシュ" という言い方はせず "インデックス" と呼んでいますが、
+// ファイルは今も `cache.h` です。(注釈：Not much reason to change it now,
+// especially since there is no good single name for it anyway, because it is
+// basically _the_ header file which is included by _all_ of Git's C sources.)
 
 If you grasp the ideas in that initial commit, you should check out a
 more recent version and skim `cache.h`, `object.h` and `commit.h`.
+// 初期コミットを眺めて概要を把握できたら、より新しいバージョンを
+// チェックアウトし、`cache.h`, `object.h`, `commit.h` にざっと目を
+// 通してください。
 
 In the early days, Git (in the tradition of UNIX) was a bunch of programs
 which were extremely simple, and which you used in scripts, piping the
@@ -5811,6 +5849,13 @@ development, since it was easier to test new things.  However, recently
 many of these parts have become builtins, and some of the core has been
 "libified", i.e. put into libgit.a for performance, portability reasons,
 and to avoid code duplication.
+// 初期の頃には、Git は UNIX の伝統にならい、非常にシンプルなプログラムの
+// 集まりとなっていて、それらをパイプで組み合わせ、スクリプト化したりして
+// 利用するようなツールでした。新しいことを試すのが容易であったため、
+// 初期の開発でこれは良いことでした。しかし、現在では、これらの大部分は
+// 内部に組み込まれ、いくつかのコア部分は "ライブラリ化" されました。
+// つまり、パフォーマンスや移植性、コードの重複の回避などの理由で
+// libgit.a に入れられました。
 
 By now, you know what the index is (and find the corresponding data
 structures in `cache.h`), and that there are just a couple of object types
@@ -5818,19 +5863,36 @@ structures in `cache.h`), and that there are just a couple of object types
 `struct object`, which is their first member (and thus, you can cast e.g.
 `(struct object *)commit` to achieve the _same_ as `&commit->object`, i.e.
 get at the object name and flags).
+// ここまでの確認で、インデックスが何かを理解し、そして、`cashe.h`内のインデックスのデータ
+// 構造を理解することができたはずです。また、４つのオブジェクトタイプ(blob, tree, commit, tag)が
+// `struct object` の共通構造を継承していていることや、
+// `struct object` がそれらの最初のメンバであり
+// 例えば `(struct object *)commit` のようにキャストすることで
+// `&commit->object` と同じ結果が得られること、同じようにオブジェクト名やフラグも
+// 得られることを確認できたはずです。
 
 Now is a good point to take a break to let this information sink in.
+// ここまでで、オブジェクトデータに関する確認はひと段落です。
 
 Next step: get familiar with the object naming.  Read <<naming-commits>>.
 There are quite a few ways to name an object (and not only revisions!).
 All of these are handled in `sha1_name.c`. Just have a quick look at
 the function `get_sha1()`. A lot of the special handling is done by
 functions like `get_sha1_basic()` or the likes.
+// 次のステップ：オブジェクトの指定方法を理解してください。
+// <<naming-commits,コミットの指定方法>> に書かれているとおり、
+// オブジェクトの指定方法は数個です(そして、それらはコミットだけに限ったことではありません!)。
+// これらの指定部分の実装は `sha1_name.c` で行われています。
+// その中の関数 `get_sha1() をざっとみてください。
+// 特徴的な部分は `get_sha1_basic()` などの関数部分でハンドリングされています。
 
 This is just to get you into the groove for the most libified part of Git:
 the revision walker.
+// この部分は、Git の最もライブラリ化された部分、すなわちリビジョンウォーカー
+// に対するよい導入になっています。
 
 Basically, the initial version of `git log` was a shell script:
+// 基本的には、`git log` の初期バージョンは次のようなシェルスクリプトでした：
 
 ----------------------------------------------------------------
 $ git-rev-list --pretty $(git-rev-parse --default HEAD "$@") | \
@@ -5838,19 +5900,30 @@ $ git-rev-list --pretty $(git-rev-parse --default HEAD "$@") | \
 ----------------------------------------------------------------
 
 What does this mean?
+// これは何を意味するでしょうか？
 
 `git-rev-list` is the original version of the revision walker, which
 _always_ printed a list of revisions to stdout.  It is still functional,
 and needs to, since most new Git programs start out as scripts using
 `git-rev-list`.
+// `git-rev-list` はリビジョンウォーカーの元になったバージョンであり、
+// _常に_ リビジョンの一覧を標準出力に出力するコマンドです。
+// このコマンドは現在でも役に立っており、新しい Git プログラムを
+// スクリプトとして作成するような場合によく利用されます。
 
 `git-rev-parse` is not as important any more; it was only used to filter out
 options that were relevant for the different plumbing commands that were
 called by the script.
+// `git-rev-parse` はもはや重要ではありません；何故ならこれは、スクリプトにより
+// コールされる異なる配管コマンドに対して、関連のあるオプションをフィルタリング
+// する為だけに利用されているからです。
 
 Most of what `git-rev-list` did is contained in `revision.c` and
 `revision.h`.  It wraps the options in a struct named `rev_info`, which
 controls how and what revisions are walked, and more.
+// `git-rev-list` が行っていることのほとんどは、`revision.c` と `revision.h`
+// に含まれています。`rev_info` という名前の構造内のオプションを包み込み、
+// どのようにどのリビジョンにウォーク(アクセス)するかなどのコントロールをします。
 
 The original job of `git-rev-parse` is now taken by the function
 `setup_revisions()`, which parses the revisions and the common command line
@@ -5859,51 +5932,88 @@ options for the revision walker. This information is stored in the struct
 parsing after calling `setup_revisions()`. After that, you have to call
 `prepare_revision_walk()` for initialization, and then you can get the
 commits one by one with the function `get_revision()`.
+// `git-rev-parse` の元の役割は、現在は `setup_revisions()` 関数に
+// 取って代わられました。`setup_revisions()` はリビジョンウォーカーの為に
+// リビジョンと共通のコマンドラインの解析をします。解析結果は `rev_info` に
+// 保管されて利用されます。`setup_revisions()` を呼び出した後に、自身の
+// コマンドラインオプションを解析することもできます。その後に
+// `prepare_revision_walk()` をコールして初期化すると、`get_revision()` 関数にて
+// ここのコミットを取得することができます。
 
 If you are interested in more details of the revision walking process,
 just have a look at the first implementation of `cmd_log()`; call
 `git-show v1.3.0~155^2~4` and scroll down to that function (note that you
 no longer need to call `setup_pager()` directly).
+// リビジョンウォーカーの処理をより詳しく知りたい場合は、始めに `cmd_log()` の
+// 実装を参照してください；`git-show v1.3.0~155^2~4` を実行し、その関数まで
+// スクロールしてください(もはや `setup_pager()` を直接コールする必要がない
+// 点に注意してください)。
 
 Nowadays, `git log` is a builtin, which means that it is _contained_ in the
 command `git`.  The source side of a builtin is
+// 現在では `git log` はビルトイン化されています(つまり、`git` コマンド内に含まれています)。
+// ビルトイン化されているソース部分は
 
 - a function called `cmd_<bla>`, typically defined in `builtin-<bla>.c`,
   and declared in `builtin.h`,
+// - `cmd_<bla>` という名前の関数で、通常は `builtin-<bla>.c` 内で定義されていて、
+//   宣言は `builtin.h` 内で行われています。
 
 - an entry in the `commands[]` array in `git.c`, and
+// - `git.c` 内の `commands[]` 配列のエントリと、
 
 - an entry in `BUILTIN_OBJECTS` in the `Makefile`.
+// - `Makefile` 内の `BUILTIN_OBJECTS` 内のエントリとがあります。
 
 Sometimes, more than one builtin is contained in one source file.  For
 example, `cmd_whatchanged()` and `cmd_log()` both reside in `builtin-log.c`,
 since they share quite a bit of code.  In that case, the commands which are
 _not_ named like the `.c` file in which they live have to be listed in
 `BUILT_INS` in the `Makefile`.
+// 時には１つのソースファイルに複数のビルトインが含まれていることがあります。
+// 例えば、`cmd_whatchanged()` と `cmd_log()` はコードのかなりを共有しているため、
+// 両方とも `builtin-log.c` 内に存在します。このような場合、コマンドは
+// `.c` ファイルの名前で呼ばれず、`Makefile` 内の `BUILT_INS` 内に
+// リストされている必要があります。
 
 `git log` looks more complicated in C than it does in the original script,
 but that allows for a much greater flexibility and performance.
+// `git log` は 元のスクリプトがしていた内容よりも C の実装の方がより
+// 複雑に見えますが、より高い柔軟性とパフォーマンス性を持っています。
 
 Here again it is a good point to take a pause.
+// ここまでで再び一息つくのにちょうど良い箇所です。
 
 Lesson three is: study the code.  Really, it is the best way to learn about
 the organization of Git (after you know the basic concepts).
+// レッスン３はコードの観察です。(基本的な概念を学んだ後に) Git の構成を学ぶには
+// これが一番良い方法です
 
 So, think about something which you are interested in, say, "how can I
 access a blob just knowing the object name of it?".  The first step is to
 find a Git command with which you can do it.  In this example, it is either
 `git show` or `git cat-file`.
+// 興味のある内容を考えてください。たとえば
+// "blob のオブジェクト名からどのように blob にアクセスするのだろう？"とか。
+// まず最初に、それを行う Git コマンドを見つけてください。この例では、
+// `git show` または `git cat-file` です。
 
 For the sake of clarity, let's stay with `git cat-file`, because it
+// 明瞭にするため、`git cat-file` にしましょう。何故なら
 
 - is plumbing, and
+// - これが配管的なもの(plumbing)であり、
 
 - was around even in the initial commit (it literally went only through
   some 20 revisions as `cat-file.c`, was renamed to `builtin-cat-file.c`
   when made a builtin, and then saw less than 10 versions).
+// - 初期コミットの頃から存在しているからです。(`cat-file.c` のリビジョンが 20 個、
+//   ビルトイン化されて `builtin-cat-file.c` に変更されてからのリビジョンは 10個以下です)。
 
 So, look into `builtin-cat-file.c`, search for `cmd_cat_file()` and look what
 it does.
+// `builtin-cat-file.c` を開き、`cmd_cat_file()` を探し出して、
+// 何が行われているかを見てください。
 
 ------------------------------------------------------------------
         git_config(git_default_config);
@@ -5917,12 +6027,20 @@ Let's skip over the obvious details; the only really interesting part
 here is the call to `get_sha1()`.  It tries to interpret `argv[2]` as an
 object name, and if it refers to an object which is present in the current
 repository, it writes the resulting SHA-1 into the variable `sha1`.
+// 明らかに細かな部分はスキップしましょう；ここで興味深い箇所は
+// `get_sha1()` を読んでいる箇所です。ここではオブジェクト名である `argv[2]`
+// を読み込み、もしそれが現在のリポジトリに存在するオブジェクトを参照している場合は
+// その SHA-1 を変数 `sha1` に代入します。
 
 Two things are interesting here:
+// ここで興味深いのは次の２点です：
 
 - `get_sha1()` returns 0 on _success_.  This might surprise some new
   Git hackers, but there is a long tradition in UNIX to return different
   negative numbers in case of different errors--and 0 on success.
+// - `get_cha1()` は _成功_ 時に 0 を返却します。これは Git のハックを
+//   初めて行う人にとっては驚くべきことですが、エラーの種別毎に異なる負数を返却し、
+//   成功時には 0 を返却するのは UNIX の昔からの伝統です。
 
 - the variable `sha1` in the function signature of `get_sha1()` is `unsigned
   char \*`, but is actually expected to be a pointer to `unsigned
@@ -5930,10 +6048,18 @@ Two things are interesting here:
   commit.  Note that whenever a SHA-1 is passed as `unsigned char \*`, it
   is the binary representation, as opposed to the ASCII representation in
   hex characters, which is passed as `char *`.
+// - `get_sha1()` 関数の戻り値である変数 `sha1` は `unsigned char \*` ですが、
+//   実際は `unsigned char[20]` を指し示すことが想定されています。
+//   この変数は指定されたコミットの 160-bit の SHA-1 を含んでいます。
+//   SHA-1 が `unsigned char \*` として渡される時はいつでも、
+//   それがバイナリ表現であり、`char *` で渡される 16進の ASCII表現とは違う
+//   ことに注意してください。
 
 You will see both of these things throughout the code.
+// これらの両方をソースを通して確認できます。
 
 Now, for the meat:
+// さて、ここが核心です：
 
 -----------------------------------------------------------------------------
         case 0:
@@ -5945,8 +6071,13 @@ object).  To know how the function `read_object_with_reference()` actually
 works, find the source code for it (something like `git grep
 read_object_with | grep ":[a-z]"` in the git repository), and read
 the source.
+// これが blob (実際のところ、blob だけでなくすべてのオブジェクト)を読む方法です。
+// この関数 `read_object_with_reference()` がどのように動くかを知る為には
+// その部分のソースコードを `git grep read_object_with | grep ":[a-z]"` のように
+// して見つけ出し、ソースを読むことです。
 
 To find out how the result can be used, just read on in `cmd_cat_file()`:
+// 結果がどのように使用されるかを見つけるには、`cmd_cat_file()` 内を見ます：
 
 -----------------------------------
         write_or_die(1, buf, size);
@@ -5955,10 +6086,16 @@ To find out how the result can be used, just read on in `cmd_cat_file()`:
 Sometimes, you do not know where to look for a feature.  In many such cases,
 it helps to search through the output of `git log`, and then `git show` the
 corresponding commit.
+// 時には機能の実装箇所を探し出すことができない場合があるかもしれません。
+// そのような場合には、`git log` の出力を探しだし、関連するコミットを `git show`
+// すると手助けになるかもしれません。
 
 Example: If you know that there was some test case for `git bundle`, but
 do not remember where it was (yes, you _could_ `git grep bundle t/`, but that
 does not illustrate the point!):
+// 例： `git bundle` に対するテストケースがあることは知っているが、
+// それがどこにあるかがわからない場合 (もちろん、`git grep bundle t/` することも
+// できますが、それではポイントを示すことになりません！)：
 
 ------------------------
 $ git log --no-merges t/
@@ -5967,15 +6104,20 @@ $ git log --no-merges t/
 In the pager (`less`), just search for "bundle", go a few lines back,
 and see that it is in commit 18449ab0...  Now just copy this object name,
 and paste it into the command line
+// ページャ (`less`) 内で "bundle" を検索し、数行戻ると、
+// commit 18449ab0... にあるのがわかります。このオブジェクト名をコピーし
+// コマンドラインにペーストします
 
 -------------------
 $ git show 18449ab0
 -------------------
 
 Voila.
+// ビンゴ！
 
 Another example: Find out what to do in order to make some script a
 builtin:
+// 次の例：スクリプトをビルトイン化するために必要な作業を調べるには：
 
 -------------------------------------------------
 $ git log --no-merges --diff-filter=A builtin-*.c
@@ -5983,6 +6125,8 @@ $ git log --no-merges --diff-filter=A builtin-*.c
 
 You see, Git is actually the best tool to find out about the source of Git
 itself!
+// ここまでに見てきたように、Git は Git 自身のソースを調べるときにも
+// 最も役に立つツールなのです！
 
 [[glossary]]
 include::glossary.txt[]
