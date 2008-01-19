@@ -2984,8 +2984,9 @@ He uses two public branches:
    wants.
 // - "test" ツリーはパッチが最初に入れられる場所です。
 //   ここで他の進行中の開発と一緒に統合されて公表されます。
-//   このツリーは Andrew が望んだときはいつでも pull して取得することができます。
-//   (訳注：原文に "-mm" と書かれているが、これが何であるかよくわからない)
+//   このツリーは Andrew がいつでも -mm に pull できるようにする為のものです。
+//   (訳注："-mm" とは Andrew Morton によってリリースされる実験的なカーネルパッチ群のこと。
+//    -mm に入って価値を証明されると Linus のツリーに反映される)
 
  - A "release" tree into which tested patches are moved for final sanity
    checking, and as a vehicle to send them upstream to Linus (by sending
