@@ -111,7 +111,7 @@ $ git diff --cached
 (Without --cached, linkgit:git-diff[1] will show you any changes that
 you've made but not yet added to the index.)  You can also get a brief
 summary of the situation with linkgit:git-status[1]:
-// (--cashed を指定しない場合、linkgit:git-diff[1] は修正されているがまだインデックスに
+// (--cached を指定しない場合、linkgit:git-diff[1] は修正されているがまだインデックスに
 // 追加されていない変更を表示します。) linkgit:git-status[1] を使用すると
 // 簡潔なまとめを表示することもできます。
 
