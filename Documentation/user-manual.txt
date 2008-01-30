@@ -2992,7 +2992,7 @@ He uses two public branches:
    checking, and as a vehicle to send them upstream to Linus (by sending
    him a "please pull" request.)
 // - "release" ツリーはテストされたパッチが最終的に健全であることが確認された後に
-//   移動され、Linus に変更を送付する乗り物として使用されます。(Linux に
+//   移動され、Linus に変更を送付する乗り物として使用されます。(Linus に
 //   このツリーを "pull してください" というリクエストをします)
 
 He also uses a set of temporary branches ("topic branches"), each
@@ -3140,9 +3140,13 @@ see the value of keeping each patch (or patch series) in its own branch.  It
 means that the patches can be moved into the "release" tree in any order.
 // しばらく後に十分な時間が経ちテストが完了したときに、
 // 同じブランチを "release" ツリーに pull し、上流に向かう準備をします。
-// このツリーは自身のブランチ内に各パッチ(ありいは一連のパッチ)を保つ為の場所です。
-// これはつまり、パッチが "release" ツリーに任意の順番で移動できることを意味します。
-// (訳注：意味が良く分からないので、訳がおかしいかも)
+// これは、それぞれのパッチ(あるいは一連のパッチ)をパッチ用のブランチ
+// に留めておくありがたみを理解する場面です。この作業は一連のパッチが
+// "release" ツリーへ任意の順番で移動できることを意味します。
+// (訳注: 先を読めばわかりますが、ブランチを作って、パッチを適用すると、パッチ群
+// のテストをブランチごとに並行して行なうことができます。そして、テストが完了したパッチ
+// のブランチから順に release ツリーへ移動することができます。そして、各パッチ用のブラ
+// ンチの状況も簡単に把握できます。)
 
 -------------------------------------------------
 $ git checkout release && git pull . speed-up-spinlocks
