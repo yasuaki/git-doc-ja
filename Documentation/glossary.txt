@@ -1,0 +1,797 @@
+GIT Glossary
+============
+// == GIT 用語集
+
+[[def_alternate_object_database]]alternate object database::
+// [[def_alternate_object_database]]代替オブジェクトＤＢ(alternate object database)::
+	Via the alternates mechanism, a <<def_repository,repository>>
+	can inherit part of its <<def_object_database,object database>>
+	from another object database, which is called "alternate".
+//	代替メカニズム(alternates mechanism)により、<<def_repository,リポジトリ>> は
+//	そのオブジェクトＤＢの一部を、他のオブジェクトＤＢから継承
+//	することができます。この継承したものを "代替" オブジェクトＤＢといいます。
+
+[[def_bare_repository]]bare repository::
+// [[def_bare_repository]]裸のリポジトリ(bare repository)::
+	A bare repository is normally an appropriately
+	named <<def_directory,directory>> with a `.git` suffix that does not
+	have a locally checked-out copy of any of the files under
+	revision control. That is, all of the `git`
+	administrative and control files that would normally be present in the
+	hidden `.git` sub-directory are directly present in the
+	`repository.git` directory instead,
+	and no other files are present and checked out. Usually publishers of
+	public repositories make bare repositories available.
+//	裸のリポジトリとは、通常 `.git` の拡張子を持つ <<def_directory,ディレクトリ>> で、
+//	リビジョン管理下にあるチェックアウトしたファイルをローカルに持たないディレクトリです。
+//	通常 `.git` サブディレクトリ に隠れている `git` の管理ファイル全てが
+//	`repository.git` ディレクトリに直接存在し、
+//	他のファイルは存在せず、チェックアウトもされていません。
+//	通常、公開リポジトリを出版する人は、裸のリポジトリを作成します。
+
+[[def_blob_object]]blob object::
+// [[def_blob_object]]blob object::
+	Untyped <<def_object,object>>, e.g. the contents of a file.
+//	タイプ付けされていない<<def_object,オブジェクト>>, つまりファイルの中身です。
+
+[[def_branch]]branch::
+// [[def_branch]]ブランチ(branch)::
+	A "branch" is an active line of development.  The most recent
+	<<def_commit,commit>> on a branch is referred to as the tip of
+	that branch.  The tip of the branch is referenced by a branch
+	<<def_head,head>>, which moves forward as additional development
+	is done on the branch.  A single git
+	<<def_repository,repository>> can track an arbitrary number of
+	branches, but your <<def_working_tree,working tree>> is
+	associated with just one of them (the "current" or "checked out"
+	branch), and <<def_HEAD,HEAD>> points to that branch.
+//	"ブランチ" はアクティブな開発ラインのことです。ブランチ上の最新の<<def_commit,コミット>>は
+//	そのブランチの先端(tip)として参照されます。
+//	ブランチの先端はブランチの<<def_head,ヘッド(head)>>により参照され、
+//	ブランチ上でさらに開発が進むと、先に進められます。
+//	１つの git <<def_repository,リポジトリ>>は任意の数のブランチを追跡できますが、
+//	<<def_working_tree,作業ツリー>> はそれらブランチの１つ("カレント(current)"
+//	または"チェックアウト"ブランチ)と関連づけられ、<<def_HEAD,HEAD>>がその
+//	ブランチを指し示しています。
+
+[[def_cache]]cache::
+// [[def_cache]]キャッシュ(cache)::
+	Obsolete for: <<def_index,index>>.
+//	<<def_index,インデックス(index)>> に対する廃語です。
+
+[[def_chain]]chain::
+// [[def_chain]]チェーン(chain)::
+	A list of objects, where each <<def_object,object>> in the list contains
+	a reference to its successor (for example, the successor of a
+	<<def_commit,commit>> could be one of its <<def_parent,parents>>).
+//	オブジェクトのリストのことで、そのリスト内の各<<def_object,オブジェクト>>が
+//	後続する参照を含んでいるものを指します。(後続する参照とは、例えば
+//	<<def_commit,コミット>>の場合、その<<def_parent,親(parents)>>のことです)
+
+[[def_changeset]]changeset::
+// [[def_changeset]]チェンジセット(changeset)::
+	BitKeeper/cvsps speak for "<<def_commit,commit>>". Since git does not
+	store changes, but states, it really does not make sense to use the term
+	"changesets" with git.
+//	"<<def_commit,コミット>>" に対する BitKeeper/cvsps 側の用語です。
+//	git は変更ではなく状態を格納する為、git で "チェンジセット" という用語を
+//	使用するのは実際のところ意味がありません。
+
+[[def_checkout]]checkout::
+// [[def_checkout]]チェックアウト(checkout)::
+	The action of updating the <<def_working_tree,working tree>> to a
+	<<def_revision,revision>> which was stored in the
+	<<def_object_database,object database>>.
+//	<<def_working_tree,作業ツリー>>を<<def_object_database,オブジェクトＤＢ>>内に
+//	格納されているある<<def_revision,リビジョン>>に更新する操作のことです。
+
+[[def_cherry-picking]]cherry-picking::
+// [[def_cherry-picking]]チェリーピック(cherry-picking)::
+	In <<def_SCM,SCM>> jargon, "cherry pick" means to choose a subset of
+	changes out of a series of changes (typically commits) and record them
+	as a new series of changes on top of a different codebase. In GIT, this is
+	performed by the "git cherry-pick" command to extract the change introduced
+	by an existing <<def_commit,commit>> and to record it based on the tip
+	of the current <<def_branch,branch>> as a new commit.
+//	<<def_SCM,SCM>>の用語では、"チェリーピック(cherry pick)" は
+//	一連の変更(一般にはコミット)の一部を選択し、異なるコードベースの先頭に
+//	新しい一連の変更としてそれらを記録することです。GITでは
+//	"git cherry-pick" コマンドによって<<def_commit,コミット>>による変更を抜き出し、
+//	現在の<<def_branch,ブランチ>>の先端に新しいコミットとして記録する操作のことです。
+
+[[def_clean]]clean::
+// [[def_clean]]クリーン(clean)::
+	A <<def_working_tree,working tree>> is clean, if it
+	corresponds to the <<def_revision,revision>> referenced by the current
+	<<def_head,head>>. Also see "<<def_dirty,dirty>>".
+//	<<def_working_tree,作業ツリー>> がクリーンであるとは、
+//	その作業ディレクトリが現在の<<def_head,ヘッド(head)>>が参照する
+//	<<def_revision,リビジョン>>と一致している場合を言います。
+//	"<<def_dirty,dirty>>" も参照してください。
+
+[[def_commit]]commit::
+// [[def_commit]]コミット(commit)::
+	As a noun: A single point in the
+	git history; the entire history of a project is represented as a
+	set of interrelated commits.  The word "commit" is often
+	used by git in the same places other revision control systems
+	use the words "revision" or "version".  Also used as a short
+	hand for <<def_commit_object,commit object>>.
+//	名詞：git の履歴内のある１点です。プロジェクトの全履歴は
+//	相互に関連したコミットの集合により表現されています。git では"コミット"という言葉を
+//	他のリビジョン管理システムが使用する "リビジョン" または "バージョン"と同じ意味で
+//	使用することがあります。また、<<def_commit_object,コミットオブジェクト>>
+//	の略称として使われることもあります。
++
+As a verb: The action of storing a new snapshot of the project's
+state in the git history, by creating a new commit representing the current
+state of the <<def_index,index>> and advancing <<def_HEAD,HEAD>>
+to point at the new commit.
+// +
+// 動詞：プロジェクト状態の新しいスナップショットを git の履歴に格納する操作のことで、
+// <<def_index,インデックス>>の現在の状態を現わす新しいコミットを作成し、
+// 新しいコミットを指し示すように <<def_HEAD,HEAD>> の位置を進めます。
+
+[[def_commit_object]]commit object::
+// [[def_commit_object]]コミットオブジェクト(commit object)::
+	An <<def_object,object>> which contains the information about a
+	particular <<def_revision,revision>>, such as <<def_parent,parents>>, committer,
+	author, date and the <<def_tree_object,tree object>> which corresponds
+	to the top <<def_directory,directory>> of the stored
+	revision.
+//	特定<<def_revision,リビジョン>>の情報を含んだ<<def_object,オブジェクト>>のことです。
+//	コミットオブジェクトは<<def_parent,親(parents)>>、コミットした人、著者、日付、
+//	格納されているリビジョンの最上位のディレクトリと一致する
+//	<<def_tree_object,ツリーオブジェクト(tree object)>>、などの情報が含まれています。
+
+[[def_core_git]]core git::
+// [[def_core_git]]gitの中核(core git)::
+	Fundamental data structures and utilities of git. Exposes only limited
+	source code management tools.
+//	gitの基礎データ構造とユーティリティのこと。
+//	ソースコード管理ツールとしての中核部分のことです。
+
+[[def_DAG]]DAG::
+// [[def_DAG]]DAG::
+	Directed acyclic graph. The <<def_commit,commit>> objects form a
+	directed acyclic graph, because they have parents (directed), and the
+	graph of commit objects is acyclic (there is no
+	<<def_chain,chain>> which begins and ends with the same
+	<<def_object,object>>).
+//	有向非巡回グラフ。<<def_commit,コミット>> オブジェクトは有向非巡回グラフ
+//	を形成します。何故ならコミットは(方向付けされた)親を持ち、
+//	コミットオブジェクトのグラフは非巡回(つまり、始まりと終わりが
+//	同じ<<def_object,オブジェクト>>となるような <<def_chain,チェーン(chain)>>
+//	が存在しないからです)
+
+[[def_dangling_object]]dangling object::
+// [[def_dangling_object]]遊離オブジェクト(dangling object)::
+	An <<def_unreachable_object,unreachable object>> which is not
+	<<def_reachable,reachable>> even from other unreachable objects; a
+	dangling object has no references to it from any
+	reference or <<def_object,object>> in the <<def_repository,repository>>.
+//	<<def_unreachable_object,到達不能なオブジェクト>>の内、他のどの到達不能オブジェクトからも
+//	到達不能なオブジェクトのことです。つまり、リボジトリ内のどの参照と
+//	どのオブジェクトからも参照されていないオブジェクトのことです。
+
+[[def_detached_HEAD]]detached HEAD::
+// [[def_detached_HEAD]]分離したHEAD (detached HEAD)::
+	Normally the <<def_HEAD,HEAD>> stores the name of a
+	<<def_branch,branch>>.  However, git also allows you to <<def_checkout,check out>>
+	an arbitrary <<def_commit,commit>> that isn't necessarily the tip of any
+	particular branch.  In this case HEAD is said to be "detached".
+//	通常 <<def_HEAD,HEAD>> はブランチ名を保管します。しかし、gitは特定のブランチの
+//	先端(tip)ではない任意のコミットをチェックアウトすることもできます。
+//	その状態のことを分離した(detached)といいます。
+
+[[def_dircache]]dircache::
+// [[def_dircache]]ディレクトリキャッシュ(dircache)::
+	You are *waaaaay* behind. See <<def_index,index>>.
+//	*かなり時代遅れ* な用語です。<<def_index,インデックス>> を参照。
+
+[[def_directory]]directory::
+// [[def_directory]]ディレクトリ(directory)::
+	The list you get with "ls" :-)
+//	"ls" によって得られるリストのことです :-)
+
+[[def_dirty]]dirty::
+// [[def_dirty]]汚れている(dirty)::
+	A <<def_working_tree,working tree>> is said to be "dirty" if
+	it contains modifications which have not been <<def_commit,committed>> to the current
+	<<def_branch,branch>>.
+//	<<def_working_tree,作業ツリー>> が "汚れている(dirty)" とは、
+//	現在の<<def_branch,ブランチ>>に<<def_commit,コミット>>されていない
+//	変更が作業ツリー内に含まれていることをいいます。
+
+[[def_ent]]ent::
+// [[def_ent]]エント(ent)::
+	Favorite synonym to "<<def_tree-ish,tree-ish>>" by some total geeks. See
+	`http://en.wikipedia.org/wiki/Ent_(Middle-earth)` for an in-depth
+	explanation. Avoid this term, not to confuse people.
+//	ギークが好んで使う "<<def_tree-ish,tree-ish>>" の同義語です。
+//	詳しい説明は`http://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%B3%E3%83%88`を参照してください。
+//	人々を混乱させない為にも、この言葉の使用はさけてください。
+
+[[def_evil_merge]]evil merge::
+// [[def_evil_merge]]有害なマージ(evil merge)::
+	An evil merge is a <<def_merge,merge>> that introduces changes that
+	do not appear in any <<def_parent,parent>>.
+//	有害なマージ(evil merge)とは、どの<<def_parent,親>>にも現れない
+//	変更が行われている<<def_merge,マージ>>のことです。
+
+[[def_fast_forward]]fast forward::
+// [[def_fast_forward]]早送り(fast forward)::
+	A fast-forward is a special type of <<def_merge,merge>> where you have a
+	<<def_revision,revision>> and you are "merging" another
+	<<def_branch,branch>>'s changes that happen to be a descendant of what
+	you have. In such these cases, you do not make a new <<def_merge,merge>>
+	<<def_commit,commit>> but instead just update to his
+	revision. This will happen frequently on a
+	<<def_tracking_branch,tracking branch>> of a remote
+	<<def_repository,repository>>.
+//	早送り(fast forward) とは特殊なタイプの<<def_merge,マージ>>のことで、
+//	マージにより得られる結果が作成済みの祖先と一致するマージのことをいいます。
+//	このような場合、新しい<<def_merge,マージ>><<def_commit,コミット>>は作成されずに、
+//	そのリビジョンを指すように更新されます。
+//	早送り(fast forward)はリモート<<def_repository,リポジトリ>>の<<def_tracking_branch,追跡ブランチ>>
+//	の場合に良く発生します。
+
+[[def_fetch]]fetch::
+// [[def_fetch]]取得(fetch)::
+	Fetching a <<def_branch,branch>> means to get the
+	branch's <<def_head_ref,head ref>> from a remote
+	<<def_repository,repository>>, to find out which objects are
+	missing from the local <<def_object_database,object database>>,
+	and to get them, too.  See also linkgit:git-fetch[1].
+//	<<def_branch,ブランチ(branch)>>を取得するとは、ブランチの
+//	リモート<<def_repository,リポジトリ>>から<<def_head_ref,ヘッドの参照(head ref)>>
+//	を取得し、ローカルの<<def_object_database,オブジェクトＤＢ>>に存在しないオブジェクトを
+//	探し出し、それらを取得することをいいます。linkgit:git-fetch[1] も参照してください。
+
+[[def_file_system]]file system::
+// [[def_file_system]]ファイルシステム(file system)::
+	Linus Torvalds originally designed git to be a user space file system,
+	i.e. the infrastructure to hold files and directories. That ensured the
+	efficiency and speed of git.
+//	Linus Torvalds は元々はユーザ空間のファイルシステム、つまり、ファイルと
+//	ディレクトリを保持する構造基盤として git を設計していました。
+//	その性質により、gitの効率性とスピードが保障されています。
+
+[[def_git_archive]]git archive::
+// [[def_git_archive]]gitアーカイブ(git archive)::
+	Synonym for <<def_repository,repository>> (for arch people).
+//	<<def_repository,リポジトリ>> の同義語です。(archユーザが使用します)
+
+[[def_grafts]]grafts::
+// [[def_grafts]]接ぎ木(grafts)::
+	Grafts enables two otherwise different lines of development to be joined
+	together by recording fake ancestry information for commits. This way
+	you can make git pretend the set of <<def_parent,parents>> a <<def_commit,commit>> has
+	is different from what was recorded when the commit was
+	created. Configured via the `.git/info/grafts` file.
+//	接ぎ木(grafts)とは、コミットに関する嘘の祖先情報を記録することで関連のない２つの開発ラインを
+//	つなぎ合わせることをいいます。この方法により、コミット作成時の記録とは違うコミットの
+//	<<def_parent,親>>の集合を、コミットの<<def_parent,親>>の集合であるかのように git に
+//	行動させることができます。
+//	この情報は `.git/info/grafts` ファイルにより設定します。
+
+[[def_hash]]hash::
+// [[def_hash]]ハッシュ(hash)::
+	In git's context, synonym to <<def_object_name,object name>>.
+//	git の文脈中では、<<def_object_name,オブジェクト名>>と同義です。
+
+[[def_head]]head::
+// [[def_head]]ヘッド(head)::
+	A <<def_ref,named reference>> to the <<def_commit,commit>> at the tip of a
+	<<def_branch,branch>>.  Heads are stored in
+	`$GIT_DIR/refs/heads/`, except when using packed refs. (See
+	linkgit:git-pack-refs[1].)
+//	<<def_branch,ブランチ>>の先端にある<<def_commit,コミット>>への<<def_ref,名前のついた参照>>
+//	のことです。ヘッドは通常 `$GIT_DIR/refs/heads/` の下に保管されますが、
+//	例外として参照が圧縮(pack)されることもあります。(linkgit:git-pack-refs[1] 参照)
+
+[[def_HEAD]]HEAD::
+// [[def_HEAD]]HEAD::
+	The current <<def_branch,branch>>.  In more detail: Your <<def_working_tree,
+	working tree>> is normally derived from the state of the tree
+	referred to by HEAD.  HEAD is a reference to one of the
+	<<def_head,heads>> in your repository, except when using a
+	<<def_detached_HEAD,detached HEAD>>, in which case it may
+	reference an arbitrary commit.
+//	現在の <<def_branch,ブランチ>> です。より詳しくは、
+//	<<def_working_tree,作業ツリー>>は通常、HEAD が参照する状態から導き出されます。
+//	HEAD は通常、リポジトリ内の１つの <<def_head,ヘッド(head)>> を参照します。
+//	例外として、<<def_detached_HEAD,分離したHEAD(detached HEAD)>>を使用している場合があり、
+//	その場合は、任意のコミットを参照します。
+
+[[def_head_ref]]head ref::
+// [[def_head_ref]]head ref::
+	A synonym for <<def_head,head>>.
+//	<<def_head,ヘッド(head)>>と同義です。
+
+[[def_hook]]hook::
+// [[def_hook]]フック(hook)::
+	During the normal execution of several git commands, call-outs are made
+	to optional scripts that allow a developer to add functionality or
+	checking. Typically, the hooks allow for a command to be pre-verified
+	and potentially aborted, and allow for a post-notification after the
+	operation is done. The hook scripts are found in the
+	`$GIT_DIR/hooks/` directory, and are enabled by simply
+	making them executable.
+//	git コマンドのいくつかは実行中にオプションでスクリプトを呼び出すことができ、
+//	開発者の機能追加やチェックの手助けをします。
+//	通常、フックは事前検証を行い処理を中止する為や操作が完了した後に知らせる為に
+//	用いられます。フックスクリプトは `$GIT_DIR/hooks/` ディレクトリに保管され、
+//	スクリプトを実行パーミッションを付与することで利用可能になります。
+
+[[def_index]]index::
+// [[def_index]]インデックス(index)::
+	A collection of files with stat information, whose contents are stored
+	as objects. The index is a stored version of your
+	<<def_working_tree,working tree>>. Truth be told, it can also contain a second, and even
+	a third version of a working tree, which are used
+	when <<def_merge,merging>>.
+//	インデックスはファイルとその状態の集合であり、その中身はオブジェクトとして格納されています。
+//	<<def_working_tree,作業ツリー>>の内容を保管しているバージョンです。
+//	実は、インデックスは２つないし２つの作業ツリーのバージョンを含むことも可能で、
+//	<<def_merge,マージ>>するときにそのような状態となります。
+
+[[def_index_entry]]index entry::
+// [[def_index_entry]]インデックスエントリ(index entry)::
+	The information regarding a particular file, stored in the
+	<<def_index,index>>. An index entry can be unmerged, if a
+	<<def_merge,merge>> was started, but not yet finished (i.e. if
+	the index contains multiple versions of that file).
+//	<<def_index,インデックス>>内に格納された特定のファイル情報のことです。
+//	インデックスエントリは<<def_merge,マージ>>が開始されているが
+//	完了していない場合(すなわち、インデックスがファイルの複数の
+//	バージョンを含んでいる場合)には、マージが取り消されていることもあります。
+
+[[def_master]]master::
+// [[def_master]]master::
+	The default development <<def_branch,branch>>. Whenever you
+	create a git <<def_repository,repository>>, a branch named
+	"master" is created, and becomes the active branch. In most
+	cases, this contains the local development, though that is
+	purely by convention and is not required.
+//	デフォルトの開発<<def_branch,ブランチ>>のことです。
+//	git <<def_repository,リポジトリ>> を作成するといつでも
+//	"master" という名前のブランチが作成され、アクティブなブランチと
+//	なります。たいてい master ブランチにはローカルの開発を含みますが、
+//	これは純粋に慣例によって行われていることであり必須ではありません。
+
+[[def_merge]]merge::
+// [[def_merge]]マージ(merge)::
+	As a verb: To bring the contents of another
+	<<def_branch,branch>> (possibly from an external
+	<<def_repository,repository>>) into the current branch.  In the
+	case where the merged-in branch is from a different repository,
+	this is done by first <<def_fetch,fetching>> the remote branch
+	and then merging the result into the current branch.  This
+	combination of fetch and merge operations is called a
+	<<def_pull,pull>>.  Merging is performed by an automatic process
+	that identifies changes made since the branches diverged, and
+	then applies all those changes together.  In cases where changes
+	conflict, manual intervention may be required to complete the
+	merge.
+//	動詞：他の<<def_branch,ブランチ>>(外部<<def_repository,リポジトリ>>のブランチも可)
+//	の内容を現在のブランチに届けることをいいます。
+//	外部リポジトリからマージをする場合は、はじめにリモートブランチから
+//	変更を<<def_fetch,取得(fetch)>>され、その結果が現在のブランチにマージされます。
+//	この取得とマージ操作の組み合わせは<<def_pull,pull>>と呼ばれています。
+//	マージはそのブランチが分岐してから行われた変更を特定し、以降の変更をすべて
+//	適用する作業を全自動で行います。コンフリクトが発生した場合は、
+//	マージを完了する為に手作業の対処が必要になります。
++
+As a noun: unless it is a <<def_fast_forward,fast forward>>, a
+successful merge results in the creation of a new <<def_commit,commit>>
+representing the result of the merge, and having as
+<<def_parent,parents>> the tips of the merged <<def_branch,branches>>.
+This commit is referred to as a "merge commit", or sometimes just a
+"merge".
+// +名詞：マージが<<def_fast_forward,早送り(fast forward)>>にならない場合、
+// マージは新しい<<def_commit,コミット>>を作成し、
+// そのコミットはマージした結果を表現し、その<<def_parent,親(parents)>>は
+// マージされた<<def_branch,ブランチ>>の先端となります。
+// このコミットは "merge commit" と呼ばれ、単に "merge" と呼ばれることもあります。
+
+[[def_object]]object::
+// [[def_object]]オブジェクト(object)::
+	The unit of storage in git. It is uniquely identified by the
+	<<def_SHA1,SHA1>> of its contents. Consequently, an
+	object can not be changed.
+//	git のストレージ構成単位です。オブジェクトはその中身の <<def_SHA1,SHA1>> により
+//	一意に特定されます。その結果、オブジェクトは不変となります。
+
+[[def_object_database]]object database::
+// [[def_object_database]]オブジェクトＤＢ(object database)::
+	Stores a set of "objects", and an individual <<def_object,object>> is
+	identified by its <<def_object_name,object name>>. The objects usually
+	live in `$GIT_DIR/objects/`.
+//	"object" の集合を保管します。個々の<<def_object,オブジェクト(object)>>は
+//	自身の<<def_object_name,オブジェクト名>>によって特定されます。
+//	オブジェクトは通常 `$GIT_DIR/objects/` に存在します。
+
+[[def_object_identifier]]object identifier::
+// [[def_object_identifier]]オブジェクトの識別子(object identifier)::
+	Synonym for <<def_object_name,object name>>.
+//	<<def_object_name,オブジェクト名>>と同義。
+
+[[def_object_name]]object name::
+// [[def_object_name]]オブジェクト名(object name)::
+	The unique identifier of an <<def_object,object>>. The <<def_hash,hash>>
+	of the object's contents using the Secure Hash Algorithm
+	1 and usually represented by the 40 character hexadecimal encoding of
+	the <<def_hash,hash>> of the object.
+//	<<def_object,オブジェクト>>のユニークな識別子です。
+//	Secure Hash Algorithm 1 を使用して得られるオブジェクトの<<def_hash,ハッシュ(hash)>>
+//	であり、通常は40桁の16進数で表されます。
+
+[[def_object_type]]object type::
+// [[def_object_type]]オブジェクトタイプ(object type)::
+	One of the identifiers
+	"<<def_commit,commit>>","<<def_tree,tree>>","<<def_tag,tag>>" or "<<def_blob_object,blob>>"
+	describing the type of an <<def_object,object>>.
+//	識別子 "<<def_commit,コミット>>", "<<def_tree,ツリー>>", "<<def_tag,タグ>>"
+//	または "<<def_blob_object,ブロブ(blob)>>" の１つであり、
+//	<<def_object,オブジェクト(object)>>のタイプを記述します。
+
+[[def_octopus]]octopus::
+// [[def_octopus]]タコ(octopus)::
+	To <<def_merge,merge>> more than two <<def_branch,branches>>. Also denotes an
+	intelligent predator.
+//	２つ以上の<<def_branch,ブランチ>>を<<def_merge,マージ>>すること。
+//	または、知的な捕食動物を意味します。
+
+[[def_origin]]origin::
+// [[def_origin]]origin::
+	The default upstream <<def_repository,repository>>. Most projects have
+	at least one upstream project which they track. By default
+	'origin' is used for that purpose. New upstream updates
+	will be fetched into remote <<def_tracking_branch,tracking branches>> named
+	origin/name-of-upstream-branch, which you can see using
+	"`git branch -r`".
+//	デフォルトの上流<<def_repository,リポジトリ>>のことを指します。
+//	たいていのプロジェクトは少なくとも１つの追跡している上流プロジェクトがあります。
+//	デフォルトで 'origin' はその上流プロジェクトの追跡に使用されます。
+//	上流の更新をすると、origin/name-of-upstream-branch の名前のリモートの
+//	<<def_tracking_branch,追跡ブランチ>>に取得されます。
+//	リモート追跡ブランチは "`git branch -r`" にて参照できます。
+
+[[def_pack]]pack::
+// [[def_pack]]パック(pack)::
+	A set of objects which have been compressed into one file (to save space
+	or to transmit them efficiently).
+//	オブジェクトの集合で、(ディスクスペースの節約とオブジェクトを効果的に伝達させる為に)
+//	１つのファイルに圧縮されたものをいいます。
+
+[[def_pack_index]]pack index::
+// [[def_pack_index]]パックインデックス(pack index)::
+	The list of identifiers, and other information, of the objects in a
+	<<def_pack,pack>>, to assist in efficiently accessing the contents of a
+	pack.
+//	<<def_pack,パック>>内のオブジェクトの識別子とその他情報の一覧のことで、
+//	効果的にパックの中身にアクセスする為の手助けをします。
+
+[[def_parent]]parent::
+// [[def_parent]]親(parent)::
+	A <<def_commit_object,commit object>> contains a (possibly empty) list
+	of the logical predecessor(s) in the line of development, i.e. its
+	parents.
+//	<<def_commit_object,コミットオブジェクト>>内に含まれる開発ライン内の論理的な祖先
+//	のことです(親が空の場合もあります)。
+
+[[def_pickaxe]]pickaxe::
+// [[def_pickaxe]]つるはし(pickaxe)::
+	The term <<def_pickaxe,pickaxe>> refers to an option to the diffcore
+	routines that help select changes that add or delete a given text
+	string. With the `--pickaxe-all` option, it can be used to view the full
+	<<def_changeset,changeset>> that introduced or removed, say, a
+	particular line of text. See linkgit:git-diff[1].
+//	<<def_pickaxe,つるはし(pickaxe)>>という用語は指定したテキスト文字列を追加または削除
+//	した変更を選択する手助けをする diffcore の動作オプションです。
+//	`--pickaxe-all` オプションは指定したテキストラインを追加または削除した
+//	<<def_changeset,チェンジセット>>を全て表示する為に用います。
+//	linkgit:git-diff[1] 参照。
+
+[[def_plumbing]]plumbing::
+// [[def_plumbing]]配管(plumbing)::
+	Cute name for <<def_core_git,core git>>.
+//	<<def_core_git,gitの中核(core git)>> に対する可愛い呼び名です。
+
+[[def_porcelain]]porcelain::
+// [[def_porcelain]]磁器(porcelain)::
+	Cute name for programs and program suites depending on
+	<<def_core_git,core git>>, presenting a high level access to
+	core git. Porcelains expose more of a <<def_SCM,SCM>>
+	interface than the <<def_plumbing,plumbing>>.
+//	<<def_core_git,gitの中核(core git)>>に依存するプログラムと
+//	プログラムの一式に対する可愛い呼び名です。
+//	gitの中核に対する高レベルなアクセスを提供します。
+//	磁器(porcelain)は<<def_plumbing,配管(plumbing)>>よりも
+//	<<def_SCM,SCM>>らしいインターフェースを提供します。
+
+[[def_pull]]pull::
+// [[def_pull]]pull::
+	Pulling a <<def_branch,branch>> means to <<def_fetch,fetch>> it and
+	<<def_merge,merge>> it.  See also linkgit:git-pull[1].
+//	<<def_branch,ブランチ>>を pull するとは、ブランチを<<def_fetch,取得>>し、
+//	<<def_merge,マージ>>することをいいます。linkgit:git-pull[1] 参照。
+
+[[def_push]]push::
+// [[def_push]]押し出す(push)::
+	Pushing a <<def_branch,branch>> means to get the branch's
+	<<def_head_ref,head ref>> from a remote <<def_repository,repository>>,
+	find out if it is a direct ancestor to the branch's local
+	head ref, and in that case, putting all
+	objects, which are <<def_reachable,reachable>> from the local
+	head ref, and which are missing from the remote
+	repository, into the remote
+	<<def_object_database,object database>>, and updating the remote
+	head ref. If the remote <<def_head,head>> is not an
+	ancestor to the local head, the push fails.
+//	<<def_branch,ブランチ>>を push するとは、リモート<<def_repository,リポジトリ>>
+//	からブランチの<<def_head_ref,ヘッド参照>>を取得し、
+//	ローカル側のヘッド参照の直接の祖先であるかを確認し、
+//	祖先である場合はローカルのヘッド参照から<<def_reachable,到達可能>>で
+//	リモートリポジトリに存在しない全てのオブジェクトをリモートの
+//	<<def_object_database,オブジェクトＤＢ>>に設置し、
+//	リモートのヘッド参照を更新します。
+//	リモートのヘッドがローカルヘッドの祖先でない場合は、push は失敗します。
+
+[[def_reachable]]reachable::
+// [[def_reachable]]到達可能(reachable)::
+	All of the ancestors of a given <<def_commit,commit>> are said to be
+	"reachable" from that commit. More
+	generally, one <<def_object,object>> is reachable from
+	another if we can reach the one from the other by a <<def_chain,chain>>
+	that follows <<def_tag,tags>> to whatever they tag,
+	<<def_commit_object,commits>> to their parents or trees, and
+	<<def_tree_object,trees>> to the trees or <<def_blob_object,blobs>>
+	that they contain.
+//	ある<<def_commit,コミット>>の祖先全ては、そのコミットから
+//	"到達可能" であるといいます。
+//	より一般的に、<<def_tag,タグ>>や<<def_commit_object,コミット>>、
+//	<<def_tree_object,ツリー>>、<<def_blob_object,blobs>>が一方から他方につながっている場合、
+//	その<<def_object,オブジェクト>>がもう一方のオブジェクトから到達可能であるといいます。
+
+[[def_rebase]]rebase::
+// [[def_rebase]]リベース(rebase)::
+	To reapply a series of changes from a <<def_branch,branch>> to a
+	different base, and reset the <<def_head,head>> of that branch
+	to the result.
+//	ある<<def_branch,ブランチ>>の一連の変更をことなるベースに適用し、
+//	ブランチの<<def_head,ヘッド>>をその結果位置にリセットすること。
+
+[[def_ref]]ref::
+// [[def_ref]]参照(ref)::
+	A 40-byte hex representation of a <<def_SHA1,SHA1>> or a name that
+	denotes a particular <<def_object,object>>. These may be stored in
+	`$GIT_DIR/refs/`.
+//	<<def_SHA1,SHA1>> の 40バイトの16進数表現、または特定の<<def_object,オブジェクト>>
+//	を表す名前のことです。これらは `$GIT_DIR/refs/` に格納されることがあります。
+
+[[def_reflog]]reflog::
+// [[def_reflog]]参照ログ(reflog)::
+	A reflog shows the local "history" of a ref.  In other words,
+	it can tell you what the 3rd last revision in _this_ repository
+	was, and what was the current state in _this_ repository,
+	yesterday 9:14pm.  See linkgit:git-reflog[1] for details.
+//	参照ログ(reflog) は参照に関するローカルの "履歴" です。
+//	言い換えると、このリポジトリの３つ前のリビジョンは何であったかや、
+//	昨日のPM9:14時点ではこのリポジトリはどの状態にあったかなどを
+//	教えてくれるものです。詳細は linkgit:git-reflog[1] を参照してください。
+
+[[def_refspec]]refspec::
+// [[def_refspec]]参照仕様(refspec)::
+	A "refspec" is used by <<def_fetch,fetch>> and
+	<<def_push,push>> to describe the mapping between remote
+	<<def_ref,ref>> and local ref. They are combined with a colon in
+	the format <src>:<dst>, preceded by an optional plus sign, +.
+	For example: `git fetch $URL
+	refs/heads/master:refs/heads/origin` means "grab the master
+	<<def_branch,branch>> <<def_head,head>> from the $URL and store
+	it as my origin branch head". And `git push
+	$URL refs/heads/master:refs/heads/to-upstream` means "publish my
+	master branch head as to-upstream branch at $URL". See also
+	linkgit:git-push[1].
+//	"参照仕様(refspec)" はリモートの<<def_ref,参照>>とローカルの参照とのマッピングをする為に
+//	<<def_fetch,フェッチ(fetch)>> と <<def_push,プッシュ(push)>> によって使用されます。
+//	これらはコロン(:)で分割した <src>:<dst> の形式で、先頭に + 記号を付けることもあります。
+//	例えば：`git fetch $URL refs/heads/master:refs/heads/origin` は
+//	"$URL にある master <<def_branch,ブランチ>>の<<def_head,ヘッド>> をつかみ、
+//	それを自身のリポジトリ内の origin ブランチのヘッドに保管する" ことを意味します。
+//	また `git push $URL refs/heads/master:refs/heads/to-upstream` は
+//	"自身のリポジトリ内の master ブランチのヘッドを $URL の to-upstream ブランチとして
+//	発行する" ことを意味します。linkgit:git-push[1] も参照してください。
+
+[[def_repository]]repository::
+// [[def_repository]]リポジトリ(repository)::
+	A collection of <<def_ref,refs>> together with an
+	<<def_object_database,object database>> containing all objects
+	which are <<def_reachable,reachable>> from the refs, possibly
+	accompanied by meta data from one or more <<def_porcelain,porcelains>>. A
+	repository can share an object database with other repositories
+	via <<def_alternate_object_database,alternates mechanism>>.
+//	<<def_ref,参照(refs)>>と参照から<<def_reachable,到達可能な>>全オブジェクトを
+//	含んだ<<def_object_database,オブジェクトＤＢ>>の集合です。
+//	１つ以上の <<def_porcelain,磁器(porcelains)>> のメタデータを含むこともあります。
+//	リポジトリは<<def_alternate_object_database,代替メカニズム>>により
+//	他のリポジトリとオブジェクトＤＢを共有することもできます。
+
+[[def_resolve]]resolve::
+// [[def_resolve]]解決する(resolve)::
+	The action of fixing up manually what a failed automatic
+	<<def_merge,merge>> left behind.
+//	自動 <<def_merge,マージ>> に失敗した箇所を手作業で修復する
+//	作業のことです。
+
+[[def_revision]]revision::
+// [[def_revision]]リビジョン(revision)::
+	A particular state of files and directories which was stored in the
+	<<def_object_database,object database>>. It is referenced by a
+	<<def_commit_object,commit object>>.
+//	<<def_object_database,オブジェクトＤＢ>> 内に格納されたファイルとディレクトリ
+//	の特定の状態。これは <<def_commit_object,コミットオブジェクト>> によって
+//	参照されます。
+
+[[def_rewind]]rewind::
+// [[def_rewind]]巻き戻す(rewind)::
+	To throw away part of the development, i.e. to assign the
+	<<def_head,head>> to an earlier <<def_revision,revision>>.
+//	開発の一部を破棄することです。例えば、<<def_head,ヘッド(head)>> を
+//	以前の <<def_revision,リビジョン>> に割り当てることです。
+
+[[def_SCM]]SCM::
+// [[def_SCM]]SCM::
+	Source code management (tool).
+//	ソースコード管理(ツール)。
+
+[[def_SHA1]]SHA1::
+// [[def_SHA1]]SHA1::
+	Synonym for <<def_object_name,object name>>.
+//	<<def_object_name,オブジェクト名>>と同義。
+
+[[def_shallow_repository]]shallow repository::
+// [[def_shallow_repository]]浅いリポジトリ(shallow repository)::
+	A shallow <<def_repository,repository>> has an incomplete
+	history some of whose <<def_commit,commits>> have <<def_parent,parents>> cauterized away (in other
+	words, git is told to pretend that these commits do not have the
+	parents, even though they are recorded in the <<def_commit_object,commit
+	object>>). This is sometimes useful when you are interested only in the
+	recent history of a project even though the real history recorded in the
+	upstream is much larger. A shallow repository
+	is created by giving the `--depth` option to linkgit:git-clone[1], and
+	its history can be later deepened with linkgit:git-fetch[1].
+//	浅い<<def_repository,リポジトリ>>とは一部の<<def_commit,コミット>>の<<def_parent,親>>が
+//	リポジトリ内に存在していない不完全な履歴状態のリポジトリのことを言います。
+//	(<<def_commit_object,コミットオブジェクト>>内に親の情報が記録されていたとしても
+//	gitはこれらのコミットが親を持っていないふりをします)
+//	浅いリポジトリは巨大プロジェクトにて最近の履歴にだけ興味があるような場合に
+//	役に立ちます。linkgit:git-clone[1] に `--depth` オプションを付けることで
+//	作成でき、linkgit:git-fetch[1] により後から履歴をより深くすることもできます。
+
+[[def_symref]]symref::
+// [[def_symref]]symref::
+	Symbolic reference: instead of containing the <<def_SHA1,SHA1>>
+	id itself, it is of the format 'ref: refs/some/thing' and when
+	referenced, it recursively dereferences to this reference.
+	'<<def_HEAD,HEAD>>' is a prime example of a symref. Symbolic
+	references are manipulated with the linkgit:git-symbolic-ref[1]
+	command.
+//	シンボル参照：<<def_SHA1,SHA1>> の ID 自身を持つ代わりに、
+//	'ref: refs/some/thing' の形式で参照先を持つ参照です。
+//	参照されると再帰的に逆参照します。
+//	'<<def_HEAD,HEAD>>' は symref の典型例です。
+//	シンボル参照は linkgit:git-symbolic-ref[1] コマンドにより操作します。
+
+[[def_tag]]tag::
+// [[def_tag]]タグ(tag)::
+	A <<def_ref,ref>> pointing to a <<def_tag_object,tag>> or
+	<<def_commit_object,commit object>>. In contrast to a <<def_head,head>>,
+	a tag is not changed by a <<def_commit,commit>>. Tags (not
+	<<def_tag_object,tag objects>>) are stored in `$GIT_DIR/refs/tags/`. A
+	git tag has nothing to do with a Lisp tag (which would be
+	called an <<def_object_type,object type>> in git's context). A
+	tag is most typically used to mark a particular point in the
+	commit ancestry <<def_chain,chain>>.
+//	<<def_tag_object,タグ(tag)>> や <<def_commit_object,コミットオブジェクト>> を
+//	指し示す <<def_ref,参照(ref)>> のことです。<<def_head,ヘッド(head)>> と異なり、
+//	タグは <<def_commit,コミット>> によって変更されることはありません。
+//	タグ(<<def_tag_object,タグオブジェクト>>ではありません)は `$GIT_DIR/refs/tags/` 内に
+//	保管されます。git の タグは List tag とは無関係です (Lisp tagは、
+//	git の資料内では <<def_object_type,オブジェクトタイプ>> と呼んでいます)。
+//	タグはコミットの祖先の <<def_chain,繋がり(chain)>> 内の特定の位置に印を
+//	つけるために良く使用されます。
+
+[[def_tag_object]]tag object::
+// [[def_tag_object]]タグオブジェクト(tag object)::
+	An <<def_object,object>> containing a <<def_ref,ref>> pointing to
+	another object, which can contain a message just like a
+	<<def_commit_object,commit object>>. It can also contain a (PGP)
+	signature, in which case it is called a "signed tag object".
+//	他のオブジェクトを指し示す <<def_ref,参照(ref)>> を含んでいる
+//	<<def_object,オブジェクト>> のことです。これは、<<def_commit_object,コミットオブジェクト>>
+//	のようにメッセージを含むこともできます。また、署名(PGP) を含む
+//	"署名付きタグオブジェクト" と呼ばれるものもあります。
+
+[[def_topic_branch]]topic branch::
+// [[def_topic_branch]]トピックブランチ::
+	A regular git <<def_branch,branch>> that is used by a developer to
+	identify a conceptual line of development. Since branches are very easy
+	and inexpensive, it is often desirable to have several small branches
+	that each contain very well defined concepts or small incremental yet
+	related changes.
+//	各開発ラインを識別する為に開発者が使用する通常の git <<def_branch,ブランチ>>。
+//	ブランチはとても容易で安価に利用できるため、明確なコンセプトや小さく付加的な
+//	関連する変更を含んだ小さなブランチをいくつか作成することが望ましいです。
+//	(訳注：日本語がおかしいので、訳をみなおす必要がある。以下に原文を載せます。
+// 	A regular git <<def_branch,branch>> that is used by a developer to
+// 	identify a conceptual line of development. Since branches are very easy
+// 	and inexpensive, it is often desirable to have several small branches
+// 	that each contain very well defined concepts or small incremental yet
+// 	related changes.
+
+[[def_tracking_branch]]tracking branch::
+// [[def_tracking_branch]]追跡ブランチ::
+	A regular git <<def_branch,branch>> that is used to follow changes from
+	another <<def_repository,repository>>. A tracking
+	branch should not contain direct modifications or have local commits
+	made to it. A tracking branch can usually be
+	identified as the right-hand-side <<def_ref,ref>> in a Pull:
+	<<def_refspec,refspec>>.
+//	他の <<def_repository,リポジトリ>> からの変更を追跡する為に使用される
+//	通常の git <<def_branch,ブランチ>>。
+//	追跡ブランチは直接の変更またはローカルのコミットは含むべきではありません。
+//	追跡ブランチは通常、Pull 時に最も役に立つ <<def_ref,参照>> です。：
+//	<<def_refspec,参照仕様>>。
+
+[[def_tree]]tree::
+// [[def_tree]]ツリー::
+	Either a <<def_working_tree,working tree>>, or a <<def_tree_object,tree
+	object>> together with the dependent <<def_blob_object,blob>> and tree objects
+	(i.e. a stored representation of a working tree).
+//	依存している <<def_blob_object,blob>> と ツリーオブジェクトも含めた
+//	<<def_working_tree,作業ツリー>> または <<def_tree_object,ツリーオブジェクト>>全体。
+//	(つまり、作業ディレクトリの格納時の表現)。
+
+[[def_tree_object]]tree object::
+// [[def_tree_object]]ツリーオブジェクト::
+	An <<def_object,object>> containing a list of file names and modes along
+	with refs to the associated blob and/or tree objects. A
+	<<def_tree,tree>> is equivalent to a <<def_directory,directory>>.
+//	blob または ツリーオブジェクトへの参照と、ファイル名とモードの一覧を含んだ
+//	<<def_object,オブジェクト>>。<<def_tree,ツリー>> は <<def_directory,ディレクトリ>>
+//	と等価。
+
+[[def_tree-ish]]tree-ish::
+// [[def_tree-ish]]ツリーっぽい::
+	A <<def_ref,ref>> pointing to either a <<def_commit_object,commit
+	object>>, a <<def_tree_object,tree object>>, or a <<def_tag_object,tag
+	object>> pointing to a tag or commit or tree object.
+//	<<def_commit_object,コミットオブジェクト>>、<<def_tree_object,ツリーオブジェクト>>、
+//	あるいは <<def_tag_object,タグオブジェクト>> を指し示している <<def_ref,参照>>。
+//	(訳注：ツリーっぽくない参照は blob オブジェクトへの参照)
+
+[[def_unmerged_index]]unmerged index::
+// [[def_unmerged_index]]マージされていないインデックス::
+	An <<def_index,index>> which contains unmerged
+	<<def_index_entry,index entries>>.
+//	マージされていない <<def_index_entry,インデックスエントリ>> を含む
+//	<<def_index,インデックス>>。
+
+[[def_unreachable_object]]unreachable object::
+// [[def_unreachable_object]]到達不可能なオブジェクト::
+	An <<def_object,object>> which is not <<def_reachable,reachable>> from a
+	<<def_branch,branch>>, <<def_tag,tag>>, or any other reference.
+//	<<def_branch,ブランチ>> や <<def_tag,タグ>>、その他の参照から
+//	<<def_reachable,到達可能>> ではない <<def_object,オブジェクト>>。
+
+[[def_working_tree]]working tree::
+// [[def_working_tree]]作業ツリー::
+	The tree of actual checked out files.  The working tree is
+	normally equal to the <<def_HEAD,HEAD>> plus any local changes
+	that you have made but not yet committed.
+//	実際にチェックアウトされたファイルのツリー。通常、作業ツリーは
+//	<<def_HEAD,HEAD>> と まだコミットしていないローカルの変更とを
+//	合わせた内容に等しいです。
