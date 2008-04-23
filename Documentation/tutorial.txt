@@ -751,7 +751,7 @@ allows you to browse any commits from the last 2 weeks of commits
 that modified files under the "drivers" directory.  (Note: you can
 adjust gitk's fonts by holding down the control key while pressing
 "-" or "+".)
-// を行うことで、最近２週間に "dirvers" ディレクトリを修正したコミットを
+// を行うことで、最近２週間に "drivers" ディレクトリを修正したコミットを
 // 閲覧することができます。
 // (注意: gitk のフォントはコントロールキーを押さえながら "-" か "+"
 // を押すことで調整できます。)
@@ -805,13 +805,13 @@ link:tutorial-2.html[Part two of this tutorial] explains the object
 database, the index file, and a few other odds and ends that you'll
 need to make the most of git.
 // link:tutorial-2.html[このチュートリアルのパート２] では、
-// オブジェクトデータベース、インデックスファイル、そして
-// git をできるだけ利用するため必要となる残りの部分について説明します。
+// オブジェクトデータベース、索引ファイル、そして
+// git を最大限利用するため必要となる残りの部分について説明します。
 
 If you don't want to continue with that right away, a few other
 digressions that may be interesting at this point are:
-// もしそれらを正しい手順で考察するのが嫌な場合は、
-// これらの点に関する面白い脱線として、他には以下のものがあります：
+// 今すぐ続きを学習したくない人は、この時点から他に以下のような
+// 脱線をしてみるのも面白いでしょう。
 
   * linkgit:git-format-patch[1], linkgit:git-am[1]: These convert
     series of git commits into emailed patches, and vice versa,
