@@ -75,8 +75,8 @@ $ git add .
 This snapshot is now stored in a temporary staging area which git calls
 the "index".  You can permanently store the contents of the index in the
 repository with linkgit:git-commit[1]:
-// このスナップショットは "インデックス" と呼ばれる一時エリアに
-// 格納されます。linkgit:git-commit[1] を用いるとリポジトリにインデックスの
+// このスナップショットは "索引(index)" と呼ばれる一時エリアに
+// 格納されます。linkgit:git-commit[1] を用いるとリポジトリに索引の
 // 中身を永続的に格納させることができます：
 
 ------------------------------------------------
@@ -93,7 +93,7 @@ Making changes
 // == 変更の実施
 
 Modify some files, then add their updated contents to the index:
-// いくつかのファイルを変更した後、更新した内容をインデックスに追加します：
+// いくつかのファイルを変更した後、更新した内容を索引に追加します：
 
 ------------------------------------------------
 $ git add file1 file2 file3
@@ -111,7 +111,7 @@ $ git diff --cached
 (Without --cached, linkgit:git-diff[1] will show you any changes that
 you've made but not yet added to the index.)  You can also get a brief
 summary of the situation with linkgit:git-status[1]:
-// (--cached を指定しない場合、linkgit:git-diff[1] は修正されているがまだインデックスに
+// (--cached を指定しない場合、linkgit:git-diff[1] は修正されているがまだ索引に
 // 追加されていない変更を表示します。) linkgit:git-status[1] を使用すると
 // 簡潔なまとめを表示することもできます。
 
@@ -129,7 +129,7 @@ $ git status
 
 If you need to make any further adjustments, do so now, and then add any
 newly modified content to the index.  Finally, commit your changes with:
-// さらに変更が必要な場合は、それを行い、新しく変更した内容をインデックスに追加します。
+// さらに変更が必要な場合は、それを行い、新しく変更した内容を索引に追加します。
 // 最後に、変更をコミットします：
 
 ------------------------------------------------
@@ -151,7 +151,7 @@ $ git commit -a
 which will automatically notice any modified (but not new) files, add
 them to the index, and commit, all in one step.
 // この方法では変更ファイル(ただし新規ファイルは除く)を自動的に検出し、
-// それらをインデックスに追加し、コミットするという操作を纏めて実行します。
+// それらを索引に追加し、コミットするという操作を纏めて実行します。
 
 A note on commit messages: Though not required, it's a good idea to
 begin the commit message with a single short (less than 50 character)
@@ -178,7 +178,7 @@ the next commit.
 // 多くのリビジョン管理システムでは "add" コマンドは新規ファイルを追跡対象に加える
 // 役目をします。git の "add" コマンドは、よりシンプルでパワフルです：
 // `git add` は新規ファイルと新しい変更ファイルの両方に対して使用され、
-// どちらの場合にも指定したファイルのスナップショットをとり、インデックスにその中身を
+// どちらの場合にも指定したファイルのスナップショットをとり、索引にその中身を
 // 登録し、次のコミットに含める項目の準備をします。
 
 Viewing project history

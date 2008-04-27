@@ -1429,36 +1429,36 @@ times as you want: in order to keep track of what you want committed
 at step 3, git maintains a snapshot of the tree's contents in a
 special staging area called "the index."
 // 実際には、ステップ１と２を相互に好きなだけ繰り返すことができます：
-// ステップ３でコミットしたいものの追跡を保つ為、git は "インデックス" と呼ばれる
+// ステップ３でコミットしたいものの追跡を保つ為、git は "索引(index)" と呼ばれる
 // 特別なエリア内にツリーの中身のスナップショットを保管しています。
 
 At the beginning, the content of the index will be identical to
 that of the HEAD.  The command "git diff --cached", which shows
 the difference between the HEAD and the index, should therefore
 produce no output at that point.
-// 最初はインデックスの中身は HEAD の中身と同じです。
-// コマンド "git diff --cached" は HEAD とインデックス間の差分を表示する為、
+// 最初は索引の中身は HEAD の中身と同じです。
+// コマンド "git diff --cached" は HEAD と索引間の差分を表示する為、
 // この時点では何も出力しません。
 
 Modifying the index is easy:
-// インデックスを変更するのは容易です：
+// 索引を変更するのは容易です：
 
 To update the index with the new contents of a modified file, use
-// インデックスを新しく修正したファイルの中身で更新するには、以下のようにします。
+// 索引を新しく修正したファイルの中身で更新するには、以下のようにします。
 
 -------------------------------------------------
 $ git add path/to/file
 -------------------------------------------------
 
 To add the contents of a new file to the index, use
-// 新しいファイルの中身をインデックスに追加するにも、以下のようにします。
+// 新しいファイルの中身を索引に追加するにも、以下のようにします。
 
 -------------------------------------------------
 $ git add path/to/file
 -------------------------------------------------
 
 To remove a file from the index and from the working tree,
-// インデックスと作業ツリー上からファイルを削除するには、
+// 索引と作業ツリー上からファイルを削除するには、
 
 -------------------------------------------------
 $ git rm path/to/file
@@ -1473,7 +1473,7 @@ $ git diff --cached
 
 always shows the difference between the HEAD and the index file--this
 is what you'd commit if you created the commit now--and that
-// を行うことで HEAD とインデックスファイル間の差分を確認することができます。--
+// を行うことで HEAD と索引ファイル間の差分を確認することができます。--
 // これはコミットした時に作成される内容です。-- そして
 
 -------------------------------------------------
@@ -1481,12 +1481,12 @@ $ git diff
 -------------------------------------------------
 
 shows the difference between the working tree and the index file.
-// は、作業ツリーとインデックスファイル間の差分を表示します。
+// は、作業ツリーと索引ファイル間の差分を表示します。
 
 Note that "git add" always adds just the current contents of a file
 to the index; further changes to the same file will be ignored unless
 you run git-add on the file again.
-// "git add" は常に現在のファイルの中身をインデックスに追加することに注意
+// "git add" は常に現在のファイルの中身を索引に追加することに注意
 // してください；さらに同じファイルに変更を加えても再度 git-add をそのファイルに
 // 行わない限りは無視されます。
 
@@ -1515,7 +1515,7 @@ $ git commit -a
 
 will update the index with any files that you've modified or removed
 and create a commit, all in one step.
-// というのがあります。これは変更又は削除した全てのファイルのインデックスを更新し
+// というのがあります。これは変更又は削除した全てのファイルの索引を更新し
 // コミットを作成する操作を、１回のステップで全て行います。
 
 A number of commands are useful for keeping track of what you're
@@ -1525,11 +1525,11 @@ about to commit:
 
 -------------------------------------------------
 $ git diff --cached # difference between HEAD and the index; what
-//		    # HEAD とインデックス間の差分；
+//		    # HEAD と索引間の差分；
 		    # would be committed if you ran "commit" now.
 //		    # つまり、"commit" を実行したときにコミットされる内容
 $ git diff	    # difference between the index file and your
-//		    # インデックスと作業ディレクトリ間の差分；
+//		    # 索引と作業ディレクトリ間の差分；
 		    # working directory; changes that would not
 //		    # つまり、"commit" を実行したときに含まれない
 		    # be included if you ran "commit" now.
@@ -1547,8 +1547,8 @@ the index and the working tree files, and individually select diff hunks
 for inclusion in the index (by right-clicking on the diff hunk and
 choosing "Stage Hunk For Commit").
 // これらのことをするために linkgit:git-gui[1] を使用することもできます。
-// git-gui は コミットの作成や、インデックスと作業ツリー間の差分の参照、
-// インデックスに含めるべき差分ハンクを個々に選択する(差分ハンクを右クリックして、
+// git-gui は コミットの作成や、索引と作業ツリー間の差分の参照、
+// 索引に含めるべき差分ハンクを個々に選択する(差分ハンクを右クリックして、
 // "Stage Hunk For Commit" を選択する) ことができます。
 
 [[creating-good-commit-messages]]
@@ -1675,7 +1675,7 @@ you resolve the conflicts manually, you can update the index
 with the contents and run git commit, as you normally would when
 creating a new file.
 // コンフリクトマーカーは問題のあるファイルに残り、コンフリクトを
-// 手作業で解消した後は、インデックスをそのファイルの中身で更新し、
+// 手作業で解消した後は、索引をそのファイルの中身で更新し、
 // git commit を実行することができます。通常の新しいファイルを作成するときと
 // 同じようにです。
 
@@ -1694,15 +1694,15 @@ Resolving a merge
 When a merge isn't resolved automatically, git leaves the index and
 the working tree in a special state that gives you all the
 information you need to help resolve the merge.
-// マージが自動的に解決されない場合、git はインデックスと作業ツリーを
+// マージが自動的に解決されない場合、git は索引と作業ツリーを
 // 特別な状態にし、マージの解決を手助けするのに必要な全ての情報を与えて
 // くれます。
 
 Files with conflicts are marked specially in the index, so until you
 resolve the problem and update the index, linkgit:git-commit[1] will
 fail:
-// コンフリクトしたファイルは、インデックス内で特別なマージが付けられ、
-// その為問題を解決しインデックスを更新するまで、linkgit:git-commit[1] は
+// コンフリクトしたファイルは、索引内で特別なマージが付けられ、
+// その為問題を解決し索引を更新するまで、linkgit:git-commit[1] は
 // 失敗します：
 
 -------------------------------------------------
@@ -1752,7 +1752,7 @@ Getting conflict-resolution help during a merge
 All of the changes that git was able to merge automatically are
 already added to the index file, so linkgit:git-diff[1] shows only
 the conflicts.  It uses an unusual syntax:
-// git が自動的にマージできた全ての変更は既にインデックスファイルに
+// git が自動的にマージできた全ての変更は既に索引ファイルに
 // 追加されています。そして linkgit:git-diff[1] はコンフリクトだけを
 // 表示します。そうするには通常の構文を使用します：
 
@@ -1781,7 +1781,7 @@ tip of the other branch, which is stored temporarily in MERGE_HEAD.
 
 During the merge, the index holds three versions of each file.  Each of
 these three "file stages" represents a different version of the file:
-// マージしている間、インデックスは各ファイルの３つのバージョンを持っています。
+// マージしている間、索引は各ファイルの３つのバージョンを持っています。
 // この３つはそれぞれファイルの異なる３つの "ファイルステージ" を表現しています：
 
 -------------------------------------------------
@@ -1885,7 +1885,7 @@ unmerged files using external tools such as emacs or kdiff3.
 // emacs や kdiff3 のような外部ツールを使用してマージを行うことができます。
 
 Each time you resolve the conflicts in a file and update the index:
-// ファイルのコンフリクトを解決した後には、インデックスを更新してください：
+// ファイルのコンフリクトを解決した後には、索引を更新してください：
 
 -------------------------------------------------
 $ git add file.txt
@@ -2038,7 +2038,7 @@ Alternatively, you
 can edit the working directory and update the index to fix your
 mistake, just as if you were going to <<how-to-make-a-commit,create a
 new commit>>, then run
-// また、代わりに、作業ディレクトリを編集し間違いを訂正した後、インデックスを更新
+// また、代わりに、作業ディレクトリを編集し間違いを訂正した後、索引を更新
 // することもできます。<<how-to-make-a-commit,新しいコミットの作成>> で
 // 示した手順で作業していたなら、次のようにします。
 
@@ -2087,7 +2087,7 @@ $ git checkout HEAD^ path/to/file
 replaces path/to/file by the contents it had in the commit HEAD^, and
 also updates the index to match.  It does not change branches.
 // は、path/to/file をコミット HEAD^ の時の内容で置き換え、
-// インデックスの更新も行ないます。ブランチは変更しません。
+// 索引の更新も行ないます。ブランチは変更しません。
 
 If you just want to look at an old version of the file, without
 modifying the working directory, you can do that with
@@ -2127,7 +2127,7 @@ This command will save your changes away to the `stash`, and
 reset your working tree and the index to match the tip of your
 current branch.  Then you can make your fix as usual.
 // このコマンドはあなたの変更を `stash` に保存し、
-// 作業ディレクトリをリセットし、インデックスを現在のブランチの tip に一致
+// 作業ディレクトリをリセットし、索引を現在のブランチの tip に一致
 // させます。通常の手順でバグの処置をしてください。
 
 ------------------------------------------------
@@ -2527,11 +2527,11 @@ leave your tree and index untouched, you may omit that option.)
 // 適用は中止され、"<<resolving-a-merge,マージの解決>>" で説明されているように
 // コンフリクトを解決してください。( "-3" のオプションは git に
 // マージすることを伝えます；もし単純に変更を取り消し、
-// ツリーとインデックスを変更したくない場合は、"-3" のオプションを省略してください。)
+// ツリーと索引を変更したくない場合は、"-3" のオプションを省略してください。)
 
 Once the index is updated with the results of the conflict
 resolution, instead of creating a new commit, just run
-// コンフリクトを解消してインデックスを更新した後は、
+// コンフリクトを解消して索引を更新した後は、
 // 新しいコミットを作成する変わりに、
 
 -------------------------------------------------
@@ -3505,7 +3505,7 @@ add" to update the index with those contents, and then, instead of
 running git-commit, just run
 // この作業中にコンフリクトが発生するかもしれません。その場合は
 // コンフリクトを解決してください；コンフリクトを解消した後に
-// "git add" を使用してそれらの内容でインデックスを更新し、
+// "git add" を使用してそれらの内容で索引を更新し、
 // git-commit を実行する代わりに、
 
 -------------------------------------------------
@@ -3568,7 +3568,7 @@ branch, but instead we're using a <<detached-head,detached head>>):
 -------------------------------------------------
 $ git checkout bad
 $ # make changes here and update the index
-// # ここで変更とインデックスの更新をします
+// # ここで変更と索引の更新をします
 $ git commit --amend
 $ git rebase --onto HEAD bad mywork
 -------------------------------------------------
@@ -3619,7 +3619,7 @@ right-clicking on the diff hunk and choosing "Stage Hunk for Commit").
 // そして、gitk を使用して mywork ブランチのパッチの一覧を表示し、
 // cherry-pick を使用して mywork-new にそれらを(可能なら異なる順番で)適用し、
 // 可能であるなら `commit --amend` を使用してそれらを修正します。
-// linkgit:git-gui[1] コマンドは個々の選択した diff ハンクをインデックスに含めるかどうかを
+// linkgit:git-gui[1] コマンドは個々の選択した diff ハンクを索引に含めるかどうかを
 // 選択するのに役に立つかもしれません。(diff ハンクを右クリックし、
 // "Stage Hunk for Commit" を選択します)
 
@@ -4049,7 +4049,7 @@ git much more intuitive if you do.
 We start with the most important, the  <<def_object_database,object
 database>> and the <<def_index,index>>.
 // 最も重要なコンセプトである <<def_object_database,オブジェクトデータベース>>
-// と <<def_index,インデックス>> の説明から開始しましょう、
+// と <<def_index,索引(index)>> の説明から開始しましょう、
 
 [[the-object-database]]
 The Object Database
@@ -4207,7 +4207,7 @@ commit whose parent is normally the current HEAD, and whose tree is
 taken from the content currently stored in the index.
 // コミットは通常 linkgit:git-commit[1] によって作成されます。
 // デフォルトではその親を現在のHEADとしたコミットが作成され、
-// そのツリーは現在のインデックスに格納されている内容が使用されます。
+// そのツリーは現在の索引に格納されている内容が使用されます。
 
 [[tree-object]]
 Tree Object
@@ -4792,14 +4792,14 @@ just missing one particular blob version.
 [[the-index]]
 The index
 -----------
-// === インデックス
+// === 索引(index)
 
 The index is a binary file (generally kept in .git/index) containing a
 sorted list of path names, each with permissions and the SHA1 of a blob
 object; linkgit:git-ls-files[1] can show you the contents of the index:
-// インデックスはバイナリファイル(通常 .git/index 内に保管)であり、
+// 索引はバイナリファイル(通常 .git/index 内に保管)であり、
 // ソートされたパス名と、パーミッション、blob の SHA1値の一覧を含んでいます；
-// linkgit:git-ls-files[1] を使用するとインデックスの中身を参照できます：
+// linkgit:git-ls-files[1] を使用すると索引の中身を参照できます：
 
 -------------------------------------------------
 $ git ls-files --stage
@@ -4818,7 +4818,7 @@ Note that in older documentation you may see the index called the
 "current directory cache" or just the "cache".  It has three important
 properties:
 // 古いドキュメントでは、"現在のディレクトリキャッシュ" または単に
-// "キャッシュ" と呼んでいることがあります。インデックスには３つの重要な
+// "キャッシュ" と呼んでいることがあります。索引には３つの重要な
 // 性質があります：
 
 1. The index contains all the information necessary to generate a single
@@ -4827,10 +4827,10 @@ properties:
 For example, running linkgit:git-commit[1] generates this tree object
 from the index, stores it in the object database, and uses it as the
 tree object associated with the new commit.
-// 1. インデックスは１つの(ユニークに決定される)ツリーオブジェクトを
+// 1. 索引は１つの(ユニークに決定される)ツリーオブジェクトを
 // 生成するのに必要な情報全てを含んでいます。
 // +
-// 例えば、linkgit:git-commit[1] を実行すると、インデックスから
+// 例えば、linkgit:git-commit[1] を実行すると、索引から
 // 新しいコミットが参照する tree オブジェクトを生成し、オブジェクトＤＢに
 // 格納します。
 
@@ -4843,13 +4843,13 @@ stored in the created tree object, but it can be used to determine
 quickly which files in the working directory differ from what was
 stored in the index, and thus save git from having to read all of the
 data from such files to look for changes.
-// 2. インデックスはインデックスが定義する tree オブジェクトと
+// 2. 索引は索引が定義する tree オブジェクトと
 // 作業ツリーとを高速に比較することができます。
 // +
 // これは、各エントリに対する追加情報(最終更新日のようなもの)を
 // 格納することで行なわれます。このデータは上記には表示されず、
 // tree オブジェクトを作成する時には格納されませんが、
-// 変更されているファイルとインデックスに格納されているファイルを
+// 変更されているファイルと索引に格納されているファイルを
 // 高速に確認するために使用できます。この仕組みが git がデータの
 // 全てを読み込み変更を探す作業を手助けします。
 
@@ -4875,12 +4875,12 @@ conflicts.
 
 The index is thus a sort of temporary staging area, which is filled with
 a tree which you are in the process of working on.
-// このようにインデックスは一時的な作業エリアの役割をし、
+// このように索引は一時的な作業エリアの役割をし、
 // 作業中のツリーの内容が詰められています。
 
 If you blow the index away entirely, you generally haven't lost any
 information as long as you have the name of the tree that it described.
-// インデックスを完全に消し去ると、それを記述していたツリーの名前を
+// 索引を完全に消し去ると、それを記述していたツリーの名前を
 // 持っていない限りは、全ての情報を失ってしまいます。
 
 [[submodules]]
@@ -5015,10 +5015,10 @@ The `git submodule add` command does a couple of things:
 - It adds the submodule's clone path to the linkgit:gitmodules[5] file and
   adds this file to the index, ready to be committed.
 // - サブモジュールの複製パスを linkgit:gitmodules[5] ファイルに追加し、
-//   このファイルをインデックスに追加し、コミット可能な状態にします。
+//   このファイルを索引に追加し、コミット可能な状態にします。
 - It adds the submodule's current commit ID to the index, ready to be
   committed.
-// - サブモジュールの現在のコミットID をインデックスに追加し、
+// - サブモジュールの現在のコミットID を索引に追加し、
 //   コミット可能な状態にします。
 
 Commit the superproject:
@@ -5252,7 +5252,7 @@ between the working tree, the index, and the object database.  Git
 provides low-level operations which perform each of these steps
 individually.
 // linkgit:git-commit[1]、linkgit:git-checkout[1]、linkgit:git-reset[1]
-// のような高レベルの操作は作業ツリー、インデックス、オブジェクトＤＢ間の
+// のような高レベルの操作は作業ツリー、索引、オブジェクトＤＢ間の
 // データを移動することによって仕事をします。
 // Git はこれらの各ステップを独立に行なう下位レベルの操作を提供しています。
 
@@ -5261,23 +5261,23 @@ work *purely* on the index file (showing the current state of the
 index), but most operations move data between the index file and either
 the database or the working directory. Thus there are four main
 combinations:
-// 一般に、全ての "git" 操作はインデックスファイル上で作用します。
-// いくつかの操作は *純粋に* インデックスファイル(現在のインデックスの状態を表示)
-// 上で作用しますが、ほとんどの操作はインデックスファイルとデータベース又は
+// 一般に、全ての "git" 操作は索引ファイル上で作用します。
+// いくつかの操作は *純粋に* 索引ファイル(現在の索引の状態を表示)
+// 上で作用しますが、ほとんどの操作は索引ファイルとデータベース又は
 // 作業ディレクトリ間のデータを移動します。従って、主に４つの組み合わせがあります：
 
 [[working-directory-to-index]]
 working directory -> index
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-// ==== 作業ディレクトリ → インデックス
+// ==== 作業ディレクトリ → 索引
 
 The linkgit:git-update-index[1] command updates the index with
 information from the working directory.  You generally update the
 index information by just specifying the filename you want to update,
 like so:
 // linkgit:git-update-index[1] コマンドは作業ディレクトリの情報を
-// インデックスに更新します。一般には更新したいファイルを特定して
-// インデックスの情報を更新します、次のように：
+// 索引に更新します。一般には更新したいファイルを特定して
+// 索引の情報を更新します、次のように：
 
 -------------------------------------------------
 $ git update-index filename
@@ -5304,10 +5304,10 @@ considering a removed file to be a valid thing, and if the file really
 does not exist any more, it will update the index accordingly.
 // 注意！ `--remove` フラグを使用しても必ずしもそのファイルが削除される
 // わけではありません：ファイルがディレクトリ内にまだ存在する場合、
-// インデックスは新しいステータスに更新されますが、ファイルは削除されません。
+// 索引は新しいステータスに更新されますが、ファイルは削除されません。
 // `--remove` はファイルが削除されたのが正しいことであることが
-// インデックスの更新時に考慮されることを意味しているだけであり、
-// もしファイルが本当に存在しないのならインデックスをそれに従い更新するだけです。
+// 索引の更新時に考慮されることを意味しているだけであり、
+// もしファイルが本当に存在しないのなら索引をそれに従い更新するだけです。
 
 As a special case, you can also do `git-update-index --refresh`, which
 will refresh the "stat" information of each index to match the current
@@ -5315,7 +5315,7 @@ stat information. It will 'not' update the object status itself, and
 it will only update the fields that are used to quickly test whether
 an object still matches its old backing store object.
 // `git-update-index --refresh` という特別なオプションもあります。
-// これは現在の "stat" 情報に一致する各インデックスの "stat" 情報を
+// これは現在の "stat" 情報に一致する各索引の "stat" 情報を
 // リフレッシュします。オブジェクトのステータス自身は更新せず、
 // オブジェクトが過去に格納されたオブジェクトとまだ一致している
 // かを素早くテストする為に使用されるフィールドだけを更新します。
@@ -5328,10 +5328,10 @@ linkgit:git-update-index[1].
 [[index-to-object-database]]
 index -> object database
 ~~~~~~~~~~~~~~~~~~~~~~~~
-// ==== インデックス → オブジェクトＤＢ
+// ==== 索引 → オブジェクトＤＢ
 
 You write your current index file to a "tree" object with the program
-// 現在のインデックスファイルを "tree" オブジェクトに書く為には、プログラム
+// 現在の索引ファイルを "tree" オブジェクトに書く為には、プログラム
 
 -------------------------------------------------
 $ git write-tree
@@ -5343,22 +5343,22 @@ and it will return the name of the resulting top-level tree. You can
 use that tree to re-generate the index at any time by going in the
 other direction:
 // を使用します。これにはオプションがありません。-- これは
-// その状態を記述する現在のインデックスをツリーオブジェクトの集合へと
+// その状態を記述する現在の索引をツリーオブジェクトの集合へと
 // 書き出す役目をし、トップレベルのツリーの名前を返却します。
-// このツリーはいつでもインデックスを再生成する為に利用できます。
+// このツリーはいつでも索引を再生成する為に利用できます。
 
 [[object-database-to-index]]
 object database -> index
 ~~~~~~~~~~~~~~~~~~~~~~~~
-// ==== オブジェクトＤＢ → インデックス
+// ==== オブジェクトＤＢ → 索引
 
 You read a "tree" file from the object database, and use that to
 populate (and overwrite--don't do this if your index contains any
 unsaved state that you might want to restore later!) your current
 index.  Normal operation is just
-// オブジェクトＤＢから "tree" ファイルを読み込み、現在のインデックスを
+// オブジェクトＤＢから "tree" ファイルを読み込み、現在の索引を
 // そのツリーの状態と同じにするには次のようにします。
-// (インデックスが後で元に戻す可能性がある未保存の状態を含む場合にはこれをしないでください！)
+// (索引が後で元に戻す可能性がある未保存の状態を含む場合にはこれをしないでください！)
 
 -------------------------------------------------
 $ git-read-tree <sha1 of tree>
@@ -5367,14 +5367,14 @@ $ git-read-tree <sha1 of tree>
 and your index file will now be equivalent to the tree that you saved
 earlier. However, that is only your 'index' file: your working
 directory contents have not been modified.
-// これによりインデックスファイルは過去に保存したツリーと同じ状態になります。
+// これにより索引ファイルは過去に保存したツリーと同じ状態になります。
 // しかし、それは 'index' ファイルに対してだけです：作業ディレクトリは
 // 何も変更されていません。
 
 [[index-to-working-directory]]
 index -> working directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-// ==== インデックス → 作業ディレクトリ
+// ==== 索引 → 作業ディレクトリ
 
 You update your working directory from the index by "checking out"
 files. This is not a very common operation, since normally you'd just
@@ -5386,7 +5386,7 @@ However, if you decide to jump to a new version, or check out somebody
 else's version, or just restore a previous tree, you'd populate your
 index file with read-tree, and then you need to check out the result
 with
-// 次のようにすると、作業ディレクトリをインデックスの状態に
+// 次のようにすると、作業ディレクトリを索引の状態に
 // 更新することができます。
 
 -------------------------------------------------
@@ -5394,7 +5394,7 @@ $ git-checkout-index filename
 -------------------------------------------------
 
 or, if you want to check out all of the index, use `-a`.
-// あるいは、全てのインデックスをチェックアウトしたい場合は `-a` を使用します。
+// あるいは、全ての索引をチェックアウトしたい場合は `-a` を使用します。
 
 NOTE! git-checkout-index normally refuses to overwrite old files, so
 if you have an old version of the tree already checked out, you will
@@ -5515,7 +5515,7 @@ index with various helper tools. For every object, you can use
 linkgit:git-cat-file[1] to examine details about the
 object:
 // 様々なヘルパーツールを用いることでオブジェクトDBと
-// インデックスの中身を確認することができます。
+// 索引の中身を確認することができます。
 // 各オブジェクトの中身は linkgit:git-cat-file[1] で確認します:
 
 -------------------------------------------------
@@ -5612,11 +5612,11 @@ always do a merge against your last commit (which should thus match what
 you have in your current index anyway).
 // マージしようとする３つのツリー(１つは "original"の tree いわゆる 共通の tree、
 // ２つの "結果" tree、いわゆるマージしたいブランチ)を知った後は、
-// インデックスに読み込んでそれらを "マージ" します。
-// 古いインデックスの中身を破棄しなくてはならない場合、エラーを表示します。
+// 索引に読み込んでそれらを "マージ" します。
+// 古い索引の中身を破棄しなくてはならない場合、エラーを表示します。
 // 従ってそれらをコミットしたか確認してください。-- 実際、通常は常に
 // 最後にコミットした内容をもとにマージします(そのコミットは従って
-// 現在のインデックスの内容と一致します)
+// 現在の索引の内容と一致します)
 
 To do the merge, do
 // マージをするには次のひょうにします。
@@ -5628,7 +5628,7 @@ $ git-read-tree -m -u <origtree> <yourtree> <targettree>
 which will do all trivial merge operations for you directly in the
 index file, and you can just write the result out with
 `git-write-tree`.
-// これにより、自明のマージ操作は直接インデックスファイルに行なわれ、
+// これにより、自明のマージ操作は直接索引ファイルに行なわれ、
 // `git-write-tree` を用いてその結果を書き込むことができます。
 
 
@@ -5646,13 +5646,13 @@ other tools before you can write out the result.
 // 残念なことに、多くのマージは自明ではありませんん。
 // 追加や移動、削除されたファイルがある場合や、あるいは両方のブランチ
 // で同じファイルが変更されている場合、"マージエントリ" を含んだ
-// インデックスツリーが残されます。このようなインデックスツリーは
+// 索引ツリーが残されます。このような索引ツリーは
 // tree オブジェクトには書き込むことができません。その結果を書き込む前に
 // 他のツールを使用してコンフリクトを解消する必要があります。
 
 You can examine such index state with `git-ls-files --unmerged`
 command.  An example:
-// このようなインデックス状態は `git-ls-files --unmerged` を
+// このような索引状態は `git-ls-files --unmerged` を
 // 用いると確認できます。例えば：
 
 ------------------------------------------------
@@ -5836,7 +5836,7 @@ Also, we do not call it "cache" any more, but "index", however, the
 file is still called `cache.h`.  Remark: Not much reason to change it now,
 especially since there is no good single name for it anyway, because it is
 basically _the_ header file which is included by _all_ of Git's C sources.
-// また、現在は "キャッシュ" という言い方はせず "インデックス" と呼んでいますが、
+// また、現在は "キャッシュ" という言い方はせず "索引(index)" と呼んでいますが、
 // ファイルは今も `cache.h` です。(注釈：Not much reason to change it now,
 // especially since there is no good single name for it anyway, because it is
 // basically _the_ header file which is included by _all_ of Git's C sources.)
@@ -5868,7 +5868,7 @@ structures in `cache.h`), and that there are just a couple of object types
 `struct object`, which is their first member (and thus, you can cast e.g.
 `(struct object *)commit` to achieve the _same_ as `&commit->object`, i.e.
 get at the object name and flags).
-// ここまでの確認で、インデックスが何かを理解し、そして、`cashe.h`内のインデックスのデータ
+// ここまでの確認で、索引が何かを理解し、そして、`cashe.h`内の索引のデータ
 // 構造を理解することができたはずです。また、４つのオブジェクトタイプ(blob, tree, commit, tag)が
 // `struct object` の共通構造を継承していていることや、
 // `struct object` がそれらの最初のメンバであり
