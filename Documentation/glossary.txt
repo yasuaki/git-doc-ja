@@ -57,7 +57,7 @@ GIT Glossary
 [[def_cache]]cache::
 // [[def_cache]]キャッシュ(cache)::
 	Obsolete for: <<def_index,index>>.
-//	<<def_index,インデックス(index)>> に対する廃語です。
+//	<<def_index,索引(index)>> に対する廃語です。
 
 [[def_chain]]chain::
 // [[def_chain]]チェーン(chain)::
@@ -129,7 +129,7 @@ state of the <<def_index,index>> and advancing <<def_HEAD,HEAD>>
 to point at the new commit.
 // +
 // 動詞：プロジェクト状態の新しいスナップショットを git の履歴に格納する操作のことで、
-// <<def_index,インデックス>>の現在の状態を現わす新しいコミットを作成し、
+// <<def_index,索引(index)>>の現在の状態を現わす新しいコミットを作成し、
 // 新しいコミットを指し示すように <<def_HEAD,HEAD>> の位置を進めます。
 
 [[def_commit_object]]commit object::
@@ -187,7 +187,7 @@ to point at the new commit.
 [[def_dircache]]dircache::
 // [[def_dircache]]ディレクトリキャッシュ(dircache)::
 	You are *waaaaay* behind. See <<def_index,index>>.
-//	*かなり時代遅れ* な用語です。<<def_index,インデックス>> を参照。
+//	*かなり時代遅れ* な用語です。<<def_index,索引(index)>> を参照。
 
 [[def_directory]]directory::
 // [[def_directory]]ディレクトリ(directory)::
@@ -325,26 +325,26 @@ to point at the new commit.
 //	スクリプトを実行パーミッションを付与することで利用可能になります。
 
 [[def_index]]index::
-// [[def_index]]インデックス(index)::
+// [[def_index]]索引(index)::
 	A collection of files with stat information, whose contents are stored
 	as objects. The index is a stored version of your
 	<<def_working_tree,working tree>>. Truth be told, it can also contain a second, and even
 	a third version of a working tree, which are used
 	when <<def_merge,merging>>.
-//	インデックスはファイルとその状態の集合であり、その中身はオブジェクトとして格納されています。
+//	索引はファイルとその状態の集合であり、その中身はオブジェクトとして格納されています。
 //	<<def_working_tree,作業ツリー>>の内容を保管しているバージョンです。
-//	実は、インデックスは２つないし２つの作業ツリーのバージョンを含むことも可能で、
+//	実は、索引は２つないし２つの作業ツリーのバージョンを含むことも可能で、
 //	<<def_merge,マージ>>するときにそのような状態となります。
 
 [[def_index_entry]]index entry::
-// [[def_index_entry]]インデックスエントリ(index entry)::
+// [[def_index_entry]]索引エントリ(index entry)::
 	The information regarding a particular file, stored in the
 	<<def_index,index>>. An index entry can be unmerged, if a
 	<<def_merge,merge>> was started, but not yet finished (i.e. if
 	the index contains multiple versions of that file).
-//	<<def_index,インデックス>>内に格納された特定のファイル情報のことです。
-//	インデックスエントリは<<def_merge,マージ>>が開始されているが
-//	完了していない場合(すなわち、インデックスがファイルの複数の
+//	<<def_index,索引(index)>>内に格納された特定のファイル情報のことです。
+//	索引エントリは<<def_merge,マージ>>が開始されているが
+//	完了していない場合(すなわち、索引がファイルの複数の
 //	バージョンを含んでいる場合)には、マージが取り消されていることもあります。
 
 [[def_master]]master::
@@ -466,7 +466,7 @@ This commit is referred to as a "merge commit", or sometimes just a
 //	１つのファイルに圧縮されたものをいいます。
 
 [[def_pack_index]]pack index::
-// [[def_pack_index]]パックインデックス(pack index)::
+// [[def_pack_index]]パック索引(pack index)::
 	The list of identifiers, and other information, of the objects in a
 	<<def_pack,pack>>, to assist in efficiently accessing the contents of a
 	pack.
@@ -774,11 +774,11 @@ This commit is referred to as a "merge commit", or sometimes just a
 //	(訳注：ツリーっぽくない参照は blob オブジェクトへの参照)
 
 [[def_unmerged_index]]unmerged index::
-// [[def_unmerged_index]]マージされていないインデックス::
+// [[def_unmerged_index]]マージされていない索引::
 	An <<def_index,index>> which contains unmerged
 	<<def_index_entry,index entries>>.
-//	マージされていない <<def_index_entry,インデックスエントリ>> を含む
-//	<<def_index,インデックス>>。
+//	マージされていない <<def_index_entry,索引エントリ>> を含む
+//	<<def_index,索引(index)>>。
 
 [[def_unreachable_object]]unreachable object::
 // [[def_unreachable_object]]到達不可能なオブジェクト::
