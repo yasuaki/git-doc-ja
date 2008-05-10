@@ -1,0 +1,919 @@
+git(7)
+======
+// = git(7)
+
+NAME
+----
+// == NAME
+git - the stupid content tracker
+// git - おバカなソース追跡ツール
+
+
+SYNOPSIS
+--------
+// == SYNOPSIS
+[verse]
+'git' [--version] [--exec-path[=GIT_EXEC_PATH]]
+    [-p|--paginate|--no-pager]
+    [--bare] [--git-dir=GIT_DIR] [--work-tree=GIT_WORK_TREE]
+    [--help] COMMAND [ARGS]
+// [verse]
+// 'git' [--version] [--exec-path[=GIT_EXEC_PATH]]
+//     [-p|--paginate|--no-pager]
+//     [--bare] [--git-dir=GIT_DIR] [--work-tree=GIT_WORK_TREE]
+//     [--help] 'コマンド' [引数]
+
+DESCRIPTION
+-----------
+// == 解説
+Git is a fast, scalable, distributed revision control system with an
+unusually rich command set that provides both high-level operations
+and full access to internals.
+// git は高速で、拡張性のある、分散型のリビジョン管理システムです。
+// 非常に豊富なコマンドセットを持ち、高レベルな操作と内部への完全なアクセスの
+// 両方が可能です。
+
+See this link:tutorial.html[tutorial] to get started, then see
+link:everyday.html[Everyday Git] for a useful minimum set of commands, and
+"man git-commandname" for documentation of each command.  CVS users may
+also want to read link:cvs-migration.html[CVS migration].  See
+link:user-manual.html[Git User's Manual] for a more in-depth
+introduction.
+// 始めは link:tutorial.html[チュートリアル] と便利なコマンドの最少セットを
+// 解説している link:everyday.html[日々の git の利用] を参照してください。
+// 各コマンドのドキュメントは "man git-コマンド名" から得られます。
+// CVS ユーザは link:cvs-migration.html[CVS からの移行] も参考になるかもしれません。
+// より深い導入として link:user-manual.html[git ユーザマニュアル] があります。
+
+The COMMAND is either a name of a Git command (see below) or an alias
+as defined in the configuration file (see linkgit:git-config[1]).
+// 'コマンド' は git コマンド(下記参照)の名前または
+// 設定ファイル(linkgit:git-config[1]参照)内で定義された別名です。
+
+Formatted and hyperlinked version of the latest git
+documentation can be viewed at
+`http://www.kernel.org/pub/software/scm/git/docs/`.
+// 整形されたハイパーリンク付きの git の最新のドキュメントは
+// 以下の場所で参照できます。
+// `http://www.kernel.org/pub/software/scm/git/docs/`
+
+ifdef::stalenotes[]
+[NOTE]
+============
+// = [ノート]
+
+You are reading the documentation for the latest (possibly
+unreleased) version of git, that is available from 'master'
+branch of the `git.git` repository.
+Documentation for older releases are available here:
+
+* link:v1.5.5/git.html[documentation for release 1.5.5]
+
+* release notes for
+  link:RelNotes-1.5.5.1.txt[1.5.5.1],
+  link:RelNotes-1.5.5.txt[1.5.5].
+
+* link:v1.5.5.1/git.html[documentation for release 1.5.5.1]
+
+* link:v1.5.4.5/git.html[documentation for release 1.5.4.5]
+
+* release notes for
+  link:RelNotes-1.5.4.5.txt[1.5.4.5],
+  link:RelNotes-1.5.4.4.txt[1.5.4.4],
+  link:RelNotes-1.5.4.3.txt[1.5.4.3],
+  link:RelNotes-1.5.4.2.txt[1.5.4.2],
+  link:RelNotes-1.5.4.1.txt[1.5.4.1],
+  link:RelNotes-1.5.4.txt[1.5.4].
+
+* link:v1.5.3.8/git.html[documentation for release 1.5.3.8]
+
+* release notes for
+  link:RelNotes-1.5.3.8.txt[1.5.3.8],
+  link:RelNotes-1.5.3.7.txt[1.5.3.7],
+  link:RelNotes-1.5.3.6.txt[1.5.3.6],
+  link:RelNotes-1.5.3.5.txt[1.5.3.5],
+  link:RelNotes-1.5.3.4.txt[1.5.3.4],
+  link:RelNotes-1.5.3.3.txt[1.5.3.3],
+  link:RelNotes-1.5.3.2.txt[1.5.3.2],
+  link:RelNotes-1.5.3.1.txt[1.5.3.1],
+  link:RelNotes-1.5.3.txt[1.5.3].
+
+* release notes for
+  link:RelNotes-1.5.2.5.txt[1.5.2.5],
+  link:RelNotes-1.5.2.4.txt[1.5.2.4],
+  link:RelNotes-1.5.2.3.txt[1.5.2.3],
+  link:RelNotes-1.5.2.2.txt[1.5.2.2],
+  link:RelNotes-1.5.2.1.txt[1.5.2.1],
+  link:RelNotes-1.5.2.txt[1.5.2].
+
+* link:v1.5.1.6/git.html[documentation for release 1.5.1.6]
+
+* release notes for
+  link:RelNotes-1.5.1.6.txt[1.5.1.6],
+  link:RelNotes-1.5.1.5.txt[1.5.1.5],
+  link:RelNotes-1.5.1.4.txt[1.5.1.4],
+  link:RelNotes-1.5.1.3.txt[1.5.1.3],
+  link:RelNotes-1.5.1.2.txt[1.5.1.2],
+  link:RelNotes-1.5.1.1.txt[1.5.1.1],
+  link:RelNotes-1.5.1.txt[1.5.1].
+
+* link:v1.5.0.7/git.html[documentation for release 1.5.0.7]
+
+* release notes for
+  link:RelNotes-1.5.0.7.txt[1.5.0.7],
+  link:RelNotes-1.5.0.6.txt[1.5.0.6],
+  link:RelNotes-1.5.0.5.txt[1.5.0.5],
+  link:RelNotes-1.5.0.3.txt[1.5.0.3],
+  link:RelNotes-1.5.0.2.txt[1.5.0.2],
+  link:RelNotes-1.5.0.1.txt[1.5.0.1],
+  link:RelNotes-1.5.0.txt[1.5.0].
+
+* documentation for release link:v1.4.4.4/git.html[1.4.4.4],
+  link:v1.3.3/git.html[1.3.3],
+  link:v1.2.6/git.html[1.2.6],
+  link:v1.0.13/git.html[1.0.13].
+
+============
+
+endif::stalenotes[]
+
+OPTIONS
+-------
+// == オプション
+--version::
+// --version::
+	Prints the git suite version that the 'git' program came from.
+//	コールされている 'git' プログラムのバージョンを表示します。
+
+--help::
+// --help::
+	Prints the synopsis and a list of the most commonly used
+	commands. If the option '--all' or '-a' is given then all
+	available commands are printed. If a git command is named this
+	option will bring up the manual page for that command.
++
+Other options are available to control how the manual page is
+displayed. See linkgit:git-help[1] for more information,
+because 'git --help ...' is converted internally into 'git
+help ...'.
+//	概要とよく利用されるコマンドの一覧を表示します。
+//	'--all' または '-a' オプションを付けた場合は
+//	全コマンドの一覧を表示します。git コマンドがこのオプション付きで
+//	呼ばれた場合、そのコマンドのマニュアルページを呼び出します。
+// +
+// マニュアルページの表示方法をコントロールするオプションは他にもあります。
+// 詳細は linkgit:git-help[1] を参照してください。
+// 'git --help ...' は内部的には 'git help ...' に置き換えられます。
+
+--exec-path::
+// --exec-path::
+	Path to wherever your core git programs are installed.
+	This can also be controlled by setting the GIT_EXEC_PATH
+	environment variable. If no path is given 'git' will print
+	the current setting and then exit.
+//	gitの中核(core git)プログラムがインストールされているパスを指定します。
+//	環境変数 GIT_EXEC_PATH を設定することでも指定可能です。
+//	パスの指定がない場合、'git' は現在設定されているパスを表示して終了します。
+
+-p|--paginate::
+// -p|--paginate::
+	Pipe all output into 'less' (or if set, $PAGER).
+//	全ての出力を 'less' (または設定されていれば $PAGER) にパイプ接続します。
+
+--no-pager::
+// --no-pager::
+	Do not pipe git output into a pager.
+//	git の出力をページャにパイプ接続しないようにします。
+
+--git-dir=<path>::
+// --git-dir=<path>::
+	Set the path to the repository. This can also be controlled by
+	setting the GIT_DIR environment variable. It can be an absolute
+	path or relative path to current working directory.
+//	リポジトリのパスを設定します。この設定は環境変数 GIT_DIR にて指定することも
+//	できます。値には絶対パス、または現在の作業ディレクトリからの相対パスが
+//	指定可能です。
+
+--work-tree=<path>::
+// --work-tree=<path>::
+	Set the path to the working tree.  The value will not be
+	used in combination with repositories found automatically in
+	a .git directory (i.e. $GIT_DIR is not set).
+//	作業ツリーのパスを設定します。
+//	この値はコマンド実行時に自動的に検出される .git ディレクトリ内の
+//	リポジトリとは組み合わせて利用されません。(この値は $GIT_DIR
+//	または --git-dir が設定されている時のみ利用できます)
+	This can also be controlled by setting the GIT_WORK_TREE
+	environment variable and the core.worktree configuration
+	variable. It can be an absolute path or relative path to
+	the directory specified by --git-dir or GIT_DIR.
+//	この設定は環境変数 GIT_WORK_TREE または構成変数 core.worktree にて
+//	指定することもできます。値には絶対パスまたは --git-dir または
+//	GIT_DIR により指定されるディレクトリからの相対パスを
+//	指定することができます。
+	Note: If --git-dir or GIT_DIR are specified but none of
+	--work-tree, GIT_WORK_TREE and core.worktree is specified,
+	the current working directory is regarded as the top directory
+	of your working tree.
+//	注意：--git-dir または GIT_DIR が指定されているが、--work-tree
+//	, GIT_WORK_TREE, core.worktree が指定されていない場合、
+//	現在の作業ディレクトリが作業ツリーのトップディレクトリとして
+//	扱われます。
+
+--bare::
+// --bare::
+	Treat the repository as a bare repository.  If GIT_DIR
+	environment is not set, it is set to the current working
+	directory.
+//	リポジトリを裸の(bare)リポジトリとして扱います
+//	変数 GIT_DIR が設定されていない場合、現在の作業ディレクトリ
+//	が設定されます。
+
+
+FURTHER DOCUMENTATION
+---------------------
+// == さらに進んだドキュメント
+
+See the references above to get started using git.  The following is
+probably more detail than necessary for a first-time user.
+// git を使い始めるには上述のリファレンスを見てください。
+// 以下は初めてのユーザにはおそらく詳しすぎます。
+
+The link:user-manual.html#git-concepts[git concepts chapter of the
+user-manual] and the link:core-tutorial.html[Core tutorial] both provide
+introductions to the underlying git architecture.
+// link:user-manual.html#git-concepts[ユーザマニュアルの git のコンセプト] と
+// link:core-tutorial.html[コアチュートリアル] は
+// git のアーキテクチャについてのイントロです。
+
+See also the link:howto-index.html[howto] documents for some useful
+examples.
+// link:howto-index.html[howto] には役に立つ使用例がいくつか
+// 紹介されています。
+
+The internals are documented link:technical/api-index.html[here].
+// 内部構造は link:technical/api-index.html[ここ] で説明されています。
+
+GIT COMMANDS
+------------
+// == git のコマンド
+
+We divide git into high level ("porcelain") commands and low level
+("plumbing") commands.
+// git は高レベルなコマンド("磁器"(porcelain))と下位レベルのコマンド
+// ("配管"(plumbing))に分けられます。
+
+High-level commands (porcelain)
+-------------------------------
+// == 高レベルなコマンド("磁器"(porcelain))
+
+We separate the porcelain commands into the main commands and some
+ancillary user utilities.
+// 磁器(porcelain)のコマンドは主要コマンドとユーザ補助コマンドに
+// 分けられます。
+
+Main porcelain commands
+~~~~~~~~~~~~~~~~~~~~~~~
+// === 主要な磁器(porcelain)コマンド
+
+include::cmds-mainporcelain.txt[]
+
+Ancillary Commands
+~~~~~~~~~~~~~~~~~~
+// === 補助コマンド
+Manipulators:
+// 操縦者(Manipulators):
+
+include::cmds-ancillarymanipulators.txt[]
+
+Interrogators:
+// 質問者(Interrogators):
+
+include::cmds-ancillaryinterrogators.txt[]
+
+
+Interacting with Others
+~~~~~~~~~~~~~~~~~~~~~~~
+// === 他者との相互作用
+
+These commands are to interact with foreign SCM and with other
+people via patch over e-mail.
+// これらのコマンドは外部のSCMや他者からのe-mailパッチと
+// 相互作用することができます。
+
+include::cmds-foreignscminterface.txt[]
+
+
+Low-level commands (plumbing)
+-----------------------------
+// == 下位レベルのコマンド ("配管"(plumbing))
+
+Although git includes its
+own porcelain layer, its low-level commands are sufficient to support
+development of alternative porcelains.  Developers of such porcelains
+might start by reading about linkgit:git-update-index[1] and
+linkgit:git-read-tree[1].
+// git はそれ自体に磁気(porcelain)の階層を含んでいますが、
+// その下位レベルコマンドは代替の磁器を開発するのに十分役に立ちます。
+// 磁器の開発者は linkgit:git-update-index[1] と
+// linkgit:git-read-tree[1] から読み始めると良いでしょう。
+
+The interface (input, output, set of options and the semantics)
+to these low-level commands are meant to be a lot more stable
+than Porcelain level commands, because these commands are
+primarily for scripted use.  The interface to Porcelain commands
+on the other hand are subject to change in order to improve the
+end user experience.
+// これら下位レベルコマンドのインターフェース(入力、出力、
+// オプションとその意味)は、これらコマンドがスクリプト化して
+// 使用される為、磁器レベルのコマンドよりもずっと安定性が
+// 求められます。一方、磁器コマンドのインターフェースは
+// エンドユーザの経験に基づく改良の為、変更されていく必要があります。
+
+The following description divides
+the low-level commands into commands that manipulate objects (in
+the repository, index, and working tree), commands that interrogate and
+compare objects, and commands that move objects and references between
+repositories.
+// 以下の記述では下位レベルコマンドを以下の３つに分割します。
+// 1.リポジトリ、インデックス、作業ツリー内のオブジェクトを
+// 操作するコマンド。
+// 2.質問し、オブジェクトを比較するコマンド。
+// 3.リポジトリ間でオブジェクトと参照を移動するコマンド。
+
+
+Manipulation commands
+~~~~~~~~~~~~~~~~~~~~~
+// === 操作コマンド
+
+include::cmds-plumbingmanipulators.txt[]
+
+
+Interrogation commands
+~~~~~~~~~~~~~~~~~~~~~~
+// === 質問コマンド
+
+include::cmds-plumbinginterrogators.txt[]
+
+In general, the interrogate commands do not touch the files in
+the working tree.
+// 一般に、質問コマンドは作業ツリー内のファイルを変更することは
+// ありません。
+
+
+Synching repositories
+~~~~~~~~~~~~~~~~~~~~~
+// === リポジトリの同期
+
+include::cmds-synchingrepositories.txt[]
+
+The following are helper programs used by the above; end users
+typically do not use them directly.
+// 以下は上記コマンドにより使用されるヘルパープログラムです；
+// エンドユーザは通常これらを直接使用することはありません。
+
+include::cmds-synchelpers.txt[]
+
+
+Internal helper commands
+~~~~~~~~~~~~~~~~~~~~~~~~
+// === 内部ヘルパーコマンド
+
+These are internal helper commands used by other commands; end
+users typically do not use them directly.
+// これらは他のコマンドにより使用される内部ヘルパーコマンドです；
+// エンドユーザは通常これらを直接使用することはありません。
+
+include::cmds-purehelpers.txt[]
+
+
+Configuration Mechanism
+-----------------------
+// == 構成機構
+
+Starting from 0.99.9 (actually mid 0.99.8.GIT), `.git/config` file
+is used to hold per-repository configuration options.  It is a
+simple text file modeled after `.ini` format familiar to some
+people.  Here is an example:
+// 0.99.9 (実際は0.99.8.GITの途中)から、
+// 各リポジトリの構成オプションを保持する目的で
+// `.git/config` ファイルが使用されるようになりました。
+// その形式は単純なテキストファイルであり、一部の人には
+// `.ini` 形式として馴染みのあるものです。
+
+------------
+#
+# A '#' or ';' character indicates a comment.
+#
+
+; core variables
+[core]
+	; Don't trust file modes
+	filemode = false
+
+; user identity
+[user]
+	name = "Junio C Hamano"
+	email = "junkio@twinsun.com"
+
+------------
+
+Various commands read from the configuration file and adjust
+their operation accordingly.
+// 様々なコマンドが構成ファイルを読み込んで、
+// コマンドの動作を調整します。
+
+
+Identifier Terminology
+----------------------
+// == 識別用語
+<object>::
+// <object>::
+	Indicates the object name for any type of object.
+//	任意のオブジェクトの型に対して、オブジェクトの名前を指し示します。
+
+<blob>::
+// <blob>::
+	Indicates a blob object name.
+//	blob オブジェクトの名前を指し示します。
+
+<tree>::
+// <tree>::
+	Indicates a tree object name.
+//	ツリーオブジェクトの名前を指し示します。
+
+<commit>::
+// <commit>::
+	Indicates a commit object name.
+//	コミットオブジェクトの名前を指し示します。
+
+<tree-ish>::
+// <tree-ish>::
+	Indicates a tree, commit or tag object name.  A
+	command that takes a <tree-ish> argument ultimately wants to
+	operate on a <tree> object but automatically dereferences
+	<commit> and <tag> objects that point at a <tree>.
+//	ツリー、コミットまたはタグオブジェクトの名前を指し示します。
+//	<tree-ish> の引数を取るコマンドは、最終的には <tree> オブジェクト
+//	に対して作用しますが、<tree> を指し示す <commit> と <tag>
+//	オブジェクトを引数に指定することも可能です。
+
+<commit-ish>::
+// <commit-ish>::
+	Indicates a commit or tag object name.  A
+	command that takes a <commit-ish> argument ultimately wants to
+	operate on a <commit> object but automatically dereferences
+	<tag> objects that point at a <commit>.
+//	コミットまたはタグオブジェクトの名前を指し示します。
+//	<commit-ish> の引数を取るコマンドは、最終的には <commit> 
+//	オブジェクトに対して作用しますが、<commit> を指し示す <tag>
+//	オブジェクトを引数に指定することも可能です。
+
+<type>::
+// <type>::
+	Indicates that an object type is required.
+	Currently one of: `blob`, `tree`, `commit`, or `tag`.
+//	オブジェクトタイプが必要であることを示します。
+//	一般に `blob`, `tree`, `commit`, または `tag` のどれかです。
+
+<file>::
+// <file>::
+	Indicates a filename - almost always relative to the
+	root of the tree structure `GIT_INDEX_FILE` describes.
+//	ファイル名を指し示します。- 通常は `GIT_INDEX_FILE` が表す
+//	ツリー構造のルートからの相対パスです。
+
+Symbolic Identifiers
+--------------------
+// == シンボリックな識別子
+Any git command accepting any <object> can also use the following
+symbolic notation:
+// 任意の <object> を引数に持つすべての git コマンドにて
+// 以下のシンボリックな識別子を使用することができます。
+
+HEAD::
+// HEAD::
+	indicates the head of the current branch (i.e. the
+	contents of `$GIT_DIR/HEAD`).
+//	現在のブランチの head を指し示します。
+//	(つまり、`$GIT_DIR/HEAD` の内容を指し示します)
+
+<tag>::
+// <tag>::
+	a valid tag 'name'
+	(i.e. the contents of `$GIT_DIR/refs/tags/<tag>`).
+//	正しいタグの '名前'。
+//	(つまり、`$GIT_DIR/refs/tags/<tag>` の内容)
+
+<head>::
+// <head>::
+	a valid head 'name'
+	(i.e. the contents of `$GIT_DIR/refs/heads/<head>`).
+//	正しい head の '名前'。
+//	(つまり、`$GIT_DIR/refs/heads/<tag>` の内容)
+
+For a more complete list of ways to spell object names, see
+"SPECIFYING REVISIONS" section in linkgit:git-rev-parse[1].
+// オブジェクトの名前を表す方法のより完全な一覧は
+// linkgit:git-rev-parse[1] 内の"リビジョンの指定方法" の節を
+// 参照してください。
+
+
+File/Directory Structure
+------------------------
+// == ファイル/ディレクトリの構造
+
+Please see the link:repository-layout.html[repository layout] document.
+// link:repository-layout.html[リポジトリのレイアウト] のドキュメントを
+// 参照してください。
+
+Read link:hooks.html[hooks] for more details about each hook.
+// 各フックの詳細は link:hooks.html[フック] を参照してください。
+
+Higher level SCMs may provide and manage additional information in the
+`$GIT_DIR`.
+// より高レベルなSCMにより `$GIT_DIR` 内の追加情報の提供と管理が
+// 可能になるでしょう。
+
+
+Terminology
+-----------
+// == 用語
+Please see the link:glossary.html[glossary] document.
+// link:glossary.html[用語集] のドキュメントを参照してください。
+
+
+Environment Variables
+---------------------
+// == 環境変数
+Various git commands use the following environment variables:
+// 様々な git コマンドが以下の環境変数を参照しています。
+
+The git Repository
+~~~~~~~~~~~~~~~~~~
+// === git リポジトリ
+These environment variables apply to 'all' core git commands. Nb: it
+is worth noting that they may be used/overridden by SCMS sitting above
+git so take care if using Cogito etc.
+// これらの環境変数は '全ての' 中核となる git コマンドに適用されます。
+// Nb: これらの値をgit の上位に位置する SCMS によって利用/上書きする
+// ことは何の価値もないので、Cogit などを利用する場合は注意してくだ
+// さい。
+
+'GIT_INDEX_FILE'::
+// 'GIT_INDEX_FILE'::
+	This environment allows the specification of an alternate
+	index file. If not specified, the default of `$GIT_DIR/index`
+	is used.
+//	この環境変数は代替インデックスファイルを指定します。
+//	定義されていない場合、デフォルトでは `$GIT_DIR/index` が
+//	使用されます。
+
+'GIT_OBJECT_DIRECTORY'::
+// 'GIT_OBJECT_DIRECTORY'::
+	If the object storage directory is specified via this
+	environment variable then the sha1 directories are created
+	underneath - otherwise the default `$GIT_DIR/objects`
+	directory is used.
+//	オブジェクトの格納ディレクトリがこの環境変数により指定されていた場合、
+//	sha1 ディレクトリはこの下に作成されます。- 定義されていない場合、
+//	デフォルトでは `$GIT_DIR/objects` ディレクトリが使用されます。
+
+'GIT_ALTERNATE_OBJECT_DIRECTORIES'::
+// 'GIT_ALTERNATE_OBJECT_DIRECTORIES'::
+	Due to the immutable nature of git objects, old objects can be
+	archived into shared, read-only directories. This variable
+	specifies a ":" separated list of git object directories which
+	can be used to search for git objects. New objects will not be
+	written to these directories.
+//	git オブジェクトの不変性により、古いオブジェクトは
+//	共有化された参照のみのディレクトリにアーカイブさせることが
+//	できます。この値に ":" を区切り文字とした git オブジェクトの
+//	ディレクトリの一覧を指定子、git オブジェクトを検索する際に
+//	使用させることができます。新しいオブジェクトはこれらの
+//	ディレクトリには書き込まれません。
+
+'GIT_DIR'::
+// 'GIT_DIR'::
+	If the 'GIT_DIR' environment variable is set then it
+	specifies a path to use instead of the default `.git`
+	for the base of the repository.
+//	環境変数 'GIT_DIR' が設定されていた場合、
+//	デフォルトである `.git` の代わりに、この値がリポジトリへのパス
+//	として使用されます。
+
+'GIT_WORK_TREE'::
+// 'GIT_WORK_TREE'::
+	Set the path to the working tree.  The value will not be
+	used in combination with repositories found automatically in
+	a .git directory (i.e. $GIT_DIR is not set).
+	This can also be controlled by the '--work-tree' command line
+	option and the core.worktree configuration variable.
+//	作業ツリーのパスを設定します。
+//	この値はコマンド実行時に自動的に検出される .git ディレクトリ内の
+//	リポジトリとは組み合わせて利用されません。(この値は $GIT_DIR
+//	または --git-dir が設定されている時のみ利用できます)
+//	この設定はコマンドラインオプション '--work-tree' または
+//	構成変数 core.worktree にて指定することもできます。
+
+git Commits
+~~~~~~~~~~~
+// === git コミット
+'GIT_AUTHOR_NAME'::
+'GIT_AUTHOR_EMAIL'::
+'GIT_AUTHOR_DATE'::
+'GIT_COMMITTER_NAME'::
+'GIT_COMMITTER_EMAIL'::
+'GIT_COMMITTER_DATE'::
+'EMAIL'::
+// 'GIT_AUTHOR_NAME'::
+// 'GIT_AUTHOR_EMAIL'::
+// 'GIT_AUTHOR_DATE'::
+// 'GIT_COMMITTER_NAME'::
+// 'GIT_COMMITTER_EMAIL'::
+// 'GIT_COMMITTER_DATE'::
+// 'EMAIL'::
+	see linkgit:git-commit-tree[1]
+//	linkgit:git-commit-tree[1] を参照
+
+git Diffs
+~~~~~~~~~
+// === git 差分表示
+'GIT_DIFF_OPTS'::
+// 'GIT_DIFF_OPTS'::
+	Only valid setting is "--unified=??" or "-u??" to set the
+	number of context lines shown when a unified diff is created.
+	This takes precedence over any "-U" or "--unified" option
+	value passed on the git diff command line.
+//	この変数に設定できる正しい値は "--unified=??" または "-u??"
+//	のみです。この指定により unified diff が行われる時に表示する
+//	コンテキスト(変更前後の)行数を指定できます。
+//	この指定は git diff コマンドの実行時に指定する "-U" または
+//	"--unified" オプションよりも優先して使用されます。
+
+'GIT_EXTERNAL_DIFF'::
+// 'GIT_EXTERNAL_DIFF'::
+	When the environment variable 'GIT_EXTERNAL_DIFF' is set, the
+	program named by it is called, instead of the diff invocation
+	described above.  For a path that is added, removed, or modified,
+        'GIT_EXTERNAL_DIFF' is called with 7 parameters:
+//	環境変数 'GIT_EXTERNAL_DIFF' が設定されている場合、
+//	上述の diff が実行される代わりに、ここで指定されているプログラム
+//	が呼び出されます。追加、削除、変更されたパスに対して
+//		'GIT_EXTERNAL_DIFF' が７つのパラメータとともに呼び出されます：
+
+	path old-file old-hex old-mode new-file new-hex new-mode
+//	パス 古いファイル 古いhex 古いモード 新しいファイル 新しいhex 新しいモード
++
+where:
+// +
+// 各パラメータの説明：
+
+	<old|new>-file:: are files GIT_EXTERNAL_DIFF can use to read the
+                         contents of <old|new>,
+//	<古い|新しい>ファイル:: GIT_EXTERNAL_DIFF が <古い|新しい>ファイルの中身を
+//                         読み込む為のファイル名
+	<old|new>-hex:: are the 40-hexdigit SHA1 hashes,
+//	<古い|新しい>hex:: 40桁の16進の SHA1 ハッシュ値、
+	<old|new>-mode:: are the octal representation of the file modes.
+//	<古い|新しい>hex:: ファイルモードの8進数表現。
+
++
+// +
+The file parameters can point at the user's working file
+(e.g. `new-file` in "git-diff-files"), `/dev/null` (e.g. `old-file`
+when a new file is added), or a temporary file (e.g. `old-file` in the
+index).  'GIT_EXTERNAL_DIFF' should not worry about unlinking the
+temporary file --- it is removed when 'GIT_EXTERNAL_DIFF' exits.
+// ファイルパラメータはユーザの作業ファイル(例えば、"git-diff-files"
+// 内の `新しいファイル`)、`/dev/null` (例えば、新しいファイルが追加された
+// 時の `古いファイル`)、または一時ファイル(例えば、索引内の `古いファイル`)
+// を指し示すこともあります。'GIT_EXTERNAL_DIFF' は一時ファイルを削除
+// することに気を使う必要はありません。--- 'GIT_EXTERNAL_DIFF' が終了すると
+// 一時ファイルは削除されます。
++
+// +
+For a path that is unmerged, 'GIT_EXTERNAL_DIFF' is called with 1
+parameter, <path>.
+// マージされなかったパスに対しては 'GIT_EXTERNAL_DIFF' は
+// 1つのパラメータ <path> とともに呼び出されます。
+
+other
+~~~~~
+// === その他
+'GIT_MERGE_VERBOSITY'::
+// 'GIT_MERGE_VERBOSITY'::
+	A number controlling the amount of output shown by
+	the recursive merge strategy.  Overrides merge.verbosity.
+	See linkgit:git-merge[1]
+//	再帰的なマージ戦略により表示される出力の合計値を
+//	管理するための数値です。merge.verbosity を上書きします。
+//	linkgit:git-merge[1] 参照。
+
+'GIT_PAGER'::
+// 'GIT_PAGER'::
+	This environment variable overrides `$PAGER`. If it is set
+	to an empty string or to the value "cat", git will not launch
+	a pager.
+//	この環境変数は `$PAGER` を上書きします。
+//	これを空文字または "cat" に指定すると、git はページャを
+//	起動しません。
+
+'GIT_SSH'::
+// 'GIT_SSH'::
+	If this environment variable is set then linkgit:git-fetch[1]
+	and linkgit:git-push[1] will use this command instead
+	of `ssh` when they need to connect to a remote system.
+	The 'GIT_SSH' command will be given exactly two arguments:
+	the 'username@host' (or just 'host') from the URL and the
+	shell command to execute on that remote system.
+//	この環境変数が設定されていた場合、linkgit:git-fetch[1] と
+//	linkgit:git-push[1] はリモートシステムに接続する必要があった
+//	時に、`ssh` の代わりにこのコマンドを使用します。
+//	'GIT_SSH' コマンドには必ず２つの引数が渡されます：
+//	その URL の 'username@host'(あるいは単に 'host')と、
+//	そのリモートシステム上で実行するシェルコマンドです。
++
+// +
+To pass options to the program that you want to list in GIT_SSH
+you will need to wrap the program and options into a shell script,
+then set GIT_SSH to refer to the shell script.
+// GIT_SSH 内でリストしたいプログラムにオプションを渡したい時は、
+// プログラムをラップしてシェルスクリプトにオプションを渡し、
+// GIT_SSHがそのシェルスクリプトを参照するように設定する必要があります。
++
+// +
+Usually it is easier to configure any desired options through your
+personal `.ssh/config` file.  Please consult your ssh documentation
+for further details.
+// 通常は `.ssh/config` ファイルにて望ましいオプションを設定した方が
+// 容易です。より詳細は ssh のドキュメントを参照してください。
+
+'GIT_FLUSH'::
+// 'GIT_FLUSH'::
+	If this environment variable is set to "1", then commands such
+	as git-blame (in incremental mode), git-rev-list, git-log,
+	git-whatchanged, etc., will force a flush of the output stream
+	after each commit-oriented record have been flushed.   If this
+	variable is set to "0", the output of these commands will be done
+	using completely buffered I/O.   If this environment variable is
+	not set, git will choose buffered or record-oriented flushing
+	based on whether stdout appears to be redirected to a file or not.
+//	この環境変数が "1" に設定されている場合、
+//	git-blame(インクリメンタルモード)、git-rev-list, git-log,
+//	git-whatchanged などのコマンドが呼ばれた時に、各コミットの境界レコードが
+//	フラッシュされた後に出力ストリームが強制的にフラッシュされます。
+//	この変数が "0" に設定されていた場合、これらコマンドの出力は
+//	完全に I/O がバッファリングされます。この環境変数が
+//	設定されていない場合、git は標準出力がファイルにリダイレクト
+//	されているかどうかによってバッファリングされるかれレコードの境界で
+//	フラッシュされるかが決定されます。
+
+'GIT_TRACE'::
+// 'GIT_TRACE'::
+	If this variable is set to "1", "2" or "true" (comparison
+	is case insensitive), git will print `trace:` messages on
+	stderr telling about alias expansion, built-in command
+	execution and external command execution.
+	If this variable is set to an integer value greater than 1
+	and lower than 10 (strictly) then git will interpret this
+	value as an open file descriptor and will try to write the
+	trace messages into this file descriptor.
+	Alternatively, if this variable is set to an absolute path
+	(starting with a '/' character), git will interpret this
+	as a file path and will try to write the trace messages
+	into it.
+//	この変数が "1", "2" または "true" (大文字小文字を区別します)
+//	に設定されていた場合、git は `trace:` のメッセージを標準エラーに出力し、
+//	エイリアスの展開、実行される built-in コマンド、外部コマンド実行
+//	について説明します。
+//	この値が 1 より大きく10より小さい整数が指定された場合、
+//	git はこの値をファイル識別子として解釈し、このファイル識別子
+//	にトレースメッセージを書き込もうとします。
+//	代わりに、この値が絶対パスが指定されていた場合('/'の文字から始まる
+//	場合)、git はこれをファイルパスとして解釈し、トレースメッセージを
+//	そこに書き込もうとします。
+
+Discussion[[Discussion]]
+------------------------
+// == 議論[[Discussion]]
+
+More detail on the following is available from the
+link:user-manual.html#git-concepts[git concepts chapter of the
+user-manual] and the link:core-tutorial.html[Core tutorial].
+// 以下の詳細は link:user-manual.html#git-concepts[ユーザマニュアル内の
+// Gitのコンセプトの章] と link:core-tutorial.html[コアチュートリアル]
+// から得ることができます。
+
+A git project normally consists of a working directory with a ".git"
+subdirectory at the top level.  The .git directory contains, among other
+things, a compressed object database representing the complete history
+of the project, an "index" file which links that history to the current
+contents of the working tree, and named pointers into that history such
+as tags and branch heads.
+// git のプロジェクトは通常、最上位に ".git" のサブディレクトリを持つ
+// 作業ディレクトリから構成されています。.git ディレクトリには
+// プロジェクトの完全な履歴を表現した圧縮されたオブジェクトDB、
+// 作業ツリーの現在の中身の履歴にリンクした "索引(index)"ファイル、
+// そして tag や ブランチの head のような履歴を指し示す名前付きポインタ
+// とを含んでいます。
+
+The object database contains objects of three main types: blobs, which
+hold file data; trees, which point to blobs and other trees to build up
+directory hierarchies; and commits, which each reference a single tree
+and some number of parent commits.
+// オブジェクトDBは主に３つのタイプのオブジェクトを含んでいます：
+// blob はファイルのデータを保持し；tree は blob と他の tree を
+// 指し示してディレクトリ階層を構成し；commit は１つの tree と
+// 複数の親の commit を参照しています。
+
+The commit, equivalent to what other systems call a "changeset" or
+"version", represents a step in the project's history, and each parent
+represents an immediately preceding step.  Commits with more than one
+parent represent merges of independent lines of development.
+// commit は他のシステムで言われる "チェンジセット" や "バージョン"
+// と等しく、プロジェクトの履歴の１ステップを表現し、
+// その親は直接１つ前のステップを表現します。
+// 複数の親を持つコミットは独立した開発ラインのマージを表現します。
+
+All objects are named by the SHA1 hash of their contents, normally
+written as a string of 40 hex digits.  Such names are globally unique.
+The entire history leading up to a commit can be vouched for by signing
+just that commit.  A fourth object type, the tag, is provided for this
+purpose.
+// 全てのオブジェクトはその中身の SHA1 ハッシュによって名前が付けられ、
+// 通常 40 の16進数で書かれます。この名前は大局的にユニークです。
+// ある commit につながる全ての履歴は、ちょうどそのコミットのサインにより
+// 保証されています。4番目のオブジェクトタイプ tag はこの目的の為に
+// 与えられています。
+
+When first created, objects are stored in individual files, but for
+efficiency may later be compressed together into "pack files".
+// オブジェクトは初めに作成されると個々のファイルに格納されますが、
+// 効率性の為、後に "pack ファイル"として一緒に圧縮されます。
+
+Named pointers called refs mark interesting points in history.  A ref
+may contain the SHA1 name of an object or the name of another ref.  Refs
+with names beginning `ref/head/` contain the SHA1 name of the most
+recent commit (or "head") of a branch under development.  SHA1 names of
+tags of interest are stored under `ref/tags/`.  A special ref named
+`HEAD` contains the name of the currently checked-out branch.
+// refs と呼ばれる名前付けされたポインタは履歴内の注目したい位置に
+// 目印を付けます。ref はオブジェクトの SHA1名または他の ref の名前が
+// 保管されています。名前が `ref/head/` で始まる ref は開発中のブランチの
+// 最新のコミット("head")の SHA1名が保管されています。tag のSHA1名は
+// `ref/tags/` の下に保管されています。`HEAD` という名前の特別な ref には
+// 現在チェックアウトしているブランチの名前が保管されています。
+
+The index file is initialized with a list of all paths and, for each
+path, a blob object and a set of attributes.  The blob object represents
+the contents of the file as of the head of the current branch.  The
+attributes (last modified time, size, etc.) are taken from the
+corresponding file in the working tree.  Subsequent changes to the
+working tree can be found by comparing these attributes.  The index may
+be updated with new content, and new commits may be created from the
+content stored in the index.
+// 索引(index)ファイルは全てのパスの一覧で初期化されており、
+// それぞれのパス、blobオブジェクト、属性の集合を含んでいます。
+// blobオブジェクトは現在のブランチ head のファイルの中身を表現しています。
+// 属性(採集更新日時、サイズなど)は作業ツリー内の対応するファイルから
+// 取得されます。作業ツリーにて追加した変更はこれらの属性と比較することに
+// より検出されます。索引は新しいコンテンツにより更新され、新しいコミット
+// は索引内に格納されているコンテンツから作成されます。
+
+The index is also capable of storing multiple entries (called "stages")
+for a given pathname.  These stages are used to hold the various
+unmerged version of a file when a merge is in progress.
+// 索引は同一パス名の複数のエントリ("ステージ"と呼びます)を格納する
+// こともできます。これらステージはマージ作業中の様々な未マージのバージョンを
+// 保持する目的で利用されます。
+
+Authors
+-------
+// == 著者
+* git's founding father is Linus Torvalds <torvalds@osdl.org>.
+// * git の産みの親は Linus Torvalds <torvalds@osdl.org> です。
+* The current git nurse is Junio C Hamano <gitster@pobox.com>.
+// * 現在の git のメンテナは Junio C Hamano <gitster@pobox.com> です。
+* The git potty was written by Andreas Ericsson <ae@op5.se>.
+// * git の potty は Andreas Ericsson <ae@op5.se> によって書かれました。
+// (訳注：pottyとは小児用便座の意味らしいが、何のこと？)
+* General upbringing is handled by the git-list <git@vger.kernel.org>.
+// * 一般的な変更は git-list <git@vger.kernel.org> により行われています。
+
+Documentation
+--------------
+// == 文書化
+The documentation for git suite was started by David Greaves
+<david@dgreaves.com>, and later enhanced greatly by the
+contributors on the git-list <git@vger.kernel.org>.
+// git スイートにたいする文書化は David Greaves
+// <david@dgreaves.com> によって着手され、後に
+// git-list <git@vger.kernel.org> 上の貢献者によって
+// 強化されました。
+
+GIT
+---
+// == GIT
+Part of the linkgit:git[7] suite
+// linkgit:git[7] スイートの一部
