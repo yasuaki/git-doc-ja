@@ -41,6 +41,10 @@
 #		// [[def_tracking_branch]]追跡ブランチ::
 #		--------------------------------
 #
+#	・include::, ifdef:: の記述は日本語訳不要。
+#	  (英語の内容をそのまま出力)
+#
+#
 # 作者：Yasuaki Nairta (yasuaki_n@mti.biglobe.ne.jp)
 # ライセンス：GPL(GNU General Public License) v2 に準じます。
 #             たいしたツールではありませんが、役に立つなら使ってください。
@@ -76,6 +80,12 @@ for ($i=0; $i<$cnt; $i++) {
 
 	# 空行 または [[xxx]] のみの行はそのまま出力
 	if (/^\s*$/ || /^\[\[.*\]\]$/) {
+		printf OUT "%s\n", $_;
+		next;
+	}
+
+	# "include::", "ifdef::" の行はそのまま出力
+	if (/^include::/ || /^ifdef::/ || /^endif::/) {
 		printf OUT "%s\n", $_;
 		next;
 	}

@@ -6135,7 +6135,6 @@ itself!
 
 [[glossary]]
 include::glossary.txt[]
-// include::glossary.txt[]
 
 [[git-quick-start]]
 Appendix A: Git Quick Reference
