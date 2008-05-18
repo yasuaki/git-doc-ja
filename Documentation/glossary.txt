@@ -230,7 +230,7 @@ to point at the new commit.
 	<<def_tracking_branch,tracking branch>> of a remote
 	<<def_repository,repository>>.
 //	早送り(fast forward) とは特殊なタイプの<<def_merge,マージ>>のことで、
-//	マージにより得られる結果が作成済みの祖先と一致するマージのことをいいます。
+//	マージにより得られる結果が作成済みの子孫と一致するマージのことをいいます。
 //	このような場合、新しい<<def_merge,マージ>><<def_commit,コミット>>は作成されずに、
 //	そのリビジョンを指すように更新されます。
 //	早送り(fast forward)はリモート<<def_repository,リポジトリ>>の<<def_tracking_branch,追跡ブランチ>>

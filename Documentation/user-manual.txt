@@ -1124,7 +1124,7 @@ Or you can use linkgit:git-name-rev[1], which will give the commit a
 name based on any tag it finds pointing to one of the commit's
 descendants:
 // あるいは linkgit:git-name-rev[1] を使用し、あるタグに基づいた
-// そのコミットの祖先の１つを指し示す名前を表示することができます：
+// そのコミットの子孫の１つを指し示す名前を表示することができます：
 // (訳注：訳が不正確かな)
 
 -------------------------------------------------
@@ -1163,7 +1163,7 @@ and always returns one or the other in the case where one is a
 descendant of the other; so the above output shows that e05db0fd
 actually is an ancestor of v1.5.0-rc1.
 // merge-base コマンドは指定したコミットの共通の祖先を検索し、
-// 一方が他方の祖先である場合にはそのどちらかを表示します；
+// 一方が他方の子孫である場合にはそのどちらかを表示します；
 // 従って上記出力は e05db0fd が実際に v1.5.0-rc1 の祖先であることを
 // 示しています。
 
@@ -1943,7 +1943,7 @@ commit present in the one is already contained in the other--then git
 just performs a "fast forward"; the head of the current branch is moved
 forward to point at the head of the merged-in branch, without any new
 commits being created.
-// そのため、現在のブランチが他方の祖先である場合には -- つまり
+// そのため、現在のブランチが他方の子孫である場合には -- つまり
 // 全てのコミットが既に他方のコミットに含まれている場合には -- git は
 // "fast forward" を行います；現在のブランチの先頭はマージされるブランチの
 // 先頭の位置に進められ、新しいコミットは作成されません。
@@ -2871,7 +2871,7 @@ is modified to point to a descendant of the commit that it pointed to
 before.  By forcing a push in this situation, you break that convention.
 (See <<problems-with-rewriting-history>>.)
 // 通常、公開したリポジトリ内のブランチヘッドを修正した時はいつでも、
-// 以前指し示していた祖先のコミットを指し示すように変更されます。
+// 以前指し示していた子孫のコミットを指し示すように変更されます。
 // このような場合に強制的に push を行うと、規約を壊すことになります)
 // (<<problems-with-rewriting-history,履歴の書き換えによって生じる問題>> を参照)
 
@@ -3883,7 +3883,7 @@ branch before updating your copy of the branch to point at the new
 commit.  Git calls this process a <<fast-forwards,fast forward>>.
 // 前節の例では、存在するブランチを更新する時に、"git fetch" は
 // リモートブランチの最新のコミットがあなたのコピーしたブランチの最新の
-// こみっとの祖先であることを確認してから、新しいコミットの位置に
+// コミットの子孫であることを確認してから、新しいコミットの位置に
 // 更新しようとします。
 // Git はこのプロセスを <<fast-forwards,fast forward>> と呼びます。
 
@@ -3901,7 +3901,7 @@ In some cases it is possible that the new head will *not* actually be
 a descendant of the old head.  For example, the developer may have
 realized she made a serious mistake, and decided to backtrack,
 resulting in a situation like:
-// 時には、新しい head は古い head の祖先でない可能性があります。
+// 時には、新しい head は古い head の子孫ではない可能性があります。
 // 例えば、開発者が深刻な間違いをしたことに気がつき、変更を
 // 元に戻すことにした場合です、その結果は次のようになります：
 
@@ -3930,7 +3930,7 @@ Forcing git fetch to do non-fast-forward updates
 
 If git fetch fails because the new head of a branch is not a
 descendant of the old head, you may force the update with:
-// 新しいブランチの head が古い head の祖先でない為に、
+// 新しいブランチの head が古い head の子孫ではない為に、
 // git fetch 失敗した場合には、次のようにして強制的に
 // 更新することができます：
 
