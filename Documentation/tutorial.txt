@@ -522,10 +522,10 @@ see linkgit:git-pull[1] for details.
 
 Git can also be used in a CVS-like mode, with a central repository
 that various users push changes to; see linkgit:git-push[1] and
-link:cvs-migration.html[git for CVS users].
+link:gitcvs-migration.html[git for CVS users].
 // git はまた、CVS ライクなモードで使用することもできます。
 // つまり、中央リポジトリを持ち、様々なユーザが変更を push するような使用法です。
-// それらの詳細は linkgit:git-push[1] と link:cvs-migration.html[git for CVS users] を
+// それらの詳細は linkgit:git-push[1] と link:gitcvs-migration.html[git for CVS users] を
 // 参照してください。
 
 Exploring history
@@ -838,5 +838,5 @@ digressions that may be interesting at this point are:
   * link:everyday.html[Everyday GIT with 20 Commands Or So]
 //   * link:everyday.html[約20個のコマンドによる日々の GIT活用]
 
-  * link:cvs-migration.html[git for CVS users].
-//   * link:cvs-migration.html[CVSユーザのためのgit]
+  * link:gitcvs-migration.html[git for CVS users].
+//   * link:gitcvs-migration.html[CVSユーザのためのgit]

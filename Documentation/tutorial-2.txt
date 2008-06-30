@@ -429,7 +429,7 @@ So by default "git commit" uses the index to create the commit, not
 the working tree; the -a option to commit tells it to first update
 the index with all changes in the working tree.
 // 従ってデフォルトでは "git commit" はコミットを作成する際に索引を使用していて
-// 作業ツリーはしようしていないことがわかります；コミット時の -a オプションは
+// 作業ツリーは使用していないことがわかります；コミット時の -a オプションは
 // 最初に作業ツリー内の全ての変更を含むように索引を更新することを表しています。
 
 Finally, it's worth looking at the effect of "git add" on the index
@@ -502,12 +502,12 @@ in the index file is identical to the one in the working directory.
 In addition to being the staging area for new commits, the index file
 is also populated from the object database when checking out a
 branch, and is used to hold the trees involved in a merge operation.
-See the link:core-tutorial.html[core tutorial] and the relevant man
+See the link:gitcore-tutorial.html[core tutorial] and the relevant man
 pages for details.
 // 新しいコミットの為に終結した領域であるということに加えて、
 // 索引ファイルはブランチを作成する時にオブジェクトデータベースから利用されます。
 // そして、マージ操作によって引き起こされる tree を保持するためにも使用されます。
-// 詳細は link:core-tutorial.html[コア部分のチュートリアル] と 関連する man ページを
+// 詳細は link:gitcore-tutorial.html[コア部分のチュートリアル] と 関連する man ページを
 // 参照してください。
 
 What next?
@@ -527,10 +527,10 @@ link:glossary.html[Glossary].
 The link:user-manual.html[Git User's Manual] provides a more
 comprehensive introduction to git.
 
-The link:cvs-migration.html[CVS migration] document explains how to
+The link:gitcvs-migration.html[CVS migration] document explains how to
 import a CVS repository into git, and shows how to use git in a
 CVS-like way.
-// link:cvs-migration.html[CVS からの移行] のドキュメントは
+// link:gitcvs-migration.html[CVS からの移行] のドキュメントは
 // CVS リポジトリを git にインポートする方法を説明しており、
 // CVS のような方法で git を使用する方法を示しています。
 
@@ -539,9 +539,9 @@ link:howto-index.html[howtos].
 // それ以外の git の使い方の面白い例は、link:howto-index.html[howtos] 
 // を参照してください。
 
-For git developers, the link:core-tutorial.html[Core tutorial] goes
+For git developers, the link:gitcore-tutorial.html[Core tutorial] goes
 into detail on the lower-level git mechanisms involved in, for
 example, creating a new commit.
-// git 開発者は link:core-tutorial.html[Core tutorial] が
+// git 開発者は link:gitcore-tutorial.html[Core tutorial] が
 // (例えば新しいコミットの作成のような)下位レベルの git メカニズムの
 // 詳細を説明しているので、そちらに進んでください。
