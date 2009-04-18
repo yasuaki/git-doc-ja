@@ -150,6 +150,7 @@ clean:
 	$(RM) howto-index.txt howto/*.html doc.dep
 	$(RM) technical/api-*.html technical/api-index.txt
 	$(RM) $(cmds_txt) *.made
+	$(RM) chunked
 
 $(MAN_HTML): %.html : %.txt
 	$(RM) $@+ $@
@@ -183,6 +184,9 @@ XSLTOPTS = --xinclude --stringparam html.stylesheet docbook-xsl.css
 
 user-manual.html: user-manual.xml
 	xsltproc $(XSLTOPTS) -o $@ $(XSLT) $<
+	xsltproc chunk.xsl $<
+	cp -p iphone.css chunked/iphone.css
+	cp -p docbook-xsl.css chunked/docbook-xsl.css
 
 git.info: user-manual.texi
 	$(MAKEINFO) --no-split -o $@ user-manual.texi
