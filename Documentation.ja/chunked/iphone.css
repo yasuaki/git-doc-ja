@@ -1,0 +1,8 @@
+
+@import url(docbook-xsl.css);
+
+div.literallayout {
+   word-break: break-all;
+}
+
+
