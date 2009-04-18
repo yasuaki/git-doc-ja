@@ -150,7 +150,7 @@ clean:
 	$(RM) howto-index.txt howto/*.html doc.dep
 	$(RM) technical/api-*.html technical/api-index.txt
 	$(RM) $(cmds_txt) *.made
-	$(RM) chunked
+	$(RM) -rf chunked
 
 $(MAN_HTML): %.html : %.txt
 	$(RM) $@+ $@
