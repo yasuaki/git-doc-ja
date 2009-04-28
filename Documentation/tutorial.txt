@@ -605,7 +605,7 @@ You can also give commits names of your own; after running
 // また、コミットの名前をつけることもできます；次のコマンド
 
 -------------------------------------
-$ git-tag v2.5 1b2e1d63ff
+$ git tag v2.5 1b2e1d63ff
 -------------------------------------
 
 you can refer to 1b2e1d63ff by the name "v2.5".  If you intend to
