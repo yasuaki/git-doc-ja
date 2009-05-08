@@ -59,10 +59,10 @@ a 40-digit hex name.  That name is the SHA1 hash of the object's
 contents; among other things, this ensures that git will never store
 the same data twice (since identical data is given an identical SHA1
 name), and that the contents of a git object will never change (since
-+that would change the object's name as well). The 7 char hex strings
-+here are simply the abbreviation of such 40 character long strings.
-+Abbreviations can be used everywhere where the 40 character strings
-+can be used, so long as they are unambiguous.
+that would change the object's name as well). The 7 char hex strings
+here are simply the abbreviation of such 40 character long strings.
+Abbreviations can be used everywhere where the 40 character strings
+can be used, so long as they are unambiguous.
 // 我々はチュートリアルのパート１で、コミットがこのような名前を持つことを見てきました。
 // これは、git の履歴内にある全てのオブジェクトが 40桁の16進数の名前で
 // 格納されていることを示しています。
