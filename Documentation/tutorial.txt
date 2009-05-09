@@ -1,6 +1,17 @@
-A tutorial introduction to git (for version 1.5.1 or newer)
-===========================================================
-// = git チュートリアル (バージョン 1.5.1 以降用)
+gittutorial(7)
+==============
+
+NAME
+----
+gittutorial - A tutorial introduction to git (for version 1.5.1 or newer)
+// git チュートリアル (バージョン 1.5.1 以降用)
+
+SYNOPSIS
+--------
+git *
+
+DESCRIPTION
+-----------
 
 This tutorial explains how to import a new project into git, make
 changes to it, and share changes with other developers.
@@ -15,14 +26,26 @@ the first two chapters of link:user-manual.html[The Git User's Manual].
 // link:user-manual.html[Git ユーザマニュアル] の最初の２章から始める方が
 // 良いかもしれません。
 
-First, note that you can get documentation for a command such as "git
-diff" with:
-// まず最初に、マニュアルの参照方法を説明します。例えば "git diff" コマンドのマニュアル
+First, note that you can get documentation for a command such as
+`git log --graph` with:
+// まず最初に、マニュアルの参照方法を説明します。例えば "git log" コマンドのマニュアル
 // は以下の方法で取得できます。
 
 ------------------------------------------------
-$ man git-diff
+$ man git-log
 ------------------------------------------------
+
+or:
+// もしくは:
+
+------------------------------------------------
+$ git help log
+------------------------------------------------
+
+With the latter, you can use the manual viewer of your choice; see
+linkgit:git-help[1] for more information.
+// もう一つの方法としてgit-helpコマンドを使用する方法があります。
+// 詳細についてはlinkgit:git-help[1] をご覧下さい。
 
 It is a good idea to introduce yourself to git with your name and
 public email address before doing any operation.  The easiest
@@ -64,8 +87,8 @@ directory created, named ".git".
 // ディレクトリが作成されたことに気がつくでしょう。
 
 Next, tell git to take a snapshot of the contents of all files under the
-current directory (note the '.'), with linkgit:git-add[1]:
-// 次に、linkgit:git-add[1] を使用して カレントディレクトリ下の
+current directory (note the '.'), with 'git-add':
+// 次に、'git-add' を使用して カレントディレクトリ下の
 // すべてのファイルのスナップショットを取得するように git に依頼します ('.'があることに注意)：
 
 ------------------------------------------------
@@ -74,9 +97,9 @@ $ git add .
 
 This snapshot is now stored in a temporary staging area which git calls
 the "index".  You can permanently store the contents of the index in the
-repository with linkgit:git-commit[1]:
+repository with 'git-commit':
 // このスナップショットは "索引(index)" と呼ばれる一時エリアに
-// 格納されます。linkgit:git-commit[1] を用いるとリポジトリに索引の
+// 格納されます。'git-commit' を用いるとリポジトリに索引の
 // 中身を永続的に格納させることができます：
 
 ------------------------------------------------
@@ -100,19 +123,19 @@ $ git add file1 file2 file3
 ------------------------------------------------
 
 You are now ready to commit.  You can see what is about to be committed
-using linkgit:git-diff[1] with the --cached option:
-// これでコミットする準備ができました。linkgit:git-diff[1] を --cached オプション付きで
+using 'git-diff' with the --cached option:
+// これでコミットする準備ができました。'git-diff' を --cached オプション付きで
 // 実行するとコミットされる内容を確認できます：
 
 ------------------------------------------------
 $ git diff --cached
 ------------------------------------------------
 
-(Without --cached, linkgit:git-diff[1] will show you any changes that
+(Without --cached, 'git-diff' will show you any changes that
 you've made but not yet added to the index.)  You can also get a brief
-summary of the situation with linkgit:git-status[1]:
-// (--cached を指定しない場合、linkgit:git-diff[1] は修正されているがまだ索引に
-// 追加されていない変更を表示します。) linkgit:git-status[1] を使用すると
+summary of the situation with 'git-status':
+// (--cached を指定しない場合、'git-diff' は修正されているがまだ索引に
+// 追加されていない変更を表示します。) 'git-status' を使用すると
 // 簡潔なまとめを表示することもできます。
 
 ------------------------------------------------
@@ -136,13 +159,13 @@ newly modified content to the index.  Finally, commit your changes with:
 $ git commit
 ------------------------------------------------
 
-This will again prompt your for a message describing the change, and then
+This will again prompt you for a message describing the change, and then
 record a new version of the project.
 // この操作を行なうとエディタが起動され、コミットメッセージの入力が促されます。
 // メッセージを入力しエディタを終了するとプロジェクトの新しいバージョンが記録されます。
 
-Alternatively, instead of running `git add` beforehand, you can use
-// コミットのもう１つの方法として、事前に `git add` を実行する代わりに、以下のようにすることもできます。
+Alternatively, instead of running 'git-add' beforehand, you can use
+// コミットのもう１つの方法として、事前に 'git-add' を実行する代わりに、以下のようにすることもできます。
 
 ------------------------------------------------
 $ git commit -a
@@ -169,15 +192,15 @@ Git tracks content not files
 ----------------------------
 // == git はファイルではなくコンテンツを追跡する
 
-Many revision control systems provide an "add" command that tells the
-system to start tracking changes to a new file.  Git's "add" command
-does something simpler and more powerful: `git add` is used both for new
+Many revision control systems provide an `add` command that tells the
+system to start tracking changes to a new file.  Git's `add` command
+does something simpler and more powerful: 'git-add' is used both for new
 and newly modified files, and in both cases it takes a snapshot of the
 given files and stages that content in the index, ready for inclusion in
 the next commit.
-// 多くのリビジョン管理システムでは "add" コマンドは新規ファイルを追跡対象に加える
-// 役目をします。git の "add" コマンドは、よりシンプルでパワフルです：
-// `git add` は新規ファイルと新しい変更ファイルの両方に対して使用され、
+// 多くのリビジョン管理システムでは `add` コマンドは新規ファイルを追跡対象に加える
+// 役目をします。git の `add` コマンドは、よりシンプルでパワフルです：
+// 'git-add' は新規ファイルと新しい変更ファイルの両方に対して使用され、
 // どちらの場合にも指定したファイルのスナップショットをとり、索引にその中身を
 // 登録し、次のコミットに含める項目の準備をします。
 
@@ -353,7 +376,7 @@ Bob begins with:
 // ボブは次のようにして自分の作業用エリアを作成します。
 
 ------------------------------------------------
-$ git clone /home/alice/project myrepo
+bob$ git clone /home/alice/project myrepo
 ------------------------------------------------
 
 This creates a new directory "myrepo" containing a clone of Alice's
@@ -369,7 +392,7 @@ Bob then makes some changes and commits them:
 
 ------------------------------------------------
 (edit files)
-$ git commit -a
+bob$ git commit -a
 (repeat as necessary)
 ------------------------------------------------
 
@@ -380,25 +403,107 @@ at /home/bob/myrepo.  She does this with:
 // 彼女は以下のようにして取得します：
 
 ------------------------------------------------
-$ cd /home/alice/project
-$ git pull /home/bob/myrepo master
+alice$ cd /home/alice/project
+alice$ git pull /home/bob/myrepo master
 ------------------------------------------------
 
 This merges the changes from Bob's "master" branch into Alice's
 current branch.  If Alice has made her own changes in the meantime,
-then she may need to manually fix any conflicts.  (Note that the
-"master" argument in the above command is actually unnecessary, as it
-is the default.)
+then she may need to manually fix any conflicts.
+
 // これはボブの "master" ブランチで行なわれた変更をアリスの現在のブランチにマージします。
 // アリスが自身の変更もしている場合は、彼女は手動で全てのコンフリクト(競合)を
 // 解消する必要があります。
-// (上記コマンドの引数 "master" は、それがデフォルトである為、実際は不要
-// であることに注意してください)
 
 The "pull" command thus performs two operations: it fetches changes
 from a remote branch, then merges them into the current branch.
 // この結果からもわかるとおり、"pull" コマンドは次の２つの操作を実行します：
 // (1) リモートブランチから変更を取得。(2) それらを現在のブランチにマージ。
+
+Note that in general, Alice would want her local changes committed before
+initiating this "pull".  If Bob's work conflicts with what Alice did since
+their histories forked, Alice will use her working tree and the index to
+resolve conflicts, and existing local changes will interfere with the
+conflict resolution process (git will still perform the fetch but will
+refuse to merge --- Alice will have to get rid of her local changes in
+some way and pull again when this happens).
+// ここで留意すべき事は、通常アリスは"pull"を開始する前に彼女のローカルな変更を
+// 行いたいであろうということです。
+// もしボブの作業が彼らの履歴が分岐した以降の作業と競合するならば、
+// アリスは競合の解消するために彼女のワーキングツリーとインデックスを使用するでしょう、
+// そしてすでに存在するローカルな変更は競合の解決プロセスを妨げるでしょう。
+// （git はfetchは行いますがマージを拒否します --- これが起こったときアリスは彼女の
+// ローカルな変更を何らかの方法で取り除いてからふたたびpullしなければならないでしょう)
+
+Alice can peek at what Bob did without merging first, using the "fetch"
+command; this allows Alice to inspect what Bob did, using a special
+symbol "FETCH_HEAD", in order to determine if he has anything worth
+pulling, like this:
+// アリスはまず最初にマージせずボブの作業を"fetch"コマンドを使用してのぞき見します。
+// これによりアリスは特別なシンボル"FETCH_HEAD"を使用してボブの作業が
+// pullするに値するかどうかを検査することができます。
+// これは以下のように行います。
+
+------------------------------------------------
+alice$ git fetch /home/bob/myrepo master
+alice$ git log -p HEAD..FETCH_HEAD
+------------------------------------------------
+
+This operation is safe even if Alice has uncommitted local changes.
+The range notation HEAD..FETCH_HEAD" means "show everything that is reachable
+from the FETCH_HEAD but exclude anything that is reachable from HEAD.
+Alice already knows everything that leads to her current state (HEAD),
+and reviewing what Bob has in his state (FETCH_HEAD) that she has not
+seen with this command
+// この操作はたとえアリスがコミットしていないローカルな変更を
+// 行っていても安全です。
+// 範囲表記HEAD..FETCH_HEADはFETCH_HEADから到達可能だが、
+// HEADからは到達可能ではないコミットすべてを表すという意味です。
+// アリスはすでに現在の状態(HEAD)までのすべてを知っています、
+// そしてこのコマンドを使用して彼女にとって未知な、
+// ボブが彼の状態(FETCH_HEAD)に至るまでに行った作業を
+// レビューします。
+
+If Alice wants to visualize what Bob did since their histories forked
+she can issue the following command:
+// もしアリスがフォーク後にボブが行った作業を
+// ビジュアル化したいならば次のコマンドを実行します。
+
+------------------------------------------------
+$ gitk HEAD..FETCH_HEAD
+------------------------------------------------
+
+This uses the same two-dot range notation we saw earlier with 'git log'.
+// これは先ほど'git log'で見た２つのドットで表した範囲表記を使用します。
+
+Alice may want to view what both of them did since they forked.
+She can use three-dot form instead of the two-dot form:
+// アリスは分岐以降に彼らが両方がおこなった作業を見たいかもしれません。
+// 彼女は2つドットのかわりに3つのドットを使用できます。
+
+------------------------------------------------
+$ gitk HEAD...FETCH_HEAD
+------------------------------------------------
+
+This means "show everything that is reachable from either one, but
+exclude anything that is reachable from both of them".
+// これはどちらか片方から到達可能だが、両方からは
+// 到達可能ではないコミットすべてを表すという意味です。
+
+Please note that these range notation can be used with both gitk
+and "git log".
+// ここで留意すべき事は、これらの範囲表記はgitkと"git log"
+// 両方で使用可能であるということです。
+
+After inspecting what Bob did, if there is nothing urgent, Alice may
+decide to continue working without pulling from Bob.  If Bob's history
+does have something Alice would immediately need, Alice may choose to
+stash her work-in-progress first, do a "pull", and then finally unstash
+her work-in-progress on top of the resulting history.
+// ボブの作業を検査した後、もし緊急ではないなら、
+// アリスはボブからpullをせずに自分の作業を進めようとするかもしれません。
+// もしボブの履歴がすぐに必要なら、アリスは彼女の仕掛中の作業を後回しにして
+// "pull"をしてから仕掛中だった作業を再開するかもしれません。
 
 When you are working in a small closely knit group, it is not
 unusual to interact with the same repository over and over
@@ -410,32 +515,32 @@ it easier:
 // 'remote' リポジトリの略称を登録ことによって、この作業をより簡単に行うことができます：
 
 ------------------------------------------------
-$ git remote add bob /home/bob/myrepo
+alice$ git remote add bob /home/bob/myrepo
 ------------------------------------------------
 
-With this, Alice can perform the first operation alone using the
-"git fetch" command without merging them with her own branch,
+With this, Alice can perform the first part of the "pull" operation alone using the
+'git-fetch' command without merging them with her own branch,
 using:
-// この結果、"git fetch" コマンドを使用して、それら変更を彼女の自身の
+// この結果、'git-fetch' コマンドを使用して、それら変更を彼女の自身の
 // ブランチにマージすることなしに、(1) の操作を単独で実行できるようになります。
 // 次のようにです：
 
 -------------------------------------
-$ git fetch bob
+alice$ git fetch bob
 -------------------------------------
 
 Unlike the longhand form, when Alice fetches from Bob using a
-remote repository shorthand set up with `git remote`, what was
+remote repository shorthand set up with 'git-remote', what was
 fetched is stored in a remote tracking branch, in this case
 `bob/master`.  So after this:
-// pull を使用した時と異なり、、`git remote` によって設定したリモートリポジトリの略記
+// pull を使用した時と異なり、、'git-remote' によって設定したリモートリポジトリの略記
 // を用いてアリスがボブから変更を取得した場合、
 // 取得した変更はリモート追跡用ブランチに格納されます。
 // 上記例の場合、`bob/master` ブランチです。
 // その為、この後に
 
 -------------------------------------
-$ git log -p master..bob/master
+alice$ git log -p master..bob/master
 -------------------------------------
 
 shows a list of all the changes that Bob made since he branched from
@@ -449,7 +554,7 @@ could merge the changes into her master branch:
 // することができます。次のようにします:
 
 -------------------------------------
-$ git merge bob/master
+alice$ git merge bob/master
 -------------------------------------
 
 This `merge` can also be done by 'pulling from her own remote
@@ -458,7 +563,7 @@ tracking branch', like this:
 // 行うこともできます。次のようにします：
 
 -------------------------------------
-$ git pull . remotes/bob/master
+alice$ git pull . remotes/bob/master
 -------------------------------------
 
 Note that git pull always merges into the current branch,
@@ -471,7 +576,7 @@ Later, Bob can update his repo with Alice's latest changes using
 // 更新することができます。
 
 -------------------------------------
-$ git pull
+bob$ git pull
 -------------------------------------
 
 Note that he doesn't need to give the path to Alice's repository;
@@ -484,14 +589,14 @@ used for pulls:
 // そして、そのリポジトリ位置が pull した時に使用されます。
 
 -------------------------------------
-$ git config --get remote.origin.url
+bob$ git config --get remote.origin.url
 /home/alice/project
 -------------------------------------
 
-(The complete configuration created by git-clone is visible using
-"git config -l", and the linkgit:git-config[1] man page
+(The complete configuration created by 'git-clone' is visible using
+`git config -l`, and the linkgit:git-config[1] man page
 explains the meaning of each option.)
-// (git-clone により作成された完全な構成は "git config -l" を使用する
+// ('git-clone' により作成された完全な構成は `git config -l` を使用する
 // と確認できます。また、linkgit:git-config[1] の man ページにて
 // 各オプションの意味が説明されています)
 
@@ -501,7 +606,7 @@ name "origin/master":
 // 初期コピーを保持します:
 
 -------------------------------------
-$ git branch -r
+bob$ git branch -r
   origin/master
 -------------------------------------
 
@@ -511,7 +616,7 @@ perform clones and pulls using the ssh protocol:
 // ssh プロトコルを使用して clone と pull をすることができます：
 
 -------------------------------------
-$ git clone alice.org:/home/alice/project myrepo
+bob$ git clone alice.org:/home/alice/project myrepo
 -------------------------------------
 
 Alternatively, git has a native protocol, or can use rsync or http;
@@ -522,10 +627,10 @@ see linkgit:git-pull[1] for details.
 
 Git can also be used in a CVS-like mode, with a central repository
 that various users push changes to; see linkgit:git-push[1] and
-link:gitcvs-migration.html[git for CVS users].
+linkgit:gitcvs-migration[7].
 // git はまた、CVS ライクなモードで使用することもできます。
 // つまり、中央リポジトリを持ち、様々なユーザが変更を push するような使用法です。
-// それらの詳細は linkgit:git-push[1] と link:gitcvs-migration.html[git for CVS users] を
+// それらの詳細は linkgit:git-push[1] と linkgit:gitcvs-migration[7] を
 // 参照してください。
 
 Exploring history
@@ -533,11 +638,11 @@ Exploring history
 // == 履歴の探索
 
 Git history is represented as a series of interrelated commits.  We
-have already seen that the git log command can list those commits.
+have already seen that the 'git-log' command can list those commits.
 Note that first line of each git log entry also gives a name for the
 commit:
 // git の履歴は一連の相関的なコミットにより表されています。
-// 我々は既に git log コマンドがそれらのコミットをリスト表示するのを
+// 我々は既に 'git-log' コマンドがそれらのコミットをリスト表示するのを
 // 見ました。
 // 各 git log エントリの最初の行が、そのコミットに対する名前を示していることに
 // 注意してください。
@@ -551,9 +656,9 @@ Date:   Tue May 16 17:18:22 2006 -0700
     merge-base: Clarify the comments on post processing.
 -------------------------------------
 
-We can give this name to git show to see the details about this
+We can give this name to 'git-show' to see the details about this
 commit.
-// この名前を使用すると、そのコミットに関する詳細を見ることができます。
+// この名前を'git-show'コマンドで使用すると、そのコミットに関する詳細を見ることができます。
 
 -------------------------------------
 $ git show c82a22c39cbc32576f64f5c6b3f24b99ea8149c7
@@ -605,7 +710,7 @@ You can also give commits names of your own; after running
 // また、コミットの名前をつけることもできます；次のコマンド
 
 -------------------------------------
-$ git-tag v2.5 1b2e1d63ff
+$ git tag v2.5 1b2e1d63ff
 -------------------------------------
 
 you can refer to 1b2e1d63ff by the name "v2.5".  If you intend to
@@ -639,10 +744,10 @@ $ git reset --hard HEAD^ # reset your current branch and working
 Be careful with that last command: in addition to losing any changes
 in the working directory, it will also remove all later commits from
 this branch.  If this branch is the only branch containing those
-commits, they will be lost.  Also, don't use "git reset" on a
+commits, they will be lost.  Also, don't use 'git-reset' on a
 publicly-visible branch that other developers pull from, as it will
 force needless merges on other developers to clean up the history.
-If you need to undo changes that you have pushed, use linkgit:git-revert[1]
+If you need to undo changes that you have pushed, use 'git-revert'
 instead.
 // 上記の最後のコマンドに注意してください：
 // 作業ディレクトリ内の変更を失うことに加えて、このブランチから
@@ -650,14 +755,14 @@ instead.
 // もしこのブランチがそれらコミットを含む唯一のブランチであった場合、
 // それらコミットは削除されます。
 // また、他の開発者がそこから pull するような公的に目に見えるブランチでは
-// "git reset" は使用しないでください。もしそうすると、他の開発者に
+// 'git-reset' は使用しないでください。もしそうすると、他の開発者に
 // 履歴をきれいにするために、不必要なマージを強制させることになります。
-// あなたが push した変更を元に戻す必要があるなら、linkgit:git-revert[1] を
+// あなたが push した変更を元に戻す必要があるなら、'git-revert' を
 // その代わりに使用してください。
 
-The git grep command can search for strings in any version of your
+The 'git-grep' command can search for strings in any version of your
 project, so
-// git grep コマンドは当該プロジェクトの任意のバージョン内の文字列を検索することができます。
+// 'git-grep' コマンドは当該プロジェクトの任意のバージョン内の文字列を検索することができます。
 // 例えば、
 
 -------------------------------------
@@ -667,9 +772,9 @@ $ git grep "hello" v2.5
 searches for all occurrences of "hello" in v2.5.
 // は v2.5 内の "hello" を全文検索します。
 
-If you leave out the commit name, git grep will search any of the
+If you leave out the commit name, 'git-grep' will search any of the
 files it manages in your current directory.  So
-// コミット名を省いた場合、git grep は現在のディレクトリ内で履歴管理
+// コミット名を省いた場合、'git-grep' は現在のディレクトリ内で履歴管理
 // 対象下にある全てのファイルを検索します。
 // 従って、次のコマンド
 
@@ -681,10 +786,10 @@ is a quick way to search just the files that are tracked by git.
 // は、git により追跡されているファイルに対して検索する手っとり早い方法です。
 
 Many git commands also take sets of commits, which can be specified
-in a number of ways.  Here are some examples with git log:
+in a number of ways.  Here are some examples with 'git-log':
 // git コマンドはまた、コミットの集合を扱うこともできます。
 // その方法は何通りもの方法があります。
-// 以下は、git log における使用例です。
+// 以下は、'git-log' における使用例です。
 
 -------------------------------------
 $ git log v2.5..v2.6            # commits between v2.5 and v2.6
@@ -726,20 +831,20 @@ the experimental branch.
 // は、ブランチ stable にあって、ブランチ experimental に存在しない
 // コミットのリストを表示します。
 
-The "git log" command has a weakness: it must present commits in a
+The 'git-log' command has a weakness: it must present commits in a
 list.  When the history has lines of development that diverged and
-then merged back together, the order in which "git log" presents
+then merged back together, the order in which 'git-log' presents
 those commits is meaningless.
-// "git log" コマンドには弱点があります:
+// 'git-log' コマンドには弱点があります:
 // それはコミットのリスト表示に関するものです。
-// 履歴が枝分かれし両者がマージされた開発ラインを持つ場合、"git log" の
+// 履歴が枝分かれし両者がマージされた開発ラインを持つ場合、'git-log' の
 // コミットの表示順序には意味がありません。
 
-Most projects with multiple contributors (such as the linux kernel,
-or git itself) have frequent merges, and gitk does a better job of
+Most projects with multiple contributors (such as the Linux kernel,
+or git itself) have frequent merges, and 'gitk' does a better job of
 visualizing their history.  For example,
-// 複数の貢献者を持つプロジェクト(例えば linux カーネルや git自身)は、
-// 頻繁にマージが行われます。gitk はそれら履歴をビジュアルに表示するので
+// 複数の貢献者を持つプロジェクト(例えば Linux カーネルや git自身)は、
+// 頻繁にマージが行われます。'gitk' はそれら履歴をビジュアルに表示するので
 // 大変重宝します。
 // 例えば、次のコマンド
 
@@ -767,8 +872,8 @@ of the file:
 $ git diff v2.5:Makefile HEAD:Makefile.in
 -------------------------------------
 
-You can also use "git show" to see any such file:
-// "git show" に対しても、次のようにファイルを指定できます：
+You can also use 'git-show' to see any such file:
+// 'git-show' コマンドでも、次のようにファイルを指定できます：
 
 -------------------------------------
 $ git show v2.5:Makefile
@@ -801,12 +906,13 @@ is based:
 //     コミットを作成する時や作業ディレクトリをチェックアウトする時、
 //     マージ時に必要となる様々なツリーを保持するのに使用されます。
 
-link:tutorial-2.html[Part two of this tutorial] explains the object
+Part two of this tutorial explains the object
 database, the index file, and a few other odds and ends that you'll
-need to make the most of git.
-// link:tutorial-2.html[このチュートリアルのパート２] では、
+need to make the most of git. You can find it at linkgit:gittutorial-2[7].
+// チュートリアルのパート２では、
 // オブジェクトデータベース、索引ファイル、そして
 // git を最大限利用するため必要となる残りの部分について説明します。
+// linkgit:gittutorial-2[7]を参照して下さい.
 
 If you don't want to continue with that right away, a few other
 digressions that may be interesting at this point are:
@@ -815,7 +921,7 @@ digressions that may be interesting at this point are:
 
   * linkgit:git-format-patch[1], linkgit:git-am[1]: These convert
     series of git commits into emailed patches, and vice versa,
-    useful for projects such as the linux kernel which rely heavily
+    useful for projects such as the Linux kernel which rely heavily
     on emailed patches.
 //   * linkgit:git-format-patch[1], linkgit:git-am[1]: これらは
 //     一連の git のコミットを E-mail のパッチに変換し、またその逆を
@@ -838,5 +944,19 @@ digressions that may be interesting at this point are:
   * link:everyday.html[Everyday GIT with 20 Commands Or So]
 //   * link:everyday.html[約20個のコマンドによる日々の GIT活用]
 
-  * link:gitcvs-migration.html[git for CVS users].
-//   * link:gitcvs-migration.html[CVSユーザのためのgit]
+  * linkgit:gitcvs-migration[7]: Git for CVS users.
+//   * link:gitcvs-migration[7]: CVSユーザのためのgit.
+
+SEE ALSO
+--------
+linkgit:gittutorial-2[7],
+linkgit:gitcvs-migration[7],
+linkgit:gitcore-tutorial[7],
+linkgit:gitglossary[7],
+linkgit:git-help[1],
+link:everyday.html[Everyday git],
+link:user-manual.html[The Git User's Manual]
+
+GIT
+---
+Part of the linkgit:git[1] suite.

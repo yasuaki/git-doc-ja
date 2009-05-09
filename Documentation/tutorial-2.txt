@@ -1,10 +1,20 @@
-A tutorial introduction to git: part two
-========================================
+gittutorial-2(7)
+================
 // = git チュートリアル：パート２
 
-You should work through link:tutorial.html[A tutorial introduction to
-git] before reading this tutorial.
-// 注意：このチュートリアルを読む前に link:tutorial.html[git チュートリアル]
+NAME
+----
+gittutorial-2 - A tutorial introduction to git: part two
+
+SYNOPSIS
+--------
+git *
+
+DESCRIPTION
+-----------
+
+You should work through linkgit:gittutorial[7] before reading this tutorial.
+// 注意：このチュートリアルを読む前に linkgit:gittutorial[7]
 // を学習してください。
 
 The goal of this tutorial is to introduce two fundamental pieces of
@@ -31,23 +41,28 @@ Initialized empty Git repository in .git/
 $ echo 'hello world' > file.txt
 $ git add .
 $ git commit -a -m "initial commit"
-Created initial commit 54196cc2703dc165cbd373a65a4dcf22d50ae7f7
+[master (root-commit) 54196cc] initial commit
+ 1 files changed, 1 insertions(+), 0 deletions(-)
  create mode 100644 file.txt
 $ echo 'hello world!' >file.txt
 $ git commit -a -m "add emphasis"
-Created commit c4d59f390b9cfd4318117afde11d601c1085f241
+[master c4d59f3] add emphasis
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 ------------------------------------------------
 
-What are the 40 digits of hex that git responded to the commit with?
-// コミット時のメッセージに含まれる 40桁 の16進数は何でしょうか？
+What are the 7 digits of hex that git responded to the commit with?
+// コミット時のメッセージに含まれる 7桁 の16進数は何でしょうか？
 
 We saw in part one of the tutorial that commits have names like this.
 It turns out that every object in the git history is stored under
-such a 40-digit hex name.  That name is the SHA1 hash of the object's
+a 40-digit hex name.  That name is the SHA1 hash of the object's
 contents; among other things, this ensures that git will never store
 the same data twice (since identical data is given an identical SHA1
 name), and that the contents of a git object will never change (since
-that would change the object's name as well).
+that would change the object's name as well). The 7 char hex strings
+here are simply the abbreviation of such 40 character long strings.
+Abbreviations can be used everywhere where the 40 character strings
+can be used, so long as they are unambiguous.
 // 我々はチュートリアルのパート１で、コミットがこのような名前を持つことを見てきました。
 // これは、git の履歴内にある全てのオブジェクトが 40桁の16進数の名前で
 // 格納されていることを示しています。
@@ -56,6 +71,8 @@ that would change the object's name as well).
 // 保障しています(同一のデータは同じ SHA1 名となるからです)。
 // そして、git オブジェクトのコンテンツは、決して変わりません
 // (オブジェクトが変更された場合、その名前も同じように変更される為です)。
+// ここにある7桁の16進数の名前は40桁の16進数の名前をあいまいにならない範囲で
+// 省略した物です。
 
 It is expected that the content of the commit object you created while
 following the example above generates a different SHA1 hash than
@@ -66,19 +83,19 @@ it was created and the name of the person performing the commit.
 // なぜなら、コミットオブジェクトは、作成日時とコミットした人の名前を
 // 記録するからです。
 
-We can ask git about this particular object with the cat-file
+We can ask git about this particular object with the `cat-file`
 command. Don't copy the 40 hex digits from this example but use those
 from your own version. Note that you can shorten it to only a few
 characters to save yourself typing all 40 hex digits:
-// git の cat-file コマンドを用いるとこの特定のオブジェクトについて調べることができます。
+// git の `cat-file` コマンドを用いるとこの特定のオブジェクトについて調べることができます。
 // この例の 40桁の 16進数をコピーせず、あなた自身のバージョンの名前を
 // 使用してください。40桁全てではなく、最初の数桁をタイプするだけで
 // 良い点に注意してください。
 
 ------------------------------------------------
-$ git-cat-file -t 54196cc2
+$ git cat-file -t 54196cc2
 commit
-$ git-cat-file commit 54196cc2
+$ git cat-file commit 54196cc2
 tree 92b8b694ffb1675e5975148e1121810081dbdffe
 author J. Bruce Fields <bfields@puzzle.fieldses.org> 1143414668 -0500
 committer J. Bruce Fields <bfields@puzzle.fieldses.org> 1143414668 -0500
@@ -207,7 +224,7 @@ and the "parent" object refers to the previous commit:
 // そして、"parent" オブジェクトは前のコミットを参照しています：
 
 ------------------------------------------------
-$ git-cat-file commit 54196cc2
+$ git cat-file commit 54196cc2
 tree 92b8b694ffb1675e5975148e1121810081dbdffe
 author J. Bruce Fields <bfields@puzzle.fieldses.org> 1143414668 -0500
 committer J. Bruce Fields <bfields@puzzle.fieldses.org> 1143414668 -0500
@@ -283,11 +300,11 @@ The index file
 --------------
 // == 索引ファイル
 
-The primary tool we've been using to create commits is "git commit
--a", which creates a commit including every change you've made to
+The primary tool we've been using to create commits is `git-commit
+-a`, which creates a commit including every change you've made to
 your working tree.  But what if you want to commit changes only to
 certain files?  Or only certain changes to certain files?
-// コミットをする時に使用する主要なツールは "git commit -a" です。
+// コミットをする時に使用する主要なツールは `git-commit-a` です。
 // このコマンドは、作業ツリーにて行った全ての変更を含んだコミットを作成します。
 // しかし、特定のファイルの変更だけをコミットに含めたい場合はありませんか？
 // もしくは、特定のファイルの特定の変更だけ？
@@ -311,7 +328,7 @@ what's happening:
 // 何がおきているかを追跡する為に diff をとります：
 
 ------------------------------------------------
-$ git diff
+$ git diff HEAD
 --- a/file.txt
 +++ b/file.txt
 @@ -1 +1,2 @@
@@ -337,11 +354,11 @@ index a042389..513feba 100644
 +hello world, again
 ------------------------------------------------
 
-So "git diff" is comparing against something other than the head.
+So 'git-diff' is comparing against something other than the head.
 The thing that it's comparing against is actually the index file,
 which is stored in .git/index in a binary format, but whose contents
 we can examine with ls-files:
-// 従って "git diff" は head 以外の何かと比較していることになります。
+// 従って 'git-diff' は head 以外の何かと比較していることになります。
 // 何に対して比較しているかというと、実のところ索引ファイルと比較しているのです。
 // 索引ファイルは .git/index にバイナリ形式で記録されていて、その中身は
 // ls-files を用いて確認できます：
@@ -356,13 +373,13 @@ hello world!
 hello world, again
 ------------------------------------------------
 
-So what our "git add" did was store a new blob and then put
+So what our 'git-add' did was store a new blob and then put
 a reference to it in the index file.  If we modify the file again,
-we'll see that the new modifications are reflected in the "git-diff"
+we'll see that the new modifications are reflected in the 'git-diff'
 output:
-// 従って "git add" をすると、新しい blob が記録され、
+// 従って 'git-add' をすると、新しい blob が記録され、
 // 索引ファイルにその参照が記録されます。
-// そのファイルが再び変更されたならば、その新しい変更は "git-diff" の
+// そのファイルが再び変更されたならば、その新しい変更は 'git-diff' の
 // 出力に反映されます：
 
 ------------------------------------------------
@@ -377,10 +394,10 @@ index 513feba..ba3da7b 100644
 +again?
 ------------------------------------------------
 
-With the right arguments, git diff can also show us the difference
+With the right arguments, 'git-diff' can also show us the difference
 between the working directory and the last commit, or between the
 index and the last commit:
-// 正しい引数を用いると、git diff は作業ディレクトリと最後のコミットとの
+// 正しい引数を用いると、'git-diff' は作業ディレクトリと最後のコミットとの
 // 差分や、索引と最後のコミットとの差分を表示することができます：
 
 ------------------------------------------------
@@ -403,11 +420,11 @@ index a042389..513feba 100644
 +hello world, again
 ------------------------------------------------
 
-At any time, we can create a new commit using "git commit" (without
-the -a option), and verify that the state committed only includes the
+At any time, we can create a new commit using 'git-commit' (without
+the "-a" option), and verify that the state committed only includes the
 changes stored in the index file, not the additional change that is
 still only in our working tree:
-// 任意の時点で (-a オプションを使用せずに) "git commit" を使用して
+// 任意の時点で ("-a" オプションを使用せずに) 'git-commit' を使用して
 // 新しいコミットを作成できます。
 // そして、その状態は索引ファイルに記録された変更だけを含んでいて、
 // 作業ディレクトリでだけ行われている追加の変更は含んでいないことを確認できます：
@@ -425,24 +442,24 @@ index 513feba..ba3da7b 100644
 +again?
 ------------------------------------------------
 
-So by default "git commit" uses the index to create the commit, not
-the working tree; the -a option to commit tells it to first update
+So by default 'git-commit' uses the index to create the commit, not
+the working tree; the "-a" option to commit tells it to first update
 the index with all changes in the working tree.
-// 従ってデフォルトでは "git commit" はコミットを作成する際に索引を使用していて
-// 作業ツリーは使用していないことがわかります；コミット時の -a オプションは
+// 従ってデフォルトでは 'git-commit' はコミットを作成する際に索引を使用していて
+// 作業ツリーは使用していないことがわかります；コミット時の "-a" オプションは
 // 最初に作業ツリー内の全ての変更を含むように索引を更新することを表しています。
 
-Finally, it's worth looking at the effect of "git add" on the index
+Finally, it's worth looking at the effect of 'git-add' on the index
 file:
-// 最後に、索引ファイルにおける "git add" の効果について見ておきましょう：
+// 最後に、索引ファイルにおける 'git-add' の効果について見ておきましょう：
 
 ------------------------------------------------
 $ echo "goodbye, world" >closing.txt
 $ git add closing.txt
 ------------------------------------------------
 
-The effect of the "git add" was to add one entry to the index file:
-// "git add" の効果は、索引ファイルにひとつのエントリを追加することです：
+The effect of the 'git-add' was to add one entry to the index file:
+// 'git-add' の効果は、索引ファイルにひとつのエントリを追加することです：
 
 ------------------------------------------------
 $ git ls-files --stage
@@ -492,22 +509,22 @@ contents), but that didn't modify file.txt.
 // この観点から "git commit" を実行すると、closing.txt (新しいコンテンツを含む) が追加された、
 // コミットが作成され、file.txt の変更は含みないことがわかります。
 
-Also, note that a bare "git diff" shows the changes to file.txt, but
+Also, note that a bare `git diff` shows the changes to file.txt, but
 not the addition of closing.txt, because the version of closing.txt
 in the index file is identical to the one in the working directory.
-// また、裸の "git diff" は file.txt の変更を表示するが、追加した closing.txt は
+// また、裸の `git diff` は file.txt の変更を表示するが、追加した closing.txt は
 // 含まないことに注意してください。何故なら索引ファイル内の closing.txt のバージョンは
 // 作業ディレクトリ内のものと同一だからです。
 
 In addition to being the staging area for new commits, the index file
 is also populated from the object database when checking out a
 branch, and is used to hold the trees involved in a merge operation.
-See the link:gitcore-tutorial.html[core tutorial] and the relevant man
+See linkgit:gitcore-tutorial[7] and the relevant man
 pages for details.
 // 新しいコミットの為に終結した領域であるということに加えて、
 // 索引ファイルはブランチを作成する時にオブジェクトデータベースから利用されます。
 // そして、マージ操作によって引き起こされる tree を保持するためにも使用されます。
-// 詳細は link:gitcore-tutorial.html[コア部分のチュートリアル] と 関連する man ページを
+// 詳細は linkgit:gitcore-tutorial[7] と 関連する man ページを
 // 参照してください。
 
 What next?
@@ -517,11 +534,10 @@ What next?
 At this point you should know everything necessary to read the man
 pages for any of the git commands; one good place to start would be
 with the commands mentioned in link:everyday.html[Everyday git].  You
-should be able to find any unknown jargon in the
-link:glossary.html[Glossary].
+should be able to find any unknown jargon in linkgit:gitglossary[7].
 // この時点で、git コマンドの man ページを読む為に必要な全てを理解したはずです；
 // もうひとつの利用開始の為の良い場所は link:everyday.html[毎日の git] 内の
-// コマンドに対する説明です。また、全ての知らない専門用語は link:glossary.html[用語解説] 内に
+// コマンドに対する説明です。また、全ての知らない専門用語は linkgit:gitglossary[7] 内に
 // 見つけることができるでしょう。
 
 The link:user-manual.html[Git User's Manual] provides a more
@@ -534,7 +550,7 @@ CVS-like way.
 // CVS リポジトリを git にインポートする方法を説明しており、
 // CVS のような方法で git を使用する方法を示しています。
 
-For some interesting examples of git use, see the
+For git developers, linkgit:gitcore-tutorial[7] goes
 link:howto-index.html[howtos].
 // それ以外の git の使い方の面白い例は、link:howto-index.html[howtos] 
 // を参照してください。
@@ -542,6 +558,20 @@ link:howto-index.html[howtos].
 For git developers, the link:gitcore-tutorial.html[Core tutorial] goes
 into detail on the lower-level git mechanisms involved in, for
 example, creating a new commit.
-// git 開発者は link:gitcore-tutorial.html[Core tutorial] が
+// git 開発者は linkgit:gitcore-tutorial[7] が
 // (例えば新しいコミットの作成のような)下位レベルの git メカニズムの
 // 詳細を説明しているので、そちらに進んでください。
+
+SEE ALSO
+--------
+linkgit:gittutorial[7],
+linkgit:gitcvs-migration[7],
+linkgit:gitcore-tutorial[7],
+linkgit:gitglossary[7],
+linkgit:git-help[1],
+link:everyday.html[Everyday git],
+link:user-manual.html[The Git User's Manual]
+
+GIT
+---
+Part of the linkgit:git[1] suite.
