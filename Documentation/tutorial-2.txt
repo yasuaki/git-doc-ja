@@ -344,7 +344,7 @@ head still doesn't contain the new line:
 // head には 新しい行は含まれていません：
 
 ------------------------------------------------
-$ git-diff HEAD
+$ git diff HEAD
 diff --git a/file.txt b/file.txt
 index a042389..513feba 100644
 --- a/file.txt
