@@ -4659,7 +4659,7 @@ Assume the output looks like this:
 // 次のように出力されたとします：
 
 ------------------------------------------------
-$ git-fsck --full
+$ git fsck --full
 broken link from    tree 2d9263c6d23595e7cb2a21e5ebbb53655278dff8
               to    blob 4b9458b3786228369c63936db65827de3cc06200
 missing blob 4b9458b3786228369c63936db65827de3cc06200
@@ -5361,7 +5361,7 @@ index.  Normal operation is just
 // (索引が後で元に戻す可能性がある未保存の状態を含む場合にはこれをしないでください！)
 
 -------------------------------------------------
-$ git-read-tree <sha1 of tree>
+$ git read-tree <sha1 of tree>
 -------------------------------------------------
 
 and your index file will now be equivalent to the tree that you saved
@@ -5390,7 +5390,7 @@ with
 // 更新することができます。
 
 -------------------------------------------------
-$ git-checkout-index filename
+$ git checkout-index filename
 -------------------------------------------------
 
 or, if you want to check out all of the index, use `-a`.
@@ -5445,7 +5445,7 @@ state at the time of the commit, and a list of parents:
 // 渡すことで作成することができます:
 
 -------------------------------------------------
-$ git-commit-tree <tree> -p <parent> [-p <parent2> ..]
+$ git commit-tree <tree> -p <parent> [-p <parent2> ..]
 -------------------------------------------------
 
 and then giving the reason for the commit on stdin (either through
@@ -5519,7 +5519,7 @@ object:
 // 各オブジェクトの中身は linkgit:git-cat-file[1] で確認します:
 
 -------------------------------------------------
-$ git-cat-file -t <objectname>
+$ git cat-file -t <objectname>
 -------------------------------------------------
 
 shows the type of the object, and once you have the type (which is
@@ -5528,7 +5528,7 @@ usually implicit in where you find the object), you can use
 // 次のようにして、中身を確認することができます。
 
 -------------------------------------------------
-$ git-cat-file blob|tree|commit|tag <objectname>
+$ git cat-file blob|tree|commit|tag <objectname>
 -------------------------------------------------
 
 to show its contents. NOTE! Trees have binary content, and as a result
@@ -5549,7 +5549,7 @@ you can do
 // 次のようにすると、最新のコミットの中身を確認できます。
 
 -------------------------------------------------
-$ git-cat-file commit HEAD
+$ git cat-file commit HEAD
 -------------------------------------------------
 
 to see what the top commit was.
@@ -5584,7 +5584,7 @@ of two commits with
 // ２つのコミットの共通の親を見つけます。
 
 -------------------------------------------------
-$ git-merge-base <commit1> <commit2>
+$ git merge-base <commit1> <commit2>
 -------------------------------------------------
 
 which will return you the commit they are both based on.  You should
@@ -5595,7 +5595,7 @@ do with (for example)
 // 容易に見つけることができます。(例えば)
 
 -------------------------------------------------
-$ git-cat-file commit <commitname> | head -1
+$ git cat-file commit <commitname> | head -1
 -------------------------------------------------
 
 since the tree object information is always the first line in a commit
@@ -5622,7 +5622,7 @@ To do the merge, do
 // マージをするには次のひょうにします。
 
 -------------------------------------------------
-$ git-read-tree -m -u <origtree> <yourtree> <targettree>
+$ git read-tree -m -u <origtree> <yourtree> <targettree>
 -------------------------------------------------
 
 which will do all trivial merge operations for you directly in the
@@ -5656,8 +5656,8 @@ command.  An example:
 // 用いると確認できます。例えば：
 
 ------------------------------------------------
-$ git-read-tree -m $orig HEAD $target
-$ git-ls-files --unmerged
+$ git read-tree -m $orig HEAD $target
+$ git ls-files --unmerged
 100644 263414f423d0e4d70dae8fe53fa34614ff3e2860 1	hello.c
 100644 06fa6a24256dc7e560efa5687fa84b51f0263c3a 2	hello.c
 100644 cc44c73eb783565da5831b4d820c962954019b69 3	hello.c
@@ -5695,9 +5695,9 @@ the blob objects from these three stages yourself, like this:
 // これら３つのstage 上のファイルを次のようにしてマージします。
 
 ------------------------------------------------
-$ git-cat-file blob 263414f... >hello.c~1
-$ git-cat-file blob 06fa6a2... >hello.c~2
-$ git-cat-file blob cc44c73... >hello.c~3
+$ git cat-file blob 263414f... >hello.c~1
+$ git cat-file blob 06fa6a2... >hello.c~2
+$ git cat-file blob cc44c73... >hello.c~3
 $ git merge-file hello.c~2 hello.c~1 hello.c~3
 ------------------------------------------------
 
@@ -5712,7 +5712,7 @@ merge result for this file is by:
 
 -------------------------------------------------
 $ mv -f hello.c~2 hello.c
-$ git-update-index hello.c
+$ git update-index hello.c
 -------------------------------------------------
 
 When a path is in unmerged state, running `git-update-index` for
@@ -5732,7 +5732,7 @@ stages to temporary files and calls a "merge" script on it:
 // 抽出し、"merge" スクリプトをコールします：
 
 -------------------------------------------------
-$ git-merge-index git-merge-one-file hello.c
+$ git merge-index git-merge-one-file hello.c
 -------------------------------------------------
 
 and that is what higher level `git merge -s resolve` is implemented with.
@@ -5900,7 +5900,7 @@ Basically, the initial version of `git log` was a shell script:
 // 基本的には、`git log` の初期バージョンは次のようなシェルスクリプトでした：
 
 ----------------------------------------------------------------
-$ git-rev-list --pretty $(git-rev-parse --default HEAD "$@") | \
+$ git rev-list --pretty $(git-rev-parse --default HEAD "$@") | \
 	LESS=-S ${PAGER:-less}
 ----------------------------------------------------------------
 
