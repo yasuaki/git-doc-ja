@@ -623,7 +623,7 @@ origin/master
 
 If you run "git fetch <remote>" later, the tracking branches for the
 named <remote> will be updated.
-//  "git fetch <remote>" をその後に実行すると、<remote> という名前の
+// "git fetch <remote>" をその後に実行すると、<remote> という名前の
 // 追跡ブランチが更新されます。
 
 If you examine the file .git/config, you will see that git has added
