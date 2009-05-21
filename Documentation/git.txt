@@ -1,6 +1,6 @@
-git(7)
+git(1)
 ======
-// = git(7)
+// = git(1)
 
 NAME
 ----
@@ -13,7 +13,7 @@ SYNOPSIS
 --------
 // == SYNOPSIS
 [verse]
-'git' [--version] [--exec-path[=GIT_EXEC_PATH]]
+'git' [--version] [--exec-path[=GIT_EXEC_PATH]] [--html-path]
     [-p|--paginate|--no-pager]
     [--bare] [--git-dir=GIT_DIR] [--work-tree=GIT_WORK_TREE]
     [--help] COMMAND [ARGS]
@@ -33,16 +33,16 @@ and full access to internals.
 // 非常に豊富なコマンドセットを持ち、高レベルな操作と内部への完全なアクセスの
 // 両方が可能です。
 
-See this link:tutorial.html[tutorial] to get started, then see
+See linkgit:gittutorial[7] to get started, then see
 link:everyday.html[Everyday Git] for a useful minimum set of commands, and
 "man git-commandname" for documentation of each command.  CVS users may
-also want to read link:cvs-migration.html[CVS migration].  See
-link:user-manual.html[Git User's Manual] for a more in-depth
+also want to read linkgit:gitcvs-migration[7].  See
+the link:user-manual.html[Git User's Manual] for a more in-depth
 introduction.
-// 始めは link:tutorial.html[チュートリアル] と便利なコマンドの最少セットを
+// 始めは linkgit:gittutorial[7] と便利なコマンドの最少セットを
 // 解説している link:everyday.html[日々の git の利用] を参照してください。
 // 各コマンドのドキュメントは "man git-コマンド名" から得られます。
-// CVS ユーザは link:cvs-migration.html[CVS からの移行] も参考になるかもしれません。
+// CVS ユーザは linkgit:gitcvs-migration[7] も参考になるかもしれません。
 // より深い導入として link:user-manual.html[git ユーザマニュアル] があります。
 
 The COMMAND is either a name of a Git command (see below) or an alias
@@ -67,17 +67,62 @@ unreleased) version of git, that is available from 'master'
 branch of the `git.git` repository.
 Documentation for older releases are available here:
 
-* link:v1.5.5/git.html[documentation for release 1.5.5]
+* link:v1.6.3/git.html[documentation for release 1.6.3]
 
 * release notes for
+  link:RelNotes-1.6.2.5.txt[1.6.2.5],
+  link:RelNotes-1.6.2.4.txt[1.6.2.4],
+  link:RelNotes-1.6.2.3.txt[1.6.2.3],
+  link:RelNotes-1.6.2.2.txt[1.6.2.2],
+  link:RelNotes-1.6.2.1.txt[1.6.2.1],
+  link:RelNotes-1.6.2.txt[1.6.2].
+
+* link:v1.6.1.3/git.html[documentation for release 1.6.1.3]
+
+* release notes for
+  link:RelNotes-1.6.1.3.txt[1.6.1.3],
+  link:RelNotes-1.6.1.2.txt[1.6.1.2],
+  link:RelNotes-1.6.1.1.txt[1.6.1.1],
+  link:RelNotes-1.6.1.txt[1.6.1].
+
+* link:v1.6.0.6/git.html[documentation for release 1.6.0.6]
+
+* release notes for
+  link:RelNotes-1.6.0.6.txt[1.6.0.6],
+  link:RelNotes-1.6.0.5.txt[1.6.0.5],
+  link:RelNotes-1.6.0.4.txt[1.6.0.4],
+  link:RelNotes-1.6.0.3.txt[1.6.0.3],
+  link:RelNotes-1.6.0.2.txt[1.6.0.2],
+  link:RelNotes-1.6.0.1.txt[1.6.0.1],
+  link:RelNotes-1.6.0.txt[1.6.0].
+
+* link:v1.5.6.6/git.html[documentation for release 1.5.6.6]
+
+* release notes for
+  link:RelNotes-1.5.6.6.txt[1.5.6.6],
+  link:RelNotes-1.5.6.5.txt[1.5.6.5],
+  link:RelNotes-1.5.6.4.txt[1.5.6.4],
+  link:RelNotes-1.5.6.3.txt[1.5.6.3],
+  link:RelNotes-1.5.6.2.txt[1.5.6.2],
+  link:RelNotes-1.5.6.1.txt[1.5.6.1],
+  link:RelNotes-1.5.6.txt[1.5.6].
+
+* link:v1.5.5.6/git.html[documentation for release 1.5.5.6]
+
+* release notes for
+  link:RelNotes-1.5.5.6.txt[1.5.5.6],
+  link:RelNotes-1.5.5.5.txt[1.5.5.5],
+  link:RelNotes-1.5.5.4.txt[1.5.5.4],
+  link:RelNotes-1.5.5.3.txt[1.5.5.3],
+  link:RelNotes-1.5.5.2.txt[1.5.5.2],
   link:RelNotes-1.5.5.1.txt[1.5.5.1],
   link:RelNotes-1.5.5.txt[1.5.5].
 
-* link:v1.5.5.1/git.html[documentation for release 1.5.5.1]
-
-* link:v1.5.4.5/git.html[documentation for release 1.5.4.5]
+* link:v1.5.4.7/git.html[documentation for release 1.5.4.7]
 
 * release notes for
+  link:RelNotes-1.5.4.7.txt[1.5.4.7],
+  link:RelNotes-1.5.4.6.txt[1.5.4.6],
   link:RelNotes-1.5.4.5.txt[1.5.4.5],
   link:RelNotes-1.5.4.4.txt[1.5.4.4],
   link:RelNotes-1.5.4.3.txt[1.5.4.3],
@@ -97,6 +142,8 @@ Documentation for older releases are available here:
   link:RelNotes-1.5.3.2.txt[1.5.3.2],
   link:RelNotes-1.5.3.1.txt[1.5.3.1],
   link:RelNotes-1.5.3.txt[1.5.3].
+
+* link:v1.5.2.5/git.html[documentation for release 1.5.2.5]
 
 * release notes for
   link:RelNotes-1.5.2.5.txt[1.5.2.5],
@@ -154,8 +201,8 @@ OPTIONS
 +
 Other options are available to control how the manual page is
 displayed. See linkgit:git-help[1] for more information,
-because 'git --help ...' is converted internally into 'git
-help ...'.
+because `git --help ...` is converted internally into `git
+help ...`.
 //	概要とよく利用されるコマンドの一覧を表示します。
 //	'--all' または '-a' オプションを付けた場合は
 //	全コマンドの一覧を表示します。git コマンドがこのオプション付きで
@@ -163,13 +210,13 @@ help ...'.
 // +
 // マニュアルページの表示方法をコントロールするオプションは他にもあります。
 // 詳細は linkgit:git-help[1] を参照してください。
-// 'git --help ...' は内部的には 'git help ...' に置き換えられます。
+// `git --help ...` は内部的には `git help ...` に置き換えられます。
 
 --exec-path::
 // --exec-path::
 	Path to wherever your core git programs are installed.
 	This can also be controlled by setting the GIT_EXEC_PATH
-	environment variable. If no path is given 'git' will print
+	environment variable. If no path is given, 'git' will print
 	the current setting and then exit.
 //	gitの中核(core git)プログラムがインストールされているパスを指定します。
 //	環境変数 GIT_EXEC_PATH を設定することでも指定可能です。
@@ -177,6 +224,13 @@ help ...'.
 
 -p|--paginate::
 // -p|--paginate::
+--html-path::
+	Print the path to wherever your git HTML documentation is installed
+	and exit.
+// gitのHTMLドキュメントがインストールされているパスを表示して終了します。
+
+-p::
+--paginate::
 	Pipe all output into 'less' (or if set, $PAGER).
 //	全ての出力を 'less' (または設定されていれば $PAGER) にパイプ接続します。
 
@@ -240,10 +294,10 @@ probably more detail than necessary for a first-time user.
 // 以下は初めてのユーザにはおそらく詳しすぎます。
 
 The link:user-manual.html#git-concepts[git concepts chapter of the
-user-manual] and the link:core-tutorial.html[Core tutorial] both provide
+user-manual] and linkgit:gitcore-tutorial[7] both provide
 introductions to the underlying git architecture.
 // link:user-manual.html#git-concepts[ユーザマニュアルの git のコンセプト] と
-// link:core-tutorial.html[コアチュートリアル] は
+// linkgit:gitcore-tutorial[7] は
 // git のアーキテクチャについてのイントロです。
 
 See also the link:howto-index.html[howto] documents for some useful
@@ -251,8 +305,9 @@ examples.
 // link:howto-index.html[howto] には役に立つ使用例がいくつか
 // 紹介されています。
 
-The internals are documented link:technical/api-index.html[here].
-// 内部構造は link:technical/api-index.html[ここ] で説明されています。
+The internals are documented in the
+link:technical/api-index.html[GIT API documentation].
+// 内部構造は link:technical/api-index.html[GIT API documentation] で説明されています。
 
 GIT COMMANDS
 ------------
@@ -523,12 +578,12 @@ File/Directory Structure
 ------------------------
 // == ファイル/ディレクトリの構造
 
-Please see the link:repository-layout.html[repository layout] document.
-// link:repository-layout.html[リポジトリのレイアウト] のドキュメントを
+Please see the linkgit:gitrepository-layout[5] document.
+// linkgit:gitrepository-layout[5] のドキュメントを
 // 参照してください。
 
-Read link:hooks.html[hooks] for more details about each hook.
-// 各フックの詳細は link:hooks.html[フック] を参照してください。
+Read linkgit:githooks[5] for more details about each hook.
+// 各フックの詳細は linkgit:githooks[5] を参照してください。
 
 Higher level SCMs may provide and manage additional information in the
 `$GIT_DIR`.
@@ -539,8 +594,8 @@ Higher level SCMs may provide and manage additional information in the
 Terminology
 -----------
 // == 用語
-Please see the link:glossary.html[glossary] document.
-// link:glossary.html[用語集] のドキュメントを参照してください。
+Please see linkgit:gitglossary[7].
+// linkgit:gitglossary[7] のドキュメントを参照してください。
 
 
 Environment Variables
@@ -583,12 +638,12 @@ git so take care if using Cogito etc.
 // 'GIT_ALTERNATE_OBJECT_DIRECTORIES'::
 	Due to the immutable nature of git objects, old objects can be
 	archived into shared, read-only directories. This variable
-	specifies a ":" separated list of git object directories which
-	can be used to search for git objects. New objects will not be
-	written to these directories.
+	specifies a ":" separated (on Windows ";" separated) list
+	of git object directories which can be used to search for git
+	objects. New objects will not be written to these directories.
 //	git オブジェクトの不変性により、古いオブジェクトは
 //	共有化された参照のみのディレクトリにアーカイブさせることが
-//	できます。この値に ":" を区切り文字とした git オブジェクトの
+//	できます。この値に ":" を区切り文字(Windowsでは";")とした git オブジェクトの
 //	ディレクトリの一覧を指定子、git オブジェクトを検索する際に
 //	使用させることができます。新しいオブジェクトはこれらの
 //	ディレクトリには書き込まれません。
@@ -615,6 +670,21 @@ git so take care if using Cogito etc.
 //	または --git-dir が設定されている時のみ利用できます)
 //	この設定はコマンドラインオプション '--work-tree' または
 //	構成変数 core.worktree にて指定することもできます。
+
+'GIT_CEILING_DIRECTORIES'::
+// 'GIT_CEILING_DIRECTORIES'::
+	This should be a colon-separated list of absolute paths.
+	If set, it is a list of directories that git should not chdir
+	up into while looking for a repository directory.
+	It will not exclude the current working directory or
+	a GIT_DIR set on the command line or in the environment.
+	(Useful for excluding slow-loading network directories.)
+// これはコロンで区切られた絶対パスのリストです。
+// この変数を設定すると、gitは設定したディレクトリよりも
+// 上のディレクトリからレポジトリディレクトリを探しません。
+// カレントディレクトリやコマンドラインか環境変数で設定した
+// GIT_DIR は排除しません。
+// (読み込みの遅いネットワークパスを除外するのに便利です)
 
 git Commits
 ~~~~~~~~~~~
@@ -714,23 +784,25 @@ other
 // 'GIT_PAGER'::
 	This environment variable overrides `$PAGER`. If it is set
 	to an empty string or to the value "cat", git will not launch
-	a pager.
+	a pager.  See also the `core.pager` option in
+	linkgit:git-config[1].
 //	この環境変数は `$PAGER` を上書きします。
 //	これを空文字または "cat" に指定すると、git はページャを
 //	起動しません。
+//	`core.pager` オプションについてはlinkgit:git-config[1] 参照して下さい.
 
 'GIT_SSH'::
 // 'GIT_SSH'::
-	If this environment variable is set then linkgit:git-fetch[1]
-	and linkgit:git-push[1] will use this command instead
-	of `ssh` when they need to connect to a remote system.
-	The 'GIT_SSH' command will be given exactly two arguments:
+	If this environment variable is set then 'git-fetch'
+	and 'git-push' will use this command instead
+	of 'ssh' when they need to connect to a remote system.
+	The '$GIT_SSH' command will be given exactly two arguments:
 	the 'username@host' (or just 'host') from the URL and the
 	shell command to execute on that remote system.
-//	この環境変数が設定されていた場合、linkgit:git-fetch[1] と
-//	linkgit:git-push[1] はリモートシステムに接続する必要があった
-//	時に、`ssh` の代わりにこのコマンドを使用します。
-//	'GIT_SSH' コマンドには必ず２つの引数が渡されます：
+//	この環境変数が設定されていた場合、'git-fetch' と
+//	'git-push' はリモートシステムに接続する必要があった
+//	時に、'ssh' の代わりにこのコマンドを使用します。
+//	'$GIT_SSH' コマンドには必ず２つの引数が渡されます：
 //	その URL の 'username@host'(あるいは単に 'host')と、
 //	そのリモートシステム上で実行するシェルコマンドです。
 +
@@ -752,16 +824,16 @@ for further details.
 'GIT_FLUSH'::
 // 'GIT_FLUSH'::
 	If this environment variable is set to "1", then commands such
-	as git-blame (in incremental mode), git-rev-list, git-log,
-	git-whatchanged, etc., will force a flush of the output stream
+	as 'git-blame' (in incremental mode), 'git-rev-list', 'git-log',
+	and 'git-whatchanged' will force a flush of the output stream
 	after each commit-oriented record have been flushed.   If this
 	variable is set to "0", the output of these commands will be done
 	using completely buffered I/O.   If this environment variable is
 	not set, git will choose buffered or record-oriented flushing
 	based on whether stdout appears to be redirected to a file or not.
 //	この環境変数が "1" に設定されている場合、
-//	git-blame(インクリメンタルモード)、git-rev-list, git-log,
-//	git-whatchanged などのコマンドが呼ばれた時に、各コミットの境界レコードが
+//	'git-blame'(インクリメンタルモード)、'git-rev-list', 'git-log',
+//	そして 'git-whatchanged' などのコマンドが呼ばれた時に、各コミットの境界レコードが
 //	フラッシュされた後に出力ストリームが強制的にフラッシュされます。
 //	この変数が "0" に設定されていた場合、これらコマンドの出力は
 //	完全に I/O がバッファリングされます。この環境変数が
@@ -800,9 +872,9 @@ Discussion[[Discussion]]
 
 More detail on the following is available from the
 link:user-manual.html#git-concepts[git concepts chapter of the
-user-manual] and the link:core-tutorial.html[Core tutorial].
+user-manual] and linkgit:gitcore-tutorial[7].
 // 以下の詳細は link:user-manual.html#git-concepts[ユーザマニュアル内の
-// Gitのコンセプトの章] と link:core-tutorial.html[コアチュートリアル]
+// Gitのコンセプトの章] と linkgit:gitcore-tutorial[7]
 // から得ることができます。
 
 A git project normally consists of a working directory with a ".git"
@@ -912,8 +984,15 @@ contributors on the git-list <git@vger.kernel.org>.
 // git-list <git@vger.kernel.org> 上の貢献者によって
 // 強化されました。
 
+SEE ALSO
+--------
+linkgit:gittutorial[7], linkgit:gittutorial-2[7],
+link:everyday.html[Everyday Git], linkgit:gitcvs-migration[7],
+linkgit:gitglossary[7], linkgit:gitcore-tutorial[7],
+linkgit:gitcli[7], link:user-manual.html[The Git User's Manual]
+
 GIT
 ---
 // == GIT
-Part of the linkgit:git[7] suite
-// linkgit:git[7] スイートの一部
+Part of the linkgit:git[1] suite
+// linkgit:git[1] スイートの一部
