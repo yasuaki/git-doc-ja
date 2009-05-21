@@ -1,7 +1,3 @@
-GIT Glossary
-============
-// == GIT 用語集
-
 [[def_alternate_object_database]]alternate object database::
 // [[def_alternate_object_database]]代替オブジェクトＤＢ(alternate object database)::
 	Via the alternates mechanism, a <<def_repository,repository>>
@@ -79,11 +75,22 @@ GIT Glossary
 
 [[def_checkout]]checkout::
 // [[def_checkout]]チェックアウト(checkout)::
-	The action of updating the <<def_working_tree,working tree>> to a
-	<<def_revision,revision>> which was stored in the
-	<<def_object_database,object database>>.
-//	<<def_working_tree,作業ツリー>>を<<def_object_database,オブジェクトＤＢ>>内に
-//	格納されているある<<def_revision,リビジョン>>に更新する操作のことです。
+-	The action of updating the <<def_working_tree,working tree>> to a
+-	<<def_revision,revision>> which was stored in the
+-	<<def_object_database,object database>>.
++	The action of updating all or part of the
++	<<def_working_tree,working tree>> with a <<def_tree_object,tree object>>
++	or <<def_blob_object,blob>> from the
++	<<def_object_database,object database>>, and updating the
++	<<def_index,index>> and <<def_HEAD,HEAD>> if the whole working tree has
++	been pointed at a new <<def_branch,branch>>.
+//	<<def_tree_object,ツリーオブジェクト>> 
+//	もしくは<<def_blob_object,ブロブ(blob)>>を持つ
+//	<<def_working_tree,作業ツリー>>の全てもしくは一部を
+//	更新する操作のことです。
+//	もしもワーキングツリー全体が新しい <<def_branch,ブランチ>> を
+//	指しているならば
+//	<<def_index,インデックス>> と <<def_HEAD,HEAD>> も更新します。
 
 [[def_cherry-picking]]cherry-picking::
 // [[def_cherry-picking]]チェリーピック(cherry-picking)::
@@ -153,12 +160,11 @@ to point at the new commit.
 
 [[def_DAG]]DAG::
 // [[def_DAG]]DAG::
-	Directed acyclic graph. The <<def_commit,commit>> objects form a
+	Directed acyclic graph. The <<def_commit_object,commit objects>> form a
 	directed acyclic graph, because they have parents (directed), and the
-	graph of commit objects is acyclic (there is no
-	<<def_chain,chain>> which begins and ends with the same
-	<<def_object,object>>).
-//	有向非巡回グラフ。<<def_commit,コミット>> オブジェクトは有向非巡回グラフ
+	graph of commit objects is acyclic (there is no <<def_chain,chain>>
+	which begins and ends with the same <<def_object,object>>).
+//	有向非巡回グラフ。<<def_commit_object,コミットオブジェクト>> は有向非巡回グラフ
 //	を形成します。何故ならコミットは(方向付けされた)親を持ち、
 //	コミットオブジェクトのグラフは非巡回(つまり、始まりと終わりが
 //	同じ<<def_object,オブジェクト>>となるような <<def_chain,チェーン(chain)>>
@@ -317,12 +323,15 @@ to point at the new commit.
 	and potentially aborted, and allow for a post-notification after the
 	operation is done. The hook scripts are found in the
 	`$GIT_DIR/hooks/` directory, and are enabled by simply
-	making them executable.
+	removing the `.sample` suffix from the filename. In earlier versions
+	of git you had to make them executable.
 //	git コマンドのいくつかは実行中にオプションでスクリプトを呼び出すことができ、
 //	開発者の機能追加やチェックの手助けをします。
 //	通常、フックは事前検証を行い処理を中止する為や操作が完了した後に知らせる為に
-//	用いられます。フックスクリプトは `$GIT_DIR/hooks/` ディレクトリに保管され、
-//	スクリプトを実行パーミッションを付与することで利用可能になります。
+//	用いられます。フックスクリプトは `$GIT_DIR/hooks/` ディレクトリに保管されおり、
+//	ファイル名から`.sample`を削除するだけで利用可能になります。
+//	古いバージョンのgitではスクリプトを実行パーミッションを付与することで
+//	利用可能になります。
 
 [[def_index]]index::
 // [[def_index]]索引(index)::
@@ -429,10 +438,11 @@ This commit is referred to as a "merge commit", or sometimes just a
 
 [[def_object_type]]object type::
 // [[def_object_type]]オブジェクトタイプ(object type)::
-	One of the identifiers
-	"<<def_commit,commit>>","<<def_tree,tree>>","<<def_tag,tag>>" or "<<def_blob_object,blob>>"
-	describing the type of an <<def_object,object>>.
-//	識別子 "<<def_commit,コミット>>", "<<def_tree,ツリー>>", "<<def_tag,タグ>>"
+	One of the identifiers "<<def_commit_object,commit>>",
+	"<<def_tree_object,tree>>", "<<def_tag_object,tag>>" or
+	"<<def_blob_object,blob>>" describing the type of an
+	<<def_object,object>>.
+//	識別子 "<<def_commit_object,コミット>>", "<<def_tree_object,ツリー>>", "<<def_tag_object,タグ>>"
 //	または "<<def_blob_object,ブロブ(blob)>>" の１つであり、
 //	<<def_object,オブジェクト(object)>>のタイプを記述します。
 
@@ -450,13 +460,13 @@ This commit is referred to as a "merge commit", or sometimes just a
 	'origin' is used for that purpose. New upstream updates
 	will be fetched into remote <<def_tracking_branch,tracking branches>> named
 	origin/name-of-upstream-branch, which you can see using
-	"`git branch -r`".
+	`git branch -r`.
 //	デフォルトの上流<<def_repository,リポジトリ>>のことを指します。
 //	たいていのプロジェクトは少なくとも１つの追跡している上流プロジェクトがあります。
 //	デフォルトで 'origin' はその上流プロジェクトの追跡に使用されます。
 //	上流の更新をすると、origin/name-of-upstream-branch の名前のリモートの
 //	<<def_tracking_branch,追跡ブランチ>>に取得されます。
-//	リモート追跡ブランチは "`git branch -r`" にて参照できます。
+//	リモート追跡ブランチは `git branch -r` にて参照できます。
 
 [[def_pack]]pack::
 // [[def_pack]]パック(pack)::
@@ -786,6 +796,17 @@ This commit is referred to as a "merge commit", or sometimes just a
 	<<def_branch,branch>>, <<def_tag,tag>>, or any other reference.
 //	<<def_branch,ブランチ>> や <<def_tag,タグ>>、その他の参照から
 //	<<def_reachable,到達可能>> ではない <<def_object,オブジェクト>>。
+
+[[def_upstream_branch]]upstream branch::
+//	[[def_upstream_branch]]上流ブランチ::
+	The default <<def_branch,branch>> that is merged into the branch in
+	question (or the branch in question is rebased onto). It is configured
+	via branch.<name>.remote and branch.<name>.merge. If the upstream branch
+	of 'A' is 'origin/B' sometimes we say "'A' is tracking 'origin/B'".
+//	マージを行う(もしくはリベースを行う)
+//	ディフォルトの<<def_branch,ブランチ>> のこと
+//	branch.<name>.remote と branch.<name>.merge によって設定される。
+//	もし'A'の上流ブランチが'origin/B'なら"'A' は 'origin/B' を追跡している"と言う
 
 [[def_working_tree]]working tree::
 // [[def_working_tree]]作業ツリー::
