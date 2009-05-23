@@ -773,8 +773,8 @@ $ git bisect visualize
 which will run gitk and label the commit it chose with a marker that
 says "bisect".  Choose a safe-looking commit nearby, note its commit
 id, and check it out with:
-// これはgitk が実行し、選択したコミットに"bisect"いうマーカーを付けます。
-// 近くの安全そうなコミットを、コミットIDに注意して、
+// こうすると gitk が起動して、選択されたコミットに "bisect" という
+// マーカーをつけます。近くの安全そうなコミットを探し、コミットIDをメモして
 // 次のコマンドでチェックアウトします。
 
 -------------------------------------------------
