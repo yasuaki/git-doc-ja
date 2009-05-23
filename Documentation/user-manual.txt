@@ -2872,7 +2872,7 @@ This can happen, for example, if you:
 	- use `git rebase` to rebase any already-published commits (as
 	  in <<using-git-rebase>>).
 //	- `git rebase` を使用し、すでに発行したこみっちをリベースした場合
-//	  （<<using-git-rebase,git-rebase を使用する>> の手順で）
+//	  （<<using-git-rebase,git rebase を使用する>> の手順で）
 
 You may force `git push` to perform the update anyway by preceding the
 branch name with a plus sign:
@@ -3828,7 +3828,7 @@ linear history:
 
 Bisecting between Z and D* would hit a single culprit commit Y*,
 and understanding why Y* was broken would probably be easier.
-// Z と D* の間を git-bisect すると、１つの問題の原因となるコミット Y*
+// Z と D* の間を git bisect すると、１つの問題の原因となるコミット Y*
 // を見つけることができ、Y* が何故問題を引き起こしている理由を
 // 容易に理解することができるでしょう。
 
@@ -5701,7 +5701,7 @@ above example shows is that file `hello.c` was changed from
 You could resolve this by running your favorite 3-way merge
 program, e.g.  `diff3`, `merge`, or git's own merge-file, on
 the blob objects from these three stages yourself, like this:
-// 既に自明のマージは `git-read-tree -m` にて行なわれたことを
+// 既に自明のマージは `git read-tree -m` にて行なわれたことを
 // 説明しました。例えば、ファイルが `HEAD と `$target` のどちらでも
 // 変更されていない場合や、`HEAD` と `$target` が同じ内容の場合は
 // 明らかに最終的な結果は `HEAD` のものと同じです。
@@ -5813,7 +5813,7 @@ the `git fsck` program, which generates a full dependency graph
 of all objects, and verifies their internal consistency (in addition
 to just verifying their superficial consistency through the hash).
 // 構造化されたオブジェクトの場合は、さらにその構造と他のオブジェクトの
-// 連結性によって懸賞することができます。これらは `git-fsck` プログラムが
+// 連結性によって懸賞することができます。これらは `git fsck` プログラムが
 // 通常行っている内容であり、全オブジェクトの完全な依存グラフを生成し、
 // それらの内部一貫性を検証します(さらに、単にハッシュを使用した表面的な
 // 一貫性の検証も行います)
@@ -5928,7 +5928,7 @@ What does this mean?
 _always_ printed a list of revisions to stdout.  It is still functional,
 and needs to, since most new Git programs start out as scripts using
 `git rev-list`.
-// `git-rev-list` はリビジョンウォーカーの元になったバージョンであり、
+// `git rev-list` はリビジョンウォーカーの元になったバージョンであり、
 // _常に_ リビジョンの一覧を標準出力に出力するコマンドです。
 // このコマンドは現在でも役に立っており、新しい Git プログラムを
 // スクリプトとして作成するような場合によく利用されます。
@@ -5936,14 +5936,14 @@ and needs to, since most new Git programs start out as scripts using
 `git rev-parse` is not as important any more; it was only used to filter out
 options that were relevant for the different plumbing commands that were
 called by the script.
-// `git-rev-parse` はもはや重要ではありません；何故ならこれは、スクリプトにより
+// `git rev-parse` はもはや重要ではありません；何故ならこれは、スクリプトにより
 // コールされる異なる配管コマンドに対して、関連のあるオプションをフィルタリング
 // する為だけに利用されているからです。
 
 Most of what `git rev-list` did is contained in `revision.c` and
 `revision.h`.  It wraps the options in a struct named `rev_info`, which
 controls how and what revisions are walked, and more.
-// `git-rev-list` が行っていることのほとんどは、`revision.c` と `revision.h`
+// `git rev-list` が行っていることのほとんどは、`revision.c` と `revision.h`
 // に含まれています。`rev_info` という名前の構造内のオプションを包み込み、
 // どのようにどのリビジョンにウォーク(アクセス)するかなどのコントロールをします。
 
@@ -5954,7 +5954,7 @@ options for the revision walker. This information is stored in the struct
 parsing after calling `setup_revisions()`. After that, you have to call
 `prepare_revision_walk()` for initialization, and then you can get the
 commits one by one with the function `get_revision()`.
-// `git-rev-parse` の元の役割は、現在は `setup_revisions()` 関数に
+// `git rev-parse` の元の役割は、現在は `setup_revisions()` 関数に
 // 取って代わられました。`setup_revisions()` はリビジョンウォーカーの為に
 // リビジョンと共通のコマンドラインの解析をします。解析結果は `rev_info` に
 // 保管されて利用されます。`setup_revisions()` を呼び出した後に、自身の
