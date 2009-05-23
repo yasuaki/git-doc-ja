@@ -2871,7 +2871,7 @@ This can happen, for example, if you:
 //	  （<<fixing-a-mistake-by-rewriting-history,履歴を再編集して間違いを訂正する>>の手順で）、または
 	- use `git rebase` to rebase any already-published commits (as
 	  in <<using-git-rebase>>).
-//	- `git rebase` を使用し、すでに発行したこみっちをリベースした場合
+//	- `git rebase` を使用し、すでに発行したコミットをリベースした場合
 //	  （<<using-git-rebase,git rebase を使用する>> の手順で）
 
 You may force `git push` to perform the update anyway by preceding the
