@@ -66,6 +66,9 @@ You are reading the documentation for the latest (possibly
 unreleased) version of git, that is available from 'master'
 branch of the `git.git` repository.
 Documentation for older releases are available here:
+// これは最新の(未リリースかもしれない)バージョンの git のドキュメントです。
+// `git.git` リポジトリの 'master' ブランチから入手可能なドキュメントです。
+// 過去のリリースドキュメントは下記から入手可能です。
 
 * link:v1.6.3/git.html[documentation for release 1.6.3]
 
@@ -222,15 +225,16 @@ help ...`.
 //	環境変数 GIT_EXEC_PATH を設定することでも指定可能です。
 //	パスの指定がない場合、'git' は現在設定されているパスを表示して終了します。
 
--p|--paginate::
-// -p|--paginate::
 --html-path::
+// --html-path::
 	Print the path to wherever your git HTML documentation is installed
 	and exit.
-// gitのHTMLドキュメントがインストールされているパスを表示して終了します。
+//	gitのHTMLドキュメントがインストールされているパスを表示して終了します。
 
 -p::
+// -p::
 --paginate::
+// --paginate::
 	Pipe all output into 'less' (or if set, $PAGER).
 //	全ての出力を 'less' (または設定されていれば $PAGER) にパイプ接続します。
 
@@ -679,12 +683,12 @@ git so take care if using Cogito etc.
 	It will not exclude the current working directory or
 	a GIT_DIR set on the command line or in the environment.
 	(Useful for excluding slow-loading network directories.)
-// これはコロンで区切られた絶対パスのリストです。
-// この変数を設定すると、gitは設定したディレクトリよりも
-// 上のディレクトリからレポジトリディレクトリを探しません。
-// カレントディレクトリやコマンドラインか環境変数で設定した
-// GIT_DIR は排除しません。
-// (読み込みの遅いネットワークパスを除外するのに便利です)
+//	これはコロンで区切られた絶対パスのリストです。
+//	この変数を設定すると、gitは設定したディレクトリよりも
+//	上のディレクトリからレポジトリディレクトリを探しません。
+//	カレントディレクトリやコマンドラインか環境変数で設定した
+//	GIT_DIR は排除しません。
+//	(読み込みの遅いネットワークパスを除外するのに便利です)
 
 git Commits
 ~~~~~~~~~~~
@@ -986,10 +990,15 @@ contributors on the git-list <git@vger.kernel.org>.
 
 SEE ALSO
 --------
+// == 参考
 linkgit:gittutorial[7], linkgit:gittutorial-2[7],
 link:everyday.html[Everyday Git], linkgit:gitcvs-migration[7],
 linkgit:gitglossary[7], linkgit:gitcore-tutorial[7],
 linkgit:gitcli[7], link:user-manual.html[The Git User's Manual]
+// linkgit:gittutorial[7], linkgit:gittutorial-2[7],
+// link:everyday.html[Everyday Git], linkgit:gitcvs-migration[7],
+// linkgit:gitglossary[7], linkgit:gitcore-tutorial[7],
+// linkgit:gitcli[7], link:user-manual.html[The Git User's Manual]
 
 GIT
 ---
