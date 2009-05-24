@@ -81,11 +81,12 @@
 	<<def_object_database,object database>>, and updating the
 	<<def_index,index>> and <<def_HEAD,HEAD>> if the whole working tree has
 	been pointed at a new <<def_branch,branch>>.
-//	<<def_tree_object,ツリーオブジェクト>> 
-//	もしくは<<def_blob_object,ブロブ(blob)>>を持つ
 //	<<def_working_tree,作業ツリー>>の全てもしくは一部を
+//	<<def_object_database,オブジェクトDB>> にある
+//	<<def_tree_object,ツリーオブジェクト>>
+//	もしくは<<def_blob_object,ブロブ(blob)>>の内容に
 //	更新する操作のことです。
-//	もしもワーキングツリー全体が新しい <<def_branch,ブランチ>> を
+//	もしも作業ツリー全体が新しい <<def_branch,ブランチ>> を
 //	指しているならば
 //	<<def_index,インデックス>> と <<def_HEAD,HEAD>> も更新します。
 
