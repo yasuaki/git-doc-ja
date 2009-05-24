@@ -84,7 +84,7 @@
 //	<<def_working_tree,作業ツリー>>の全てもしくは一部を
 //	<<def_object_database,オブジェクトDB>> にある
 //	<<def_tree_object,ツリーオブジェクト>>
-//	もしくは<<def_blob_object,ブロブ(blob)>>の内容に
+//	もしくは<<def_blob_object,ブロブ(blob)>>の内容で
 //	更新する操作のことです。
 //	もしも作業ツリー全体が新しい <<def_branch,ブランチ>> を
 //	指しているならば
@@ -241,7 +241,7 @@ to point at the new commit.
 //	の場合に良く発生します。
 
 [[def_fetch]]fetch::
-// [[def_fetch]]取得(fetch)::
+// [[def_fetch]]フェッチ(fetch)::
 	Fetching a <<def_branch,branch>> means to get the
 	branch's <<def_head_ref,head ref>> from a remote
 	<<def_repository,repository>>, to find out which objects are
@@ -527,7 +527,7 @@ This commit is referred to as a "merge commit", or sometimes just a
 //	<<def_merge,マージ>>することをいいます。linkgit:git-pull[1] 参照。
 
 [[def_push]]push::
-// [[def_push]]押し出す(push)::
+// [[def_push]]プッシュ(push)::
 	Pushing a <<def_branch,branch>> means to get the branch's
 	<<def_head_ref,head ref>> from a remote <<def_repository,repository>>,
 	find out if it is a direct ancestor to the branch's local
@@ -724,7 +724,7 @@ This commit is referred to as a "merge commit", or sometimes just a
 //	"署名付きタグオブジェクト" と呼ばれるものもあります。
 
 [[def_topic_branch]]topic branch::
-// [[def_topic_branch]]トピックブランチ::
+// [[def_topic_branch]]トピックブランチ (topic branch)::
 	A regular git <<def_branch,branch>> that is used by a developer to
 	identify a conceptual line of development. Since branches are very easy
 	and inexpensive, it is often desirable to have several small branches
@@ -741,7 +741,7 @@ This commit is referred to as a "merge commit", or sometimes just a
 // 	related changes.
 
 [[def_tracking_branch]]tracking branch::
-// [[def_tracking_branch]]追跡ブランチ::
+// [[def_tracking_branch]]追跡ブランチ (tracking branch)::
 	A regular git <<def_branch,branch>> that is used to follow changes from
 	another <<def_repository,repository>>. A tracking
 	branch should not contain direct modifications or have local commits
@@ -755,7 +755,7 @@ This commit is referred to as a "merge commit", or sometimes just a
 //	<<def_refspec,参照仕様>>。
 
 [[def_tree]]tree::
-// [[def_tree]]ツリー::
+// [[def_tree]]ツリー (tree)::
 	Either a <<def_working_tree,working tree>>, or a <<def_tree_object,tree
 	object>> together with the dependent <<def_blob_object,blob>> and tree objects
 	(i.e. a stored representation of a working tree).
@@ -764,7 +764,7 @@ This commit is referred to as a "merge commit", or sometimes just a
 //	(つまり、作業ディレクトリの格納時の表現)。
 
 [[def_tree_object]]tree object::
-// [[def_tree_object]]ツリーオブジェクト::
+// [[def_tree_object]]ツリーオブジェクト (tree object)::
 	An <<def_object,object>> containing a list of file names and modes along
 	with refs to the associated blob and/or tree objects. A
 	<<def_tree,tree>> is equivalent to a <<def_directory,directory>>.
@@ -773,7 +773,7 @@ This commit is referred to as a "merge commit", or sometimes just a
 //	と等価。
 
 [[def_tree-ish]]tree-ish::
-// [[def_tree-ish]]ツリーっぽい::
+// [[def_tree-ish]]ツリーっぽい (tree-ish)::
 	A <<def_ref,ref>> pointing to either a <<def_commit_object,commit
 	object>>, a <<def_tree_object,tree object>>, or a <<def_tag_object,tag
 	object>> pointing to a tag or commit or tree object.
@@ -782,21 +782,21 @@ This commit is referred to as a "merge commit", or sometimes just a
 //	(訳注：ツリーっぽくない参照は blob オブジェクトへの参照)
 
 [[def_unmerged_index]]unmerged index::
-// [[def_unmerged_index]]マージされていない索引::
+// [[def_unmerged_index]]マージされていない索引 (unmerged index)::
 	An <<def_index,index>> which contains unmerged
 	<<def_index_entry,index entries>>.
 //	マージされていない <<def_index_entry,索引エントリ>> を含む
 //	<<def_index,索引(index)>>。
 
 [[def_unreachable_object]]unreachable object::
-// [[def_unreachable_object]]到達不可能なオブジェクト::
+// [[def_unreachable_object]]到達不可能なオブジェクト (unreachable object)::
 	An <<def_object,object>> which is not <<def_reachable,reachable>> from a
 	<<def_branch,branch>>, <<def_tag,tag>>, or any other reference.
 //	<<def_branch,ブランチ>> や <<def_tag,タグ>>、その他の参照から
 //	<<def_reachable,到達可能>> ではない <<def_object,オブジェクト>>。
 
 [[def_upstream_branch]]upstream branch::
-//	[[def_upstream_branch]]上流ブランチ::
+// [[def_upstream_branch]]上流ブランチ(upstream branch)::
 	The default <<def_branch,branch>> that is merged into the branch in
 	question (or the branch in question is rebased onto). It is configured
 	via branch.<name>.remote and branch.<name>.merge. If the upstream branch
@@ -807,7 +807,7 @@ This commit is referred to as a "merge commit", or sometimes just a
 //	もし'A'の上流ブランチが'origin/B'なら"'A' は 'origin/B' を追跡している"と言う
 
 [[def_working_tree]]working tree::
-// [[def_working_tree]]作業ツリー::
+// [[def_working_tree]]作業ツリー (working tree)::
 	The tree of actual checked out files.  The working tree is
 	normally equal to the <<def_HEAD,HEAD>> plus any local changes
 	that you have made but not yet committed.
