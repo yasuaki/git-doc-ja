@@ -223,6 +223,7 @@ clean:
 	$(RM) technical/api-*.html technical/api-index.txt
 	$(RM) *.txt
 	$(RM) $(cmds_txt) *.made
+	$(RM) -rf chunked
 
 %.txt : %.txt.ja
 	./make-text.perl $< $@
@@ -243,7 +244,7 @@ $(MAN_HTML): %.html : %.txt
 		$(ASCIIDOC_EXTRA) -agit_version=$(GIT_VERSION) -o $@+ $< && \
 	mv $@+ $@
 
-user-manual.xml: user-manual.txt user-manual.conf
+user-manual.xml: user-manual.txt user-manual.conf glossary-content.txt
 	$(QUIET_ASCIIDOC)$(ASCIIDOC) $(ASCIIDOC_EXTRA) -b docbook -d book $<
 
 technical/api-index.txt: technical/api-index-skel.txt \
@@ -256,6 +257,11 @@ $(patsubst %,%.html,$(API_DOCS) technical/api-index): %.html : %.txt
 
 XSLT = docbook.xsl
 XSLTOPTS = --xinclude --stringparam html.stylesheet docbook-xsl.css
+
+chunked: user-manual.xml
+	$(QUIET_XSLTPROC)xsltproc chunk.xsl $<
+	cp -p iphone.css chunked/iphone.css
+	cp -p docbook-xsl.css chunked/docbook-xsl.css
 
 user-manual.html: user-manual.xml
 	$(QUIET_XSLTPROC)xsltproc $(XSLTOPTS) -o $@ $(XSLT) $<
