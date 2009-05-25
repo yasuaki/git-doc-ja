@@ -1,0 +1,41 @@
+gitglossary(7)
+==============
+// = gitglossary(7)
+
+NAME
+----
+// == NAME
+gitglossary - A GIT Glossary
+// gitglossary - GIT 用語集
+
+SYNOPSIS
+--------
+// == SYNOPSIS
+*
+// *
+
+DESCRIPTION
+-----------
+// == 解説
+
+include::glossary-content.txt[]
+
+SEE ALSO
+--------
+// == 参照
+linkgit:gittutorial[7],
+linkgit:gittutorial-2[7],
+linkgit:gitcvs-migration[7],
+link:everyday.html[Everyday git],
+link:user-manual.html[The Git User's Manual]
+// linkgit:gittutorial[7],
+// linkgit:gittutorial-2[7],
+// linkgit:gitcvs-migration[7],
+// link:everyday.html[Everyday git],
+// link:user-manual.html[The Git User's Manual]
+
+GIT
+---
+// == GIT
+Part of the linkgit:git[1] suite.
+// linkgit:git[1] スイートの一部
