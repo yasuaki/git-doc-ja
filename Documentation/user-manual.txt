@@ -597,7 +597,6 @@ at the new commits.
 // 複製(clone)元の開発者はいずれ自身のリポジトリに変更を加えたり、
 // 新しいコミットを作成したり、新しいコミットを参照したブランチを作成するでしょう。
 
-
 The command "git fetch", with no arguments, will update all of the
 remote-tracking branches to the latest version found in her
 repository.  It will not touch any of your own branches--not even the
@@ -5947,7 +5946,7 @@ controls how and what revisions are walked, and more.
 // に含まれています。`rev_info` という名前の構造内のオプションを包み込み、
 // どのようにどのリビジョンにウォーク(アクセス)するかなどのコントロールをします。
 
-The original job of `git-rev-parse` is now taken by the function
+The original job of `git rev-parse` is now taken by the function
 `setup_revisions()`, which parses the revisions and the common command line
 options for the revision walker. This information is stored in the struct
 `rev_info` for later consumption. You can do your own command line option
@@ -6041,7 +6040,6 @@ it does.
         git_config(git_default_config);
         if (argc != 3)
 		usage("git cat-file [-t|-s|-e|-p|<type>] <sha1>");
-                usage("git-cat-file [-t|-s|-e|-p|<type>] <sha1>");
         if (get_sha1(argv[2], sha1))
                 die("Not a valid object name %s", argv[2]);
 ------------------------------------------------------------------
