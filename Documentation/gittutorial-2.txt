@@ -1,17 +1,22 @@
 gittutorial-2(7)
 ================
-// = git チュートリアル：パート２
+// = gittutorial-2(7)
 
 NAME
 ----
+// == NAME
 gittutorial-2 - A tutorial introduction to git: part two
+// gittutorial-2 - git チュートリアル：パート２
 
 SYNOPSIS
 --------
+// == SYNOPSIS
 git *
+// git *
 
 DESCRIPTION
 -----------
+// == 解説
 
 You should work through linkgit:gittutorial[7] before reading this tutorial.
 // 注意：このチュートリアルを読む前に linkgit:gittutorial[7]
@@ -328,7 +333,7 @@ what's happening:
 // 何がおきているかを追跡する為に diff をとります：
 
 ------------------------------------------------
-$ git diff HEAD
+$ git diff
 --- a/file.txt
 +++ b/file.txt
 @@ -1 +1,2 @@
@@ -543,19 +548,19 @@ should be able to find any unknown jargon in linkgit:gitglossary[7].
 The link:user-manual.html[Git User's Manual] provides a more
 comprehensive introduction to git.
 
-The link:gitcvs-migration.html[CVS migration] document explains how to
+linkgit:gitcvs-migration[7] explains how to
 import a CVS repository into git, and shows how to use git in a
 CVS-like way.
-// link:gitcvs-migration.html[CVS からの移行] のドキュメントは
+// linkgit:gitcvs-migration[7] のドキュメントは
 // CVS リポジトリを git にインポートする方法を説明しており、
 // CVS のような方法で git を使用する方法を示しています。
 
-For git developers, linkgit:gitcore-tutorial[7] goes
+For some interesting examples of git use, see the
 link:howto-index.html[howtos].
-// それ以外の git の使い方の面白い例は、link:howto-index.html[howtos] 
+// 面白い git 使用例を知りたい方は、link:howto-index.html[howtos]
 // を参照してください。
 
-For git developers, the link:gitcore-tutorial.html[Core tutorial] goes
+For git developers, linkgit:gitcore-tutorial[7] goes
 into detail on the lower-level git mechanisms involved in, for
 example, creating a new commit.
 // git 開発者は linkgit:gitcore-tutorial[7] が
@@ -564,6 +569,7 @@ example, creating a new commit.
 
 SEE ALSO
 --------
+// == 参考
 linkgit:gittutorial[7],
 linkgit:gitcvs-migration[7],
 linkgit:gitcore-tutorial[7],
@@ -571,7 +577,16 @@ linkgit:gitglossary[7],
 linkgit:git-help[1],
 link:everyday.html[Everyday git],
 link:user-manual.html[The Git User's Manual]
+// linkgit:gittutorial[7],
+// linkgit:gitcvs-migration[7],
+// linkgit:gitcore-tutorial[7],
+// linkgit:gitglossary[7],
+// linkgit:git-help[1],
+// link:everyday.html[Everyday git],
+// link:user-manual.html[The Git User's Manual]
 
 GIT
 ---
+// == GIT
 Part of the linkgit:git[1] suite.
+// linkgit:git[1] スイートの一部

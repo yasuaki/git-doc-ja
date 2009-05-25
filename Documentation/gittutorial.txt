@@ -1,17 +1,22 @@
 gittutorial(7)
 ==============
+// = gittutorial(7)
 
 NAME
 ----
+// == NAME
 gittutorial - A tutorial introduction to git (for version 1.5.1 or newer)
-// git チュートリアル (バージョン 1.5.1 以降用)
+// gittutorial - git チュートリアル (バージョン 1.5.1 以降用)
 
 SYNOPSIS
 --------
+// == SYNOPSIS
 git *
+// git *
 
 DESCRIPTION
 -----------
+// == 解説
 
 This tutorial explains how to import a new project into git, make
 changes to it, and share changes with other developers.
@@ -410,7 +415,6 @@ alice$ git pull /home/bob/myrepo master
 This merges the changes from Bob's "master" branch into Alice's
 current branch.  If Alice has made her own changes in the meantime,
 then she may need to manually fix any conflicts.
-
 // これはボブの "master" ブランチで行なわれた変更をアリスの現在のブランチにマージします。
 // アリスが自身の変更もしている場合は、彼女は手動で全てのコンフリクト(競合)を
 // 解消する必要があります。
@@ -804,11 +808,11 @@ $ git log v2.5.. Makefile       # commits since v2.5 which modify
 //				# 変更しているコミット
 -------------------------------------
 
-You can also give git log a "range" of commits where the first is not
+You can also give `git log` a "range" of commits where the first is not
 necessarily an ancestor of the second; for example, if the tips of
 the branches "stable-release" and "master" diverged from a common
 commit some time ago, then
-// git log にコミットの "範囲" を指定することもできます。
+// `git log` にコミットの "範囲" を指定することもできます。
 // その際、範囲指定の１つ目は必ずしも２つ目の祖先である必要はありません；
 // 例えば、ブランチ "stable-release" と "master" の先端(tip)は、
 // ある時点の共通のコミットから枝分かれしている場合、次のコマンド
@@ -945,10 +949,11 @@ digressions that may be interesting at this point are:
 //   * link:everyday.html[約20個のコマンドによる日々の GIT活用]
 
   * linkgit:gitcvs-migration[7]: Git for CVS users.
-//   * link:gitcvs-migration[7]: CVSユーザのためのgit.
+//   * linkgit:gitcvs-migration[7]: CVSユーザのためのgit.
 
 SEE ALSO
 --------
+// == 参考
 linkgit:gittutorial-2[7],
 linkgit:gitcvs-migration[7],
 linkgit:gitcore-tutorial[7],
@@ -956,7 +961,16 @@ linkgit:gitglossary[7],
 linkgit:git-help[1],
 link:everyday.html[Everyday git],
 link:user-manual.html[The Git User's Manual]
+// linkgit:gittutorial-2[7],
+// linkgit:gitcvs-migration[7],
+// linkgit:gitcore-tutorial[7],
+// linkgit:gitglossary[7],
+// linkgit:git-help[1],
+// link:everyday.html[Everyday git],
+// link:user-manual.html[The Git User's Manual]
 
 GIT
 ---
+// == GIT
 Part of the linkgit:git[1] suite.
+// linkgit:git[1] スイートの一部
