@@ -221,7 +221,11 @@ clean:
 	$(RM) *.texi *.texi+ *.texi++ git.info gitman.info
 	$(RM) howto-index.txt howto/*.html doc.dep
 	$(RM) technical/api-*.html technical/api-index.txt
+	$(RM) *.txt
 	$(RM) $(cmds_txt) *.made
+
+%.txt : %.txt.ja
+	./make-text.perl $< $@
 
 $(MAN_HTML): %.html : %.txt
 	$(QUIET_ASCIIDOC)$(RM) $@+ $@ && \
