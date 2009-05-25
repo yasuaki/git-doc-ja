@@ -1,10 +1,11 @@
 #!/usr/bin/perl
 #-------------------------------------------------------------------------------
-# 日本語訳したマニュアルを生成するためのスクリプト
+# <英語原文+翻訳>形式から翻訳のみにフィルタリングするスクリプト
 #
 # 実行方法：
-#  $ make.pl ファイル名 
-#  とすると、日本語版のマニュアルを ../Documentation.ja 配下に生成する。
+#  $ make-text.perl 入力ファイル 出力ファイル
+#
+#  例： make-text.pl gittutorial.txt.ja gittutorial.txt
 #
 # なお、引数で指定するファイルは、以下の形式で記述すること。
 #
@@ -55,23 +56,19 @@
 # 定数の定義
 #---------------------------------------
 
-$targetFile = $ARGV[0];			# 変換するファイル
-$jadir="../Documentation.ja";	# 出力先ディレクトリ
-
-$jafile   = "$jadir/$targetFile";
-$htmlFile = "$targetFile";
-$htmlFile =~ s/txt$/html/;
+$txtjafile = $ARGV[0];		# 変換対象ファイル(*.txt.ja)
+$txtfile   = $ARGV[1];		# 出力ファイル (*.txt)
 
 #---------------------------------------
 # 日本語訳のみを抜き出した .txt ファイルを、Documentation.ja ディレクトリに出力
 #---------------------------------------
-printf "Create ../Documentation.ja/$targetFile\n";
+printf "Create $txtfile\n";
 
-open(IN, $targetFile) or die("failed to open $targetFile .\n");
+open(IN, $txtjafile) or die("failed to open $txtjafile .\n");
 @lines = <IN>;
 close(IN);
 
-open(OUT, ">$jafile") or die("failed to open $jafile .\n");
+open(OUT, ">$txtfile") or die("failed to open $txtfile .\n");
 $inline = 0;
 $cnt = @lines;
 for ($i=0; $i<$cnt; $i++) {
@@ -132,17 +129,6 @@ for ($i=0; $i<$cnt; $i++) {
 	}
 }
 close(OUT);
-
-#---------------------------------------
-# HTML形式へ変換
-#---------------------------------------
-printf "Create ../Documentation.ja/$htmlFile\n";
-$cwd = `pwd`;
-chdir $jadir;
-`make $htmlFile`;
-`sed -e 's/sans-serif//' -e 's/serif//' $htmlFile > $htmlFile.new`;
-`mv $htmlFile.new $htmlFile`;
-chdir $cwd;
 
 exit 0;
 
