@@ -232,7 +232,7 @@ $(MAN_HTML): %.html : %.txt
 	$(QUIET_ASCIIDOC)$(RM) $@+ $@ && \
 	$(ASCIIDOC) -b xhtml11 -d manpage -f asciidoc.conf \
 		$(ASCIIDOC_EXTRA) -agit_version=$(GIT_VERSION) -o $@+ $< && \
-	mv $@+ $@
+	sed -e 's/sans-serif//' -e 's/serif//' $@+ > $@
 
 %.1 %.5 %.7 : %.xml
 	$(QUIET_XMLTO)$(RM) $@ && \
