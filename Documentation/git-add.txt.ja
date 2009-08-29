@@ -1,0 +1,560 @@
+//// Based on: v1.6.4.1-0-gd9b9784
+////
+//// XXX:
+////   -e の *NOTE* の訳がちょっと不安です。実際の動作に合わせてありますが、原文が間違ってる？
+////   -N の効果が分かりません。機能追加された経緯もよくわからず。
+////   stage という単語はコマンドの出力にも出てくるので、あえて訳さず、そのまま使っています。
+////
+git-add(1)
+==========
+// = git-add(1)
+
+NAME
+----
+// == NAME
+git-add - Add file contents to the index
+// git-add - 索引(index)にファイルの内容を追加する
+
+SYNOPSIS
+--------
+// == SYNOPSIS
+[verse]
+'git add' [-n] [-v] [--force | -f] [--interactive | -i] [--patch | -p]
+	  [--edit | -e] [--all | [--update | -u]] [--intent-to-add | -N]
+	  [--refresh] [--ignore-errors] [--] [<filepattern>...]
+// [verse]
+// 'git add' [-n] [-v] [--force | -f] [--interactive | -i] [--patch | -p]
+// 	  [--edit | -e] [--all | [--update | -u]] [--intent-to-add | -N]
+// 	  [--refresh] [--ignore-errors] [--] [<filepattern>...]
+
+DESCRIPTION
+-----------
+// == DESCRIPTION
+
+This command adds the current content of new or modified files to the
+index, thus staging that content for inclusion in the next commit.
+// このコマンドは新しいファイルや修正したファイルのコンテンツを索引に追加します。
+// 結果としてそれらのコンテンツを stage する
+// (次回のコミットに含めるようgitに指示する)ことになります。
+
+The "index" holds a snapshot of the content of the working tree, and it
+is this snapshot that is taken as the contents of the next commit.  Thus
+after making any changes to the working directory, and before running
+the commit command, you must use the 'add' command to add any new or
+modified files to the index.
+// "索引" はワーキングツリーのコンテンツのスナップショットをひとつ保持しています。
+// そしてそのスナップショットは次回のコミットのコンテンツとして扱われます。
+// 従ってワーキングディレクトリに何か変更を加えた後は、
+// commit コマンドを実行する前に 'add' コマンドを使って、
+// 新しいファイルや修正したファイルを索引に追加しなければなりません。
+
+This command can be performed multiple times before a commit.  It only
+adds the content of the specified file(s) at the time the add command is
+run; if you want subsequent changes included in the next commit, then
+you must run 'git add' again to add the new content to the index.
+// このコマンドはコミット前に複数回にわたって実行できます。
+// 追加されるのは add コマンドで指定された(複数の)ファイルの、
+// その時点の内容のみです。
+// 後から変更した内容を次のコミットに含めたければ、
+// その新しい内容をインデックスに追加するために 'git add'
+// を再度実行する必要があります。
+
+The 'git status' command can be used to obtain a summary of which
+files have changes that are staged for the next commit.
+// 'git status' コマンドで、次回のコミットのために stage
+// された変更点を持ったファイルの一覧を取得できます。
+
+The 'git add' command will not add ignored files by default.  If any
+ignored files were explicitly specified on the command line, 'git add'
+will fail with a list of ignored files.  Ignored files reached by
+directory recursion or filename globbing performed by Git (quote your
+globs before the shell) will be silently ignored.  The 'add' command can
+be used to add ignored files with the `-f` (force) option.
+// 'git add' コマンドはデフォルトで無視ファイル(訳注: .gitignore
+// に登録されたファイル)を追加しません。
+// 無視ファイルがコマンドラインで明示的に指定された場合、'git add'
+// は無視ファイルの一覧を表示して失敗します。
+// ディレクトリ再帰やGitによるファイル名のグロビング
+// (シェルに解釈されないよう引用符で囲みます)
+// の結果として無視ファイルが含まれていた場合、黙って無視します。
+// 'add' コマンドは '-f'(force)オプションと一緒に使えば
+// 無視ファイルを追加することができます。
+
+Please see linkgit:git-commit[1] for alternative ways to add content to a
+commit.
+// コミットに追加する別の方法は linkgit:git-commit[1] を見てください。
+
+
+OPTIONS
+-------
+// == OPTIONS
+<filepattern>...::
+	Files to add content from.  Fileglobs (e.g. `*.c`) can
+	be given to add all matching files.  Also a
+	leading directory name (e.g. `dir` to add `dir/file1`
+	and `dir/file2`) can be given to add all files in the
+	directory, recursively.
+// <filepattern>...::
+// 	コンテンツを追加するファイルを指定します。
+// 	ファイルグロブ(例 '*.c')でマッチするファイルを
+// 	すべて追加することができます。また、
+// 	ディレクトリ名を指定してそのディレクトリ配下を
+// 	再帰的に全て追加することが可能です。
+//	(例: 'dir/file1' と 'dir/file2' を追加するために 'dir'
+// 	を指定する)
+
+-n::
+--dry-run::
+        Don't actually add the file(s), just show if they exist.
+// -n::
+// --dry-run::
+// 	ファイルが存在すればそれを表示するだけで、
+// 	実際にはファイルを追加しません。
+
+-v::
+--verbose::
+        Be verbose.
+// -v::
+// --verbose::
+// 	冗長表示になります。
+
+-f::
+--force::
+	Allow adding otherwise ignored files.
+// -f::
+// --force::
+// 	無視ファイルであっても追加します。
+
+-i::
+--interactive::
+	Add modified contents in the working tree interactively to
+	the index. Optional path arguments may be supplied to limit
+	operation to a subset of the working tree. See ``Interactive
+	mode'' for details.
+// -i::
+// --interactive::
+// 	修正したワーキングツリーのコンテンツを対話的に索引に追加します。
+// 	操作をワーキングツリーの一部に限定するためにファイルパスを
+// 	指定することもできます。
+// 	詳細は''Interactive mode''を見てください。
+
+-p::
+--patch::
+	Similar to Interactive mode but the initial command loop is
+	bypassed and the 'patch' subcommand is invoked using each of
+	the specified filepatterns before exiting.
+// -p::
+// --patch::
+// 	インタラクティブモードに似ていますが、
+// 	最初のコマンド入力をバイパスして、
+// 	指定されたファイルパターンに対して 'patch'
+// 	サブコマンドを呼び出します。
+
+-e, \--edit::
+	Open the diff vs. the index in an editor and let the user
+	edit it.  After the editor was closed, adjust the hunk headers
+	and apply the patch to the index.
++
+*NOTE*: Obviously, if you change anything else than the first character
+on lines beginning with a space or a minus, the patch will no longer
+apply.
+// -e, \--edit::
+// 	エディタを開いて索引に対する差分を編集できます。
+// 	エディタを終了後は hunk ヘッダ(訳注: 差分に含まれる位置情報)を調整し、
+// 	パッチとして索引に適用します。
+// +
+// *NOTE*: 明らかなことですが、"-"(マイナス)または" "(空白文字)
+// から始まる行を編集した場合(訳注:
+// ワーキングツリーではなく索引のほうに含まれる部分を編集した場合)、
+// パッチは適用されません。
+
+-u::
+--update::
+	Update only files that git already knows about, staging modified
+	content for commit and marking deleted files for removal. This
+	is similar
+	to what "git commit -a" does in preparation for making a commit,
+	except that the update is limited to paths specified on the
+	command line. If no paths are specified, all tracked files in the
+	current directory and its subdirectories are updated.
+// -u::
+// --update::
+// 	gitがすでに知っているファイルのみ索引を更新します。
+// 	これはつまり、修正したコンテンツを stage し、
+// 	削除されたファイルは削除の目印をつけることになります。
+// 	これはコマンドラインで指定されたファイルパスに限定されることを除けば、
+// 	"git commit -a" がコミットの準備段階で実行する処理内容と似ています。
+// 	パスを指定しなかった場合、
+// 	カレントディレクトリ配下およびそのサブディレクトリ配下の、
+// 	全てのgit管理下のファイルが更新されます。
+
+-A::
+--all::
+	Update files that git already knows about (same as '\--update')
+	and add all untracked files that are not ignored by '.gitignore'
+	mechanism.
+// -A::
+// --all::
+// 	gitがすでに知っているファイルの索引を更新し('\--update' と同じ)、
+// 	gitがまだ追跡していないファイルもすべて追加します。
+// 	ただし、'.gitignore' によって無視されているファイルは除きます。
+
+
+-N::
+--intent-to-add::
+	Record only the fact that the path will be added later. An entry
+	for the path is placed in the index with no content. This is
+	useful for, among other things, showing the unstaged content of
+	such files with 'git diff' and committing them with 'git commit
+	-a'.
+// -N::
+// --intent-to-add::
+// 	指定したパスのファイルが、後で add されるということだけを記録します。
+// 	索引には空のファイルが登録されます。
+// 	これはstageされていないファイルのうち、'git diff' で表示させたり、
+// 	'git commit -a' でコミットしたいファイルに対して使用すると便利です。
+
+--refresh::
+	Don't add the file(s), but only refresh their stat()
+	information in the index.
+// --refresh::
+// 	ファイルは追加せず、
+// 	索引にあるファイルのstat()情報だけをリフレッシュします。
+
+--ignore-errors::
+	If some files could not be added because of errors indexing
+	them, do not abort the operation, but continue adding the
+	others. The command shall still exit with non-zero status.
+// --ignore-errors::
+// 	エラーによりファイルを索引に追加することに失敗しても、
+// 	操作を中断せず、他のファイルの追加を続けます。
+// 	そのときコマンドは0以外のステータスで終了します。
+
+\--::
+	This option can be used to separate command-line options from
+	the list of files, (useful when filenames might be mistaken
+	for command-line options).
+// \--::
+// 	このオプションはコマンドラインオプションと、
+// 	コマンドラインで指定するファイルのリストとを分けるために使えます。
+// 	(ファイル名がコマンドラインオプションに間違えられそうなときに役立ちます)
+
+
+Configuration
+-------------
+// == Configuration
+The optional configuration variable 'core.excludesfile' indicates a path to a
+file containing patterns of file names to exclude from git-add, similar to
+$GIT_DIR/info/exclude.  Patterns in the exclude file are used in addition to
+those in info/exclude.  See linkgit:gitrepository-layout[5].
+// 設定変数 'core.excludesfile' に git-add
+// から除外するファイルの名のパターンを指定できます。
+// これは $GIT_DIR/info/exclude に似ています。
+// 除外ファイルのパターンは、この info/exclude に加えて使われます。
+// linkgit:gitrepository-layout[5] 参照。
+
+
+EXAMPLES
+--------
+// == EXAMPLES
+
+* Adds content from all `\*.txt` files under `Documentation` directory
+and its subdirectories:
++
+------------
+$ git add Documentation/\\*.txt
+------------
++
+Note that the asterisk `\*` is quoted from the shell in this
+example; this lets the command include the files from
+subdirectories of `Documentation/` directory.
+// * 'Documentation' ディレクトリおよびそのサブディレクトリ以下にある、
+// すべての '\*.txt' ファイルの内容を追加します。
+// +
+// ------------
+// $ git add Documentation/\*.txt
+// ------------
+// +
+// この例のアスタリスク `\*`
+// はシェルからエスケープしていることに注意してください。
+// こうすることで 'Documentation/' ディレクトリの、
+// サブディレクトリのファイルも含まれます。
+
+
+* Considers adding content from all git-*.sh scripts:
++
+------------
+$ git add git-*.sh
+------------
++
+Because this example lets the shell expand the asterisk (i.e. you are
+listing the files explicitly), it does not consider
+`subdir/git-foo.sh`.
+// * git-*.sh スクリプトをすべて追加する場合を考えます：
+// +
+// ------------
+// $ git add git-*.sh
+// ------------
+// +
+// この例ではシェルにアスタリスクを展開させるので
+// (つまり、明示的にファイルリストを指定したのと同じ)、
+// 'subdir/git-foo.sh' は対象となりません。
+
+Interactive mode
+----------------
+// == Interactive mode
+When the command enters the interactive mode, it shows the
+output of the 'status' subcommand, and then goes into its
+interactive command loop.
+// インタラクティブモードに入ると、
+// 'status' サブコマンドの出力を表示します。
+// その後、対話コマンドループに進みます。
+
+The command loop shows the list of subcommands available, and
+gives a prompt "What now> ".  In general, when the prompt ends
+with a single '>', you can pick only one of the choices given
+and type return, like this:
+// コマンドループでは使用可能なサブコマンドのリストを表示し、
+// "What now> "というプロンプトを表示します。
+// プロンプトがひとつの '>' で終わっているときは、
+// 与えられたサブコマンドからひとつだけ選択できます。
+// 例えば以下のように：
+
+------------
+    *** Commands ***
+      1: status       2: update       3: revert       4: add untracked
+      5: patch        6: diff         7: quit         8: help
+    What now> 1
+------------
+// ------------
+//     *** Commands ***
+//       1: status       2: update       3: revert       4: add untracked
+//       5: patch        6: diff         7: quit         8: help
+//     What now> 1
+// ------------
+
+You also could say "s" or "sta" or "status" above as long as the
+choice is unique.
+// 選択が一意に決定できるだけの長さがあれば、"s"や"sta"や"status"
+// と答えることも可能です。
+
+The main command loop has 6 subcommands (plus help and quit).
+// メインコマンドループは6個のサブコマンド(および help と quit)
+// を持っています。
+
+status::
+// status::
+
+   This shows the change between HEAD and index (i.e. what will be
+   committed if you say "git commit"), and between index and
+   working tree files (i.e. what you could stage further before
+   "git commit" using "git-add") for each path.  A sample output
+   looks like this:
++
+------------
+              staged     unstaged path
+     1:       binary      nothing foo.png
+     2:     +403/-35        +1/-1 git-add--interactive.perl
+------------
++
+It shows that foo.png has differences from HEAD (but that is
+binary so line count cannot be shown) and there is no
+difference between indexed copy and the working tree
+version (if the working tree version were also different,
+'binary' would have been shown in place of 'nothing').  The
+other file, git-add--interactive.perl, has 403 lines added
+and 35 lines deleted if you commit what is in the index, but
+working tree file has further modifications (one addition and
+one deletion).
+//   このコマンドは HEAD と索引の間の変更
+//   (つまり"git commit"でコミットされる内容)および、
+//   索引とワーキングツリーのファイルとの間の変更
+//   ("git commit"の前に"git-add"でstage可能な内容)を、
+//   各パスごとに表示します。出力例はこちらのとおり：
+// +
+// ------------
+//               staged     unstaged path
+//      1:       binary      nothing foo.png
+//      2:     +403/-35        +1/-1 git-add--interactive.perl
+// ------------
+// +
+// 上記は foo.png が HEAD との間に違いがあることを示しており
+// (ただし、バイナリファイルの行数は表示されません)、
+// 索引に追加されているコピーとワーキングツリーの版との間には、
+// 違いがないことを示しています
+// (もしワーキングツリーと異なっていれば、 'nothing'
+// とあるところに 'binary' と表示されます)。
+// もう一方のファイル (git-add--interactive.perl) は、
+// コミットすれば403行追加され、35行削除される内容を索引に持っており、
+// ワーキングツリーのファイルにはさらに変更が加えられています
+// (1行追加、1行削除)。
+
+update::
+
+   This shows the status information and issues an "Update>>"
+   prompt.  When the prompt ends with double '>>', you can
+   make more than one selection, concatenated with whitespace or
+   comma.  Also you can say ranges.  E.g. "2-5 7,9" to choose
+   2,3,4,5,7,9 from the list.  If the second number in a range is
+   omitted, all remaining patches are taken.  E.g. "7-" to choose
+   7,8,9 from the list.  You can say '*' to choose everything.
++
+What you chose are then highlighted with '*',
+like this:
++
+------------
+           staged     unstaged path
+  1:       binary      nothing foo.png
+* 2:     +403/-35        +1/-1 git-add--interactive.perl
+------------
++
+To remove selection, prefix the input with `-`
+like this:
++
+------------
+Update>> -2
+------------
++
+After making the selection, answer with an empty line to stage the
+contents of working tree files for selected paths in the index.
+// update::
+// 
+//    このコマンドはstatusの情報を表示したあと、
+//    "Update>>"プロンプトを表示します。
+//    プロンプトがふたつの '>>' で終わっている場合、
+//    スペースまたはカンマで区切って、ひとつ以上の選択肢を選べます。
+//    また、範囲指定も可能です。つまり、リストから 2,3,4,5,7,9
+//    を選ぶために "2-5 7,9" を指定できます。
+//    範囲指定の後ろの数字が省略されると、残りのパスすべてが選択されます。
+//    つまり、7,8,9をリストから選ぶために "7-" を指定できます。
+//    全部を選ぶために'*' を指定可能です。
+// +
+// 選択したパスは以下のように '*' でハイライトされます：
+// +
+// ------------
+//            staged     unstaged path
+//   1:       binary      nothing foo.png
+// * 2:     +403/-35        +1/-1 git-add--interactive.perl
+// ------------
+// +
+// 選択を解除するには、先に '-' をつけて入力します：
+// +
+// ------------
+// Update>> -2
+// ------------
+// +
+// 選択が終わった後は、何も入力せずに Enter だけを入力すれば、
+// 選択したパスのワーキングツリーのファイルの内容が、
+// インデックスに追加されます。
+
+revert::
+
+  This has a very similar UI to 'update', and the staged
+  information for selected paths are reverted to that of the
+  HEAD version.  Reverting new paths makes them untracked.
+// revert::
+// 
+//   これは 'update' とよく似たインターフェースを持っています。
+//   選択したパスの stage された情報を HEAD の内容に戻します。
+//   新しく追加したパスは git が追跡していない状態に戻されます。
+
+add untracked::
+
+  This has a very similar UI to 'update' and
+  'revert', and lets you add untracked paths to the index.
+// add untracked::
+// 
+//   これは 'update' と 'revert' によく似ていて、
+//   git が追跡していないパスを索引に追加できます。
+
+patch::
+
+  This lets you choose one path out of a 'status' like selection.
+  After choosing the path, it presents the diff between the index
+  and the working tree file and asks you if you want to stage
+  the change of each hunk.  You can say:
+
+       y - stage this hunk
+       n - do not stage this hunk
+       q - quit, do not stage this hunk nor any of the remaining ones
+       a - stage this and all the remaining hunks in the file
+       d - do not stage this hunk nor any of the remaining hunks in the file
+       g - select a hunk to go to
+       / - search for a hunk matching the given regex
+       j - leave this hunk undecided, see next undecided hunk
+       J - leave this hunk undecided, see next hunk
+       k - leave this hunk undecided, see previous undecided hunk
+       K - leave this hunk undecided, see previous hunk
+       s - split the current hunk into smaller hunks
+       e - manually edit the current hunk
+       ? - print help
++
+After deciding the fate for all hunks, if there is any hunk
+that was chosen, the index is updated with the selected hunks.
+// patch::
+// 
+//   これは 'status' 出力からパスをひとつ選択します。選択した後、
+//   索引とワーキングツリーのファイルとの diff を表示し、
+//   各 hunk ごとにその変更点を stage するかどうか聞いてきます。
+//   可能な回答は：
+// 
+//        y - 処理中の hunk を索引に追加します。
+//        n - 処理中の hunk を索引に追加しません。
+//        q - 終了します。処理中の hunk およびそれ以降の hunk は索引に追加しません。
+//        a - 処理中の hunk およびそれ以降のファイル中の hunk を索引に追加します。
+//        d - 処理中の hunk およびそれ以降のファイル中の hunk を索引に追加しません。
+//        g - 処理対象となる(別の) hunk を選択します。
+//        / - 入力した正規表現にマッチする hunk を検索します。
+//        j - 処理中の hunk を保留にし、次の保留されている hunk を表示します。
+//        J - 処理中の hunk を保留にし、次の hunk を表示します。
+//        k - 処理中の hunk を保留にし、ひとつ前の保留されている hunk を表示します。
+//        K - 処理中の hunk を保留にし、ひとつ前の hunk を表示します。
+//        s - 現在の hunk を小さい hunk に分割します。
+//        e - 現在の hunk を手動で編集します。
+//        ? - ヘルプを表示します。
+// +
+// すべての hunk をどう処理するか決定した後、索引に追加するよう選ばれた
+// hunk があればその hunk で索引を更新します。
+
+diff::
+
+  This lets you review what will be committed (i.e. between
+  HEAD and index).
+// diff::
+// 
+//   コミットされる内容(HEAD と索引の diff)を表示します
+
+SEE ALSO
+--------
+// == SEE ALSO
+linkgit:git-status[1]
+linkgit:git-rm[1]
+linkgit:git-reset[1]
+linkgit:git-mv[1]
+linkgit:git-commit[1]
+linkgit:git-update-index[1]
+// linkgit:git-status[1]
+// linkgit:git-rm[1]
+// linkgit:git-reset[1]
+// linkgit:git-mv[1]
+// linkgit:git-commit[1]
+// linkgit:git-update-index[1]
+
+Author
+------
+// == Author
+Written by Linus Torvalds <torvalds@osdl.org>
+// このコマンドは Linus Torvalds <torvalds@osdl.org> が書きました。
+
+Documentation
+--------------
+// == Documentation
+Documentation by Junio C Hamano and the git-list <git@vger.kernel.org>.
+// このドキュメントは Junio C Hamano and the git-list <git@vger.kernel.org>
+// が書きました。
+
+GIT
+---
+// == GIT
+Part of the linkgit:git[1] suite
+// このコマンドは linkgit:git[1] スイートの一部です。
