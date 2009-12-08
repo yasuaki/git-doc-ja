@@ -364,7 +364,7 @@ $ git branch -D crazy-idea
 
 Branches are cheap and easy, so this is a good way to try something
 out.
-// ブランチは安くて簡単です。何かを試す時にはとても便利です。
+// ブランチは手軽で簡単です。何かを試す時にはとても便利です。
 
 Using git for collaboration
 ---------------------------
@@ -431,21 +431,22 @@ resolve conflicts, and existing local changes will interfere with the
 conflict resolution process (git will still perform the fetch but will
 refuse to merge --- Alice will have to get rid of her local changes in
 some way and pull again when this happens).
-// ここで留意すべき事は、通常アリスは"pull"を開始する前に彼女のローカルな変更を
-// 行いたいであろうということです。
-// もしボブの作業が彼らの履歴が分岐した以降の作業と競合するならば、
-// アリスは競合の解消するために彼女のワーキングツリーとインデックスを使用するでしょう、
-// そしてすでに存在するローカルな変更は競合の解決プロセスを妨げるでしょう。
-// （git はfetchは行いますがマージを拒否します --- これが起こったときアリスは彼女の
-// ローカルな変更を何らかの方法で取り除いてからふたたびpullしなければならないでしょう)
+// ここで留意すべき事は、通常アリスはこの"pull"を開始するに先立って彼女のローカ
+// ルな変更をコミットしておきたいだろうということです。（そうしておかないと）互
+// いの履歴が分岐しているため、ボブの作業がアリスが行ったものと競合する場合、
+// アリスは競合を解消するために彼女のワーキングツリーとインデックスを使用するこ
+// とになりますが、 すでに存在するローカルな変更が競合の解決プロセスの妨げとなっ
+// てしまいます。 （git はfetchは行ってくれますがマージを拒否するでしょう ---
+// そうなった場合、アリスは彼女の ローカルな変更を何らかの方法で取り消してから
+// 改めてpullしなければなりません)。 
 
 Alice can peek at what Bob did without merging first, using the "fetch"
 command; this allows Alice to inspect what Bob did, using a special
 symbol "FETCH_HEAD", in order to determine if he has anything worth
 pulling, like this:
-// アリスはまず最初にマージせずボブの作業を"fetch"コマンドを使用してのぞき見します。
-// これによりアリスは特別なシンボル"FETCH_HEAD"を使用してボブの作業が
-// pullするに値するかどうかを検査することができます。
+// アリスはまず最初にマージを行う前にボブの作業を"fetch"コマンドを使用して覗き
+// 見るすることができます。これによりアリスは特別なシンボル"FETCH_HEAD"を使用し
+// てボブの作業が pullするに値するかどうかを検査することができます。
 // これは以下のように行います。
 
 ------------------------------------------------
@@ -461,12 +462,10 @@ and reviewing what Bob has in his state (FETCH_HEAD) that she has not
 seen with this command
 // この操作はたとえアリスがコミットしていないローカルな変更を
 // 行っていても安全です。
-// 範囲表記HEAD..FETCH_HEADはFETCH_HEADから到達可能だが、
-// HEADからは到達可能ではないコミットすべてを表すという意味です。
-// アリスはすでに現在の状態(HEAD)までのすべてを知っています、
-// そしてこのコマンドを使用して彼女にとって未知な、
-// ボブが彼の状態(FETCH_HEAD)に至るまでに行った作業を
-// レビューします。
+// 範囲表記HEAD..FETCH_HEADはFETCH_HEADから到達可能だが、 HEADからは到達可能で
+// はないもの全てを表すという意味です。 アリスはすでに現在の状態(HEAD)に至まで
+// の全てを知っています、 そしてこのコマンドによって彼女にとって未知な、 ボブが
+// 彼の状態(FETCH_HEAD)に至るまでに行った作業を 検討できます。 
 
 If Alice wants to visualize what Bob did since their histories forked
 she can issue the following command:
@@ -482,7 +481,7 @@ This uses the same two-dot range notation we saw earlier with 'git log'.
 
 Alice may want to view what both of them did since they forked.
 She can use three-dot form instead of the two-dot form:
-// アリスは分岐以降に彼らが両方がおこなった作業を見たいかもしれません。
+// アリスは分岐以降に彼ら二人が行った作業を見たいかもしれません。
 // 彼女は2つドットのかわりに3つのドットを使用できます。
 
 ------------------------------------------------
@@ -504,10 +503,10 @@ decide to continue working without pulling from Bob.  If Bob's history
 does have something Alice would immediately need, Alice may choose to
 stash her work-in-progress first, do a "pull", and then finally unstash
 her work-in-progress on top of the resulting history.
-// ボブの作業を検査した後、もし緊急ではないなら、
-// アリスはボブからpullをせずに自分の作業を進めようとするかもしれません。
-// もしボブの履歴がすぐに必要なら、アリスは彼女の仕掛中の作業を後回しにして
-// "pull"をしてから仕掛中だった作業を再開するかもしれません。
+// ボブの作業を検査した後、急を要するものがなければ、 アリスはボブからpullをせ
+// ずに自分の作業を続行することができます。 もしボブの履歴にすぐ必要となるもの
+// があれば、アリスはまず最初に処理中の作業を"stash"し、 "pull"を行った後、その
+// 履歴の先頭に処理中の作業を"stash"から戻す、ということもできます。 
 
 When you are working in a small closely knit group, it is not
 unusual to interact with the same repository over and over
