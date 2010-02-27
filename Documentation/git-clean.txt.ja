@@ -1,66 +1,109 @@
+//// XXX:
+////   -dオプションの、"もし追跡されていないディレクトリが...."以降の辺りが少し自信ないです。
+////   -fオプションを二度使う、という状況が上手く再現出来ませんでした。
+////
+
 git-clean(1)
 ============
+// = git-clean(1)
 
 NAME
 ----
+// == NAME
 git-clean - Remove untracked files from the working tree
+// git-clean - ワーキングツリーから、追跡されていないファイルを削除する
 
 SYNOPSIS
 --------
+// == SYNOPSIS
 [verse]
 'git clean' [-d] [-f] [-n] [-q] [-x | -X] [--] <path>...
+// [verse]
+// 'git clean' [-d] [-f] [-n] [-q] [-x | -X] [--] <path>...
 
 DESCRIPTION
 -----------
+// == DESCRIPTION
 
 Cleans the working tree by recursively removing files that are not
 under version control, starting from the current directory.
+// カレントディレクトリから始めて、バージョンコントロールの下にない
+// ファイルを再帰的に削除することで、ワーキングツリーの中をきれいにします。
 
 Normally, only files unknown to git are removed, but if the '-x'
 option is specified, ignored files are also removed. This can, for
 example, be useful to remove all build products.
+// 通常は未知のファイルのみが削除されますが、'-x'オプションが指定された場合は、
+// (.gitignore等で指定された)無視すべきファイルも削除されます。
+// これは例えば、全てのビルド生成物を削除する時に役立ちます。
 
 If any optional `<path>...` arguments are given, only those paths
 are affected.
+// もし引数`<path>...`が与えられた場合、そのパスのみに作用します。
 
 OPTIONS
 -------
+// == OPTIONS
 -d::
 	Remove untracked directories in addition to untracked files.
 	If an untracked directory is managed by a different git
 	repository, it is not removed by default.  Use -f option twice
 	if you really want to remove such a directory.
+// -d::
+//	追跡されていないファイルに加え、追跡されていないディレクトリも削除します。
+//	もし追跡されていないディレクトリが他のgitレポジトリで管理されていた場合、削除しません。
+//	本当にそのようなディレクトリを削除したい場合は、-fオプションを二回使ってください。
 
 -f::
 --force::
 	If the git configuration variable clean.requireForce is not set
 	to false, 'git clean' will refuse to run unless given -f or -n.
+// -f::
+// --force::
+//	'git config'のclean.requireForceにfalseが設定されていなければ、
+//	'git clean'は-fもしくは-nオプションが与えらない限り実行されないでしょう
 
 -n::
 --dry-run::
 	Don't actually remove anything, just show what would be done.
+// -n::
+// --dry-run::
+//	実際には何も削除せず、何が行われるかを表示します。
 
 -q::
 --quiet::
 	Be quiet, only report errors, but not the files that are
 	successfully removed.
+// -q::
+// --quiet::
+//	静かになります。エラーのみを報告し、正常に削除されるファイルは削除されるのみです。
 
 -x::
 	Don't use the ignore rules.  This allows removing all untracked
 	files, including build products.  This can be used (possibly in
 	conjunction with 'git reset') to create a pristine
 	working directory to test a clean build.
+// -x::
+//	無視ルールを適用しません。これはビルド時の生成物も含め、
+//	全ての追跡対象に含まれていないファイルを削除します。
+// 	これは、クリーンビルドのテストのためにまっさらなワーキングディレクトリを
+//	作成する時などに使うことが出来ます(おそらく'git reset'と共に)
 
 -X::
 	Remove only files ignored by git.  This may be useful to rebuild
 	everything from scratch, but keep manually created files.
-
+// -X::
+//	gitによって無視されているファイルのみを削除します。
+//	これは手動で作成したファイルは残したまま、一から全てをリビルドするのに役立ちます。
 
 Author
 ------
+// == Author
 Written by Pavel Roskin <proski@gnu.org>
-
+// このコマンドは Pavel Roskin <proski@gnu.org> が書きました。
 
 GIT
 ---
+// == GIT
 Part of the linkgit:git[1] suite
+// このコマンドは linkgit:git[1] スイートの一部です。
