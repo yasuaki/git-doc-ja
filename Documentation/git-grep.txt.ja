@@ -1,0 +1,340 @@
+// -[ABC] <context>:: 
+// 部分の訳が怪しいです、直訳すると意味が良く分からなかったので、少し意訳しました。
+
+git-grep(1)
+===========
+// = git-grep(1)
+
+NAME
+----
+// == NAME
+git-grep - Print lines matching a pattern
+// git-grep - 指定したパターンにマッチした行を表示します
+
+
+SYNOPSIS
+--------
+// == SYNOPSIS
+[verse]
+'git grep' [--cached]
+	   [-a | --text] [-I] [-i | --ignore-case] [-w | --word-regexp]
+	   [-v | --invert-match] [-h|-H] [--full-name]
+	   [-E | --extended-regexp] [-G | --basic-regexp]
+	   [-F | --fixed-strings] [-n]
+	   [-l | --files-with-matches] [-L | --files-without-match]
+	   [-z | --null]
+	   [-c | --count] [--all-match] [-q | --quiet]
+	   [--max-depth <depth>]
+	   [--color | --no-color]
+	   [-A <post-context>] [-B <pre-context>] [-C <context>]
+	   [-f <file>] [-e] <pattern>
+	   [--and|--or|--not|(|)|-e <pattern>...] [<tree>...]
+	   [--] [<pathspec>...]
+// [verse]
+// 'git grep' [--cached]
+// 	   [-a | --text] [-I] [-i | --ignore-case] [-w | --word-regexp]
+// 	   [-v | --invert-match] [-h|-H] [--full-name]
+// 	   [-E | --extended-regexp] [-G | --basic-regexp]
+// 	   [-F | --fixed-strings] [-n]
+// 	   [-l | --files-with-matches] [-L | --files-without-match]
+// 	   [-z | --null]
+// 	   [-c | --count] [--all-match] [-q | --quiet]
+// 	   [--max-depth <depth>]
+// 	   [--color | --no-color]
+// 	   [-A <post-context>] [-B <pre-context>] [-C <context>]
+// 	   [-f <file>] [-e] <pattern>
+// 	   [--and|--or|--not|(|)|-e <pattern>...] [<tree>...]
+// 	   [--] [<pathspec>...]
+
+DESCRIPTION
+-----------
+// == DESCRIPTION
+Look for specified patterns in the tracked files in the work tree, blobs
+registered in the index file, or blobs in given tree objects.
+// ワークツリーの中の追跡されているファイル群、インデックスファイルに登録されたデータ、
+// もしくは与えられたツリーオブジェクトのデータの中から、指定されたパターンを検索します。
+
+OPTIONS
+-------
+// == OPTIONS
+--cached::
+	Instead of searching in the working tree files, check
+	the blobs registered in the index file.
+// --cached::
+//	ワーキングツリー内のファイルを探す代わりに、
+//	インデックスファイルに登録されている塊を調べます。
+
+-a::
+--text::
+	Process binary files as if they were text.
+// -a::
+// --text::
+// 	バイナリファイルをテキストファイルのように扱います。
+
+-i::
+--ignore-case::
+	Ignore case differences between the patterns and the
+	files.
+// -i::
+// --ignore-case::
+// 	パターンとファイルの大文字小文字の違いを無視します。
+
+-I::
+	Don't match the pattern in binary files.
+// -I::
+// 	バイナリファイルはパターンにマッチさせません。
+
+--max-depth <depth>::
+	For each <pathspec> given on command line, descend at most <depth>
+	levels of directories. A negative value means no limit.
+// --max-depth <depth>::
+//	コマンドラインから与えられたそれぞれの<pathspec>における、下るディレクトリの最大<深さ>を表します。
+//      負の値を与えられた場合、制限なしを意味します。
+
+-w::
+--word-regexp::
+	Match the pattern only at word boundary (either begin at the
+	beginning of a line, or preceded by a non-word character; end at
+	the end of a line or followed by a non-word character).
+// -w::
+// --word-regexp::
+//      単語境界(行頭か単語に含まれない文字で始まり、行末か単語に含まれない文字で終わる)のみにマッチします。
+
+-v::
+--invert-match::
+	Select non-matching lines.
+// -v::
+// --invert-match::
+// 	マッチしなかった行が出力されます(訳注：結果が反転するということです)
+
+-h::
+-H::
+	By default, the command shows the filename for each
+	match.  `-h` option is used to suppress this output.
+	`-H` is there for completeness and does not do anything
+	except it overrides `-h` given earlier on the command
+	line.
+// -h::
+// -H::
+//      通常、このコマンドはマッチした内容と一緒にファイル名を表示しますが、
+//      `-h`オプションはその出力を抑制します。
+//      `-H`はコマンドの前方で与えられた`-h`オプションを上書きすることが出来る以外は、
+//      完全性のために存在しています。
+
+--full-name::
+	When run from a subdirectory, the command usually
+	outputs paths relative to the current directory.  This
+	option forces paths to be output relative to the project
+	top directory.
+// --full-name::
+//      プロジェクトのサブディレクトリからコマンドを実行した場合、通常は現在位置からの
+//      相対パスで出力されますが、このオプションは強制的にプロジェクトの
+//      トップディレクトリからの相対パスで出力します。
+
+-E::
+--extended-regexp::
+-G::
+--basic-regexp::
+	Use POSIX extended/basic regexp for patterns.  Default
+	is to use basic regexp.
+// -E::
+// --extended-regexp::
+// -G::
+// --basic-regexp::
+//      パターンに使用する正規表現の種類を選択します(POSIX extended もしくは POSIX basic)
+//      デフォルトはPOSIX basicです。
+
+-F::
+--fixed-strings::
+	Use fixed strings for patterns (don't interpret pattern
+	as a regex).
+// -F::
+// --fixed-strings::
+//      パターンに固定文字列を使用します(パターンを正規表現として解釈しません)
+
+-n::
+	Prefix the line number to matching lines.
+// -n::
+//	マッチした行の先頭に行番号を付けます。
+
+-l::
+--files-with-matches::
+--name-only::
+-L::
+--files-without-match::
+	Instead of showing every matched line, show only the
+	names of files that contain (or do not contain) matches.
+	For better compatibility with 'git diff', --name-only is a
+	synonym for --files-with-matches.
+// -l::
+// --files-with-matches::
+// --name-only::
+// -L::
+// --files-without-match::
+//	マッチした行を表示する代わりに、マッチした(もしくはマッチしなかった)ファイル名を表示します。
+//      'git diff'とのより良い互換性のため、 --files-with-matches と同義の --name-only があります。
+
+-z::
+--null::
+	Output \0 instead of the character that normally follows a
+	file name.
+// -z::
+// --null::
+//      ファイル名に続いて出力される文字を、\0(NULL)に変更して出力します。
+
+-c::
+--count::
+	Instead of showing every matched line, show the number of
+	lines that match.
+// -c::
+// --count::
+// 	マッチした行の内容を表示する代わりに、マッチした行数を表示します。
+
+--color::
+	Show colored matches.
+// --color::
+//	マッチ部分に色を付けて表示します。
+
+--no-color::
+	Turn off match highlighting, even when the configuration file
+	gives the default to color output.
+// --no-color::
+//	設定ファイルのデフォルトが色付きの出力になっている時でも、マッチ部分の色づけを無効にします。
+
+-[ABC] <context>::
+	Show `context` trailing (`A` -- after), or leading (`B`
+	-- before), or both (`C` -- context) lines, and place a
+	line containing `--` between contiguous groups of
+	matches.
+// -[ABC] <context>::
+//      マッチ箇所前後の文脈を<context>行分表示します。
+//      さらに、`--` を隣接したマッチグループの間に置きます。
+//      パラメータの意味は、後に(`A` -- after)、前に(`B` -- before)、もしくは両方(`C` -- context) です。
+
+-<num>::
+	A shortcut for specifying -C<num>.
+// -<num>::
+//	-C<num> のショートカットです。
+
+-p::
+--show-function::
+	Show the preceding line that contains the function name of
+	the match, unless the matching line is a function name itself.
+	The name is determined in the same way as 'git diff' works out
+	patch hunk headers (see 'Defining a custom hunk-header' in
+	linkgit:gitattributes[5]).
+// -p::
+/ --show-function::
+//      もしマッチした行が関数名では無い場合、その前の関数名を含んだ行を表示します。
+//      名前の決定は、'git diff'と同じく hunk-header を使って決定されます。
+//      (参考 'Defining a custom hunk-header' in linkgit:gitattributes[5])
+
+-f <file>::
+	Read patterns from <file>, one per line.
+// -f <file>::
+//	<file>から、１行につき一つずつパターンを読み込みます.
+
+-e::
+	The next parameter is the pattern. This option has to be
+	used for patterns starting with - and should be used in
+	scripts passing user input to grep.  Multiple patterns are
+	combined by 'or'.
+// -e::
+//      次のパラメータがパターンであることを明示的に表します。
+//      このオプションはパターンが'-'から始まる場合は必須ですし、
+//      スクリプトからユーザー入力をgrepに渡すような場合も推奨されます。
+//      複数のパターン(訳注: -eが複数個ある場合)は'or'で結合されます。
+
+--and::
+--or::
+--not::
+( ... )::
+	Specify how multiple patterns are combined using Boolean
+	expressions.  `--or` is the default operator.  `--and` has
+	higher precedence than `--or`.  `-e` has to be used for all
+	patterns.
+// --and::
+// --or::
+// --not::
+// ( ... )::
+//      複数のパターンがどのブール式で結合されるかを明示します。
+//      `--or`はデフォルトオペレーションです、`--and` は `--or` よりも
+//      優先が高いです。全てのパターンは`-e`を使う必要があります。
+
+--all-match::
+	When giving multiple pattern expressions combined with `--or`,
+	this flag is specified to limit the match to files that
+	have lines to match all of them.
+// --all-match::
+//      複数のパターンが `--or` で結合されて与えられた際、
+//      このフラグは、全てのパターンにマッチしたファイルのみに制限します。
+
+-q::
+--quiet::
+	Do not output matched lines; instead, exit with status 0 when
+	there is a match and with non-zero status when there isn't.
+// -q::
+// --quiet::
+//	マッチした行を表示しません。代わりに、終了コードをマッチがあった時は0、
+//      無かった時は非0で返します。
+
+`<tree>...`::
+	Search blobs in the trees for specified patterns.
+// `<tree>...`::
+//	指定されたツリーの中を検索します。
+
+\--::
+	Signals the end of options; the rest of the parameters
+	are <pathspec> limiters.
+// \--::
+//	オプションの終端を表します。
+//      それ以降のパラメータは、<pathspec>リミッターです。
+
+<pathspec>...::
+	If given, limit the search to paths matching at least one pattern.
+	Both leading paths match and glob(7) patterns are supported.
+// <pathspec>...::
+//	与えられた場合は、少なくとも一つのパターンにマッチしたパスのみに探索が制限されます。
+//      パスの前方部分を渡すか、glob(7)記法の両方がサポートされています。
+
+Example
+-------
+// == Example
+git grep 'time_t' -- '*.[ch]'::
+	Looks for `time_t` in all tracked .c and .h files in the working
+	directory and its subdirectories.
+// git grep 'time_t' -- '*.[ch]'::
+//      現在ディレクトリと、そのサブディレクトリの中にある、
+//      全ての.c、.hファイルの中から`time_t`を探します。
+
+git grep -e \'#define\' --and \( -e MAX_PATH -e PATH_MAX \)::
+	Looks for a line that has `#define` and either `MAX_PATH` or
+	`PATH_MAX`.
+// git grep -e \'#define\' --and \( -e MAX_PATH -e PATH_MAX \)::
+//      `#define` と、 `MAX_PATH` か `PATH_MAX` のどちらかを含んでいる行を探します。
+
+git grep --all-match -e NODE -e Unexpected::
+	Looks for a line that has `NODE` or `Unexpected` in
+	files that have lines that match both.
+//git grep --all-match -e NODE -e Unexpected::
+//     `NODE` と `Unexpected` の両方のマッチを含んだファイルの、マッチした行を探します。
+
+Author
+------
+// == Author
+Originally written by Linus Torvalds <torvalds@osdl.org>, later
+revamped by Junio C Hamano.
+// オリジナル版は Linus Torvalds <torvalds@osdl.org> によって記述され、
+// 後に Junio C Hamano によって改造されました。
+
+Documentation
+--------------
+// == Documentation
+Documentation by Junio C Hamano and the git-list <git@vger.kernel.org>.
+// ドキュメントは、Junio C Hamano と git-list <git@vger.kernel.org> によって記述されました。
+
+GIT
+---
+// == GIT
+Part of the linkgit:git[1] suite
+// このコマンドは linkgit:git[1] スイートの一部です。
