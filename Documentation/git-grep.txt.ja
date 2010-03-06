@@ -1,6 +1,3 @@
-// -[ABC] <context>:: 
-// 部分の訳が怪しいです、直訳すると意味が良く分からなかったので、少し意訳しました。
-
 git-grep(1)
 ===========
 // = git-grep(1)
@@ -207,9 +204,8 @@ OPTIONS
 	line containing `--` between contiguous groups of
 	matches.
 // -[ABC] <context>::
-//      マッチ箇所前後の文脈を<context>行分表示します。
-//      さらに、`--` を隣接したマッチグループの間に置きます。
-//      パラメータの意味は、後に(`A` -- after)、前に(`B` -- before)、もしくは両方(`C` -- context) です。
+//      マッチ箇所前後の文脈を指定行分表示し、文脈の区切りに -- を置きます。
+//      オプションは後ろの文脈のみ(A -- after)、前の文脈のみ(B -- before)、もしくは前後の文脈(C -- context) です。
 
 -<num>::
 	A shortcut for specifying -C<num>.
