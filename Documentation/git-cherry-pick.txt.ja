@@ -1,0 +1,147 @@
+//// -m, --mainline ....
+////    -mオプションが上手く訳せずに止まっています。
+////    英文を読む限り、'マージからチェリーピックする'ためのオプションだということは
+////    なんとなく分かるのですが、その'マージからチェリーピックする'という状況が
+////    どういうものなのかがそもそも理解出来ていません。
+
+git-cherry-pick(1)
+==================
+// = git-cherry-pick(1)
+
+NAME
+----
+// == NAME
+git-cherry-pick - Apply the change introduced by an existing commit
+// git-cherry-pick - 既存のコミットを取り出して、その変更を適用します。
+
+SYNOPSIS
+--------
+// == SYNOPSIS
+'git cherry-pick' [--edit] [-n] [-m parent-number] [-s] [-x] <commit>
+// 'git cherry-pick' [--edit] [-n] [-m parent-number] [-s] [-x] <commit>
+
+DESCRIPTION
+-----------
+// == DESCRIPTION
+Given one existing commit, apply the change the patch introduces, and record a
+new commit that records it.  This requires your working tree to be clean (no
+modifications from the HEAD commit).
+// 既存のコミットを一つ渡し、そのパッチによる変更を適用し、新しいコミットを記録します。
+// ワーキングツリーがクリーンであることが必要です(HEADコミットから何も変更されていないということです)
+ 
+OPTIONS
+-------
+// == OPTIONS
+<commit>::
+	Commit to cherry-pick.
+	For a more complete list of ways to spell commits, see the
+	"SPECIFYING REVISIONS" section in linkgit:git-rev-parse[1].
+// <commit>::
+// 	チェリーピックするコミットを選択します。
+//	コミットに関する完全な記述方法については、
+//	linkgit:git-rev-parse[1] の "SPECIFYING REVISIONS" を参考にして下さい。
+
+-e::
+--edit::
+	With this option, 'git cherry-pick' will let you edit the commit
+	message prior to committing.
+// -e::
+// --edit::
+//	このオプションと一緒に'git cherry-pick' すると、
+//	コミットメッセージをコミットする前に編集出来ます。
+
+-x::
+	When recording the commit, append to the original commit
+	message a note that indicates which commit this change
+	was cherry-picked from.  Append the note only for cherry
+	picks without conflicts.  Do not use this option if
+	you are cherry-picking from your private branch because
+	the information is useless to the recipient.  If on the
+	other hand you are cherry-picking between two publicly
+	visible branches (e.g. backporting a fix to a
+	maintenance branch for an older release from a
+	development branch), adding this information can be
+	useful.
+// -x::
+//	コミットを記録する際、通常のコミットメッセージに加え、この変更が
+//      どこのコミットからチェリーピックされたのかを、追記します。
+//	追記されるのは、チェリーピック時にコンフリクトが起きなかった時だけです。
+//      もしあなたの個人的なブランチからチェリーピックする場合、
+//      受け手にとって不要な情報なので、このオプションは使わないで下さい。
+//	一方、お互いに公開されている参照可能な二つのブランチ(例. 開発ブランチから
+//	メンテナンスブランチへ、旧リリース版のためにバックポーティングする)ならば、
+//	この情報を加えることは役に立つことがあります。
+
+-r::
+	It used to be that the command defaulted to do `-x`
+	described above, and `-r` was to disable it.  Now the
+	default is not to do `-x` so this option is a no-op.
+// -r::
+//	上で説明した`-x`がデフォルトオプションとして使われていた時、
+//	`-r`はそれを無効にする役割を担っていました。
+//	今はデフォルトでは'-x'が無効のため、このオプションは何もしません。
+
+-m parent-number::
+--mainline parent-number::
+	Usually you cannot cherry-pick a merge because you do not know which
+	side of the merge should be considered the mainline.  This
+	option specifies the parent number (starting from 1) of
+	the mainline and allows cherry-pick to replay the change
+	relative to the specified parent.
+// -m parent-number::
+// --mainline parent-number::
+//	Usually you cannot cherry-pick a merge because you do not know which
+//	side of the merge should be considered the mainline.  This
+//	option specifies the parent number (starting from 1) of
+//	the mainline and allows cherry-pick to replay the change
+//	relative to the specified parent.
+
+-n::
+--no-commit::
+	Usually the command automatically creates a commit.
+	This flag applies the change necessary to cherry-pick
+	the named commit to your working tree and the index,
+	but does not make the commit.  In addition, when this
+	option is used, your index does not have to match the
+	HEAD commit.  The cherry-pick is done against the
+	beginning state of your index.
++
+This is useful when cherry-picking more than one commits'
+effect to your index in a row.
+// -n::
+// --no-commit::
+//	通常、チェリーピックは自動的にコミットを作成します。
+//	このフラグは、指定されたコミットをチェリーピックするのに
+//	必要な変更をあなたのワーキングツリーとインデックスに適用しますが、
+//	コミットはしません。 加えてこのオプションが使われた場合、
+//	あなたのインデックスがHEADコミットである必要はありません。
+//	チェリーピックはあなたのインデックスの初期状態に対して変更を加えるでしょう。
+// +
+// これは、一つ以上のコミットをチェリーピックして
+// インデックスの行に影響を与えるのに便利です。
+
+-s::
+--signoff::
+	Add Signed-off-by line at the end of the commit message.
+// -s::
+// --signoff::
+//	コミットメッセージの最後に署名を加えます。
+
+
+Author
+------
+// == Author
+Written by Junio C Hamano <gitster@pobox.com>
+// このプログラムは Junio C Hamano <gitster@pobox.com> によって書かれました。
+
+Documentation
+--------------
+// == Documentation
+Documentation by Junio C Hamano and the git-list <git@vger.kernel.org>.
+// このドキュメントは Junio C Hamano と git-list <git@vger.kernel.org> 有志によって書かれました。
+
+GIT
+---
+// == GIT
+Part of the linkgit:git[1] suite
+// このコマンドは linkgit:git[1] スイートの一部です。
