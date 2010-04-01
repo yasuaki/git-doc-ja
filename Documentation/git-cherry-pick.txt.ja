@@ -1,9 +1,3 @@
-//// -m, --mainline ....
-////    -mオプションが上手く訳せずに止まっています。
-////    英文を読む限り、'マージからチェリーピックする'ためのオプションだということは
-////    なんとなく分かるのですが、その'マージからチェリーピックする'という状況が
-////    どういうものなのかがそもそも理解出来ていません。
-
 git-cherry-pick(1)
 ==================
 // = git-cherry-pick(1)
@@ -88,13 +82,13 @@ OPTIONS
 	option specifies the parent number (starting from 1) of
 	the mainline and allows cherry-pick to replay the change
 	relative to the specified parent.
-// -m parent-number::
-// --mainline parent-number::
-//	Usually you cannot cherry-pick a merge because you do not know which
-//	side of the merge should be considered the mainline.  This
-//	option specifies the parent number (starting from 1) of
-//	the mainline and allows cherry-pick to replay the change
-//	relative to the specified parent.
+// -m 親番号::
+// --mainline 親番号::
+//	通常、マージコミットをチェリーピックすることはできません。
+//	何故なら、マージした親のどちらがメインラインなのか
+//	判断できないからです。
+//	このオプションはメインラインの親番号(1 から開始する数値)を指定し、
+//	指定した親との相対的な変更を適用する為のオプションです。
 
 -n::
 --no-commit::
