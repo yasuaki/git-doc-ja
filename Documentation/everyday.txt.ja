@@ -1,0 +1,590 @@
+//// 翻訳メモ
+////
+//// 1. bleeding edgeを「新しい修正」と訳してみましたが、他にいい訳があれば是非。
+
+Everyday GIT With 20 Commands Or So
+===================================
+// = 約20個のコマンドによる日々のGIT活用
+
+<<Individual Developer (Standalone)>> commands are essential for
+anybody who makes a commit, even for somebody who works alone.
+// <<Individual Developer (Standalone)>> は単独で作業をする場合でも、 
+// コミットをする人にとって、必要不可欠なコマンドです。
+
+If you work with other people, you will need commands listed in
+the <<Individual Developer (Participant)>> section as well.
+// もし他の人と一緒に作業するのであれば、<<Individual Developer (Participant)>>
+// セクションのコマンドリストが同様に必要でしょう。
+
+People who play the <<Integrator>> role need to learn some more
+commands in addition to the above.
+// <<Integrator>>の役割の人は、上記コマンドに加えて、
+// さらにいくつかのコマンドを学ぶ必要があります。
+
+<<Repository Administration>> commands are for system
+administrators who are responsible for the care and feeding
+of git repositories.
+// <<Repository Administration>>コマンドは、gitレポジトリ群の
+// 保守と供給の責任を負う、システム管理者のためのコマンドです。
+
+
+Individual Developer (Standalone)[[Individual Developer (Standalone)]]
+----------------------------------------------------------------------
+// == 個々の開発者 (単独)[[Individual Developer (Standalone)]]
+
+A standalone individual developer does not exchange patches with
+other people, and works alone in a single repository, using the
+following commands.
+// 他のユーザとパッチの交換をせず、一つのレポジトリの中で単独で作業を行う
+// 独立した個々の開発者は、下記のコマンドを使います。
+
+  * linkgit:git-init[1] to create a new repository.
+//  * linkgit:git-init[1] は新しいレポジトリを作成します。
+
+  * linkgit:git-show-branch[1] to see where you are.
+//  * linkgit:git-show-branch[1] はあなたがどこにいるかを見ることが出来ます。
+
+  * linkgit:git-log[1] to see what happened.
+//  * linkgit:git-log[1] は何が起きてきたかを見ることが出来ます。
+
+  * linkgit:git-checkout[1] and linkgit:git-branch[1] to switch
+    branches.
+//  * linkgit:git-checkout[1] と linkgit:git-branch[1] はブランチを切り替えます。
+
+  * linkgit:git-add[1] to manage the index file.
+//  * linkgit:git-add[1] はインデックスファイルを管理します。
+
+  * linkgit:git-diff[1] and linkgit:git-status[1] to see what
+    you are in the middle of doing.
+//  * linkgit:git-diff[1] と linkgit:git-status[1] は、
+//    あなたの途中経過を確認します。
+
+  * linkgit:git-commit[1] to advance the current branch.
+//  * linkgit:git-commit[1] は現在のブランチを前進させます。
+
+  * linkgit:git-reset[1] and linkgit:git-checkout[1] (with
+    pathname parameters) to undo changes.
+//  * linkgit:git-reset[1] と linkgit:git-checkout[1] (パス名パラメータ付き)
+//    は変更を元に戻します。
+
+  * linkgit:git-merge[1] to merge between local branches.
+//  * linkgit:git-merge[1] はローカルブランチ間のマージを行います。
+
+  * linkgit:git-rebase[1] to maintain topic branches.
+//  * linkgit:git-rebase[1] はトピックブランチのメンテナンスを行います。
+
+  * linkgit:git-tag[1] to mark known point.
+//  * linkgit:git-tag[1] は既知のポイントにマークを付けます。
+
+Examples
+~~~~~~~~
+// === Examples
+
+Use a tarball as a starting point for a new repository.::
++
+//新しいレポジトリのため、tarballを出発点に使います。::
+//+
+------------
+$ tar zxf frotz.tar.gz
+$ cd frotz
+$ git init
+$ git add . <1>
+$ git commit -m "import of frotz source tree."
+$ git tag v2.43 <2>
+------------
++
+<1> add everything under the current directory.
+<2> make a lightweight, unannotated tag.
+//+
+//<1> 現在ディレクリ以下全てを追加
+//<2> 軽量で注釈の無いタグを作る
+
+Create a topic branch and develop.::
++
+//トピックブランチの作成と開発。::
+//+
+------------
+$ git checkout -b alsa-audio <1>
+$ edit/compile/test
+$ git checkout -- curses/ux_audio_oss.c <2>
+$ git add curses/ux_audio_alsa.c <3>
+$ edit/compile/test
+$ git diff HEAD <4>
+$ git commit -a -s <5>
+$ edit/compile/test
+$ git reset --soft HEAD^ <6>
+$ edit/compile/test
+$ git diff ORIG_HEAD <7>
+$ git commit -a -c ORIG_HEAD <8>
+$ git checkout master <9>
+$ git merge alsa-audio <10>
+$ git log --since='3 days ago' <11>
+$ git log v2.43.. curses/ <12>
+------------
++
+<1> create a new topic branch.
+<2> revert your botched changes in `curses/ux_audio_oss.c`.
+<3> you need to tell git if you added a new file; removal and
+modification will be caught if you do `git commit -a` later.
+<4> to see what changes you are committing.
+<5> commit everything as you have tested, with your sign-off.
+<6> take the last commit back, keeping what is in the working tree.
+<7> look at the changes since the premature commit we took back.
+<8> redo the commit undone in the previous step, using the message
+you originally wrote.
+<9> switch to the master branch.
+<10> merge a topic branch into your master branch.
+<11> review commit logs; other forms to limit output can be
+combined and include `\--max-count=10` (show 10 commits),
+`\--until=2005-12-10`, etc.
+<12> view only the changes that touch what's in `curses/`
+directory, since `v2.43` tag.
+//+
+//<1> 新しいトピックブランチを作成。
+//<2> `curses/ux_audio_oss.c`における失敗した変更を元に戻す。
+//<3> 新しいファイルを追加した場合は、gitに伝える必要があります;
+//削除と変更については後から`git commit -a`を実行すれば補足されるでしょう。
+//<4> コミットしたときから何が変わったのかを確認することが出来ます。
+//<5> あなたがテストをしているものとして、あなたの署名付きで全てをコミットします。
+//<6> ワーキングツリーの状態は保持したまま、一つ前のコミットの状態に戻します。
+//<7> (訳注: git reset等を使い)元に戻した早まったコミットからの変更を見る。
+//<8> あなたが最初に書いたメッセージを使い、もう一度コミットを前回の状態に戻す
+//<9> masterブランチに切り替え
+//<10> トピックブランチをmasterブランチにマージ
+//<11> コミットログを見直す; 出力の制限`\--max-count=10` (10コミット分表示)等、
+//他の形式を連結したり組み合わせることが出来ます。
+//その他には以下のようなものもあります`\--until=2005-12-10`。
+//<12> タグv2.43以降、`curses/`ディレクトリに触った変更のみ表示
+
+
+Individual Developer (Participant)[[Individual Developer (Participant)]]
+------------------------------------------------------------------------
+// == 個々の開発者 (参加者)[[Individual Developer (Participant)]]
+
+A developer working as a participant in a group project needs to
+learn how to communicate with others, and uses these commands in
+addition to the ones needed by a standalone developer.
+//グループロジェクトに参加して働く開発者は、単独の開発者にとって必要なものに加え、
+//他者とのコミュニケーションの仕方と、これらのコマンドを学ぶ必要があります。
+
+  * linkgit:git-clone[1] from the upstream to prime your local
+    repository.
+//* linkgit:git-clone[1] はあなたのローカルレポジトリを
+//  準備するために、上流からのクローンを作成します。
+
+  * linkgit:git-pull[1] and linkgit:git-fetch[1] from "origin"
+    to keep up-to-date with the upstream.
+//* "origin"からのlinkgit:git-pull[1] と linkgit:git-fetch[1] は、
+//  上流との最新の状態を保ちます。
+
+  * linkgit:git-push[1] to shared repository, if you adopt CVS
+    style shared repository workflow.
+//  * もしあなたがCVSスタイルの共有レポジトリワークフローを採用していれば、
+//    linkgit:git-push[1] はレポジトリを共有します。
+
+  * linkgit:git-format-patch[1] to prepare e-mail submission, if
+    you adopt Linux kernel-style public forum workflow.
+//  * もしあなたがLinuxカーネル的な公式討論型ワークフローを採用しているならば、
+//    linkgit:git-format-patch[1] はe-mailによる提案の準備を行います。
+
+Examples
+~~~~~~~~
+// === Examples
+
+Clone the upstream and work on it.  Feed changes to upstream.::
++
+//上流からクローンし作業を行う、変更を上流へ送る。::
+//+
+------------
+$ git clone git://git.kernel.org/pub/scm/.../torvalds/linux-2.6 my2.6
+$ cd my2.6
+$ edit/compile/test; git commit -a -s <1>
+$ git format-patch origin <2>
+$ git pull <3>
+$ git log -p ORIG_HEAD.. arch/i386 include/asm-i386 <4>
+$ git pull git://git.kernel.org/pub/.../jgarzik/libata-dev.git ALL <5>
+$ git reset --hard ORIG_HEAD <6>
+$ git gc <7>
+$ git fetch --tags <8>
+------------
++
+<1> repeat as needed.
+<2> extract patches from your branch for e-mail submission.
+<3> `git pull` fetches from `origin` by default and merges into the
+current branch.
+<4> immediately after pulling, look at the changes done upstream
+since last time we checked, only in the
+area we are interested in.
+<5> fetch from a specific branch from a specific repository and merge.
+<6> revert the pull.
+<7> garbage collect leftover objects from reverted pull.
+<8> from time to time, obtain official tags from the `origin`
+and store them under `.git/refs/tags/`.
+//+
+//<1> 重要なので繰り返します。
+//<2> emailによる提案のため、あなたのブランチからパッチを抽出します。
+//<3> `git pull`は、通常`origin`から変更を取得し、現在のブランチへマージします。
+//<4> プルした直後、興味があるエリアのみ、前回チェックした時からの上流による変更を確認します。
+//<5> レポジトリとブランチを指定し、取得後にマージします。
+//<6> プルした状態を元に戻します。
+//<7> プルした状態から元に戻した際、残されたオブジェクトをガベージコレクトします。
+//<8> 時々、公式なタグを `origin` から手に入れ、 `.git/refs/tags/` 以下へ格納します。
+
+Push into another repository.::
++
+// 他のレポジトリへpushする。::
+// +
+------------
+satellite$ git clone mothership:frotz frotz <1>
+satellite$ cd frotz
+satellite$ git config --get-regexp '^(remote|branch)\.' <2>
+remote.origin.url mothership:frotz
+remote.origin.fetch refs/heads/*:refs/remotes/origin/*
+branch.master.remote origin
+branch.master.merge refs/heads/master
+satellite$ git config remote.origin.push \
+           master:refs/remotes/satellite/master <3>
+satellite$ edit/compile/test/commit
+satellite$ git push origin <4>
+
+mothership$ cd frotz
+mothership$ git checkout master
+mothership$ git merge satellite/master <5>
+------------
++
+<1> mothership machine has a frotz repository under your home
+directory; clone from it to start a repository on the satellite
+machine.
+<2> clone sets these configuration variables by default.
+It arranges `git pull` to fetch and store the branches of mothership
+machine to local `remotes/origin/*` tracking branches.
+<3> arrange `git push` to push local `master` branch to
+`remotes/satellite/master` branch of the mothership machine.
+<4> push will stash our work away on `remotes/satellite/master`
+tracking branch on the mothership machine.  You could use this as
+a back-up method.
+<5> on mothership machine, merge the work done on the satellite
+machine into the master branch.
+// +
+// <1> mothershipマシンはホームディレクトリ以下にfrotzレポジトリを持っています;
+// そこからクローンし、satelliteマシン上のレポジトリを開始します。
+// <2> クローンすると、これらの環境変数がデフォルトで設定されています。
+// mothershipマシンのブランチからローカルの`remotes/origin/*`
+// 追跡ブランチに取得し格納するよう、`git pull`が変更されています。
+// <3> ローカルの`master`ブランチから、mothershipマシンの
+// `remotes/satellite/master`ブランチへプッシュするよう、`git push`を変更します。
+// <4> pushは私たちの作業を遠方のmothiershipマシンの
+// 追跡ブランチ、`remotes/satellite/master`に格納するでしょう。
+// これはバックアップとしても使えます。
+// <5> mothershipマシン上で、satelliteマシン上で完了した作業を
+// masterブランチへマージします。
+
+Branch off of a specific tag.::
++
+// 特定タグのブランチを切る。::
+// +
+------------
+$ git checkout -b private2.6.14 v2.6.14 <1>
+$ edit/compile/test; git commit -a
+$ git checkout master
+$ git format-patch -k -m --stdout v2.6.14..private2.6.14 |
+  git am -3 -k <2>
+------------
++
+<1> create a private branch based on a well known (but somewhat behind)
+tag.
+<2> forward port all changes in `private2.6.14` branch to `master` branch
+without a formal "merging".
+// +
+// <1> 既知の(ただし幾分過去の)タグから、プラベートなブランチを作成 。
+//<2> 通常のマージを使わずに、`private2.6.14`ブランチの全ての変更を
+// `master`ブランチへ転送する
+
+
+Integrator[[Integrator]]
+------------------------
+// == インテグレーター (統合者)[[Integrator]]
+
+A fairly central person acting as the integrator in a group
+project receives changes made by others, reviews and integrates
+them and publishes the result for others to use, using these
+commands in addition to the ones needed by participants.
+// インテグレーターとしてふるまう人は、グループプロジェクトにおいてかなりの中心人物です、
+// 他の人によって作られた変更を受け取り、それらのレビューと統合を行い、
+// 他の人が使えるようにするため結果を公開します、参加者(participants)が
+// 必要なものに加え、これらのコマンドを使います。
+
+  * linkgit:git-am[1] to apply patches e-mailed in from your
+    contributors.
+// * linkgit:git-am[1] は、(パッチの)寄稿者からe-mailされたパッチを適用します。
+
+  * linkgit:git-pull[1] to merge from your trusted lieutenants.
+//  * linkgit:git-pull[1] は、あなたの信用している副官(の修正)をマージします。
+
+  * linkgit:git-format-patch[1] to prepare and send suggested
+    alternative to contributors.
+//  * linkgit:git-format-patch[1] は、寄稿者への代案の準備と送信を行います。
+
+  * linkgit:git-revert[1] to undo botched commits.
+//  * linkgit:git-revert[1] はやり損なったコミットを元に戻します。
+
+  * linkgit:git-push[1] to publish the bleeding edge.
+//  * linkgit:git-push[1]は新しいテクノロジーを公開します。
+
+
+Examples
+~~~~~~~~
+// === Examples
+
+My typical GIT day.::
++
+// 私の典型的なGITの一日。::
+// +
+------------
+$ git status <1>
+$ git show-branch <2>
+$ mailx <3>
+& s 2 3 4 5 ./+to-apply
+& s 7 8 ./+hold-linus
+& q
+$ git checkout -b topic/one master
+$ git am -3 -i -s -u ./+to-apply <4>
+$ compile/test
+$ git checkout -b hold/linus && git am -3 -i -s -u ./+hold-linus <5>
+$ git checkout topic/one && git rebase master <6>
+$ git checkout pu && git reset --hard next <7>
+$ git merge topic/one topic/two && git merge hold/linus <8>
+$ git checkout maint
+$ git cherry-pick master~4 <9>
+$ compile/test
+$ git tag -s -m "GIT 0.99.9x" v0.99.9x <10>
+$ git fetch ko && git show-branch master maint 'tags/ko-*' <11>
+$ git push ko <12>
+$ git push ko v0.99.9x <13>
+------------
++
+<1> see what I was in the middle of doing, if any.
+<2> see what topic branches I have and think about how ready
+they are.
+<3> read mails, save ones that are applicable, and save others
+that are not quite ready.
+<4> apply them, interactively, with my sign-offs.
+<5> create topic branch as needed and apply, again with my
+sign-offs.
+<6> rebase internal topic branch that has not been merged to the
+master, nor exposed as a part of a stable branch.
+<7> restart `pu` every time from the next.
+<8> and bundle topic branches still cooking.
+<9> backport a critical fix.
+<10> create a signed tag.
+<11> make sure I did not accidentally rewind master beyond what I
+already pushed out.  `ko` shorthand points at the repository I have
+at kernel.org, and looks like this:
++
+// +
+// <1> 何か作業途中のものが無かったか確認します。
+// <2> 作っていたり準備しようとしていたトピックブランチがないか確認します。
+// <3> メールを読みます、適用可能なものはセーブし、準備が完全に
+// 整っていないものは違う場所にセーブします。
+// <4> それらを対話的に、私の署名を付け、適用していきます。
+// <5> 必要に応じて適用するためのトピックブランチを作成します、
+// 再び署名を付けます。
+// <6> 内部のトピックブランチをリベースします、まだマスターにもマージされませんし、
+// 安定ブランチとして公開もされません。
+// <7> `pu`(訳注:proposed updates=提案された更新 の略)は常にnextから再開します。
+// <8> そしてトピックブランチをバンドルし、調理を進めていきます。
+// <9> 重大な修正をバックポートします。
+// <10> 署名付きのタグを作成します。
+// <11> 意図せず、すでにpushしたバージョンよりもマスターを巻き戻してしまっていないか確認します。
+// `ko`は、私がkernel.orgに持っているレポジトリを簡潔に表したもので、このようになっています:
+// +
+------------
+$ cat .git/remotes/ko
+URL: kernel.org:/pub/scm/git/git.git
+Pull: master:refs/tags/ko-master
+Pull: next:refs/tags/ko-next
+Pull: maint:refs/tags/ko-maint
+Push: master
+Push: next
+Push: +pu
+Push: maint
+------------
++
+In the output from `git show-branch`, `master` should have
+everything `ko-master` has, and `next` should have
+everything `ko-next` has.
+// +
+// `git show-branch`の出力の中で、`master`は`ko-master`の持つ
+// 全てを持っているべきであり、`next`は`ko-next`の持つ全てを
+// 持っているべきです。
+
+<12> push out the bleeding edge.
+<13> push the tag out, too.
+// <12> 新しい修正をプッシュします。
+// <13> タグもプッシュします。
+
+
+Repository Administration[[Repository Administration]]
+------------------------------------------------------
+// == レポジトリ管理者[[Repository Administration]]
+
+A repository administrator uses the following tools to set up
+and maintain access to the repository by developers.
+// レポジトリ管理者は以下のツールを使い、デベロッパによるレポジトリアクセスの
+// セットアップとメンテナンスを行います。
+
+  * linkgit:git-daemon[1] to allow anonymous download from
+    repository.
+//  * linkgit:git-daemon[1] レポジトリから匿名でダウンロード
+//    することを許可します。
+
+  * linkgit:git-shell[1] can be used as a 'restricted login shell'
+    for shared central repository users.
+//  * linkgit:git-shell[1] は共有中央レポジトリのユーザーのために、
+//    '制限されたログインシェル'のようなものが使えます。
+
+link:howto/update-hook-example.txt[update hook howto] has a good
+example of managing a shared central repository.
+// link:howto/update-hook-example.txt[update hook howto] には
+// 共有中央レポジトリ管理の良い例が載っています。
+
+
+Examples
+~~~~~~~~
+// === Examples
+
+We assume the following in /etc/services::
++
+// We assume the following in /etc/services::
+// +
+------------
+$ grep 9418 /etc/services
+git		9418/tcp		# Git Version Control System
+------------
+
+Run git-daemon to serve /pub/scm from inetd.::
++
+// git-daemonを起動し、inetdから/pub/scmに供給します。::
+// +
+------------
+$ grep git /etc/inetd.conf
+git	stream	tcp	nowait	nobody \
+  /usr/bin/git-daemon git-daemon --inetd --export-all /pub/scm
+------------
++
+The actual configuration line should be on one line.
+// +
+// 実際の設定行は一行にする必要があります。
+
+Run git-daemon to serve /pub/scm from xinetd.::
++
+// git-daemonを起動し、xinetdから/pub/scmに供給します。::
+// +
+------------
+$ cat /etc/xinetd.d/git-daemon
+# default: off
+# description: The git server offers access to git repositories
+service git
+{
+        disable = no
+        type            = UNLISTED
+        port            = 9418
+        socket_type     = stream
+        wait            = no
+        user            = nobody
+        server          = /usr/bin/git-daemon
+        server_args     = --inetd --export-all --base-path=/pub/scm
+        log_on_failure  += USERID
+}
+------------
++
+Check your xinetd(8) documentation and setup, this is from a Fedora system.
+Others might be different.
+// +
+// あなたのxinetd(8)ドキュメントを調べて設定して下さい、これはFedoraシステムのものです。
+// 他では違うかもしれません。
+
+Give push/pull only access to developers.::
++
+// push/pull専用のアクセスを開発者に与える。::
+// +
+------------
+$ grep git /etc/passwd <1>
+alice:x:1000:1000::/home/alice:/usr/bin/git-shell
+bob:x:1001:1001::/home/bob:/usr/bin/git-shell
+cindy:x:1002:1002::/home/cindy:/usr/bin/git-shell
+david:x:1003:1003::/home/david:/usr/bin/git-shell
+$ grep git /etc/shells <2>
+/usr/bin/git-shell
+------------
++
+<1> log-in shell is set to /usr/bin/git-shell, which does not
+allow anything but `git push` and `git pull`.  The users should
+get an ssh access to the machine.
+<2> in many distributions /etc/shells needs to list what is used
+as the login shell.
+// +
+// <1> ログインシェルは/usr/bin/git-shellに設定されます、 `git push` と `git pull`
+// 以外は何も許可されません。ユーザはマシンに対してsshでアクセスするべきです。
+// <2> 多くのディストリビューションにおいて、/etc/shellsにログインシェルとして
+// 使われるものを記入しておく必要があります。
+
+CVS-style shared repository.::
++
+//CVSスタイルの共有レポジトリ。::
+//+
+------------
+$ grep git /etc/group <1>
+git:x:9418:alice,bob,cindy,david
+$ cd /home/devo.git
+$ ls -l <2>
+  lrwxrwxrwx   1 david git    17 Dec  4 22:40 HEAD -> refs/heads/master
+  drwxrwsr-x   2 david git  4096 Dec  4 22:40 branches
+  -rw-rw-r--   1 david git    84 Dec  4 22:40 config
+  -rw-rw-r--   1 david git    58 Dec  4 22:40 description
+  drwxrwsr-x   2 david git  4096 Dec  4 22:40 hooks
+  -rw-rw-r--   1 david git 37504 Dec  4 22:40 index
+  drwxrwsr-x   2 david git  4096 Dec  4 22:40 info
+  drwxrwsr-x   4 david git  4096 Dec  4 22:40 objects
+  drwxrwsr-x   4 david git  4096 Nov  7 14:58 refs
+  drwxrwsr-x   2 david git  4096 Dec  4 22:40 remotes
+$ ls -l hooks/update <3>
+  -r-xr-xr-x   1 david git  3536 Dec  4 22:40 update
+$ cat info/allowed-users <4>
+refs/heads/master	alice\|cindy
+refs/heads/doc-update	bob
+refs/tags/v[0-9]*	david
+------------
++
+<1> place the developers into the same git group.
+<2> and make the shared repository writable by the group.
+<3> use update-hook example by Carl from Documentation/howto/
+for branch policy control.
+<4> alice and cindy can push into master, only bob can push into doc-update.
+david is the release manager and is the only person who can
+create and push version tags.
+// +
+// <1> 開発者は同じgitグループに入れておきます。
+// <2> そして共有レポジトリを作成し、グループは書き込み可能にしておきます。
+// <3> update-hookの例は、Carlによって書かれた、Documentation/howto/にある
+// ブランチポリシーの管理(branch policy control)を使って下さい。
+// <4> aliceとcindyはマスターブランチに対してプッシュ出来ます、bobはdoc-updateにのみプッシュできます。
+// davidはリリースマネージャーであり、バージョンタグの生成とプッシュが行える
+// 唯一の人物です。
+
+HTTP server to support dumb protocol transfer.::
++
+// HTTPサーバーがダム(dumb)プロトコルによる転送をサポートします。::
+// +
+------------
+dev$ git update-server-info <1>
+dev$ ftp user@isp.example.com <2>
+ftp> cp -r .git /home/user/myproject.git
+------------
++
+<1> make sure your info/refs and objects/info/packs are up-to-date
+<2> upload to public HTTP server hosted by your ISP.
+// +
+// <1> info/refsやobjects/info/packsが更新されているか確認します。
+// <2> あなたのISPでホスティングしている公開HTTPサーバーにアップロードします。
+
