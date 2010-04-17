@@ -8,23 +8,23 @@ Everyday GIT With 20 Commands Or So
 
 <<Individual Developer (Standalone)>> commands are essential for
 anybody who makes a commit, even for somebody who works alone.
-// <<Individual Developer (Standalone)>> は単独で作業をする場合でも、 
+// <<Individual Developer (Standalone),[個々の開発者 (単独)]>> は単独で作業をする場合でも、 
 // コミットをする人にとって、必要不可欠なコマンドです。
 
 If you work with other people, you will need commands listed in
 the <<Individual Developer (Participant)>> section as well.
-// もし他の人と一緒に作業するのであれば、<<Individual Developer (Participant)>>
+// もし他の人と一緒に作業するのであれば、<<Individual Developer (Participant),[個々の開発者 (参加者)]>>
 // セクションのコマンドリストが同様に必要でしょう。
 
 People who play the <<Integrator>> role need to learn some more
 commands in addition to the above.
-// <<Integrator>>の役割の人は、上記コマンドに加えて、
+// <<Integrator,[インテグレーター (統合者)]>>の役割の人は、上記コマンドに加えて、
 // さらにいくつかのコマンドを学ぶ必要があります。
 
 <<Repository Administration>> commands are for system
 administrators who are responsible for the care and feeding
 of git repositories.
-// <<Repository Administration>>コマンドは、gitレポジトリ群の
+// <<Repository Administration,[レポジトリ管理者]>>コマンドは、gitレポジトリ群の
 // 保守と供給の責任を負う、システム管理者のためのコマンドです。
 
 
