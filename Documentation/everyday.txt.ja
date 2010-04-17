@@ -35,7 +35,7 @@ Individual Developer (Standalone)[[Individual Developer (Standalone)]]
 A standalone individual developer does not exchange patches with
 other people, and works alone in a single repository, using the
 following commands.
-// 他のユーザとパッチの交換をせず、一つのレポジトリの中で単独で作業を行う
+// 他のユーザとパッチを交換せずに一つのレポジトリ内で単独で作業するような、
 // 独立した個々の開発者は、下記のコマンドを使います。
 
   * linkgit:git-init[1] to create a new repository.
@@ -82,7 +82,7 @@ Examples
 
 Use a tarball as a starting point for a new repository.::
 +
-//新しいレポジトリのため、tarballを出発点に使います。::
+// tarball を出発点にして新しいレポジトリを作成します。::
 //+
 ------------
 $ tar zxf frotz.tar.gz
@@ -164,28 +164,30 @@ Individual Developer (Participant)[[Individual Developer (Participant)]]
 A developer working as a participant in a group project needs to
 learn how to communicate with others, and uses these commands in
 addition to the ones needed by a standalone developer.
-//グループロジェクトに参加して働く開発者は、単独の開発者にとって必要なものに加え、
+//グループプロジェクトに参加する開発者は、単独の開発者にとって必要なものに加え、
 //他者とのコミュニケーションの仕方と、これらのコマンドを学ぶ必要があります。
 
   * linkgit:git-clone[1] from the upstream to prime your local
     repository.
-//* linkgit:git-clone[1] はあなたのローカルレポジトリを
-//  準備するために、上流からのクローンを作成します。
+//* linkgit:git-clone[1] は上流のリポジトリを複製(clone)し、
+//  自分用のローカルリポジトリを作成します。
 
   * linkgit:git-pull[1] and linkgit:git-fetch[1] from "origin"
     to keep up-to-date with the upstream.
 //* "origin"からのlinkgit:git-pull[1] と linkgit:git-fetch[1] は、
 //  上流との最新の状態を保ちます。
+//* linkgit:git-pull[1] と linkgit:git-fetch[1] は、
+//  "origin" にある上流の情報を最新に保ちます。
 
   * linkgit:git-push[1] to shared repository, if you adopt CVS
     style shared repository workflow.
-//  * もしあなたがCVSスタイルの共有レポジトリワークフローを採用していれば、
-//    linkgit:git-push[1] はレポジトリを共有します。
+//* linkgit:git-push[1] はCVSスタイルの共有レポジトリワークフローを
+//  採用している場合に、共有レポジトリに変更を push します。
 
   * linkgit:git-format-patch[1] to prepare e-mail submission, if
     you adopt Linux kernel-style public forum workflow.
-//  * もしあなたがLinuxカーネル的な公式討論型ワークフローを採用しているならば、
-//    linkgit:git-format-patch[1] はe-mailによる提案の準備を行います。
+//* linkgit:git-format-patch[1] はLinuxカーネル形式の公式討論型
+//  ワークフローを採用している場合に、e-mailによる提案の準備を行います。
 
 Examples
 ~~~~~~~~
@@ -193,7 +195,7 @@ Examples
 
 Clone the upstream and work on it.  Feed changes to upstream.::
 +
-//上流からクローンし作業を行う、変更を上流へ送る。::
+//上流から複製(clone)して作業した後、変更を上流へ送る。::
 //+
 ------------
 $ git clone git://git.kernel.org/pub/scm/.../torvalds/linux-2.6 my2.6
@@ -221,8 +223,8 @@ area we are interested in.
 <8> from time to time, obtain official tags from the `origin`
 and store them under `.git/refs/tags/`.
 //+
-//<1> 重要なので繰り返します。
-//<2> emailによる提案のため、あなたのブランチからパッチを抽出します。
+//<1> 必要なだけ繰り返します。
+//<2> emailで提案する為、あなたのブランチからパッチを抽出します。
 //<3> `git pull`は、通常`origin`から変更を取得し、現在のブランチへマージします。
 //<4> プルした直後、興味があるエリアのみ、前回チェックした時からの上流による変更を確認します。
 //<5> レポジトリとブランチを指定し、取得後にマージします。
@@ -297,7 +299,7 @@ tag.
 without a formal "merging".
 // +
 // <1> 既知の(ただし幾分過去の)タグから、プラベートなブランチを作成 。
-//<2> 通常のマージを使わずに、`private2.6.14`ブランチの全ての変更を
+// <2> 通常のマージを使わずに、`private2.6.14`ブランチの全ての変更を
 // `master`ブランチへ転送する
 
 
@@ -586,5 +588,5 @@ ftp> cp -r .git /home/user/myproject.git
 <2> upload to public HTTP server hosted by your ISP.
 // +
 // <1> info/refsやobjects/info/packsが更新されているか確認します。
-// <2> あなたのISPでホスティングしている公開HTTPサーバーにアップロードします。
+// <2> あなたのプロバイダがホスティングしている公開HTTPサーバーにアップロードします。
 
