@@ -1,0 +1,111 @@
+linkgit:git-add[1]::
+	ファイルをindexに追加します。
+
+linkgit:git-am[1]::
+	メールボックスにあるパッチの集合を適用します。
+
+linkgit:git-archive[1]::
+	指定ツリーに含まれるファイルのアーカイブを生成します。
+
+linkgit:git-bisect[1]::
+	バグを混入させた変更を二分探索の方法で探します。
+
+linkgit:git-branch[1]::
+	ブランチを一覧表示または作成、削除します。
+
+linkgit:git-bundle[1]::
+	オブジェクトと参照(ref)をアーカイブ化して移動させます。
+
+linkgit:git-checkout[1]::
+	ブランチまたは特定のパスを作業ツリーにチェックアウトします。
+
+linkgit:git-cherry-pick[1]::
+	既存のコミットがしている変更を現在のブランチに適用します。
+
+linkgit:git-citool[1]::
+	git-commitの代替GUIを起動します。
+
+linkgit:git-clean[1]::
+	作業ツリーからGit管理外のファイルを削除します。
+
+linkgit:git-clone[1]::
+	リポジトリを複製します。
+
+linkgit:git-commit[1]::
+	変更をリポジトリに記録します。
+
+linkgit:git-describe[1]::
+	指定コミットから到達可能な直近のタグを表示します。
+
+linkgit:git-diff[1]::
+	コミット間またはコミットと作業ツリー間などの差分を表示します。
+
+linkgit:git-fetch[1]::
+	他のリポジトリからオブジェクトと参照(ref)をダウンロードします。
+
+linkgit:git-format-patch[1]::
+	e-mail送信するためのパッチを準備します。
+
+linkgit:git-gc[1]::
+	不要なファイルを削除し、ローカルリポジトリを最適化します。
+
+linkgit:git-grep[1]::
+	指定パターンにマッチする行を表示します。
+
+linkgit:git-gui[1]::
+	Gitのポータブルなグラフィカルインターフェース。
+
+linkgit:git-init[1]::
+	空のGitリポジトリを生成するか、既存のリポジトリを再初期化します。
+
+linkgit:git-log[1]::
+	コミットのログを表示します。
+
+linkgit:git-merge[1]::
+	2つ以上の開発履歴を１つにマージします。
+
+linkgit:git-mv[1]::
+	ファイルまたはディレクトリ、シンボリックリンクを移動またはリネームします。
+
+linkgit:git-notes[1]::
+	オブジェクトに注釈を追加または確認します。
+
+linkgit:git-pull[1]::
+	他のリポジトリまたはローカルブランチの変更を取得し、マージします。
+
+linkgit:git-push[1]::
+	関連するオブジェクトとともにリモートの参照(ref)を更新します。
+
+linkgit:git-rebase[1]::
+	ローカルのコミットを更新された上流ブランチに移し替えます。
+
+linkgit:git-reset[1]::
+	現在のHEADを特定の状態にリセットします。
+
+linkgit:git-revert[1]::
+	存在するいくつかのコミットを取り消します。
+
+linkgit:git-rm[1]::
+	作業ツリーとindexからファイルを削除します。
+
+linkgit:git-shortlog[1]::
+	'git log'の出力を要約します。
+
+linkgit:git-show[1]::
+	様々なタイプのオブジェクトを表示します。
+
+linkgit:git-stash[1]::
+	作業ディレクトリ内の変更を隠します。
+
+linkgit:git-status[1]::
+	作業ツリーのステータスを表示します。
+
+linkgit:git-submodule[1]::
+	サブもジュールを初期化または更新、点検します。
+
+linkgit:git-tag[1]::
+	GPGで署名されたタグオブジェクトの生成/削除/検証および一覧表示をします。
+
+linkgit:gitk[1]::
+	Gitリポジトリの閲覧ツール。
+

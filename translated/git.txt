@@ -1,0 +1,736 @@
+git(1)
+======
+
+名前
+----
+git - おバカなソース追跡ツール
+
+
+書式
+----
+[verse]
+'git' [--version] [--help] [-c <name>=<value>]
+    [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+    [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
+    [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+    <command> [<args>]
+
+説明
+----
+Git
+は高速で、拡張性のある、分散型のリビジョン管理システムです。非常に豊富なコマンドセットを持ち、高レベルな操作と内部への完全なアクセスの両方が可能です。
+
+初めての方は linkgit:gittutorial[7] を参照してください。そして、link:everyday.html [日々の git 利用]
+を参照して便利なコマンドの最小セットを憶えてください。 より深い導入としては link:user-manual.html[Gitユーザマニュアル]
+もあります。
+
+基本的なコンセプトを理解した後には、Gitがどんなコマンドを提供しているか学ぶためこのページに戻ってくると良いでしょう。個々のGitコマンドは "git
+help command"にて詳しく知ることができます。 コマンドライン引数の概要はマニュアル linkgit:gitcli[7]
+を見ると良いでしょう。
+
+最新のGitドキュメントのHTML版(英語)は`http://git-htmldocs.googlecode.com/git/git.html`から参照できます。
+
+ifdef::stalenotes[]
+[NOTE]
+============
+
+このドキュメントは最新の(未リリースかもしれない)Gitバージョンのドキュメントであり、`git.git` リポジトリの 'master'
+ブランチから入手可能です。古いリリースドキュメントは下記から入手可能です：
+
+* link:v1.8.4/git.html[documentation for release 1.8.4]
+
+* release notes for link:RelNotes/1.8.4.txt[1.8.4].
+
+* link:v1.8.3.4/git.html[documentation for release 1.8.3.4]
+
+* release notes for link:RelNotes/1.8.3.4.txt[1.8.3.4],
+  link:RelNotes/1.8.3.3.txt[1.8.3.3], link:RelNotes/1.8.3.2.txt[1.8.3.2],
+  link:RelNotes/1.8.3.1.txt[1.8.3.1], link:RelNotes/1.8.3.txt[1.8.3].
+
+* link:v1.8.2.3/git.html[documentation for release 1.8.2.3]
+
+* release notes for link:RelNotes/1.8.2.3.txt[1.8.2.3],
+  link:RelNotes/1.8.2.2.txt[1.8.2.2], link:RelNotes/1.8.2.1.txt[1.8.2.1],
+  link:RelNotes/1.8.2.txt[1.8.2].
+
+* link:v1.8.1.6/git.html[documentation for release 1.8.1.6]
+
+* release notes for link:RelNotes/1.8.1.6.txt[1.8.1.6],
+  link:RelNotes/1.8.1.5.txt[1.8.1.5], link:RelNotes/1.8.1.4.txt[1.8.1.4],
+  link:RelNotes/1.8.1.3.txt[1.8.1.3], link:RelNotes/1.8.1.2.txt[1.8.1.2],
+  link:RelNotes/1.8.1.1.txt[1.8.1.1], link:RelNotes/1.8.1.txt[1.8.1].
+
+* link:v1.8.0.3/git.html[documentation for release 1.8.0.3]
+
+* release notes for link:RelNotes/1.8.0.3.txt[1.8.0.3],
+  link:RelNotes/1.8.0.2.txt[1.8.0.2], link:RelNotes/1.8.0.1.txt[1.8.0.1],
+  link:RelNotes/1.8.0.txt[1.8.0].
+
+* link:v1.7.12.4/git.html[documentation for release 1.7.12.4]
+
+* release notes for link:RelNotes/1.7.12.4.txt[1.7.12.4],
+  link:RelNotes/1.7.12.3.txt[1.7.12.3], link:RelNotes/1.7.12.2.txt[1.7.12.2],
+  link:RelNotes/1.7.12.1.txt[1.7.12.1], link:RelNotes/1.7.12.txt[1.7.12].
+
+* link:v1.7.11.7/git.html[documentation for release 1.7.11.7]
+
+* release notes for link:RelNotes/1.7.11.7.txt[1.7.11.7],
+  link:RelNotes/1.7.11.6.txt[1.7.11.6], link:RelNotes/1.7.11.5.txt[1.7.11.5],
+  link:RelNotes/1.7.11.4.txt[1.7.11.4], link:RelNotes/1.7.11.3.txt[1.7.11.3],
+  link:RelNotes/1.7.11.2.txt[1.7.11.2], link:RelNotes/1.7.11.1.txt[1.7.11.1],
+  link:RelNotes/1.7.11.txt[1.7.11].
+
+* link:v1.7.10.5/git.html[documentation for release 1.7.10.5]
+
+* release notes for link:RelNotes/1.7.10.5.txt[1.7.10.5],
+  link:RelNotes/1.7.10.4.txt[1.7.10.4], link:RelNotes/1.7.10.3.txt[1.7.10.3],
+  link:RelNotes/1.7.10.2.txt[1.7.10.2], link:RelNotes/1.7.10.1.txt[1.7.10.1],
+  link:RelNotes/1.7.10.txt[1.7.10].
+
+* link:v1.7.9.7/git.html[documentation for release 1.7.9.7]
+
+* release notes for link:RelNotes/1.7.9.7.txt[1.7.9.7],
+  link:RelNotes/1.7.9.6.txt[1.7.9.6], link:RelNotes/1.7.9.5.txt[1.7.9.5],
+  link:RelNotes/1.7.9.4.txt[1.7.9.4], link:RelNotes/1.7.9.3.txt[1.7.9.3],
+  link:RelNotes/1.7.9.2.txt[1.7.9.2], link:RelNotes/1.7.9.1.txt[1.7.9.1],
+  link:RelNotes/1.7.9.txt[1.7.9].
+
+* link:v1.7.8.6/git.html[documentation for release 1.7.8.6]
+
+* release notes for link:RelNotes/1.7.8.6.txt[1.7.8.6],
+  link:RelNotes/1.7.8.5.txt[1.7.8.5], link:RelNotes/1.7.8.4.txt[1.7.8.4],
+  link:RelNotes/1.7.8.3.txt[1.7.8.3], link:RelNotes/1.7.8.2.txt[1.7.8.2],
+  link:RelNotes/1.7.8.1.txt[1.7.8.1], link:RelNotes/1.7.8.txt[1.7.8].
+
+* link:v1.7.7.7/git.html[documentation for release 1.7.7.7]
+
+* release notes for link:RelNotes/1.7.7.7.txt[1.7.7.7],
+  link:RelNotes/1.7.7.6.txt[1.7.7.6], link:RelNotes/1.7.7.5.txt[1.7.7.5],
+  link:RelNotes/1.7.7.4.txt[1.7.7.4], link:RelNotes/1.7.7.3.txt[1.7.7.3],
+  link:RelNotes/1.7.7.2.txt[1.7.7.2], link:RelNotes/1.7.7.1.txt[1.7.7.1],
+  link:RelNotes/1.7.7.txt[1.7.7].
+
+* link:v1.7.6.6/git.html[documentation for release 1.7.6.6]
+
+* release notes for link:RelNotes/1.7.6.6.txt[1.7.6.6],
+  link:RelNotes/1.7.6.5.txt[1.7.6.5], link:RelNotes/1.7.6.4.txt[1.7.6.4],
+  link:RelNotes/1.7.6.3.txt[1.7.6.3], link:RelNotes/1.7.6.2.txt[1.7.6.2],
+  link:RelNotes/1.7.6.1.txt[1.7.6.1], link:RelNotes/1.7.6.txt[1.7.6].
+
+* link:v1.7.5.4/git.html[documentation for release 1.7.5.4]
+
+* release notes for link:RelNotes/1.7.5.4.txt[1.7.5.4],
+  link:RelNotes/1.7.5.3.txt[1.7.5.3], link:RelNotes/1.7.5.2.txt[1.7.5.2],
+  link:RelNotes/1.7.5.1.txt[1.7.5.1], link:RelNotes/1.7.5.txt[1.7.5].
+
+* link:v1.7.4.5/git.html[documentation for release 1.7.4.5]
+
+* release notes for link:RelNotes/1.7.4.5.txt[1.7.4.5],
+  link:RelNotes/1.7.4.4.txt[1.7.4.4], link:RelNotes/1.7.4.3.txt[1.7.4.3],
+  link:RelNotes/1.7.4.2.txt[1.7.4.2], link:RelNotes/1.7.4.1.txt[1.7.4.1],
+  link:RelNotes/1.7.4.txt[1.7.4].
+
+* link:v1.7.3.5/git.html[documentation for release 1.7.3.5]
+
+* release notes for link:RelNotes/1.7.3.5.txt[1.7.3.5],
+  link:RelNotes/1.7.3.4.txt[1.7.3.4], link:RelNotes/1.7.3.3.txt[1.7.3.3],
+  link:RelNotes/1.7.3.2.txt[1.7.3.2], link:RelNotes/1.7.3.1.txt[1.7.3.1],
+  link:RelNotes/1.7.3.txt[1.7.3].
+
+* link:v1.7.2.5/git.html[documentation for release 1.7.2.5]
+
+* release notes for link:RelNotes/1.7.2.5.txt[1.7.2.5],
+  link:RelNotes/1.7.2.4.txt[1.7.2.4], link:RelNotes/1.7.2.3.txt[1.7.2.3],
+  link:RelNotes/1.7.2.2.txt[1.7.2.2], link:RelNotes/1.7.2.1.txt[1.7.2.1],
+  link:RelNotes/1.7.2.txt[1.7.2].
+
+* link:v1.7.1.4/git.html[documentation for release 1.7.1.4]
+
+* release notes for link:RelNotes/1.7.1.4.txt[1.7.1.4],
+  link:RelNotes/1.7.1.3.txt[1.7.1.3], link:RelNotes/1.7.1.2.txt[1.7.1.2],
+  link:RelNotes/1.7.1.1.txt[1.7.1.1], link:RelNotes/1.7.1.txt[1.7.1].
+
+* link:v1.7.0.9/git.html[documentation for release 1.7.0.9]
+
+* release notes for link:RelNotes/1.7.0.9.txt[1.7.0.9],
+  link:RelNotes/1.7.0.8.txt[1.7.0.8], link:RelNotes/1.7.0.7.txt[1.7.0.7],
+  link:RelNotes/1.7.0.6.txt[1.7.0.6], link:RelNotes/1.7.0.5.txt[1.7.0.5],
+  link:RelNotes/1.7.0.4.txt[1.7.0.4], link:RelNotes/1.7.0.3.txt[1.7.0.3],
+  link:RelNotes/1.7.0.2.txt[1.7.0.2], link:RelNotes/1.7.0.1.txt[1.7.0.1],
+  link:RelNotes/1.7.0.txt[1.7.0].
+
+* link:v1.6.6.3/git.html[documentation for release 1.6.6.3]
+
+* release notes for link:RelNotes/1.6.6.3.txt[1.6.6.3],
+  link:RelNotes/1.6.6.2.txt[1.6.6.2], link:RelNotes/1.6.6.1.txt[1.6.6.1],
+  link:RelNotes/1.6.6.txt[1.6.6].
+
+* link:v1.6.5.9/git.html[documentation for release 1.6.5.9]
+
+* release notes for link:RelNotes/1.6.5.9.txt[1.6.5.9],
+  link:RelNotes/1.6.5.8.txt[1.6.5.8], link:RelNotes/1.6.5.7.txt[1.6.5.7],
+  link:RelNotes/1.6.5.6.txt[1.6.5.6], link:RelNotes/1.6.5.5.txt[1.6.5.5],
+  link:RelNotes/1.6.5.4.txt[1.6.5.4], link:RelNotes/1.6.5.3.txt[1.6.5.3],
+  link:RelNotes/1.6.5.2.txt[1.6.5.2], link:RelNotes/1.6.5.1.txt[1.6.5.1],
+  link:RelNotes/1.6.5.txt[1.6.5].
+
+* link:v1.6.4.5/git.html[documentation for release 1.6.4.5]
+
+* release notes for link:RelNotes/1.6.4.5.txt[1.6.4.5],
+  link:RelNotes/1.6.4.4.txt[1.6.4.4], link:RelNotes/1.6.4.3.txt[1.6.4.3],
+  link:RelNotes/1.6.4.2.txt[1.6.4.2], link:RelNotes/1.6.4.1.txt[1.6.4.1],
+  link:RelNotes/1.6.4.txt[1.6.4].
+
+* link:v1.6.3.4/git.html[documentation for release 1.6.3.4]
+
+* release notes for link:RelNotes/1.6.3.4.txt[1.6.3.4],
+  link:RelNotes/1.6.3.3.txt[1.6.3.3], link:RelNotes/1.6.3.2.txt[1.6.3.2],
+  link:RelNotes/1.6.3.1.txt[1.6.3.1], link:RelNotes/1.6.3.txt[1.6.3].
+
+* release notes for link:RelNotes/1.6.2.5.txt[1.6.2.5],
+  link:RelNotes/1.6.2.4.txt[1.6.2.4], link:RelNotes/1.6.2.3.txt[1.6.2.3],
+  link:RelNotes/1.6.2.2.txt[1.6.2.2], link:RelNotes/1.6.2.1.txt[1.6.2.1],
+  link:RelNotes/1.6.2.txt[1.6.2].
+
+* link:v1.6.1.3/git.html[documentation for release 1.6.1.3]
+
+* release notes for link:RelNotes/1.6.1.3.txt[1.6.1.3],
+  link:RelNotes/1.6.1.2.txt[1.6.1.2], link:RelNotes/1.6.1.1.txt[1.6.1.1],
+  link:RelNotes/1.6.1.txt[1.6.1].
+
+* link:v1.6.0.6/git.html[documentation for release 1.6.0.6]
+
+* release notes for link:RelNotes/1.6.0.6.txt[1.6.0.6],
+  link:RelNotes/1.6.0.5.txt[1.6.0.5], link:RelNotes/1.6.0.4.txt[1.6.0.4],
+  link:RelNotes/1.6.0.3.txt[1.6.0.3], link:RelNotes/1.6.0.2.txt[1.6.0.2],
+  link:RelNotes/1.6.0.1.txt[1.6.0.1], link:RelNotes/1.6.0.txt[1.6.0].
+
+* link:v1.5.6.6/git.html[documentation for release 1.5.6.6]
+
+* release notes for link:RelNotes/1.5.6.6.txt[1.5.6.6],
+  link:RelNotes/1.5.6.5.txt[1.5.6.5], link:RelNotes/1.5.6.4.txt[1.5.6.4],
+  link:RelNotes/1.5.6.3.txt[1.5.6.3], link:RelNotes/1.5.6.2.txt[1.5.6.2],
+  link:RelNotes/1.5.6.1.txt[1.5.6.1], link:RelNotes/1.5.6.txt[1.5.6].
+
+* link:v1.5.5.6/git.html[documentation for release 1.5.5.6]
+
+* release notes for link:RelNotes/1.5.5.6.txt[1.5.5.6],
+  link:RelNotes/1.5.5.5.txt[1.5.5.5], link:RelNotes/1.5.5.4.txt[1.5.5.4],
+  link:RelNotes/1.5.5.3.txt[1.5.5.3], link:RelNotes/1.5.5.2.txt[1.5.5.2],
+  link:RelNotes/1.5.5.1.txt[1.5.5.1], link:RelNotes/1.5.5.txt[1.5.5].
+
+* link:v1.5.4.7/git.html[documentation for release 1.5.4.7]
+
+* release notes for link:RelNotes/1.5.4.7.txt[1.5.4.7],
+  link:RelNotes/1.5.4.6.txt[1.5.4.6], link:RelNotes/1.5.4.5.txt[1.5.4.5],
+  link:RelNotes/1.5.4.4.txt[1.5.4.4], link:RelNotes/1.5.4.3.txt[1.5.4.3],
+  link:RelNotes/1.5.4.2.txt[1.5.4.2], link:RelNotes/1.5.4.1.txt[1.5.4.1],
+  link:RelNotes/1.5.4.txt[1.5.4].
+
+* link:v1.5.3.8/git.html[documentation for release 1.5.3.8]
+
+* release notes for link:RelNotes/1.5.3.8.txt[1.5.3.8],
+  link:RelNotes/1.5.3.7.txt[1.5.3.7], link:RelNotes/1.5.3.6.txt[1.5.3.6],
+  link:RelNotes/1.5.3.5.txt[1.5.3.5], link:RelNotes/1.5.3.4.txt[1.5.3.4],
+  link:RelNotes/1.5.3.3.txt[1.5.3.3], link:RelNotes/1.5.3.2.txt[1.5.3.2],
+  link:RelNotes/1.5.3.1.txt[1.5.3.1], link:RelNotes/1.5.3.txt[1.5.3].
+
+* link:v1.5.2.5/git.html[documentation for release 1.5.2.5]
+
+* release notes for link:RelNotes/1.5.2.5.txt[1.5.2.5],
+  link:RelNotes/1.5.2.4.txt[1.5.2.4], link:RelNotes/1.5.2.3.txt[1.5.2.3],
+  link:RelNotes/1.5.2.2.txt[1.5.2.2], link:RelNotes/1.5.2.1.txt[1.5.2.1],
+  link:RelNotes/1.5.2.txt[1.5.2].
+
+* link:v1.5.1.6/git.html[documentation for release 1.5.1.6]
+
+* release notes for link:RelNotes/1.5.1.6.txt[1.5.1.6],
+  link:RelNotes/1.5.1.5.txt[1.5.1.5], link:RelNotes/1.5.1.4.txt[1.5.1.4],
+  link:RelNotes/1.5.1.3.txt[1.5.1.3], link:RelNotes/1.5.1.2.txt[1.5.1.2],
+  link:RelNotes/1.5.1.1.txt[1.5.1.1], link:RelNotes/1.5.1.txt[1.5.1].
+
+* link:v1.5.0.7/git.html[documentation for release 1.5.0.7]
+
+* release notes for link:RelNotes/1.5.0.7.txt[1.5.0.7],
+  link:RelNotes/1.5.0.6.txt[1.5.0.6], link:RelNotes/1.5.0.5.txt[1.5.0.5],
+  link:RelNotes/1.5.0.3.txt[1.5.0.3], link:RelNotes/1.5.0.2.txt[1.5.0.2],
+  link:RelNotes/1.5.0.1.txt[1.5.0.1], link:RelNotes/1.5.0.txt[1.5.0].
+
+* documentation for release link:v1.4.4.4/git.html[1.4.4.4],
+  link:v1.3.3/git.html[1.3.3], link:v1.2.6/git.html[1.2.6],
+  link:v1.0.13/git.html[1.0.13].
+
+============
+
+endif::stalenotes[]
+
+オプション
+----------
+--version::
+	'git' プログラムのバージョンを表示します。
+
+--help::
+	gitの書式とよく使われるコマンドの一覧を表示します。
+	オプション '--all' または '-a' が指定されていた場合は利用可能な全ての
+	コマンドを表示します。Gitのコマンドがこのオプションを付けて
+	呼ばれた場合は、そのコマンドに対するマニュアルページを表示します。
++
+マニュアルページの表示方法をコントロールするオプションは他にもあります。
+詳しい情報は linkgit:git-help[1] を参照してください。
+`git --help ...` は内部的には `git help ...` に置き換えられます。
+
+-c <name>=<value>::
+	コマンドに設定パラメータを渡します。<value> は設定ファイルの
+	値を上書きします。
+	<name> には 'git config' で指定するものと同じ名前を指定します。
+	(サブキーはドット '.' 区切りです)
+
+--exec-path[=<path>]::
+	gitの中核(core git)プログラムがインストールされているパスを指定します。
+	環境変数 GIT_EXEC_PATH を設定することでも指定可能です。
+	パスの指定がない場合、'git' は現在設定されているパスを表示して終了します。
+
+--html-path::
+	gitのHTMLドキュメントがインストールされているパスを表示して終了します。
+	パスの末尾にはスラッシュは含まれません。
+
+--man-path::
+	このバージョンのGitのmanページがあるmanのパス (`man(1)`参照)
+	を表示して終了します。
+
+--info-path::
+	このバージョンのGitのInfoファイルがインストールされている
+	パスを表示して終了します。
+
+-p::
+--paginate::
+	標準出力がターミナルに設定されている場合に、全ての出力を 'less' 
+	(または設定されていれば $PAGER) にパイプ接続します。このオプションは
+	`pager.<cmd>` の設定を上書きします
+	(以下の "Configuration Mechanism" セクションを参照section)。
+
+--no-pager::
+	Git の出力をページャに渡さないようにします。
+
+--git-dir=<path>::
+	リポジトリのパスを設定します。この設定は環境変数 GIT_DIR でも指定可能です。
+	絶対パス、または現在の作業ディレクトリからの相対パスが指定できます。
+
+--work-tree=<path>::
+	作業ツリーのパスを設定します。絶対パス、または現在の作業ディレクトリから
+	の相対パスが指定できます。
+	この設定は環境変数 GIT_WORK_TREE またはconfig変数 core.worktree でも
+	指定可能です
+	(詳細は linkgit:git-config[1] の core.worktree を参照)。
+
+--namespace=<path>::
+	Git の名前空間を設定します。詳細は linkgit:gitnamespaces[7] を参照。
+	環境変数 `GIT_NAMESPACE`を指定することでも設定可能です。
+
+--bare::
+	リポジトリを裸の(bare)リポジトリとして扱います。
+	環境変数 GIT_DIR が設定されていない場合、現在の作業ディレクトリが
+	が設定されます。
+
+--no-replace-objects::
+	Git オブジェクトが置換されないようにします。
+	詳細は linkgit:git-replace[1] を参照。
+
+--literal-pathspecs::
+	パスの指定を文字通りに扱い、ワイルドカードのマッチング(glob)を行いません。
+	環境変数 `GIT_LITERAL_PATHSPECS` を `1` に設定することでも指定可能です。
+
+
+GITのコマンド
+-------------
+
+git は高レベルなコマンド("磁器"(porcelain))と下位レベルのコマンド("配管"(plumbing))に分けられます。
+
+高レベルなコマンド("磁器"(porcelain))
+-------------------------------------
+
+磁器(porcelain)のコマンドは主要コマンドとユーザ補助コマンドに分類されます。
+
+主要な磁器(porcelain)コマンド
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+include::cmds-mainporcelain.txt[]
+
+補助コマンド
+~~~~~~~~~~~~
+操縦者(Manipulators):
+
+include::cmds-ancillarymanipulators.txt[]
+
+質問者(Interrogators):
+
+include::cmds-ancillaryinterrogators.txt[]
+
+
+他者との相互作用
+~~~~~~~~~~~~~~~~
+
+これらのコマンドは外部のSCMや他者からのe-mailパッチと相互作用することができます。
+
+include::cmds-foreignscminterface.txt[]
+
+
+下位レベルのコマンド ("配管"(plumbing))
+---------------------------------------
+
+Git には磁器(porcelain)レイヤのコマンドがありますが、 その下位レベルコマンドは代替の磁器を開発する為に役立ちます。 磁器の開発者は
+linkgit:git-update-index[1] とlinkgit:git-read-tree[1] から読み始めると良いでしょう。
+
+これら下位レベルコマンドのインターフェース(入力、出力、オプションとその意味)は、これらコマンドがスクリプト化して使用される為、磁器レベルのコマンドよりもずっと安定性が求められます。一方、磁器コマンドのインターフェースはエンドユーザの経験に基づく改良の為、変更されていく必要があります。
+
+以下の記述では下位レベルコマンドを以下の３つに分割します。1.リポジトリ、インデックス、作業ツリー内のオブジェクトを操作するコマンド。2.質問し、オブジェクトを比較するコマンド。3.リポジトリ間でオブジェクトと参照を移動するコマンド。
+
+
+操作コマンド
+~~~~~~~~~~~~
+
+include::cmds-plumbingmanipulators.txt[]
+
+
+質問コマンド
+~~~~~~~~~~~~
+
+include::cmds-plumbinginterrogators.txt[]
+
+一般に、質問コマンドは作業ツリー内のファイルを変更することはありません。
+
+
+リポジトリの同期
+~~~~~~~~~~~~~~~~
+
+include::cmds-synchingrepositories.txt[]
+
+以下は上記コマンドにより使用されるヘルパープログラムです；エンドユーザは通常これらを直接使用することはありません。
+
+include::cmds-synchelpers.txt[]
+
+
+内部ヘルパーコマンド
+~~~~~~~~~~~~~~~~~~~~
+
+これらは他のコマンドにより使用される内部ヘルパーコマンドです；エンドユーザは通常これらを直接使用することはありません。
+
+include::cmds-purehelpers.txt[]
+
+
+設定管理の仕組み
+----------------
+
+Gitはリポジトリ毎およびユーザ毎のカスタマイズ設定をシンプルなテキスト形式で管理します。 設定ファイルは以下のような形式です：
+
+------------
+#
+# '#' または ';' の文字はコメントを表します。
+#
+
+; コア部分の変数
+[core]
+	; ファイルのモードを信用しない
+	filemode = false
+
+; ユーザ情報
+[user]
+	name = "Junio C Hamano"
+	email = "gitster@pobox.com"
+
+------------
+
+様々なコマンドが設定ファイルを読み込んで、コマンドの動作を調整します。 利用可能な設定の一覧とその詳細は linkgit:git-config[1]
+を参照してください。
+
+
+識別用語
+--------
+<object>::
+	任意のオブジェクト型に対するオブジェクト名を指します。
+
+<blob>::
+	blob オブジェクトの名前を指します。
+
+<tree>::
+	treeオブジェクトの名前を指します。
+
+<commit>::
+	commitオブジェクトの名前を指し示します。
+
+<tree-ish>::
+	tree, commit または tag オブジェクトの名前を指します。
+	<tree-ish> の引数を取るコマンドは、最終的には <tree> オブジェクト
+	に対して作用しますが、<tree> を指し示す <commit> と <tag>
+	オブジェクトを引数に指定することも可能です。
+
+<commit-ish>::
+	コミットまたはタグオブジェクトの名前を指します。
+	<commit-ish> の引数を取るコマンドは、最終的には <commit>
+	オブジェクトに対して作用しますが、<commit> を指し示す <tag>
+	オブジェクトを引数に指定することも可能です。
+
+<type>::
+	オブジェクトタイプが必要であることを示します。
+	一般に `blob`, `tree`, `commit`, または `tag` のどれかです。
+
+<file>::
+	ファイル名を指します。- 通常は `GIT_INDEX_FILE` が表す
+	ツリー構造のルート位置からの相対パスです。
+
+シンボリックな識別子
+--------------------
+任意の <object> を引数に持つすべての git コマンドにて 以下のシンボリックな表記を使用できます。
+
+HEAD::
+	現在のブランチの head を指します。
+
+<tag>::
+	有効なタグの'名前'
+	(つまり `refs/tags/<tag>` の参照)。
+
+<head>::
+	有効な head (ブランチ)の'名前'。
+	(つまり `refs/heads/<head>` の参照)。
+
+オブジェクトの名前を表す方法のより完全な一覧は linkgit:gitrevisions[7] の"リビジョンの指定方法" の節を参照してください。
+
+
+ファイル/ディレクトリ構造
+-------------------------
+
+linkgit:gitrepository-layout[5] のドキュメントを参照してください。
+
+各フックの詳細は linkgit:githooks[5] を参照してください。
+
+より高レベルなSCMにより `$GIT_DIR` 内で追加情報が提供・管理される場合もあります。 
+
+
+用語
+----
+linkgit:gitglossary[7] のドキュメントを参照してください。
+
+
+環境変数
+--------
+様々な git コマンドが以下の環境変数を参照しています。
+
+Gitリポジトリ
+~~~~~~~~~~~~~
+これらの環境変数は '全ての' 中核となる git コマンドに適用されます。 注意: これらの値をgit の上位に位置する SCMS
+によって利用/上書きすることは何の価値もないので、Cogito などを利用する場合は注意してください。
+
+'GIT_INDEX_FILE'::
+	この環境変数により使用するインデックスファイルを指定できます。指定されていない場合、デフォルトでは `$GIT_DIR/index` が使用されます。
+
+'GIT_OBJECT_DIRECTORY'::
+	オブジェクトの格納ディレクトリがこの環境変数により指定されていた場合、sha1 ディレクトリはこの下に作成されます。-
+	定義されていない場合、デフォルトでは `$GIT_DIR/objects` ディレクトリが使用されます。
+
+'GIT_ALTERNATE_OBJECT_DIRECTORIES'::
+	Git オブジェクトの不変性により、古いオブジェクトは共有化された読み取り専用のディレクトリに保管することができます。この変数に ":"
+	区切り(Windowsでは";")でGit オブジェクトのディレクトリを指定すると、Git オブジェクトの検索場所として利用できます。
+	新しいオブジェクトはこれらのディレクトリには書き込まれません。
+
+'GIT_DIR'::
+	環境変数 'GIT_DIR' が設定されていた場合、デフォルトの `.git` の代わりにその値がリポジトリへのパスとして使用されます。
+	コマンドラインオプション '--git-dir' でも指定可能です。
+
+'GIT_WORK_TREE'::
+	作業ツリーのルートのパスを指定します。 コマンドラインオプション '--work-tree' または構成変数 core.worktree でも
+	指定可能です。
+
+'GIT_NAMESPACE'::
+	Gitの名前空間を指定します；詳細は linkgit:gitnamespaces[7] を参照してください。 コマンドラインオプション
+	'--namespace' でも指定可能です。
+
+'GIT_CEILING_DIRECTORIES'::
+	コロンで区切られた絶対パスのリストです。この変数を設定すると、gitは設定したディレクトリよりも上のディレクトリからレポジトリディレクトリを探しません(読み込みの遅いネットワークディレクトリを除外する時に便利です)。
+	ただし、カレント作業ディレクトリまたはコマンドラインまたは環境変数で指定された GIT_DIR は除外されます。
+	通常、Gitはカレントディレクトリと比較をするためにこのリストエントリを読み込み、
+	存在するシンボリックリンクを解決させなければなりません。しかし、このアクセスが遅い場合は
+	このリストに空のエントリを追加し、その後のエントリがシンボリックリンクではなく、解決させる 必要はないとGitに伝えることができます； 例えば
+	'GIT_CEILING_DIRECTORIES=/maybe/symlink::/very/slow/non/symlink' のようにして。 
+
+'GIT_DISCOVERY_ACROSS_FILESYSTEM'::
+	リポジトリディレクトリ ".git" の存在しない場所で Git を実行すると Gitは 親ディレクトリをたどって作業ツリーのトップを探しますが、
+	デフォルトではファイルシステムの境界は越えません。 この環境変数を true に設定すると、Gitはファイルシステムの境界を越えて
+	作業ツリーのトップを探すようになります。 'GIT_CEILING_DIRECTORIES' のように、'GIT_DIR' またはコマンドラインで
+	明示的にリポジトリディレクトリを指定した場合は、この環境変数の影響は受けません。 
+
+Gitコミット
+~~~~~~~~~~~
+'GIT_AUTHOR_NAME'::
+'GIT_AUTHOR_EMAIL'::
+'GIT_AUTHOR_DATE'::
+'GIT_COMMITTER_NAME'::
+'GIT_COMMITTER_EMAIL'::
+'GIT_COMMITTER_DATE'::
+'EMAIL'::
+	linkgit:git-commit-tree[1] 参照。
+
+Git Diff(差分表示)
+~~~~~~~~~~~~~~~~~~
+'GIT_DIFF_OPTS'::
+	有効な設定は "--unified=??" または "-u??" で、"??" にはunified diff のコンテキストの 行数を指定します。これは
+	git diff コマンドの "-U" または "--unified" オプションの指定よりも 優先されます。
+
+'GIT_EXTERNAL_DIFF'::
+	環境変数 'GIT_EXTERNAL_DIFF' が設定されている場合、diff
+	が実行される代わりに、ここで指定されているプログラムが呼び出されます。追加、削除、変更されたパスに対して
+        'GIT_EXTERNAL_DIFF' が以下の７つのパラメータとともに呼び出されます：
+
+	パス 古いファイル 古いhex 古いモード 新しいファイル 新しいhex 新しいモード
++
+各パラメータの説明：
+
+	<古い|新しい>ファイル:: 	GIT_EXTERNAL_DIFF がファイルの中身を読み込む為に使用する
+                         新旧のファイル名
+	<古い|新しい>hex:: 	40桁16進の SHA1 ハッシュ値
+	<古い|新しい>モード:: 	ファイルモードの8進数表現
++
+ファイルパラメータはユーザの作業ファイル(例えば、"git-diff-files"内の `新しいファイル`)、`/dev/null`
+(例えば、新しいファイルが追加された時の `古いファイル`)、または一時ファイル(例えば、索引内の
+`古いファイル`)を指し示すこともあります。'GIT_EXTERNAL_DIFF' は一時ファイルを削除することに気を使う必要はありません。---
+'GIT_EXTERNAL_DIFF' が終了すると一時ファイルは削除されます。
++
+マージされなかったパスに対しては 'GIT_EXTERNAL_DIFF' は1つのパラメータ <path> とともに呼び出されます。
+
+その他
+~~~~~~
+'GIT_MERGE_VERBOSITY'::
+	再帰的なマージ戦略により表示される出力の合計値を管理するための数値です。merge.verbosity
+	を上書きします。linkgit:git-merge[1] 参照。
+
+'GIT_PAGER'::
+	この環境変数は `$PAGER` を上書きします。これを空文字または "cat" に指定すると、git
+	はページャを起動しません。`core.pager` オプションについてはlinkgit:git-config[1] 参照して下さい。
+
+'GIT_EDITOR'::
+	この環境変数は `$EDITOR` と `$VISUAL` を上書きします。
+	この値はGitの様々なコマンドでインタラクティブモードやエディターを起動するときに使われます。 linkgit:git-var[1] および
+	linkgit:git-config[1] の`core.editor`オプションを参照。
+
+'GIT_SSH'::
+	この環境変数が設定されていた場合、'git-fetch' と 'git-push' は リモートシステムに接続する必要がある時に 'ssh'
+	の代わりにこのコマンドを使用します。'$GIT_SSH' コマンドには必ず２つまたは4つの引数が渡されます： 接続先URL の
+	'username@host'(あるいは単に 'host')、そのリモートシステム上で
+	実行するシェルコマンド、そしてデフォルトのSSHポート以外が指定されていた場合には オプションで '-p' と 接続時のポート。
++
+GIT_SSH
+内でリストしたいプログラムにオプションを渡したい時は、プログラムをラップしてシェルスクリプトにオプションを渡し、GIT_SSHがそのシェルスクリプトを参照するように設定する必要があります。
++
+通常は `.ssh/config` ファイルにて望ましいオプションを設定した方が容易です。詳細は ssh のドキュメントを参照してください。
+
+'GIT_ASKPASS'::
+	この環境変数が設定されていた場合、パスワードまたはパスフレーズ（HTTPやIMAP認証用)の入力
+	が必要な場合に、コマンドライン引数として適切なプロンプトとともにこのプログラムがコールされ、
+	標準入力からパスワードを読み込みます。linkgit:git-config[1]の 'core.askpass' も参照。
+
+'GIT_CONFIG_NOSYSTEM'::
+	システムワイドな `$(prefix)/etc/gitconfig` の設定をスキップするかどうかを指定します。 この環境変数は `$HOME` と
+	`$XDG_CONFIG_HOME` とともに使われ、  えり好みのあるスクリプトを予測した変数で動作させる為に使います。
+	もしくは`/etc/gitconfig` ファイルに不具合があった場合に、権限をもつ人が修正 するまでの間、その不具合を回避するために設定します。
+
+'GIT_FLUSH'::
+	この環境変数を "1" にした場合、'git-blame'(インクリメンタルモード)、'git-rev-list', 'git-log',そして 'git-whatchanged' などのコマンドが呼ばれた時に、各コミットの境界レコードがフラッシュされた後に出力ストリームが強制的にフラッシュされます。この変数を "0" にした場合、コマンド出力のI/Oが完全にバッファリングされます。この環境変数が設定されていない場合、git は標準出力がファイルにリダイレクトされているかどうかによってバッファリングされるかレコードの境界でフラッシュされるかが決定されます。
+'GIT_TRACE'::
+	この変数が "1", "2" または "true" (大文字小文字を区別します)に設定されていた場合、git は `trace:`
+	のメッセージを標準エラーに出力し、エイリアスの展開、実行される built-in コマンド、外部コマンド実行について説明します。この値が 1
+	より大きく10より小さい整数が指定された場合、git
+	はこの値をファイル記述子として解釈し、このファイル記述子にトレースメッセージを書き込もうとします。代わりに、この値が絶対パスが指定されていた場合('/'の文字から始まる場合)、git
+	はこれをファイルパスとして解釈し、トレースメッセージをそこに書き込もうとします。
+
+'GIT_TRACE_PACK_ACCESS'::
+	この変数にパスが設定されていた場合、任意のパックファイルへのアクセス全てが指定したパスに
+	記録されます。各アクセスにたいしてパックファイル名とパックないのオフセットが記録されます。
+	この設定はパックに関連したパフォーマンス問題の調査に役立つことがあります。
+
+'GIT_TRACE_PACKET'::
+	この変数が設定されていた場合、指定したプログラムの入力と出力のパケット全部を
+	トレースすることができます。これはオブジェクトのネゴシエーションや他のプロトコル問題の
+	デバッグに役立つことがあります。トレースは"PACK"で始まるパケットでOFFにできます。
+
+GIT_LITERAL_PATHSPECS::
+	この変数を `1` にすると、Gitは全ての pathspec 指定を文字通りあつかい、ワイルドカード
+	パターン(glob)の展開はしません。たとえば、`GIT_LITERAL_PATHSPECS=1 git log -- '*.c'` は `*.c`
+	に一致する任意のパスではなく、 `*.c` のパスをさわっているコミットを探します。 この偏すはGitに文字通りのパス（つまり、`git
+	ls-tree` や `--raw` の diff出力などによって指定されるパス）を渡したい場合に有効です。
+
+
+議論[[Discussion]]
+------------------
+
+下記の詳細は  link:user-manual.html#git-concepts[ユーザマニュアルのGitの概念の章]を 参照してください。
+
+Git管理されているプロジェクトは通常、作業ディレクトリおよび その最上位のディレクトリ階層に ".git"のサブディレクトリを持ちます。 .git
+ディレクトリはプロジェクトの完全な履歴を表現する圧縮済みのオブジェクトデータベース およびその履歴と現在の作業ツリーの中身をリンクさせる "index"
+ファイル およびタグやブランチの先端(head)のような履歴を指し示す名前つきのポインタとから 構成されています。
+
+オブジェクトデータベースは主に３つの型があります：blob(ファイルデータを保持するもの);
+tree（blobおよび他のツリーを指し示し、ディレクトリ階層を構築するもの)； commit(１つのtreeと複数の親commitへの参照)。
+
+commitは他のシステムで"changeset"または"version"と呼ばれているものと等価で、
+プロジェクトの履歴の1ステップを表現し、それぞれの親が1つ前のステップを表しています。
+複数の親をもつcommitは独立した開発ラインのマージを表現します。
+
+全てのobjectはその中身のSHA-1ハッシュにより名前が付けられ、 通常は40桁の16進数で記述されます。この名前はglobalにユニークです。
+あるコミットまでの一繋がりの履歴はそのコミットに署名をすることによって保証することができます。 4番目のobject型である tag
+はこの為に用意されたものです。
+
+objectは初めに作成されるときは個々のファイルとして保存されますが、 後には利便性から"packファイル"のかたちでまとめて圧縮されます。
+
+refと呼ばれる名前付きのポインタは履歴内の興味のある場所を指し示します。
+１つのrefはあるobjectのSHA-1名または他のrefの名前を含みます。 `ref/head/`
+の名前で始まるrefは開発中ブランチの最新コミットのSHA-1名を含んでいます。 tagのSHA-1名は `ref/tags/` 配下に保存されます。
+`HEAD` という名前の特別なrefには 現在チェックアウトしているブランチの名前が保存されています。
+
+indexファイルは全てのパスの一覧で初期化されており、それぞれのパス、blobオブジェクト、属性の集合を含んでいます。blobオブジェクトは現在のブランチ
+head
+のファイルの中身を表現しています。属性(最終更新日時、サイズなど)は作業ツリー内の対応するファイルから取得されます。作業ツリーにて追加した変更はこれらの属性と比較することにより検出されます。indexは新しいコンテンツにより更新され、新しいコミットはindex内に格納されているコンテンツから作成されます。
+
+indexは同一パス名の複数のエントリ("ステージ"と呼びます)を格納することもできます。これらステージはマージ作業中の様々な未マージのバージョンを保持する目的で利用されます。
+
+さらに進んだドキュメント
+------------------------
+
+Gitを使い始めるには"説明"内のリファレンスをみてください。 下記のリンクは初めてのユーザにとってはおそらく詳しすぎる内容です。
+
+link:user-manual.html#git-concepts[ユーザマニュアルのGitの概念の章]および
+linkgit:gitcore-tutorial[7]はGitのアーキテクチャに対する序論です。
+
+推奨するワークフローの概要は linkgit:gitworkflows[7] を参照してください。
+
+有用な例として link:howto-index.html[howto] も参照してください。
+
+Git内部のドキュメントは link:technical/api-index.html[Git API documentation] にあります。
+
+CVSから移行しようとしている方は linkgit:gitcvs-migration[7] も読むと良いでしょう。
+
+
+作者
+----
+Gitは Linus Torvalds によって開発が開始され、現在は Junio C Hamano がメンテナンス
+をしています。Gitのメーリングリスト <git@vger.kernel.org> にはたくさんのコントリビューター
+がいます。コントリビューターのリストは http://www.ohloh.net/p/git/contributors/summary
+にて確認できます。
+
+git.git の複製が手元にあるなら、linkgit:git-shortlog[1] と linkgit:git-blame[1] の
+出力により、プロジェクトの特定部位の作者を確認できます。
+
+バグ報告
+--------
+
+バグはGitメーリングリスト <git@vger.kernel.org> に報告してください。
+開発とメンテナンスはこのメーリングリスト上で行われています。報告前にメーリングリストの購読設定をする必要はありません。
+
+関連項目
+--------
+linkgit:gittutorial[7], linkgit:gittutorial-2[7],
+link:everyday.html[Everyday Git], linkgit:gitcvs-migration[7],
+linkgit:gitglossary[7], linkgit:gitcore-tutorial[7], linkgit:gitcli[7],
+link:user-manual.html[The Git User's Manual], linkgit:gitworkflows[7]
+
+GIT
+---
+linkgit:git[1] スイートの一部

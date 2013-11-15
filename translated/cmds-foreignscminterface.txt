@@ -1,0 +1,30 @@
+linkgit:git-archimport[1]::
+	ArchリポジトリをGitにインポートします。
+
+linkgit:git-cvsexportcommit[1]::
+	１つのコミットをCVSのチェックアウトにエクスポートします。
+
+linkgit:git-cvsimport[1]::
+	人々が愛憎する別のSCMからデータを救済します。
+
+linkgit:git-cvsserver[1]::
+	GitのためのCVSサーバのエミュレーター。
+
+linkgit:git-imap-send[1]::
+	標準入力からIMAPフォルダーにパッチの集合を送信します。
+
+linkgit:git-p4[1]::
+	Perforceリポジトリからインポートまたは登録をします。
+
+linkgit:git-quiltimport[1]::
+	quiltのパッチセットを現在のブランチに適用します。
+
+linkgit:git-request-pull[1]::
+	保留中の変更のサマリを生成します。
+
+linkgit:git-send-email[1]::
+	パッチの集合をメール送信します。
+
+linkgit:git-svn[1]::
+	SubversionとGit間の双方向の操作をします。
+

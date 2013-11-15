@@ -1,0 +1,42 @@
+linkgit:git-config[1]::
+	リポジトリまたはグローバルなオプションを確認または設定します。
+
+linkgit:git-fast-export[1]::
+	Gitデータをエクスポートします。
+
+linkgit:git-fast-import[1]::
+	Gitデータを高速にインポートするためのバックエンド。
+
+linkgit:git-filter-branch[1]::
+	ブランチを書き換えます。
+
+linkgit:git-lost-found[1]::
+	（非推奨）紛失したブランチ/タグ情報でまだ完全には廃棄されていないものを修復します。
+
+linkgit:git-mergetool[1]::
+	コンフリクトの解消ツールを起動します。
+
+linkgit:git-pack-refs[1]::
+	リポジトリのアクセス速度を改善するためにheadとtagの情報をpack化します。
+
+linkgit:git-prune[1]::
+	到達不能なオブジェクトをオブジェクトデータベースから廃棄します。
+
+linkgit:git-reflog[1]::
+	reflog情報を管理します。
+
+linkgit:git-relink[1]::
+	ローカルリポジトリ内の共通オブジェクトをハードリンク化します。
+
+linkgit:git-remote[1]::
+	追跡するリポジトリの情報を管理します。
+
+linkgit:git-repack[1]::
+	リポジトリ内のpack化されていないオブジェクトをpack化します。
+
+linkgit:git-replace[1]::
+	オブジェクトの置換設定を追加/削除または一覧表示します。
+
+linkgit:git-repo-config[1]::
+	（非推奨）リポジトリまたはグローバルなオプションを確認または設定します。
+

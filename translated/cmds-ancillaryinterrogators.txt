@@ -1,0 +1,48 @@
+linkgit:git-annotate[1]::
+	ファイルの各行にコミット情報の注釈をつけます
+
+linkgit:git-blame[1]::
+	ファイルの各行が最後に更新されたリビジョンと著者を表示します。
+
+linkgit:git-cherry[1]::
+	上流にマージされていないコミットを探します。
+
+linkgit:git-count-objects[1]::
+	pack化されていないオブジェクトの数とディスク消費量を集計します。
+
+linkgit:git-difftool[1]::
+	一般のdiffツールを使って変更を表示します。
+
+linkgit:git-fsck[1]::
+	データベース内のオブジェクトの連結性と妥当性を検証します。
+
+linkgit:git-get-tar-commit-id[1]::
+	git-archiveを使用して作成されたアーカイブからコミットIDを抜き取ります。
+
+linkgit:git-help[1]::
+	Gitのヘルプ情報を表示します。
+
+linkgit:git-instaweb[1]::
+	即座に作業リポジトリをgitwebで閲覧します。
+
+linkgit:git-merge-tree[1]::
+	indexを触らずに3wayマージの結果を表示します。
+
+linkgit:git-rerere[1]::
+	コンフリクトの解消結果を再利用します。
+
+linkgit:git-rev-parse[1]::
+	各Gitコマンドがパラメータを処理しやすいように選別します。
+
+linkgit:git-show-branch[1]::
+	ブランチとそのコミット情報を表示します。
+
+linkgit:git-verify-tag[1]::
+	タグのGPG署名を検証します。
+
+linkgit:git-whatchanged[1]::
+	各コミットのログと更新ファイルを表示します。
+
+linkgit:gitweb[1]::
+	Gitのwebインターフェース(Gitリポジトリのwebフロントエンド)。
+

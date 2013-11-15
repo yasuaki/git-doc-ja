@@ -1,0 +1,54 @@
+linkgit:git-cat-file[1]::
+	リポジトリオブジェクトの中身またはタイプ、サイズ情報を出力します。
+
+linkgit:git-diff-files[1]::
+	作業ツリーとindex内のファイルを比較します。
+
+linkgit:git-diff-index[1]::
+	作業ツリーまたはindexのツリーどうしを比較します。
+
+linkgit:git-diff-tree[1]::
+	2つのツリーオブジェクト間のコンテンツとblobのモードを比較します。
+
+linkgit:git-for-each-ref[1]::
+	各参照(ref)の情報を出力します。
+
+linkgit:git-ls-files[1]::
+	indexと作業ツリー内のファイルの情報を表示します。
+
+linkgit:git-ls-remote[1]::
+	リモートリポジトリのリファレンス一覧を表示します。
+
+linkgit:git-ls-tree[1]::
+	ツリーオブジェクトの中身を一覧表示します。
+
+linkgit:git-merge-base[1]::
+	マージするための最適な共通祖先を探し出します。
+
+linkgit:git-name-rev[1]::
+	指定リビジョンのシンボリック名を探します。
+
+linkgit:git-pack-redundant[1]::
+	冗長なpackファイルを探します。
+
+linkgit:git-rev-list[1]::
+	年代の逆順にコミットオブジェクトを一覧表示します。
+
+linkgit:git-show-index[1]::
+	pack化データのindexを表示します。
+
+linkgit:git-show-ref[1]::
+	ローカルリポジトリ内のリファレンスを一覧表示します。
+
+linkgit:git-tar-tree[1]::
+	（非推奨）指定したツリーオブジェクトに含まれるファイルのtarアーカイブを生成します。
+
+linkgit:git-unpack-file[1]::
+	blobコンテンツをもつ一時ファイルを生成します。
+
+linkgit:git-var[1]::
+	Gitの論理変数を表示します。
+
+linkgit:git-verify-pack[1]::
+	pack化されたGitアーカイブファイルを検証します。
+
