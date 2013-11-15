@@ -1,0 +1,2653 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>git(1)</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>git(1)</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_名前">名前</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>git - おバカなソース追跡ツール</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_書式">書式</h2>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>git</em> [--version] [--help] [-c &lt;name&gt;=&lt;value&gt;]
+    [--exec-path[=&lt;path&gt;]] [--html-path] [--man-path] [--info-path]
+    [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
+    [--git-dir=&lt;path&gt;] [--work-tree=&lt;path&gt;] [--namespace=&lt;name&gt;]
+    &lt;command&gt; [&lt;args&gt;]</pre>
+<div class="attribution">
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_説明">説明</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Git
+は高速で、拡張性のある、分散型のリビジョン管理システムです。非常に豊富なコマンドセットを持ち、高レベルな操作と内部への完全なアクセスの両方が可能です。</p></div>
+<div class="paragraph"><p>初めての方は <a href="gittutorial.html">gittutorial(7)</a> を参照してください。そして、link:everyday.html [日々の git 利用]
+を参照して便利なコマンドの最小セットを憶えてください。 より深い導入としては <a href="user-manual.html">Gitユーザマニュアル</a>
+もあります。</p></div>
+<div class="paragraph"><p>基本的なコンセプトを理解した後には、Gitがどんなコマンドを提供しているか学ぶためこのページに戻ってくると良いでしょう。個々のGitコマンドは "git
+help command"にて詳しく知ることができます。 コマンドライン引数の概要はマニュアル <a href="gitcli.html">gitcli(7)</a>
+を見ると良いでしょう。</p></div>
+<div class="paragraph"><p>最新のGitドキュメントのHTML版(英語)は`http://git-htmldocs.googlecode.com/git/git.html`から参照できます。</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_オプション">オプション</h2>
+<div class="sectionbody">
+<div class="dlist"><dl>
+<dt class="hdlist1">
+--version
+</dt>
+<dd>
+<p>
+        <em>git</em> プログラムのバージョンを表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+--help
+</dt>
+<dd>
+<p>
+        gitの書式とよく使われるコマンドの一覧を表示します。
+        オプション <em>--all</em> または <em>-a</em> が指定されていた場合は利用可能な全ての
+        コマンドを表示します。Gitのコマンドがこのオプションを付けて
+        呼ばれた場合は、そのコマンドに対するマニュアルページを表示します。
+</p>
+<div class="paragraph"><p>マニュアルページの表示方法をコントロールするオプションは他にもあります。
+詳しい情報は <a href="git-help.html">git-help(1)</a> を参照してください。
+<code>git --help ...</code> は内部的には <code>git help ...</code> に置き換えられます。</p></div>
+</dd>
+<dt class="hdlist1">
+-c &lt;name&gt;=&lt;value&gt;
+</dt>
+<dd>
+<p>
+        コマンドに設定パラメータを渡します。&lt;value&gt; は設定ファイルの
+        値を上書きします。
+        &lt;name&gt; には <em>git config</em> で指定するものと同じ名前を指定します。
+        (サブキーはドット <em>.</em> 区切りです)
+</p>
+</dd>
+<dt class="hdlist1">
+--exec-path[=&lt;path&gt;]
+</dt>
+<dd>
+<p>
+        gitの中核(core git)プログラムがインストールされているパスを指定します。
+        環境変数 GIT_EXEC_PATH を設定することでも指定可能です。
+        パスの指定がない場合、<em>git</em> は現在設定されているパスを表示して終了します。
+</p>
+</dd>
+<dt class="hdlist1">
+--html-path
+</dt>
+<dd>
+<p>
+        gitのHTMLドキュメントがインストールされているパスを表示して終了します。
+        パスの末尾にはスラッシュは含まれません。
+</p>
+</dd>
+<dt class="hdlist1">
+--man-path
+</dt>
+<dd>
+<p>
+        このバージョンのGitのmanページがあるmanのパス (`man(1)`参照)
+        を表示して終了します。
+</p>
+</dd>
+<dt class="hdlist1">
+--info-path
+</dt>
+<dd>
+<p>
+        このバージョンのGitのInfoファイルがインストールされている
+        パスを表示して終了します。
+</p>
+</dd>
+<dt class="hdlist1">
+-p
+</dt>
+<dt class="hdlist1">
+--paginate
+</dt>
+<dd>
+<p>
+        標準出力がターミナルに設定されている場合に、全ての出力を <em>less</em>
+        (または設定されていれば $PAGER) にパイプ接続します。このオプションは
+        <code>pager.&lt;cmd&gt;</code> の設定を上書きします
+        (以下の "Configuration Mechanism" セクションを参照section)。
+</p>
+</dd>
+<dt class="hdlist1">
+--no-pager
+</dt>
+<dd>
+<p>
+        Git の出力をページャに渡さないようにします。
+</p>
+</dd>
+<dt class="hdlist1">
+--git-dir=&lt;path&gt;
+</dt>
+<dd>
+<p>
+        リポジトリのパスを設定します。この設定は環境変数 GIT_DIR でも指定可能です。
+        絶対パス、または現在の作業ディレクトリからの相対パスが指定できます。
+</p>
+</dd>
+<dt class="hdlist1">
+--work-tree=&lt;path&gt;
+</dt>
+<dd>
+<p>
+        作業ツリーのパスを設定します。絶対パス、または現在の作業ディレクトリから
+        の相対パスが指定できます。
+        この設定は環境変数 GIT_WORK_TREE またはconfig変数 core.worktree でも
+        指定可能です
+        (詳細は <a href="git-config.html">git-config(1)</a> の core.worktree を参照)。
+</p>
+</dd>
+<dt class="hdlist1">
+--namespace=&lt;path&gt;
+</dt>
+<dd>
+<p>
+        Git の名前空間を設定します。詳細は <a href="gitnamespaces.html">gitnamespaces(7)</a> を参照。
+        環境変数 `GIT_NAMESPACE`を指定することでも設定可能です。
+</p>
+</dd>
+<dt class="hdlist1">
+--bare
+</dt>
+<dd>
+<p>
+        リポジトリを裸の(bare)リポジトリとして扱います。
+        環境変数 GIT_DIR が設定されていない場合、現在の作業ディレクトリが
+        が設定されます。
+</p>
+</dd>
+<dt class="hdlist1">
+--no-replace-objects
+</dt>
+<dd>
+<p>
+        Git オブジェクトが置換されないようにします。
+        詳細は <a href="git-replace.html">git-replace(1)</a> を参照。
+</p>
+</dd>
+<dt class="hdlist1">
+--literal-pathspecs
+</dt>
+<dd>
+<p>
+        パスの指定を文字通りに扱い、ワイルドカードのマッチング(glob)を行いません。
+        環境変数 <code>GIT_LITERAL_PATHSPECS</code> を <code>1</code> に設定することでも指定可能です。
+</p>
+</dd>
+</dl></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_gitのコマンド">GITのコマンド</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>git は高レベルなコマンド("磁器"(porcelain))と下位レベルのコマンド("配管"(plumbing))に分けられます。</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_高レベルなコマンド_磁器_porcelain">高レベルなコマンド("磁器"(porcelain))</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>磁器(porcelain)のコマンドは主要コマンドとユーザ補助コマンドに分類されます。</p></div>
+<div class="sect2">
+<h3 id="_主要な磁器_porcelain_コマンド">主要な磁器(porcelain)コマンド</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<a href="git-add.html">git-add(1)</a>
+</dt>
+<dd>
+<p>
+        ファイルをindexに追加します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-am.html">git-am(1)</a>
+</dt>
+<dd>
+<p>
+        メールボックスにあるパッチの集合を適用します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-archive.html">git-archive(1)</a>
+</dt>
+<dd>
+<p>
+        指定ツリーに含まれるファイルのアーカイブを生成します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-bisect.html">git-bisect(1)</a>
+</dt>
+<dd>
+<p>
+        バグを混入させた変更を二分探索の方法で探します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-branch.html">git-branch(1)</a>
+</dt>
+<dd>
+<p>
+        ブランチを一覧表示または作成、削除します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-bundle.html">git-bundle(1)</a>
+</dt>
+<dd>
+<p>
+        オブジェクトと参照(ref)をアーカイブ化して移動させます。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-checkout.html">git-checkout(1)</a>
+</dt>
+<dd>
+<p>
+        ブランチまたは特定のパスを作業ツリーにチェックアウトします。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-cherry-pick.html">git-cherry-pick(1)</a>
+</dt>
+<dd>
+<p>
+        既存のコミットがしている変更を現在のブランチに適用します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-citool.html">git-citool(1)</a>
+</dt>
+<dd>
+<p>
+        git-commitの代替GUIを起動します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-clean.html">git-clean(1)</a>
+</dt>
+<dd>
+<p>
+        作業ツリーからGit管理外のファイルを削除します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-clone.html">git-clone(1)</a>
+</dt>
+<dd>
+<p>
+        リポジトリを複製します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-commit.html">git-commit(1)</a>
+</dt>
+<dd>
+<p>
+        変更をリポジトリに記録します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-describe.html">git-describe(1)</a>
+</dt>
+<dd>
+<p>
+        指定コミットから到達可能な直近のタグを表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-diff.html">git-diff(1)</a>
+</dt>
+<dd>
+<p>
+        コミット間またはコミットと作業ツリー間などの差分を表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-fetch.html">git-fetch(1)</a>
+</dt>
+<dd>
+<p>
+        他のリポジトリからオブジェクトと参照(ref)をダウンロードします。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-format-patch.html">git-format-patch(1)</a>
+</dt>
+<dd>
+<p>
+        e-mail送信するためのパッチを準備します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-gc.html">git-gc(1)</a>
+</dt>
+<dd>
+<p>
+        不要なファイルを削除し、ローカルリポジトリを最適化します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-grep.html">git-grep(1)</a>
+</dt>
+<dd>
+<p>
+        指定パターンにマッチする行を表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-gui.html">git-gui(1)</a>
+</dt>
+<dd>
+<p>
+        Gitのポータブルなグラフィカルインターフェース。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-init.html">git-init(1)</a>
+</dt>
+<dd>
+<p>
+        空のGitリポジトリを生成するか、既存のリポジトリを再初期化します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-log.html">git-log(1)</a>
+</dt>
+<dd>
+<p>
+        コミットのログを表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-merge.html">git-merge(1)</a>
+</dt>
+<dd>
+<p>
+        2つ以上の開発履歴を１つにマージします。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-mv.html">git-mv(1)</a>
+</dt>
+<dd>
+<p>
+        ファイルまたはディレクトリ、シンボリックリンクを移動またはリネームします。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-notes.html">git-notes(1)</a>
+</dt>
+<dd>
+<p>
+        オブジェクトに注釈を追加または確認します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-pull.html">git-pull(1)</a>
+</dt>
+<dd>
+<p>
+        他のリポジトリまたはローカルブランチの変更を取得し、マージします。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-push.html">git-push(1)</a>
+</dt>
+<dd>
+<p>
+        関連するオブジェクトとともにリモートの参照(ref)を更新します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-rebase.html">git-rebase(1)</a>
+</dt>
+<dd>
+<p>
+        ローカルのコミットを更新された上流ブランチに移し替えます。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-reset.html">git-reset(1)</a>
+</dt>
+<dd>
+<p>
+        現在のHEADを特定の状態にリセットします。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-revert.html">git-revert(1)</a>
+</dt>
+<dd>
+<p>
+        存在するいくつかのコミットを取り消します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-rm.html">git-rm(1)</a>
+</dt>
+<dd>
+<p>
+        作業ツリーとindexからファイルを削除します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-shortlog.html">git-shortlog(1)</a>
+</dt>
+<dd>
+<p>
+        'git log'の出力を要約します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-show.html">git-show(1)</a>
+</dt>
+<dd>
+<p>
+        様々なタイプのオブジェクトを表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-stash.html">git-stash(1)</a>
+</dt>
+<dd>
+<p>
+        作業ディレクトリ内の変更を隠します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-status.html">git-status(1)</a>
+</dt>
+<dd>
+<p>
+        作業ツリーのステータスを表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-submodule.html">git-submodule(1)</a>
+</dt>
+<dd>
+<p>
+        サブもジュールを初期化または更新、点検します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-tag.html">git-tag(1)</a>
+</dt>
+<dd>
+<p>
+        GPGで署名されたタグオブジェクトの生成/削除/検証および一覧表示をします。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="gitk.html">gitk(1)</a>
+</dt>
+<dd>
+<p>
+        Gitリポジトリの閲覧ツール。
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_補助コマンド">補助コマンド</h3>
+<div class="paragraph"><p>操縦者(Manipulators):</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<a href="git-config.html">git-config(1)</a>
+</dt>
+<dd>
+<p>
+        リポジトリまたはグローバルなオプションを確認または設定します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-fast-export.html">git-fast-export(1)</a>
+</dt>
+<dd>
+<p>
+        Gitデータをエクスポートします。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-fast-import.html">git-fast-import(1)</a>
+</dt>
+<dd>
+<p>
+        Gitデータを高速にインポートするためのバックエンド。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-filter-branch.html">git-filter-branch(1)</a>
+</dt>
+<dd>
+<p>
+        ブランチを書き換えます。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-lost-found.html">git-lost-found(1)</a>
+</dt>
+<dd>
+<p>
+        （非推奨）紛失したブランチ/タグ情報でまだ完全には廃棄されていないものを修復します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-mergetool.html">git-mergetool(1)</a>
+</dt>
+<dd>
+<p>
+        コンフリクトの解消ツールを起動します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-pack-refs.html">git-pack-refs(1)</a>
+</dt>
+<dd>
+<p>
+        リポジトリのアクセス速度を改善するためにheadとtagの情報をpack化します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-prune.html">git-prune(1)</a>
+</dt>
+<dd>
+<p>
+        到達不能なオブジェクトをオブジェクトデータベースから廃棄します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-reflog.html">git-reflog(1)</a>
+</dt>
+<dd>
+<p>
+        reflog情報を管理します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-relink.html">git-relink(1)</a>
+</dt>
+<dd>
+<p>
+        ローカルリポジトリ内の共通オブジェクトをハードリンク化します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-remote.html">git-remote(1)</a>
+</dt>
+<dd>
+<p>
+        追跡するリポジトリの情報を管理します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-repack.html">git-repack(1)</a>
+</dt>
+<dd>
+<p>
+        リポジトリ内のpack化されていないオブジェクトをpack化します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-replace.html">git-replace(1)</a>
+</dt>
+<dd>
+<p>
+        オブジェクトの置換設定を追加/削除または一覧表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-repo-config.html">git-repo-config(1)</a>
+</dt>
+<dd>
+<p>
+        （非推奨）リポジトリまたはグローバルなオプションを確認または設定します。
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>質問者(Interrogators):</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<a href="git-annotate.html">git-annotate(1)</a>
+</dt>
+<dd>
+<p>
+        ファイルの各行にコミット情報の注釈をつけます
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-blame.html">git-blame(1)</a>
+</dt>
+<dd>
+<p>
+        ファイルの各行が最後に更新されたリビジョンと著者を表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-cherry.html">git-cherry(1)</a>
+</dt>
+<dd>
+<p>
+        上流にマージされていないコミットを探します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-count-objects.html">git-count-objects(1)</a>
+</dt>
+<dd>
+<p>
+        pack化されていないオブジェクトの数とディスク消費量を集計します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-difftool.html">git-difftool(1)</a>
+</dt>
+<dd>
+<p>
+        一般のdiffツールを使って変更を表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-fsck.html">git-fsck(1)</a>
+</dt>
+<dd>
+<p>
+        データベース内のオブジェクトの連結性と妥当性を検証します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-get-tar-commit-id.html">git-get-tar-commit-id(1)</a>
+</dt>
+<dd>
+<p>
+        git-archiveを使用して作成されたアーカイブからコミットIDを抜き取ります。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-help.html">git-help(1)</a>
+</dt>
+<dd>
+<p>
+        Gitのヘルプ情報を表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-instaweb.html">git-instaweb(1)</a>
+</dt>
+<dd>
+<p>
+        即座に作業リポジトリをgitwebで閲覧します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-merge-tree.html">git-merge-tree(1)</a>
+</dt>
+<dd>
+<p>
+        indexを触らずに3wayマージの結果を表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-rerere.html">git-rerere(1)</a>
+</dt>
+<dd>
+<p>
+        コンフリクトの解消結果を再利用します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-rev-parse.html">git-rev-parse(1)</a>
+</dt>
+<dd>
+<p>
+        各Gitコマンドがパラメータを処理しやすいように選別します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-show-branch.html">git-show-branch(1)</a>
+</dt>
+<dd>
+<p>
+        ブランチとそのコミット情報を表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-verify-tag.html">git-verify-tag(1)</a>
+</dt>
+<dd>
+<p>
+        タグのGPG署名を検証します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-whatchanged.html">git-whatchanged(1)</a>
+</dt>
+<dd>
+<p>
+        各コミットのログと更新ファイルを表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="gitweb.html">gitweb(1)</a>
+</dt>
+<dd>
+<p>
+        Gitのwebインターフェース(Gitリポジトリのwebフロントエンド)。
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_他者との相互作用">他者との相互作用</h3>
+<div class="paragraph"><p>これらのコマンドは外部のSCMや他者からのe-mailパッチと相互作用することができます。</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<a href="git-archimport.html">git-archimport(1)</a>
+</dt>
+<dd>
+<p>
+        ArchリポジトリをGitにインポートします。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-cvsexportcommit.html">git-cvsexportcommit(1)</a>
+</dt>
+<dd>
+<p>
+        １つのコミットをCVSのチェックアウトにエクスポートします。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-cvsimport.html">git-cvsimport(1)</a>
+</dt>
+<dd>
+<p>
+        人々が愛憎する別のSCMからデータを救済します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-cvsserver.html">git-cvsserver(1)</a>
+</dt>
+<dd>
+<p>
+        GitのためのCVSサーバのエミュレーター。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-imap-send.html">git-imap-send(1)</a>
+</dt>
+<dd>
+<p>
+        標準入力からIMAPフォルダーにパッチの集合を送信します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-p4.html">git-p4(1)</a>
+</dt>
+<dd>
+<p>
+        Perforceリポジトリからインポートまたは登録をします。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-quiltimport.html">git-quiltimport(1)</a>
+</dt>
+<dd>
+<p>
+        quiltのパッチセットを現在のブランチに適用します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-request-pull.html">git-request-pull(1)</a>
+</dt>
+<dd>
+<p>
+        保留中の変更のサマリを生成します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-send-email.html">git-send-email(1)</a>
+</dt>
+<dd>
+<p>
+        パッチの集合をメール送信します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-svn.html">git-svn(1)</a>
+</dt>
+<dd>
+<p>
+        SubversionとGit間の双方向の操作をします。
+</p>
+</dd>
+</dl></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_下位レベルのコマンド_配管_plumbing">下位レベルのコマンド ("配管"(plumbing))</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Git には磁器(porcelain)レイヤのコマンドがありますが、 その下位レベルコマンドは代替の磁器を開発する為に役立ちます。 磁器の開発者は
+<a href="git-update-index.html">git-update-index(1)</a> と<a href="git-read-tree.html">git-read-tree(1)</a> から読み始めると良いでしょう。</p></div>
+<div class="paragraph"><p>これら下位レベルコマンドのインターフェース(入力、出力、オプションとその意味)は、これらコマンドがスクリプト化して使用される為、磁器レベルのコマンドよりもずっと安定性が求められます。一方、磁器コマンドのインターフェースはエンドユーザの経験に基づく改良の為、変更されていく必要があります。</p></div>
+<div class="paragraph"><p>以下の記述では下位レベルコマンドを以下の３つに分割します。1.リポジトリ、インデックス、作業ツリー内のオブジェクトを操作するコマンド。2.質問し、オブジェクトを比較するコマンド。3.リポジトリ間でオブジェクトと参照を移動するコマンド。</p></div>
+<div class="sect2">
+<h3 id="_操作コマンド">操作コマンド</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<a href="git-apply.html">git-apply(1)</a>
+</dt>
+<dd>
+<p>
+        Apply a patch to files and/or to the index.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-checkout-index.html">git-checkout-index(1)</a>
+</dt>
+<dd>
+<p>
+        Copy files from the index to the working tree.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-commit-tree.html">git-commit-tree(1)</a>
+</dt>
+<dd>
+<p>
+        Create a new commit object.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-hash-object.html">git-hash-object(1)</a>
+</dt>
+<dd>
+<p>
+        Compute object ID and optionally creates a blob from a file.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-index-pack.html">git-index-pack(1)</a>
+</dt>
+<dd>
+<p>
+        Build pack index file for an existing packed archive.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-merge-file.html">git-merge-file(1)</a>
+</dt>
+<dd>
+<p>
+        Run a three-way file merge.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-merge-index.html">git-merge-index(1)</a>
+</dt>
+<dd>
+<p>
+        Run a merge for files needing merging.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-mktag.html">git-mktag(1)</a>
+</dt>
+<dd>
+<p>
+        Creates a tag object.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-mktree.html">git-mktree(1)</a>
+</dt>
+<dd>
+<p>
+        Build a tree-object from ls-tree formatted text.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-pack-objects.html">git-pack-objects(1)</a>
+</dt>
+<dd>
+<p>
+        Create a packed archive of objects.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-prune-packed.html">git-prune-packed(1)</a>
+</dt>
+<dd>
+<p>
+        Remove extra objects that are already in pack files.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-read-tree.html">git-read-tree(1)</a>
+</dt>
+<dd>
+<p>
+        Reads tree information into the index.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-symbolic-ref.html">git-symbolic-ref(1)</a>
+</dt>
+<dd>
+<p>
+        Read, modify and delete symbolic refs.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-unpack-objects.html">git-unpack-objects(1)</a>
+</dt>
+<dd>
+<p>
+        Unpack objects from a packed archive.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-update-index.html">git-update-index(1)</a>
+</dt>
+<dd>
+<p>
+        Register file contents in the working tree to the index.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-update-ref.html">git-update-ref(1)</a>
+</dt>
+<dd>
+<p>
+        Update the object name stored in a ref safely.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-write-tree.html">git-write-tree(1)</a>
+</dt>
+<dd>
+<p>
+        Create a tree object from the current index.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_質問コマンド">質問コマンド</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<a href="git-cat-file.html">git-cat-file(1)</a>
+</dt>
+<dd>
+<p>
+        リポジトリオブジェクトの中身またはタイプ、サイズ情報を出力します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-diff-files.html">git-diff-files(1)</a>
+</dt>
+<dd>
+<p>
+        作業ツリーとindex内のファイルを比較します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-diff-index.html">git-diff-index(1)</a>
+</dt>
+<dd>
+<p>
+        作業ツリーまたはindexのツリーどうしを比較します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-diff-tree.html">git-diff-tree(1)</a>
+</dt>
+<dd>
+<p>
+        2つのツリーオブジェクト間のコンテンツとblobのモードを比較します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-for-each-ref.html">git-for-each-ref(1)</a>
+</dt>
+<dd>
+<p>
+        各参照(ref)の情報を出力します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-ls-files.html">git-ls-files(1)</a>
+</dt>
+<dd>
+<p>
+        indexと作業ツリー内のファイルの情報を表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-ls-remote.html">git-ls-remote(1)</a>
+</dt>
+<dd>
+<p>
+        リモートリポジトリのリファレンス一覧を表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-ls-tree.html">git-ls-tree(1)</a>
+</dt>
+<dd>
+<p>
+        ツリーオブジェクトの中身を一覧表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-merge-base.html">git-merge-base(1)</a>
+</dt>
+<dd>
+<p>
+        マージするための最適な共通祖先を探し出します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-name-rev.html">git-name-rev(1)</a>
+</dt>
+<dd>
+<p>
+        指定リビジョンのシンボリック名を探します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-pack-redundant.html">git-pack-redundant(1)</a>
+</dt>
+<dd>
+<p>
+        冗長なpackファイルを探します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-rev-list.html">git-rev-list(1)</a>
+</dt>
+<dd>
+<p>
+        年代の逆順にコミットオブジェクトを一覧表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-show-index.html">git-show-index(1)</a>
+</dt>
+<dd>
+<p>
+        pack化データのindexを表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-show-ref.html">git-show-ref(1)</a>
+</dt>
+<dd>
+<p>
+        ローカルリポジトリ内のリファレンスを一覧表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-tar-tree.html">git-tar-tree(1)</a>
+</dt>
+<dd>
+<p>
+        （非推奨）指定したツリーオブジェクトに含まれるファイルのtarアーカイブを生成します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-unpack-file.html">git-unpack-file(1)</a>
+</dt>
+<dd>
+<p>
+        blobコンテンツをもつ一時ファイルを生成します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-var.html">git-var(1)</a>
+</dt>
+<dd>
+<p>
+        Gitの論理変数を表示します。
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-verify-pack.html">git-verify-pack(1)</a>
+</dt>
+<dd>
+<p>
+        pack化されたGitアーカイブファイルを検証します。
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>一般に、質問コマンドは作業ツリー内のファイルを変更することはありません。</p></div>
+</div>
+<div class="sect2">
+<h3 id="_リポジトリの同期">リポジトリの同期</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<a href="git-daemon.html">git-daemon(1)</a>
+</dt>
+<dd>
+<p>
+        A really simple server for Git repositories.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-fetch-pack.html">git-fetch-pack(1)</a>
+</dt>
+<dd>
+<p>
+        Receive missing objects from another repository.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-http-backend.html">git-http-backend(1)</a>
+</dt>
+<dd>
+<p>
+        Server side implementation of Git over HTTP.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-send-pack.html">git-send-pack(1)</a>
+</dt>
+<dd>
+<p>
+        Push objects over Git protocol to another repository.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-update-server-info.html">git-update-server-info(1)</a>
+</dt>
+<dd>
+<p>
+        Update auxiliary info file to help dumb servers.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>以下は上記コマンドにより使用されるヘルパープログラムです；エンドユーザは通常これらを直接使用することはありません。</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<a href="git-http-fetch.html">git-http-fetch(1)</a>
+</dt>
+<dd>
+<p>
+        Download from a remote Git repository via HTTP.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-http-push.html">git-http-push(1)</a>
+</dt>
+<dd>
+<p>
+        Push objects over HTTP/DAV to another repository.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-parse-remote.html">git-parse-remote(1)</a>
+</dt>
+<dd>
+<p>
+        Routines to help parsing remote repository access parameters.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-receive-pack.html">git-receive-pack(1)</a>
+</dt>
+<dd>
+<p>
+        Receive what is pushed into the repository.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-shell.html">git-shell(1)</a>
+</dt>
+<dd>
+<p>
+        Restricted login shell for Git-only SSH access.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-upload-archive.html">git-upload-archive(1)</a>
+</dt>
+<dd>
+<p>
+        Send archive back to git-archive.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-upload-pack.html">git-upload-pack(1)</a>
+</dt>
+<dd>
+<p>
+        Send objects packed back to git-fetch-pack.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_内部ヘルパーコマンド">内部ヘルパーコマンド</h3>
+<div class="paragraph"><p>これらは他のコマンドにより使用される内部ヘルパーコマンドです；エンドユーザは通常これらを直接使用することはありません。</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<a href="git-check-attr.html">git-check-attr(1)</a>
+</dt>
+<dd>
+<p>
+        Display gitattributes information.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-check-ignore.html">git-check-ignore(1)</a>
+</dt>
+<dd>
+<p>
+        Debug gitignore / exclude files.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-check-mailmap.html">git-check-mailmap(1)</a>
+</dt>
+<dd>
+<p>
+        Show canonical names and email addresses of contacts.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-check-ref-format.html">git-check-ref-format(1)</a>
+</dt>
+<dd>
+<p>
+        Ensures that a reference name is well formed.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-column.html">git-column(1)</a>
+</dt>
+<dd>
+<p>
+        Display data in columns.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-credential.html">git-credential(1)</a>
+</dt>
+<dd>
+<p>
+        Retrieve and store user credentials.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-credential-cache.html">git-credential-cache(1)</a>
+</dt>
+<dd>
+<p>
+        Helper to temporarily store passwords in memory.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-credential-store.html">git-credential-store(1)</a>
+</dt>
+<dd>
+<p>
+        Helper to store credentials on disk.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-fmt-merge-msg.html">git-fmt-merge-msg(1)</a>
+</dt>
+<dd>
+<p>
+        Produce a merge commit message.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-mailinfo.html">git-mailinfo(1)</a>
+</dt>
+<dd>
+<p>
+        Extracts patch and authorship from a single e-mail message.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-mailsplit.html">git-mailsplit(1)</a>
+</dt>
+<dd>
+<p>
+        Simple UNIX mbox splitter program.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-merge-one-file.html">git-merge-one-file(1)</a>
+</dt>
+<dd>
+<p>
+        The standard helper program to use with git-merge-index.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-patch-id.html">git-patch-id(1)</a>
+</dt>
+<dd>
+<p>
+        Compute unique ID for a patch.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-peek-remote.html">git-peek-remote(1)</a>
+</dt>
+<dd>
+<p>
+        (deprecated) List the references in a remote repository.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-sh-i18n.html">git-sh-i18n(1)</a>
+</dt>
+<dd>
+<p>
+        Git&#8217;s i18n setup code for shell scripts.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-sh-setup.html">git-sh-setup(1)</a>
+</dt>
+<dd>
+<p>
+        Common Git shell script setup code.
+</p>
+</dd>
+<dt class="hdlist1">
+<a href="git-stripspace.html">git-stripspace(1)</a>
+</dt>
+<dd>
+<p>
+        Remove unnecessary whitespace.
+</p>
+</dd>
+</dl></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_設定管理の仕組み">設定管理の仕組み</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Gitはリポジトリ毎およびユーザ毎のカスタマイズ設定をシンプルなテキスト形式で管理します。 設定ファイルは以下のような形式です：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>#
+# '#' または ';' の文字はコメントを表します。
+#
+
+; コア部分の変数
+[core]
+        ; ファイルのモードを信用しない
+        filemode = false
+
+; ユーザ情報
+[user]
+        name = "Junio C Hamano"
+        email = "gitster@pobox.com"</code></pre>
+</div></div>
+<div class="paragraph"><p>様々なコマンドが設定ファイルを読み込んで、コマンドの動作を調整します。 利用可能な設定の一覧とその詳細は <a href="git-config.html">git-config(1)</a>
+を参照してください。</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_識別用語">識別用語</h2>
+<div class="sectionbody">
+<div class="dlist"><dl>
+<dt class="hdlist1">
+&lt;object&gt;
+</dt>
+<dd>
+<p>
+        任意のオブジェクト型に対するオブジェクト名を指します。
+</p>
+</dd>
+<dt class="hdlist1">
+&lt;blob&gt;
+</dt>
+<dd>
+<p>
+        blob オブジェクトの名前を指します。
+</p>
+</dd>
+<dt class="hdlist1">
+&lt;tree&gt;
+</dt>
+<dd>
+<p>
+        treeオブジェクトの名前を指します。
+</p>
+</dd>
+<dt class="hdlist1">
+&lt;commit&gt;
+</dt>
+<dd>
+<p>
+        commitオブジェクトの名前を指し示します。
+</p>
+</dd>
+<dt class="hdlist1">
+&lt;tree-ish&gt;
+</dt>
+<dd>
+<p>
+        tree, commit または tag オブジェクトの名前を指します。
+        &lt;tree-ish&gt; の引数を取るコマンドは、最終的には &lt;tree&gt; オブジェクト
+        に対して作用しますが、&lt;tree&gt; を指し示す &lt;commit&gt; と &lt;tag&gt;
+        オブジェクトを引数に指定することも可能です。
+</p>
+</dd>
+<dt class="hdlist1">
+&lt;commit-ish&gt;
+</dt>
+<dd>
+<p>
+        コミットまたはタグオブジェクトの名前を指します。
+        &lt;commit-ish&gt; の引数を取るコマンドは、最終的には &lt;commit&gt;
+        オブジェクトに対して作用しますが、&lt;commit&gt; を指し示す &lt;tag&gt;
+        オブジェクトを引数に指定することも可能です。
+</p>
+</dd>
+<dt class="hdlist1">
+&lt;type&gt;
+</dt>
+<dd>
+<p>
+        オブジェクトタイプが必要であることを示します。
+        一般に <code>blob</code>, <code>tree</code>, <code>commit</code>, または <code>tag</code> のどれかです。
+</p>
+</dd>
+<dt class="hdlist1">
+&lt;file&gt;
+</dt>
+<dd>
+<p>
+        ファイル名を指します。- 通常は <code>GIT_INDEX_FILE</code> が表す
+        ツリー構造のルート位置からの相対パスです。
+</p>
+</dd>
+</dl></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_シンボリックな識別子">シンボリックな識別子</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>任意の &lt;object&gt; を引数に持つすべての git コマンドにて 以下のシンボリックな表記を使用できます。</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+HEAD
+</dt>
+<dd>
+<p>
+        現在のブランチの head を指します。
+</p>
+</dd>
+<dt class="hdlist1">
+&lt;tag&gt;
+</dt>
+<dd>
+<p>
+        有効なタグの<em>名前</em>
+        (つまり <code>refs/tags/&lt;tag&gt;</code> の参照)。
+</p>
+</dd>
+<dt class="hdlist1">
+&lt;head&gt;
+</dt>
+<dd>
+<p>
+        有効な head (ブランチ)の'名前'。
+        (つまり <code>refs/heads/&lt;head&gt;</code> の参照)。
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>オブジェクトの名前を表す方法のより完全な一覧は <a href="gitrevisions.html">gitrevisions(7)</a> の"リビジョンの指定方法" の節を参照してください。</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ファイル_ディレクトリ構造">ファイル/ディレクトリ構造</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><a href="gitrepository-layout.html">gitrepository-layout(5)</a> のドキュメントを参照してください。</p></div>
+<div class="paragraph"><p>各フックの詳細は <a href="githooks.html">githooks(5)</a> を参照してください。</p></div>
+<div class="paragraph"><p>より高レベルなSCMにより <code>$GIT_DIR</code> 内で追加情報が提供・管理される場合もあります。</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_用語">用語</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><a href="gitglossary.html">gitglossary(7)</a> のドキュメントを参照してください。</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_環境変数">環境変数</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>様々な git コマンドが以下の環境変数を参照しています。</p></div>
+<div class="sect2">
+<h3 id="_gitリポジトリ">Gitリポジトリ</h3>
+<div class="paragraph"><p>これらの環境変数は <em>全ての</em> 中核となる git コマンドに適用されます。 注意: これらの値をgit の上位に位置する SCMS
+によって利用/上書きすることは何の価値もないので、Cogito などを利用する場合は注意してください。</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>GIT_INDEX_FILE</em>
+</dt>
+<dd>
+<p>
+        この環境変数により使用するインデックスファイルを指定できます。指定されていない場合、デフォルトでは <code>$GIT_DIR/index</code> が使用されます。
+</p>
+</dd>
+<dt class="hdlist1">
+<em>GIT_OBJECT_DIRECTORY</em>
+</dt>
+<dd>
+<p>
+        オブジェクトの格納ディレクトリがこの環境変数により指定されていた場合、sha1 ディレクトリはこの下に作成されます。-
+        定義されていない場合、デフォルトでは <code>$GIT_DIR/objects</code> ディレクトリが使用されます。
+</p>
+</dd>
+<dt class="hdlist1">
+<em>GIT_ALTERNATE_OBJECT_DIRECTORIES</em>
+</dt>
+<dd>
+<p>
+        Git オブジェクトの不変性により、古いオブジェクトは共有化された読み取り専用のディレクトリに保管することができます。この変数に ":"
+        区切り(Windowsでは";")でGit オブジェクトのディレクトリを指定すると、Git オブジェクトの検索場所として利用できます。
+        新しいオブジェクトはこれらのディレクトリには書き込まれません。
+</p>
+</dd>
+<dt class="hdlist1">
+<em>GIT_DIR</em>
+</dt>
+<dd>
+<p>
+        環境変数 <em>GIT_DIR</em> が設定されていた場合、デフォルトの <code>.git</code> の代わりにその値がリポジトリへのパスとして使用されます。
+        コマンドラインオプション <em>--git-dir</em> でも指定可能です。
+</p>
+</dd>
+<dt class="hdlist1">
+<em>GIT_WORK_TREE</em>
+</dt>
+<dd>
+<p>
+        作業ツリーのルートのパスを指定します。 コマンドラインオプション <em>--work-tree</em> または構成変数 core.worktree でも
+        指定可能です。
+</p>
+</dd>
+<dt class="hdlist1">
+<em>GIT_NAMESPACE</em>
+</dt>
+<dd>
+<p>
+        Gitの名前空間を指定します；詳細は <a href="gitnamespaces.html">gitnamespaces(7)</a> を参照してください。 コマンドラインオプション
+        <em>--namespace</em> でも指定可能です。
+</p>
+</dd>
+<dt class="hdlist1">
+<em>GIT_CEILING_DIRECTORIES</em>
+</dt>
+<dd>
+<p>
+        コロンで区切られた絶対パスのリストです。この変数を設定すると、gitは設定したディレクトリよりも上のディレクトリからレポジトリディレクトリを探しません(読み込みの遅いネットワークディレクトリを除外する時に便利です)。
+        ただし、カレント作業ディレクトリまたはコマンドラインまたは環境変数で指定された GIT_DIR は除外されます。
+        通常、Gitはカレントディレクトリと比較をするためにこのリストエントリを読み込み、
+        存在するシンボリックリンクを解決させなければなりません。しかし、このアクセスが遅い場合は
+        このリストに空のエントリを追加し、その後のエントリがシンボリックリンクではなく、解決させる 必要はないとGitに伝えることができます； 例えば
+        <em>GIT_CEILING_DIRECTORIES=/maybe/symlink::/very/slow/non/symlink</em> のようにして。
+</p>
+</dd>
+<dt class="hdlist1">
+<em>GIT_DISCOVERY_ACROSS_FILESYSTEM</em>
+</dt>
+<dd>
+<p>
+        リポジトリディレクトリ ".git" の存在しない場所で Git を実行すると Gitは 親ディレクトリをたどって作業ツリーのトップを探しますが、
+        デフォルトではファイルシステムの境界は越えません。 この環境変数を true に設定すると、Gitはファイルシステムの境界を越えて
+        作業ツリーのトップを探すようになります。 <em>GIT_CEILING_DIRECTORIES</em> のように、<em>GIT_DIR</em> またはコマンドラインで
+        明示的にリポジトリディレクトリを指定した場合は、この環境変数の影響は受けません。
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_gitコミット">Gitコミット</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>GIT_AUTHOR_NAME</em>
+</dt>
+<dt class="hdlist1">
+<em>GIT_AUTHOR_EMAIL</em>
+</dt>
+<dt class="hdlist1">
+<em>GIT_AUTHOR_DATE</em>
+</dt>
+<dt class="hdlist1">
+<em>GIT_COMMITTER_NAME</em>
+</dt>
+<dt class="hdlist1">
+<em>GIT_COMMITTER_EMAIL</em>
+</dt>
+<dt class="hdlist1">
+<em>GIT_COMMITTER_DATE</em>
+</dt>
+<dt class="hdlist1">
+<em>EMAIL</em>
+</dt>
+<dd>
+<p>
+        <a href="git-commit-tree.html">git-commit-tree(1)</a> 参照。
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_git_diff_差分表示">Git Diff(差分表示)</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>GIT_DIFF_OPTS</em>
+</dt>
+<dd>
+<p>
+        有効な設定は "--unified=??" または "-u??" で、"??" にはunified diff のコンテキストの 行数を指定します。これは
+        git diff コマンドの "-U" または "--unified" オプションの指定よりも 優先されます。
+</p>
+</dd>
+<dt class="hdlist1">
+<em>GIT_EXTERNAL_DIFF</em>
+</dt>
+<dd>
+<p>
+        環境変数 <em>GIT_EXTERNAL_DIFF</em> が設定されている場合、diff
+        が実行される代わりに、ここで指定されているプログラムが呼び出されます。追加、削除、変更されたパスに対して
+        <em>GIT_EXTERNAL_DIFF</em> が以下の７つのパラメータとともに呼び出されます：
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><code>パス 古いファイル 古いhex 古いモード 新しいファイル 新しいhex 新しいモード</code></pre>
+</div></div>
+<div class="paragraph"><p>各パラメータの説明：</p></div>
+</dd>
+<dt class="hdlist1">
+&lt;古い|新しい&gt;ファイル
+</dt>
+<dd>
+<p>
+GIT_EXTERNAL_DIFF がファイルの中身を読み込む為に使用する
+                         新旧のファイル名
+</p>
+</dd>
+<dt class="hdlist1">
+&lt;古い|新しい&gt;hex
+</dt>
+<dd>
+<p>
+40桁16進の SHA1 ハッシュ値
+</p>
+</dd>
+<dt class="hdlist1">
+&lt;古い|新しい&gt;モード
+</dt>
+<dd>
+<p>
+ファイルモードの8進数表現
+</p>
+<div class="paragraph"><p>ファイルパラメータはユーザの作業ファイル(例えば、"git-diff-files"内の <code>新しいファイル</code>)、<code>/dev/null</code>
+(例えば、新しいファイルが追加された時の <code>古いファイル</code>)、または一時ファイル(例えば、索引内の
+<code>古いファイル</code>)を指し示すこともあります。<em>GIT_EXTERNAL_DIFF</em> は一時ファイルを削除することに気を使う必要はありません。---
+<em>GIT_EXTERNAL_DIFF</em> が終了すると一時ファイルは削除されます。</p></div>
+<div class="paragraph"><p>マージされなかったパスに対しては <em>GIT_EXTERNAL_DIFF</em> は1つのパラメータ &lt;path&gt; とともに呼び出されます。</p></div>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_その他">その他</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>GIT_MERGE_VERBOSITY</em>
+</dt>
+<dd>
+<p>
+        再帰的なマージ戦略により表示される出力の合計値を管理するための数値です。merge.verbosity
+        を上書きします。<a href="git-merge.html">git-merge(1)</a> 参照。
+</p>
+</dd>
+<dt class="hdlist1">
+<em>GIT_PAGER</em>
+</dt>
+<dd>
+<p>
+        この環境変数は <code>$PAGER</code> を上書きします。これを空文字または "cat" に指定すると、git
+        はページャを起動しません。<code>core.pager</code> オプションについては<a href="git-config.html">git-config(1)</a> 参照して下さい。
+</p>
+</dd>
+<dt class="hdlist1">
+<em>GIT_EDITOR</em>
+</dt>
+<dd>
+<p>
+        この環境変数は <code>$EDITOR</code> と <code>$VISUAL</code> を上書きします。
+        この値はGitの様々なコマンドでインタラクティブモードやエディターを起動するときに使われます。 <a href="git-var.html">git-var(1)</a> および
+        <a href="git-config.html">git-config(1)</a> の`core.editor`オプションを参照。
+</p>
+</dd>
+<dt class="hdlist1">
+<em>GIT_SSH</em>
+</dt>
+<dd>
+<p>
+        この環境変数が設定されていた場合、<em>git-fetch</em> と <em>git-push</em> は リモートシステムに接続する必要がある時に <em>ssh</em>
+        の代わりにこのコマンドを使用します。<em>$GIT_SSH</em> コマンドには必ず２つまたは4つの引数が渡されます： 接続先URL の
+        <em>username@host</em>(あるいは単に <em>host</em>)、そのリモートシステム上で
+        実行するシェルコマンド、そしてデフォルトのSSHポート以外が指定されていた場合には オプションで <em>-p</em> と 接続時のポート。
+</p>
+<div class="paragraph"><p>GIT_SSH
+内でリストしたいプログラムにオプションを渡したい時は、プログラムをラップしてシェルスクリプトにオプションを渡し、GIT_SSHがそのシェルスクリプトを参照するように設定する必要があります。</p></div>
+<div class="paragraph"><p>通常は <code>.ssh/config</code> ファイルにて望ましいオプションを設定した方が容易です。詳細は ssh のドキュメントを参照してください。</p></div>
+</dd>
+<dt class="hdlist1">
+<em>GIT_ASKPASS</em>
+</dt>
+<dd>
+<p>
+        この環境変数が設定されていた場合、パスワードまたはパスフレーズ（HTTPやIMAP認証用)の入力
+        が必要な場合に、コマンドライン引数として適切なプロンプトとともにこのプログラムがコールされ、
+        標準入力からパスワードを読み込みます。<a href="git-config.html">git-config(1)</a>の <em>core.askpass</em> も参照。
+</p>
+</dd>
+<dt class="hdlist1">
+<em>GIT_CONFIG_NOSYSTEM</em>
+</dt>
+<dd>
+<p>
+        システムワイドな <code>$(prefix)/etc/gitconfig</code> の設定をスキップするかどうかを指定します。 この環境変数は <code>$HOME</code> と
+        <code>$XDG_CONFIG_HOME</code> とともに使われ、  えり好みのあるスクリプトを予測した変数で動作させる為に使います。
+        もしくは<code>/etc/gitconfig</code> ファイルに不具合があった場合に、権限をもつ人が修正 するまでの間、その不具合を回避するために設定します。
+</p>
+</dd>
+<dt class="hdlist1">
+<em>GIT_FLUSH</em>
+</dt>
+<dd>
+<p>
+        この環境変数を "1" にした場合、<em>git-blame</em>(インクリメンタルモード)、<em>git-rev-list</em>, <em>git-log</em>,そして <em>git-whatchanged</em> などのコマンドが呼ばれた時に、各コミットの境界レコードがフラッシュされた後に出力ストリームが強制的にフラッシュされます。この変数を "0" にした場合、コマンド出力のI/Oが完全にバッファリングされます。この環境変数が設定されていない場合、git は標準出力がファイルにリダイレクトされているかどうかによってバッファリングされるかレコードの境界でフラッシュされるかが決定されます。
+</p>
+</dd>
+<dt class="hdlist1">
+<em>GIT_TRACE</em>
+</dt>
+<dd>
+<p>
+        この変数が "1", "2" または "true" (大文字小文字を区別します)に設定されていた場合、git は &#8216;trace:`
+        のメッセージを標準エラーに出力し、エイリアスの展開、実行される built-in コマンド、外部コマンド実行について説明します。この値が 1
+        より大きく10より小さい整数が指定された場合、git
+        はこの値をファイル記述子として解釈し、このファイル記述子にトレースメッセージを書き込もうとします。代わりに、この値が絶対パスが指定されていた場合(&#8217;/'の文字から始まる場合)、git
+        はこれをファイルパスとして解釈し、トレースメッセージをそこに書き込もうとします。
+</p>
+</dd>
+<dt class="hdlist1">
+<em>GIT_TRACE_PACK_ACCESS</em>
+</dt>
+<dd>
+<p>
+        この変数にパスが設定されていた場合、任意のパックファイルへのアクセス全てが指定したパスに
+        記録されます。各アクセスにたいしてパックファイル名とパックないのオフセットが記録されます。
+        この設定はパックに関連したパフォーマンス問題の調査に役立つことがあります。
+</p>
+</dd>
+<dt class="hdlist1">
+<em>GIT_TRACE_PACKET</em>
+</dt>
+<dd>
+<p>
+        この変数が設定されていた場合、指定したプログラムの入力と出力のパケット全部を
+        トレースすることができます。これはオブジェクトのネゴシエーションや他のプロトコル問題の
+        デバッグに役立つことがあります。トレースは"PACK"で始まるパケットでOFFにできます。
+</p>
+</dd>
+<dt class="hdlist1">
+GIT_LITERAL_PATHSPECS
+</dt>
+<dd>
+<p>
+        この変数を <code>1</code> にすると、Gitは全ての pathspec 指定を文字通りあつかい、ワイルドカード
+        パターン(glob)の展開はしません。たとえば、<code>GIT_LITERAL_PATHSPECS=1 git log -- '*.c'</code> は <code>*.c</code>
+        に一致する任意のパスではなく、 <code>*.c</code> のパスをさわっているコミットを探します。 この偏すはGitに文字通りのパス（つまり、<code>git
+        ls-tree</code> や <code>--raw</code> の diff出力などによって指定されるパス）を渡したい場合に有効です。
+</p>
+</dd>
+</dl></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_議論_a_id_discussion_a">議論<a id="Discussion"></a></h2>
+<div class="sectionbody">
+<div class="paragraph"><p>下記の詳細は  <a href="user-manual.html#git-concepts">ユーザマニュアルのGitの概念の章</a>を 参照してください。</p></div>
+<div class="paragraph"><p>Git管理されているプロジェクトは通常、作業ディレクトリおよび その最上位のディレクトリ階層に ".git"のサブディレクトリを持ちます。 .git
+ディレクトリはプロジェクトの完全な履歴を表現する圧縮済みのオブジェクトデータベース およびその履歴と現在の作業ツリーの中身をリンクさせる "index"
+ファイル およびタグやブランチの先端(head)のような履歴を指し示す名前つきのポインタとから 構成されています。</p></div>
+<div class="paragraph"><p>オブジェクトデータベースは主に３つの型があります：blob(ファイルデータを保持するもの);
+tree（blobおよび他のツリーを指し示し、ディレクトリ階層を構築するもの)； commit(１つのtreeと複数の親commitへの参照)。</p></div>
+<div class="paragraph"><p>commitは他のシステムで"changeset"または"version"と呼ばれているものと等価で、
+プロジェクトの履歴の1ステップを表現し、それぞれの親が1つ前のステップを表しています。
+複数の親をもつcommitは独立した開発ラインのマージを表現します。</p></div>
+<div class="paragraph"><p>全てのobjectはその中身のSHA-1ハッシュにより名前が付けられ、 通常は40桁の16進数で記述されます。この名前はglobalにユニークです。
+あるコミットまでの一繋がりの履歴はそのコミットに署名をすることによって保証することができます。 4番目のobject型である tag
+はこの為に用意されたものです。</p></div>
+<div class="paragraph"><p>objectは初めに作成されるときは個々のファイルとして保存されますが、 後には利便性から"packファイル"のかたちでまとめて圧縮されます。</p></div>
+<div class="paragraph"><p>refと呼ばれる名前付きのポインタは履歴内の興味のある場所を指し示します。
+１つのrefはあるobjectのSHA-1名または他のrefの名前を含みます。 <code>ref/head/</code>
+の名前で始まるrefは開発中ブランチの最新コミットのSHA-1名を含んでいます。 tagのSHA-1名は <code>ref/tags/</code> 配下に保存されます。
+<code>HEAD</code> という名前の特別なrefには 現在チェックアウトしているブランチの名前が保存されています。</p></div>
+<div class="paragraph"><p>indexファイルは全てのパスの一覧で初期化されており、それぞれのパス、blobオブジェクト、属性の集合を含んでいます。blobオブジェクトは現在のブランチ
+head
+のファイルの中身を表現しています。属性(最終更新日時、サイズなど)は作業ツリー内の対応するファイルから取得されます。作業ツリーにて追加した変更はこれらの属性と比較することにより検出されます。indexは新しいコンテンツにより更新され、新しいコミットはindex内に格納されているコンテンツから作成されます。</p></div>
+<div class="paragraph"><p>indexは同一パス名の複数のエントリ("ステージ"と呼びます)を格納することもできます。これらステージはマージ作業中の様々な未マージのバージョンを保持する目的で利用されます。</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_さらに進んだドキュメント">さらに進んだドキュメント</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Gitを使い始めるには"説明"内のリファレンスをみてください。 下記のリンクは初めてのユーザにとってはおそらく詳しすぎる内容です。</p></div>
+<div class="paragraph"><p><a href="user-manual.html#git-concepts">ユーザマニュアルのGitの概念の章</a>および
+<a href="gitcore-tutorial.html">gitcore-tutorial(7)</a>はGitのアーキテクチャに対する序論です。</p></div>
+<div class="paragraph"><p>推奨するワークフローの概要は <a href="gitworkflows.html">gitworkflows(7)</a> を参照してください。</p></div>
+<div class="paragraph"><p>有用な例として <a href="howto-index.html">howto</a> も参照してください。</p></div>
+<div class="paragraph"><p>Git内部のドキュメントは <a href="technical/api-index.html">Git API documentation</a> にあります。</p></div>
+<div class="paragraph"><p>CVSから移行しようとしている方は <a href="gitcvs-migration.html">gitcvs-migration(7)</a> も読むと良いでしょう。</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_作者">作者</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Gitは Linus Torvalds によって開発が開始され、現在は Junio C Hamano がメンテナンス
+をしています。Gitのメーリングリスト &lt;<a href="mailto:git@vger.kernel.org">git@vger.kernel.org</a>&gt; にはたくさんのコントリビューター
+がいます。コントリビューターのリストは <a href="http://www.ohloh.net/p/git/contributors/summary">http://www.ohloh.net/p/git/contributors/summary</a>
+にて確認できます。</p></div>
+<div class="paragraph"><p>git.git の複製が手元にあるなら、<a href="git-shortlog.html">git-shortlog(1)</a> と <a href="git-blame.html">git-blame(1)</a> の
+出力により、プロジェクトの特定部位の作者を確認できます。</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_バグ報告">バグ報告</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>バグはGitメーリングリスト &lt;<a href="mailto:git@vger.kernel.org">git@vger.kernel.org</a>&gt; に報告してください。
+開発とメンテナンスはこのメーリングリスト上で行われています。報告前にメーリングリストの購読設定をする必要はありません。</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_関連項目">関連項目</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><a href="gittutorial.html">gittutorial(7)</a>, <a href="gittutorial-2.html">gittutorial-2(7)</a>,
+<a href="everyday.html">Everyday Git</a>, <a href="gitcvs-migration.html">gitcvs-migration(7)</a>,
+<a href="gitglossary.html">gitglossary(7)</a>, <a href="gitcore-tutorial.html">gitcore-tutorial(7)</a>, <a href="gitcli.html">gitcli(7)</a>,
+<a href="user-manual.html">The Git User&#8217;s Manual</a>, <a href="gitworkflows.html">gitworkflows(7)</a></p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_git">GIT</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><a href="git.html">git(1)</a> スイートの一部</p></div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2013-11-30 02:20:43 JST
+</div>
+</div>
+</body>
+</html>
