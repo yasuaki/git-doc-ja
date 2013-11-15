@@ -1,0 +1,2200 @@
+# Japanese translations for Git package
+# Copyright (C) 2013 Git Japanese translation team
+# This file is distributed under the same license as the Git package.
+#
+# Automatically generated, 2013.
+# Yasuaki Narita <narita.ys@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Git v1.8.4\n"
+"POT-Creation-Date: 2013-11-27 01:13+0900\n"
+"PO-Revision-Date: 2013-11-27 01:52+0900\n"
+"Last-Translator: Yasuaki Narita <narita.ys@gmail.com>\n"
+"Language-Team: American English <kde-i18n-doc@kde.org>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.4\n"
+
+#. type: Title =
+#: ../../git.txt:2
+#, no-wrap
+msgid "git(1)"
+msgstr "git(1)"
+
+#. type: Title -
+#: ../../git.txt:5
+#, no-wrap
+msgid "NAME"
+msgstr "名前"
+
+#. type: Plain text
+#: ../../git.txt:7
+msgid "git - the stupid content tracker"
+msgstr "git - おバカなソース追跡ツール"
+
+#. type: Title -
+#: ../../git.txt:10
+#, no-wrap
+msgid "SYNOPSIS"
+msgstr "書式"
+
+#. type: Plain text
+#: ../../git.txt:17
+#, no-wrap
+msgid ""
+"'git' [--version] [--help] [-c <name>=<value>]\n"
+"    [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n"
+"    [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]\n"
+"    [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n"
+"    <command> [<args>]\n"
+msgstr ""
+"'git' [--version] [--help] [-c <name>=<value>]\n"
+"    [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n"
+"    [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]\n"
+"    [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n"
+"    <command> [<args>]\n"
+
+#. type: Title -
+#: ../../git.txt:19
+#, no-wrap
+msgid "DESCRIPTION"
+msgstr "説明"
+
+#. type: Plain text
+#: ../../git.txt:23
+msgid ""
+"Git is a fast, scalable, distributed revision control system with an "
+"unusually rich command set that provides both high-level operations and full "
+"access to internals."
+msgstr ""
+"Git は高速で、拡張性のある、分散型のリビジョン管理システムです。非常に豊富な"
+"コマンドセットを持ち、高レベルな操作と内部への完全なアクセスの両方が可能で"
+"す。"
+
+#. type: Plain text
+#: ../../git.txt:28
+msgid ""
+"See linkgit:gittutorial[7] to get started, then see link:everyday.html"
+"[Everyday Git] for a useful minimum set of commands.  The link:user-manual."
+"html[Git User's Manual] has a more in-depth introduction."
+msgstr ""
+"初めての方は linkgit:gittutorial[7] を参照してください。そして、link:"
+"everyday.html [日々の git 利用] を参照して便利なコマンドの最小セットを憶えて"
+"ください。 より深い導入としては link:user-manual.html[Gitユーザマニュアル] も"
+"あります。"
+
+#. type: Plain text
+#: ../../git.txt:33
+msgid ""
+"After you mastered the basic concepts, you can come back to this page to "
+"learn what commands Git offers.  You can learn more about individual Git "
+"commands with \"git help command\".  linkgit:gitcli[7] manual page gives you "
+"an overview of the command line command syntax."
+msgstr ""
+"基本的なコンセプトを理解した後には、Gitがどんなコマンドを提供しているか学ぶた"
+"めこのページに戻ってくると良いでしょう。個々のGitコマンドは \"git help "
+"command\"にて詳しく知ることができます。 コマンドライン引数の概要はマニュアル "
+"linkgit:gitcli[7] を見ると良いでしょう。"
+
+#. type: Plain text
+#: ../../git.txt:36
+msgid ""
+"Formatted and hyperlinked version of the latest Git documentation can be "
+"viewed at `http://git-htmldocs.googlecode.com/git/git.html`."
+msgstr ""
+"最新のGitドキュメントのHTML版(英語)は`http://git-htmldocs.googlecode.com/git/"
+"git.html`から参照できます。"
+
+#. type: delimited block =
+#: ../../git.txt:45
+msgid ""
+"You are reading the documentation for the latest (possibly unreleased) "
+"version of Git, that is available from 'master' branch of the `git.git` "
+"repository.  Documentation for older releases are available here:"
+msgstr ""
+"このドキュメントは最新の(未リリースかもしれない)Gitバージョンのドキュメントで"
+"あり、`git.git` リポジトリの 'master' ブランチから入手可能です。古いリリース"
+"ドキュメントは下記から入手可能です："
+
+#. type: delimited block =
+#: ../../git.txt:47
+msgid "link:v1.8.4/git.html[documentation for release 1.8.4]"
+msgstr "link:v1.8.4/git.html[documentation for release 1.8.4]"
+
+#. type: delimited block =
+#: ../../git.txt:50
+msgid "release notes for link:RelNotes/1.8.4.txt[1.8.4]."
+msgstr "release notes for link:RelNotes/1.8.4.txt[1.8.4]."
+
+#. type: delimited block =
+#: ../../git.txt:52
+msgid "link:v1.8.3.4/git.html[documentation for release 1.8.3.4]"
+msgstr "link:v1.8.3.4/git.html[documentation for release 1.8.3.4]"
+
+#. type: delimited block =
+#: ../../git.txt:59
+msgid ""
+"release notes for link:RelNotes/1.8.3.4.txt[1.8.3.4], link:RelNotes/1.8.3.3."
+"txt[1.8.3.3], link:RelNotes/1.8.3.2.txt[1.8.3.2], link:RelNotes/1.8.3.1.txt"
+"[1.8.3.1], link:RelNotes/1.8.3.txt[1.8.3]."
+msgstr ""
+"release notes for link:RelNotes/1.8.3.4.txt[1.8.3.4], link:RelNotes/1.8.3.3."
+"txt[1.8.3.3], link:RelNotes/1.8.3.2.txt[1.8.3.2], link:RelNotes/1.8.3.1.txt"
+"[1.8.3.1], link:RelNotes/1.8.3.txt[1.8.3]."
+
+#. type: delimited block =
+#: ../../git.txt:61
+msgid "link:v1.8.2.3/git.html[documentation for release 1.8.2.3]"
+msgstr "link:v1.8.2.3/git.html[documentation for release 1.8.2.3]"
+
+#. type: delimited block =
+#: ../../git.txt:67
+msgid ""
+"release notes for link:RelNotes/1.8.2.3.txt[1.8.2.3], link:RelNotes/1.8.2.2."
+"txt[1.8.2.2], link:RelNotes/1.8.2.1.txt[1.8.2.1], link:RelNotes/1.8.2.txt"
+"[1.8.2]."
+msgstr ""
+"release notes for link:RelNotes/1.8.2.3.txt[1.8.2.3], link:RelNotes/1.8.2.2."
+"txt[1.8.2.2], link:RelNotes/1.8.2.1.txt[1.8.2.1], link:RelNotes/1.8.2.txt"
+"[1.8.2]."
+
+#. type: delimited block =
+#: ../../git.txt:69
+msgid "link:v1.8.1.6/git.html[documentation for release 1.8.1.6]"
+msgstr "link:v1.8.1.6/git.html[documentation for release 1.8.1.6]"
+
+#. type: delimited block =
+#: ../../git.txt:78
+msgid ""
+"release notes for link:RelNotes/1.8.1.6.txt[1.8.1.6], link:RelNotes/1.8.1.5."
+"txt[1.8.1.5], link:RelNotes/1.8.1.4.txt[1.8.1.4], link:RelNotes/1.8.1.3.txt"
+"[1.8.1.3], link:RelNotes/1.8.1.2.txt[1.8.1.2], link:RelNotes/1.8.1.1.txt"
+"[1.8.1.1], link:RelNotes/1.8.1.txt[1.8.1]."
+msgstr ""
+"release notes for link:RelNotes/1.8.1.6.txt[1.8.1.6], link:RelNotes/1.8.1.5."
+"txt[1.8.1.5], link:RelNotes/1.8.1.4.txt[1.8.1.4], link:RelNotes/1.8.1.3.txt"
+"[1.8.1.3], link:RelNotes/1.8.1.2.txt[1.8.1.2], link:RelNotes/1.8.1.1.txt"
+"[1.8.1.1], link:RelNotes/1.8.1.txt[1.8.1]."
+
+#. type: delimited block =
+#: ../../git.txt:80
+msgid "link:v1.8.0.3/git.html[documentation for release 1.8.0.3]"
+msgstr "link:v1.8.0.3/git.html[documentation for release 1.8.0.3]"
+
+#. type: delimited block =
+#: ../../git.txt:86
+msgid ""
+"release notes for link:RelNotes/1.8.0.3.txt[1.8.0.3], link:RelNotes/1.8.0.2."
+"txt[1.8.0.2], link:RelNotes/1.8.0.1.txt[1.8.0.1], link:RelNotes/1.8.0.txt"
+"[1.8.0]."
+msgstr ""
+"release notes for link:RelNotes/1.8.0.3.txt[1.8.0.3], link:RelNotes/1.8.0.2."
+"txt[1.8.0.2], link:RelNotes/1.8.0.1.txt[1.8.0.1], link:RelNotes/1.8.0.txt"
+"[1.8.0]."
+
+#. type: delimited block =
+#: ../../git.txt:88
+msgid "link:v1.7.12.4/git.html[documentation for release 1.7.12.4]"
+msgstr "link:v1.7.12.4/git.html[documentation for release 1.7.12.4]"
+
+#. type: delimited block =
+#: ../../git.txt:95
+msgid ""
+"release notes for link:RelNotes/1.7.12.4.txt[1.7.12.4], link:"
+"RelNotes/1.7.12.3.txt[1.7.12.3], link:RelNotes/1.7.12.2.txt[1.7.12.2], link:"
+"RelNotes/1.7.12.1.txt[1.7.12.1], link:RelNotes/1.7.12.txt[1.7.12]."
+msgstr ""
+"release notes for link:RelNotes/1.7.12.4.txt[1.7.12.4], link:"
+"RelNotes/1.7.12.3.txt[1.7.12.3], link:RelNotes/1.7.12.2.txt[1.7.12.2], link:"
+"RelNotes/1.7.12.1.txt[1.7.12.1], link:RelNotes/1.7.12.txt[1.7.12]."
+
+#. type: delimited block =
+#: ../../git.txt:97
+msgid "link:v1.7.11.7/git.html[documentation for release 1.7.11.7]"
+msgstr "link:v1.7.11.7/git.html[documentation for release 1.7.11.7]"
+
+#. type: delimited block =
+#: ../../git.txt:107
+msgid ""
+"release notes for link:RelNotes/1.7.11.7.txt[1.7.11.7], link:"
+"RelNotes/1.7.11.6.txt[1.7.11.6], link:RelNotes/1.7.11.5.txt[1.7.11.5], link:"
+"RelNotes/1.7.11.4.txt[1.7.11.4], link:RelNotes/1.7.11.3.txt[1.7.11.3], link:"
+"RelNotes/1.7.11.2.txt[1.7.11.2], link:RelNotes/1.7.11.1.txt[1.7.11.1], link:"
+"RelNotes/1.7.11.txt[1.7.11]."
+msgstr ""
+"release notes for link:RelNotes/1.7.11.7.txt[1.7.11.7], link:"
+"RelNotes/1.7.11.6.txt[1.7.11.6], link:RelNotes/1.7.11.5.txt[1.7.11.5], link:"
+"RelNotes/1.7.11.4.txt[1.7.11.4], link:RelNotes/1.7.11.3.txt[1.7.11.3], link:"
+"RelNotes/1.7.11.2.txt[1.7.11.2], link:RelNotes/1.7.11.1.txt[1.7.11.1], link:"
+"RelNotes/1.7.11.txt[1.7.11]."
+
+#. type: delimited block =
+#: ../../git.txt:109
+msgid "link:v1.7.10.5/git.html[documentation for release 1.7.10.5]"
+msgstr "link:v1.7.10.5/git.html[documentation for release 1.7.10.5]"
+
+#. type: delimited block =
+#: ../../git.txt:117
+msgid ""
+"release notes for link:RelNotes/1.7.10.5.txt[1.7.10.5], link:"
+"RelNotes/1.7.10.4.txt[1.7.10.4], link:RelNotes/1.7.10.3.txt[1.7.10.3], link:"
+"RelNotes/1.7.10.2.txt[1.7.10.2], link:RelNotes/1.7.10.1.txt[1.7.10.1], link:"
+"RelNotes/1.7.10.txt[1.7.10]."
+msgstr ""
+"release notes for link:RelNotes/1.7.10.5.txt[1.7.10.5], link:"
+"RelNotes/1.7.10.4.txt[1.7.10.4], link:RelNotes/1.7.10.3.txt[1.7.10.3], link:"
+"RelNotes/1.7.10.2.txt[1.7.10.2], link:RelNotes/1.7.10.1.txt[1.7.10.1], link:"
+"RelNotes/1.7.10.txt[1.7.10]."
+
+#. type: delimited block =
+#: ../../git.txt:119
+msgid "link:v1.7.9.7/git.html[documentation for release 1.7.9.7]"
+msgstr "link:v1.7.9.7/git.html[documentation for release 1.7.9.7]"
+
+#. type: delimited block =
+#: ../../git.txt:129
+msgid ""
+"release notes for link:RelNotes/1.7.9.7.txt[1.7.9.7], link:RelNotes/1.7.9.6."
+"txt[1.7.9.6], link:RelNotes/1.7.9.5.txt[1.7.9.5], link:RelNotes/1.7.9.4.txt"
+"[1.7.9.4], link:RelNotes/1.7.9.3.txt[1.7.9.3], link:RelNotes/1.7.9.2.txt"
+"[1.7.9.2], link:RelNotes/1.7.9.1.txt[1.7.9.1], link:RelNotes/1.7.9.txt"
+"[1.7.9]."
+msgstr ""
+"release notes for link:RelNotes/1.7.9.7.txt[1.7.9.7], link:RelNotes/1.7.9.6."
+"txt[1.7.9.6], link:RelNotes/1.7.9.5.txt[1.7.9.5], link:RelNotes/1.7.9.4.txt"
+"[1.7.9.4], link:RelNotes/1.7.9.3.txt[1.7.9.3], link:RelNotes/1.7.9.2.txt"
+"[1.7.9.2], link:RelNotes/1.7.9.1.txt[1.7.9.1], link:RelNotes/1.7.9.txt"
+"[1.7.9]."
+
+#. type: delimited block =
+#: ../../git.txt:131
+msgid "link:v1.7.8.6/git.html[documentation for release 1.7.8.6]"
+msgstr "link:v1.7.8.6/git.html[documentation for release 1.7.8.6]"
+
+#. type: delimited block =
+#: ../../git.txt:140
+msgid ""
+"release notes for link:RelNotes/1.7.8.6.txt[1.7.8.6], link:RelNotes/1.7.8.5."
+"txt[1.7.8.5], link:RelNotes/1.7.8.4.txt[1.7.8.4], link:RelNotes/1.7.8.3.txt"
+"[1.7.8.3], link:RelNotes/1.7.8.2.txt[1.7.8.2], link:RelNotes/1.7.8.1.txt"
+"[1.7.8.1], link:RelNotes/1.7.8.txt[1.7.8]."
+msgstr ""
+"release notes for link:RelNotes/1.7.8.6.txt[1.7.8.6], link:RelNotes/1.7.8.5."
+"txt[1.7.8.5], link:RelNotes/1.7.8.4.txt[1.7.8.4], link:RelNotes/1.7.8.3.txt"
+"[1.7.8.3], link:RelNotes/1.7.8.2.txt[1.7.8.2], link:RelNotes/1.7.8.1.txt"
+"[1.7.8.1], link:RelNotes/1.7.8.txt[1.7.8]."
+
+#. type: delimited block =
+#: ../../git.txt:142
+msgid "link:v1.7.7.7/git.html[documentation for release 1.7.7.7]"
+msgstr "link:v1.7.7.7/git.html[documentation for release 1.7.7.7]"
+
+#. type: delimited block =
+#: ../../git.txt:152
+msgid ""
+"release notes for link:RelNotes/1.7.7.7.txt[1.7.7.7], link:RelNotes/1.7.7.6."
+"txt[1.7.7.6], link:RelNotes/1.7.7.5.txt[1.7.7.5], link:RelNotes/1.7.7.4.txt"
+"[1.7.7.4], link:RelNotes/1.7.7.3.txt[1.7.7.3], link:RelNotes/1.7.7.2.txt"
+"[1.7.7.2], link:RelNotes/1.7.7.1.txt[1.7.7.1], link:RelNotes/1.7.7.txt"
+"[1.7.7]."
+msgstr ""
+"release notes for link:RelNotes/1.7.7.7.txt[1.7.7.7], link:RelNotes/1.7.7.6."
+"txt[1.7.7.6], link:RelNotes/1.7.7.5.txt[1.7.7.5], link:RelNotes/1.7.7.4.txt"
+"[1.7.7.4], link:RelNotes/1.7.7.3.txt[1.7.7.3], link:RelNotes/1.7.7.2.txt"
+"[1.7.7.2], link:RelNotes/1.7.7.1.txt[1.7.7.1], link:RelNotes/1.7.7.txt"
+"[1.7.7]."
+
+#. type: delimited block =
+#: ../../git.txt:154
+msgid "link:v1.7.6.6/git.html[documentation for release 1.7.6.6]"
+msgstr "link:v1.7.6.6/git.html[documentation for release 1.7.6.6]"
+
+#. type: delimited block =
+#: ../../git.txt:163
+msgid ""
+"release notes for link:RelNotes/1.7.6.6.txt[1.7.6.6], link:RelNotes/1.7.6.5."
+"txt[1.7.6.5], link:RelNotes/1.7.6.4.txt[1.7.6.4], link:RelNotes/1.7.6.3.txt"
+"[1.7.6.3], link:RelNotes/1.7.6.2.txt[1.7.6.2], link:RelNotes/1.7.6.1.txt"
+"[1.7.6.1], link:RelNotes/1.7.6.txt[1.7.6]."
+msgstr ""
+"release notes for link:RelNotes/1.7.6.6.txt[1.7.6.6], link:RelNotes/1.7.6.5."
+"txt[1.7.6.5], link:RelNotes/1.7.6.4.txt[1.7.6.4], link:RelNotes/1.7.6.3.txt"
+"[1.7.6.3], link:RelNotes/1.7.6.2.txt[1.7.6.2], link:RelNotes/1.7.6.1.txt"
+"[1.7.6.1], link:RelNotes/1.7.6.txt[1.7.6]."
+
+#. type: delimited block =
+#: ../../git.txt:165
+msgid "link:v1.7.5.4/git.html[documentation for release 1.7.5.4]"
+msgstr "link:v1.7.5.4/git.html[documentation for release 1.7.5.4]"
+
+#. type: delimited block =
+#: ../../git.txt:172
+msgid ""
+"release notes for link:RelNotes/1.7.5.4.txt[1.7.5.4], link:RelNotes/1.7.5.3."
+"txt[1.7.5.3], link:RelNotes/1.7.5.2.txt[1.7.5.2], link:RelNotes/1.7.5.1.txt"
+"[1.7.5.1], link:RelNotes/1.7.5.txt[1.7.5]."
+msgstr ""
+"release notes for link:RelNotes/1.7.5.4.txt[1.7.5.4], link:RelNotes/1.7.5.3."
+"txt[1.7.5.3], link:RelNotes/1.7.5.2.txt[1.7.5.2], link:RelNotes/1.7.5.1.txt"
+"[1.7.5.1], link:RelNotes/1.7.5.txt[1.7.5]."
+
+#. type: delimited block =
+#: ../../git.txt:174
+msgid "link:v1.7.4.5/git.html[documentation for release 1.7.4.5]"
+msgstr "link:v1.7.4.5/git.html[documentation for release 1.7.4.5]"
+
+#. type: delimited block =
+#: ../../git.txt:182
+msgid ""
+"release notes for link:RelNotes/1.7.4.5.txt[1.7.4.5], link:RelNotes/1.7.4.4."
+"txt[1.7.4.4], link:RelNotes/1.7.4.3.txt[1.7.4.3], link:RelNotes/1.7.4.2.txt"
+"[1.7.4.2], link:RelNotes/1.7.4.1.txt[1.7.4.1], link:RelNotes/1.7.4.txt"
+"[1.7.4]."
+msgstr ""
+"release notes for link:RelNotes/1.7.4.5.txt[1.7.4.5], link:RelNotes/1.7.4.4."
+"txt[1.7.4.4], link:RelNotes/1.7.4.3.txt[1.7.4.3], link:RelNotes/1.7.4.2.txt"
+"[1.7.4.2], link:RelNotes/1.7.4.1.txt[1.7.4.1], link:RelNotes/1.7.4.txt"
+"[1.7.4]."
+
+#. type: delimited block =
+#: ../../git.txt:184
+msgid "link:v1.7.3.5/git.html[documentation for release 1.7.3.5]"
+msgstr "link:v1.7.3.5/git.html[documentation for release 1.7.3.5]"
+
+#. type: delimited block =
+#: ../../git.txt:192
+msgid ""
+"release notes for link:RelNotes/1.7.3.5.txt[1.7.3.5], link:RelNotes/1.7.3.4."
+"txt[1.7.3.4], link:RelNotes/1.7.3.3.txt[1.7.3.3], link:RelNotes/1.7.3.2.txt"
+"[1.7.3.2], link:RelNotes/1.7.3.1.txt[1.7.3.1], link:RelNotes/1.7.3.txt"
+"[1.7.3]."
+msgstr ""
+"release notes for link:RelNotes/1.7.3.5.txt[1.7.3.5], link:RelNotes/1.7.3.4."
+"txt[1.7.3.4], link:RelNotes/1.7.3.3.txt[1.7.3.3], link:RelNotes/1.7.3.2.txt"
+"[1.7.3.2], link:RelNotes/1.7.3.1.txt[1.7.3.1], link:RelNotes/1.7.3.txt"
+"[1.7.3]."
+
+#. type: delimited block =
+#: ../../git.txt:194
+msgid "link:v1.7.2.5/git.html[documentation for release 1.7.2.5]"
+msgstr "link:v1.7.2.5/git.html[documentation for release 1.7.2.5]"
+
+#. type: delimited block =
+#: ../../git.txt:202
+msgid ""
+"release notes for link:RelNotes/1.7.2.5.txt[1.7.2.5], link:RelNotes/1.7.2.4."
+"txt[1.7.2.4], link:RelNotes/1.7.2.3.txt[1.7.2.3], link:RelNotes/1.7.2.2.txt"
+"[1.7.2.2], link:RelNotes/1.7.2.1.txt[1.7.2.1], link:RelNotes/1.7.2.txt"
+"[1.7.2]."
+msgstr ""
+"release notes for link:RelNotes/1.7.2.5.txt[1.7.2.5], link:RelNotes/1.7.2.4."
+"txt[1.7.2.4], link:RelNotes/1.7.2.3.txt[1.7.2.3], link:RelNotes/1.7.2.2.txt"
+"[1.7.2.2], link:RelNotes/1.7.2.1.txt[1.7.2.1], link:RelNotes/1.7.2.txt"
+"[1.7.2]."
+
+#. type: delimited block =
+#: ../../git.txt:204
+msgid "link:v1.7.1.4/git.html[documentation for release 1.7.1.4]"
+msgstr "link:v1.7.1.4/git.html[documentation for release 1.7.1.4]"
+
+#. type: delimited block =
+#: ../../git.txt:211
+msgid ""
+"release notes for link:RelNotes/1.7.1.4.txt[1.7.1.4], link:RelNotes/1.7.1.3."
+"txt[1.7.1.3], link:RelNotes/1.7.1.2.txt[1.7.1.2], link:RelNotes/1.7.1.1.txt"
+"[1.7.1.1], link:RelNotes/1.7.1.txt[1.7.1]."
+msgstr ""
+"release notes for link:RelNotes/1.7.1.4.txt[1.7.1.4], link:RelNotes/1.7.1.3."
+"txt[1.7.1.3], link:RelNotes/1.7.1.2.txt[1.7.1.2], link:RelNotes/1.7.1.1.txt"
+"[1.7.1.1], link:RelNotes/1.7.1.txt[1.7.1]."
+
+#. type: delimited block =
+#: ../../git.txt:213
+msgid "link:v1.7.0.9/git.html[documentation for release 1.7.0.9]"
+msgstr "link:v1.7.0.9/git.html[documentation for release 1.7.0.9]"
+
+#. type: delimited block =
+#: ../../git.txt:225
+msgid ""
+"release notes for link:RelNotes/1.7.0.9.txt[1.7.0.9], link:RelNotes/1.7.0.8."
+"txt[1.7.0.8], link:RelNotes/1.7.0.7.txt[1.7.0.7], link:RelNotes/1.7.0.6.txt"
+"[1.7.0.6], link:RelNotes/1.7.0.5.txt[1.7.0.5], link:RelNotes/1.7.0.4.txt"
+"[1.7.0.4], link:RelNotes/1.7.0.3.txt[1.7.0.3], link:RelNotes/1.7.0.2.txt"
+"[1.7.0.2], link:RelNotes/1.7.0.1.txt[1.7.0.1], link:RelNotes/1.7.0.txt"
+"[1.7.0]."
+msgstr ""
+"release notes for link:RelNotes/1.7.0.9.txt[1.7.0.9], link:RelNotes/1.7.0.8."
+"txt[1.7.0.8], link:RelNotes/1.7.0.7.txt[1.7.0.7], link:RelNotes/1.7.0.6.txt"
+"[1.7.0.6], link:RelNotes/1.7.0.5.txt[1.7.0.5], link:RelNotes/1.7.0.4.txt"
+"[1.7.0.4], link:RelNotes/1.7.0.3.txt[1.7.0.3], link:RelNotes/1.7.0.2.txt"
+"[1.7.0.2], link:RelNotes/1.7.0.1.txt[1.7.0.1], link:RelNotes/1.7.0.txt"
+"[1.7.0]."
+
+#. type: delimited block =
+#: ../../git.txt:227
+msgid "link:v1.6.6.3/git.html[documentation for release 1.6.6.3]"
+msgstr "link:v1.6.6.3/git.html[documentation for release 1.6.6.3]"
+
+#. type: delimited block =
+#: ../../git.txt:233
+msgid ""
+"release notes for link:RelNotes/1.6.6.3.txt[1.6.6.3], link:RelNotes/1.6.6.2."
+"txt[1.6.6.2], link:RelNotes/1.6.6.1.txt[1.6.6.1], link:RelNotes/1.6.6.txt"
+"[1.6.6]."
+msgstr ""
+"release notes for link:RelNotes/1.6.6.3.txt[1.6.6.3], link:RelNotes/1.6.6.2."
+"txt[1.6.6.2], link:RelNotes/1.6.6.1.txt[1.6.6.1], link:RelNotes/1.6.6.txt"
+"[1.6.6]."
+
+#. type: delimited block =
+#: ../../git.txt:235
+msgid "link:v1.6.5.9/git.html[documentation for release 1.6.5.9]"
+msgstr "link:v1.6.5.9/git.html[documentation for release 1.6.5.9]"
+
+#. type: delimited block =
+#: ../../git.txt:247
+msgid ""
+"release notes for link:RelNotes/1.6.5.9.txt[1.6.5.9], link:RelNotes/1.6.5.8."
+"txt[1.6.5.8], link:RelNotes/1.6.5.7.txt[1.6.5.7], link:RelNotes/1.6.5.6.txt"
+"[1.6.5.6], link:RelNotes/1.6.5.5.txt[1.6.5.5], link:RelNotes/1.6.5.4.txt"
+"[1.6.5.4], link:RelNotes/1.6.5.3.txt[1.6.5.3], link:RelNotes/1.6.5.2.txt"
+"[1.6.5.2], link:RelNotes/1.6.5.1.txt[1.6.5.1], link:RelNotes/1.6.5.txt"
+"[1.6.5]."
+msgstr ""
+"release notes for link:RelNotes/1.6.5.9.txt[1.6.5.9], link:RelNotes/1.6.5.8."
+"txt[1.6.5.8], link:RelNotes/1.6.5.7.txt[1.6.5.7], link:RelNotes/1.6.5.6.txt"
+"[1.6.5.6], link:RelNotes/1.6.5.5.txt[1.6.5.5], link:RelNotes/1.6.5.4.txt"
+"[1.6.5.4], link:RelNotes/1.6.5.3.txt[1.6.5.3], link:RelNotes/1.6.5.2.txt"
+"[1.6.5.2], link:RelNotes/1.6.5.1.txt[1.6.5.1], link:RelNotes/1.6.5.txt"
+"[1.6.5]."
+
+#. type: delimited block =
+#: ../../git.txt:249
+msgid "link:v1.6.4.5/git.html[documentation for release 1.6.4.5]"
+msgstr "link:v1.6.4.5/git.html[documentation for release 1.6.4.5]"
+
+#. type: delimited block =
+#: ../../git.txt:257
+msgid ""
+"release notes for link:RelNotes/1.6.4.5.txt[1.6.4.5], link:RelNotes/1.6.4.4."
+"txt[1.6.4.4], link:RelNotes/1.6.4.3.txt[1.6.4.3], link:RelNotes/1.6.4.2.txt"
+"[1.6.4.2], link:RelNotes/1.6.4.1.txt[1.6.4.1], link:RelNotes/1.6.4.txt"
+"[1.6.4]."
+msgstr ""
+"release notes for link:RelNotes/1.6.4.5.txt[1.6.4.5], link:RelNotes/1.6.4.4."
+"txt[1.6.4.4], link:RelNotes/1.6.4.3.txt[1.6.4.3], link:RelNotes/1.6.4.2.txt"
+"[1.6.4.2], link:RelNotes/1.6.4.1.txt[1.6.4.1], link:RelNotes/1.6.4.txt"
+"[1.6.4]."
+
+#. type: delimited block =
+#: ../../git.txt:259
+msgid "link:v1.6.3.4/git.html[documentation for release 1.6.3.4]"
+msgstr "link:v1.6.3.4/git.html[documentation for release 1.6.3.4]"
+
+#. type: delimited block =
+#: ../../git.txt:266
+msgid ""
+"release notes for link:RelNotes/1.6.3.4.txt[1.6.3.4], link:RelNotes/1.6.3.3."
+"txt[1.6.3.3], link:RelNotes/1.6.3.2.txt[1.6.3.2], link:RelNotes/1.6.3.1.txt"
+"[1.6.3.1], link:RelNotes/1.6.3.txt[1.6.3]."
+msgstr ""
+"release notes for link:RelNotes/1.6.3.4.txt[1.6.3.4], link:RelNotes/1.6.3.3."
+"txt[1.6.3.3], link:RelNotes/1.6.3.2.txt[1.6.3.2], link:RelNotes/1.6.3.1.txt"
+"[1.6.3.1], link:RelNotes/1.6.3.txt[1.6.3]."
+
+#. type: delimited block =
+#: ../../git.txt:274
+msgid ""
+"release notes for link:RelNotes/1.6.2.5.txt[1.6.2.5], link:RelNotes/1.6.2.4."
+"txt[1.6.2.4], link:RelNotes/1.6.2.3.txt[1.6.2.3], link:RelNotes/1.6.2.2.txt"
+"[1.6.2.2], link:RelNotes/1.6.2.1.txt[1.6.2.1], link:RelNotes/1.6.2.txt"
+"[1.6.2]."
+msgstr ""
+"release notes for link:RelNotes/1.6.2.5.txt[1.6.2.5], link:RelNotes/1.6.2.4."
+"txt[1.6.2.4], link:RelNotes/1.6.2.3.txt[1.6.2.3], link:RelNotes/1.6.2.2.txt"
+"[1.6.2.2], link:RelNotes/1.6.2.1.txt[1.6.2.1], link:RelNotes/1.6.2.txt"
+"[1.6.2]."
+
+#. type: delimited block =
+#: ../../git.txt:276
+msgid "link:v1.6.1.3/git.html[documentation for release 1.6.1.3]"
+msgstr "link:v1.6.1.3/git.html[documentation for release 1.6.1.3]"
+
+#. type: delimited block =
+#: ../../git.txt:282
+msgid ""
+"release notes for link:RelNotes/1.6.1.3.txt[1.6.1.3], link:RelNotes/1.6.1.2."
+"txt[1.6.1.2], link:RelNotes/1.6.1.1.txt[1.6.1.1], link:RelNotes/1.6.1.txt"
+"[1.6.1]."
+msgstr ""
+"release notes for link:RelNotes/1.6.1.3.txt[1.6.1.3], link:RelNotes/1.6.1.2."
+"txt[1.6.1.2], link:RelNotes/1.6.1.1.txt[1.6.1.1], link:RelNotes/1.6.1.txt"
+"[1.6.1]."
+
+#. type: delimited block =
+#: ../../git.txt:284
+msgid "link:v1.6.0.6/git.html[documentation for release 1.6.0.6]"
+msgstr "link:v1.6.0.6/git.html[documentation for release 1.6.0.6]"
+
+#. type: delimited block =
+#: ../../git.txt:293
+msgid ""
+"release notes for link:RelNotes/1.6.0.6.txt[1.6.0.6], link:RelNotes/1.6.0.5."
+"txt[1.6.0.5], link:RelNotes/1.6.0.4.txt[1.6.0.4], link:RelNotes/1.6.0.3.txt"
+"[1.6.0.3], link:RelNotes/1.6.0.2.txt[1.6.0.2], link:RelNotes/1.6.0.1.txt"
+"[1.6.0.1], link:RelNotes/1.6.0.txt[1.6.0]."
+msgstr ""
+"release notes for link:RelNotes/1.6.0.6.txt[1.6.0.6], link:RelNotes/1.6.0.5."
+"txt[1.6.0.5], link:RelNotes/1.6.0.4.txt[1.6.0.4], link:RelNotes/1.6.0.3.txt"
+"[1.6.0.3], link:RelNotes/1.6.0.2.txt[1.6.0.2], link:RelNotes/1.6.0.1.txt"
+"[1.6.0.1], link:RelNotes/1.6.0.txt[1.6.0]."
+
+#. type: delimited block =
+#: ../../git.txt:295
+msgid "link:v1.5.6.6/git.html[documentation for release 1.5.6.6]"
+msgstr "link:v1.5.6.6/git.html[documentation for release 1.5.6.6]"
+
+#. type: delimited block =
+#: ../../git.txt:304
+msgid ""
+"release notes for link:RelNotes/1.5.6.6.txt[1.5.6.6], link:RelNotes/1.5.6.5."
+"txt[1.5.6.5], link:RelNotes/1.5.6.4.txt[1.5.6.4], link:RelNotes/1.5.6.3.txt"
+"[1.5.6.3], link:RelNotes/1.5.6.2.txt[1.5.6.2], link:RelNotes/1.5.6.1.txt"
+"[1.5.6.1], link:RelNotes/1.5.6.txt[1.5.6]."
+msgstr ""
+"release notes for link:RelNotes/1.5.6.6.txt[1.5.6.6], link:RelNotes/1.5.6.5."
+"txt[1.5.6.5], link:RelNotes/1.5.6.4.txt[1.5.6.4], link:RelNotes/1.5.6.3.txt"
+"[1.5.6.3], link:RelNotes/1.5.6.2.txt[1.5.6.2], link:RelNotes/1.5.6.1.txt"
+"[1.5.6.1], link:RelNotes/1.5.6.txt[1.5.6]."
+
+#. type: delimited block =
+#: ../../git.txt:306
+msgid "link:v1.5.5.6/git.html[documentation for release 1.5.5.6]"
+msgstr "link:v1.5.5.6/git.html[documentation for release 1.5.5.6]"
+
+#. type: delimited block =
+#: ../../git.txt:315
+msgid ""
+"release notes for link:RelNotes/1.5.5.6.txt[1.5.5.6], link:RelNotes/1.5.5.5."
+"txt[1.5.5.5], link:RelNotes/1.5.5.4.txt[1.5.5.4], link:RelNotes/1.5.5.3.txt"
+"[1.5.5.3], link:RelNotes/1.5.5.2.txt[1.5.5.2], link:RelNotes/1.5.5.1.txt"
+"[1.5.5.1], link:RelNotes/1.5.5.txt[1.5.5]."
+msgstr ""
+"release notes for link:RelNotes/1.5.5.6.txt[1.5.5.6], link:RelNotes/1.5.5.5."
+"txt[1.5.5.5], link:RelNotes/1.5.5.4.txt[1.5.5.4], link:RelNotes/1.5.5.3.txt"
+"[1.5.5.3], link:RelNotes/1.5.5.2.txt[1.5.5.2], link:RelNotes/1.5.5.1.txt"
+"[1.5.5.1], link:RelNotes/1.5.5.txt[1.5.5]."
+
+#. type: delimited block =
+#: ../../git.txt:317
+msgid "link:v1.5.4.7/git.html[documentation for release 1.5.4.7]"
+msgstr "link:v1.5.4.7/git.html[documentation for release 1.5.4.7]"
+
+#. type: delimited block =
+#: ../../git.txt:327
+msgid ""
+"release notes for link:RelNotes/1.5.4.7.txt[1.5.4.7], link:RelNotes/1.5.4.6."
+"txt[1.5.4.6], link:RelNotes/1.5.4.5.txt[1.5.4.5], link:RelNotes/1.5.4.4.txt"
+"[1.5.4.4], link:RelNotes/1.5.4.3.txt[1.5.4.3], link:RelNotes/1.5.4.2.txt"
+"[1.5.4.2], link:RelNotes/1.5.4.1.txt[1.5.4.1], link:RelNotes/1.5.4.txt"
+"[1.5.4]."
+msgstr ""
+"release notes for link:RelNotes/1.5.4.7.txt[1.5.4.7], link:RelNotes/1.5.4.6."
+"txt[1.5.4.6], link:RelNotes/1.5.4.5.txt[1.5.4.5], link:RelNotes/1.5.4.4.txt"
+"[1.5.4.4], link:RelNotes/1.5.4.3.txt[1.5.4.3], link:RelNotes/1.5.4.2.txt"
+"[1.5.4.2], link:RelNotes/1.5.4.1.txt[1.5.4.1], link:RelNotes/1.5.4.txt"
+"[1.5.4]."
+
+#. type: delimited block =
+#: ../../git.txt:329
+msgid "link:v1.5.3.8/git.html[documentation for release 1.5.3.8]"
+msgstr "link:v1.5.3.8/git.html[documentation for release 1.5.3.8]"
+
+#. type: delimited block =
+#: ../../git.txt:340
+msgid ""
+"release notes for link:RelNotes/1.5.3.8.txt[1.5.3.8], link:RelNotes/1.5.3.7."
+"txt[1.5.3.7], link:RelNotes/1.5.3.6.txt[1.5.3.6], link:RelNotes/1.5.3.5.txt"
+"[1.5.3.5], link:RelNotes/1.5.3.4.txt[1.5.3.4], link:RelNotes/1.5.3.3.txt"
+"[1.5.3.3], link:RelNotes/1.5.3.2.txt[1.5.3.2], link:RelNotes/1.5.3.1.txt"
+"[1.5.3.1], link:RelNotes/1.5.3.txt[1.5.3]."
+msgstr ""
+"release notes for link:RelNotes/1.5.3.8.txt[1.5.3.8], link:RelNotes/1.5.3.7."
+"txt[1.5.3.7], link:RelNotes/1.5.3.6.txt[1.5.3.6], link:RelNotes/1.5.3.5.txt"
+"[1.5.3.5], link:RelNotes/1.5.3.4.txt[1.5.3.4], link:RelNotes/1.5.3.3.txt"
+"[1.5.3.3], link:RelNotes/1.5.3.2.txt[1.5.3.2], link:RelNotes/1.5.3.1.txt"
+"[1.5.3.1], link:RelNotes/1.5.3.txt[1.5.3]."
+
+#. type: delimited block =
+#: ../../git.txt:342
+msgid "link:v1.5.2.5/git.html[documentation for release 1.5.2.5]"
+msgstr "link:v1.5.2.5/git.html[documentation for release 1.5.2.5]"
+
+#. type: delimited block =
+#: ../../git.txt:350
+msgid ""
+"release notes for link:RelNotes/1.5.2.5.txt[1.5.2.5], link:RelNotes/1.5.2.4."
+"txt[1.5.2.4], link:RelNotes/1.5.2.3.txt[1.5.2.3], link:RelNotes/1.5.2.2.txt"
+"[1.5.2.2], link:RelNotes/1.5.2.1.txt[1.5.2.1], link:RelNotes/1.5.2.txt"
+"[1.5.2]."
+msgstr ""
+"release notes for link:RelNotes/1.5.2.5.txt[1.5.2.5], link:RelNotes/1.5.2.4."
+"txt[1.5.2.4], link:RelNotes/1.5.2.3.txt[1.5.2.3], link:RelNotes/1.5.2.2.txt"
+"[1.5.2.2], link:RelNotes/1.5.2.1.txt[1.5.2.1], link:RelNotes/1.5.2.txt"
+"[1.5.2]."
+
+#. type: delimited block =
+#: ../../git.txt:352
+msgid "link:v1.5.1.6/git.html[documentation for release 1.5.1.6]"
+msgstr "link:v1.5.1.6/git.html[documentation for release 1.5.1.6]"
+
+#. type: delimited block =
+#: ../../git.txt:361
+msgid ""
+"release notes for link:RelNotes/1.5.1.6.txt[1.5.1.6], link:RelNotes/1.5.1.5."
+"txt[1.5.1.5], link:RelNotes/1.5.1.4.txt[1.5.1.4], link:RelNotes/1.5.1.3.txt"
+"[1.5.1.3], link:RelNotes/1.5.1.2.txt[1.5.1.2], link:RelNotes/1.5.1.1.txt"
+"[1.5.1.1], link:RelNotes/1.5.1.txt[1.5.1]."
+msgstr ""
+"release notes for link:RelNotes/1.5.1.6.txt[1.5.1.6], link:RelNotes/1.5.1.5."
+"txt[1.5.1.5], link:RelNotes/1.5.1.4.txt[1.5.1.4], link:RelNotes/1.5.1.3.txt"
+"[1.5.1.3], link:RelNotes/1.5.1.2.txt[1.5.1.2], link:RelNotes/1.5.1.1.txt"
+"[1.5.1.1], link:RelNotes/1.5.1.txt[1.5.1]."
+
+#. type: delimited block =
+#: ../../git.txt:363
+msgid "link:v1.5.0.7/git.html[documentation for release 1.5.0.7]"
+msgstr "link:v1.5.0.7/git.html[documentation for release 1.5.0.7]"
+
+#. type: delimited block =
+#: ../../git.txt:372
+msgid ""
+"release notes for link:RelNotes/1.5.0.7.txt[1.5.0.7], link:RelNotes/1.5.0.6."
+"txt[1.5.0.6], link:RelNotes/1.5.0.5.txt[1.5.0.5], link:RelNotes/1.5.0.3.txt"
+"[1.5.0.3], link:RelNotes/1.5.0.2.txt[1.5.0.2], link:RelNotes/1.5.0.1.txt"
+"[1.5.0.1], link:RelNotes/1.5.0.txt[1.5.0]."
+msgstr ""
+"release notes for link:RelNotes/1.5.0.7.txt[1.5.0.7], link:RelNotes/1.5.0.6."
+"txt[1.5.0.6], link:RelNotes/1.5.0.5.txt[1.5.0.5], link:RelNotes/1.5.0.3.txt"
+"[1.5.0.3], link:RelNotes/1.5.0.2.txt[1.5.0.2], link:RelNotes/1.5.0.1.txt"
+"[1.5.0.1], link:RelNotes/1.5.0.txt[1.5.0]."
+
+#. type: delimited block =
+#: ../../git.txt:377
+msgid ""
+"documentation for release link:v1.4.4.4/git.html[1.4.4.4], link:v1.3.3/git."
+"html[1.3.3], link:v1.2.6/git.html[1.2.6], link:v1.0.13/git.html[1.0.13]."
+msgstr ""
+"documentation for release link:v1.4.4.4/git.html[1.4.4.4], link:v1.3.3/git."
+"html[1.3.3], link:v1.2.6/git.html[1.2.6], link:v1.0.13/git.html[1.0.13]."
+
+#. type: Title -
+#: ../../git.txt:383
+#, no-wrap
+msgid "OPTIONS"
+msgstr "オプション"
+
+#. type: Plain text
+#: ../../git.txt:386
+#, no-wrap
+msgid ""
+"--version::\n"
+"\tPrints the Git suite version that the 'git' program came from.\n"
+msgstr ""
+"--version::\n"
+"\t'git' プログラムのバージョンを表示します。\n"
+
+#. type: Plain text
+#: ../../git.txt:392
+#, no-wrap
+msgid ""
+"--help::\n"
+"\tPrints the synopsis and a list of the most commonly used\n"
+"\tcommands. If the option '--all' or '-a' is given then all\n"
+"\tavailable commands are printed. If a Git command is named this\n"
+"\toption will bring up the manual page for that command.\n"
+msgstr ""
+"--help::\n"
+"\tgitの書式とよく使われるコマンドの一覧を表示します。\n"
+"\tオプション '--all' または '-a' が指定されていた場合は利用可能な全ての\n"
+"\tコマンドを表示します。Gitのコマンドがこのオプションを付けて\n"
+"\t呼ばれた場合は、そのコマンドに対するマニュアルページを表示します。\n"
+
+#. type: Plain text
+#: ../../git.txt:397
+#, no-wrap
+msgid ""
+"Other options are available to control how the manual page is\n"
+"displayed. See linkgit:git-help[1] for more information,\n"
+"because `git --help ...` is converted internally into `git\n"
+"help ...`.\n"
+msgstr ""
+"マニュアルページの表示方法をコントロールするオプションは他にもあります。\n"
+"詳しい情報は linkgit:git-help[1] を参照してください。\n"
+"`git --help ...` は内部的には `git help ...` に置き換えられます。\n"
+
+#. type: Plain text
+#: ../../git.txt:403
+#, no-wrap
+msgid ""
+"-c <name>=<value>::\n"
+"\tPass a configuration parameter to the command. The value\n"
+"\tgiven will override values from configuration files.\n"
+"\tThe <name> is expected in the same format as listed by\n"
+"\t'git config' (subkeys separated by dots).\n"
+msgstr ""
+"-c <name>=<value>::\n"
+"\tコマンドに設定パラメータを渡します。<value> は設定ファイルの\n"
+"\t値を上書きします。\n"
+"\t<name> には 'git config' で指定するものと同じ名前を指定します。\n"
+"\t(サブキーはドット '.' 区切りです)\n"
+
+#. type: Plain text
+#: ../../git.txt:409
+#, no-wrap
+msgid ""
+"--exec-path[=<path>]::\n"
+"\tPath to wherever your core Git programs are installed.\n"
+"\tThis can also be controlled by setting the GIT_EXEC_PATH\n"
+"\tenvironment variable. If no path is given, 'git' will print\n"
+"\tthe current setting and then exit.\n"
+msgstr ""
+"--exec-path[=<path>]::\n"
+"\tgitの中核(core git)プログラムがインストールされているパスを指定します。\n"
+"\t環境変数 GIT_EXEC_PATH を設定することでも指定可能です。\n"
+"\tパスの指定がない場合、'git' は現在設定されているパスを表示して終了します。\n"
+
+#. type: Plain text
+#: ../../git.txt:413
+#, no-wrap
+msgid ""
+"--html-path::\n"
+"\tPrint the path, without trailing slash, where Git's HTML\n"
+"\tdocumentation is installed and exit.\n"
+msgstr ""
+"--html-path::\n"
+"\tgitのHTMLドキュメントがインストールされているパスを表示して終了します。\n"
+"\tパスの末尾にはスラッシュは含まれません。\n"
+
+#. type: Plain text
+#: ../../git.txt:417
+#, no-wrap
+msgid ""
+"--man-path::\n"
+"\tPrint the manpath (see `man(1)`) for the man pages for\n"
+"\tthis version of Git and exit.\n"
+msgstr ""
+"--man-path::\n"
+"\tこのバージョンのGitのmanページがあるmanのパス (`man(1)`参照)\n"
+"\tを表示して終了します。\n"
+
+#. type: Plain text
+#: ../../git.txt:421
+#, no-wrap
+msgid ""
+"--info-path::\n"
+"\tPrint the path where the Info files documenting this\n"
+"\tversion of Git are installed and exit.\n"
+msgstr ""
+"--info-path::\n"
+"\tこのバージョンのGitのInfoファイルがインストールされている\n"
+"\tパスを表示して終了します。\n"
+
+#. type: Plain text
+#: ../../git.txt:428
+#, no-wrap
+msgid ""
+"-p::\n"
+"--paginate::\n"
+"\tPipe all output into 'less' (or if set, $PAGER) if standard\n"
+"\toutput is a terminal.  This overrides the `pager.<cmd>`\n"
+"\tconfiguration options (see the \"Configuration Mechanism\" section\n"
+"\tbelow).\n"
+msgstr ""
+"-p::\n"
+"--paginate::\n"
+"\t標準出力がターミナルに設定されている場合に、全ての出力を 'less' \n"
+"\t(または設定されていれば $PAGER) にパイプ接続します。このオプションは\n"
+"\t`pager.<cmd>` の設定を上書きします\n"
+"\t(以下の \"Configuration Mechanism\" セクションを参照section)。\n"
+
+#. type: Plain text
+#: ../../git.txt:431
+#, no-wrap
+msgid ""
+"--no-pager::\n"
+"\tDo not pipe Git output into a pager.\n"
+msgstr ""
+"--no-pager::\n"
+"\tGit の出力をページャに渡さないようにします。\n"
+
+#. type: Plain text
+#: ../../git.txt:436
+#, no-wrap
+msgid ""
+"--git-dir=<path>::\n"
+"\tSet the path to the repository. This can also be controlled by\n"
+"\tsetting the GIT_DIR environment variable. It can be an absolute\n"
+"\tpath or relative path to current working directory.\n"
+msgstr ""
+"--git-dir=<path>::\n"
+"\tリポジトリのパスを設定します。この設定は環境変数 GIT_DIR でも指定可能です。\n"
+"\t絶対パス、または現在の作業ディレクトリからの相対パスが指定できます。\n"
+
+#. type: Plain text
+#: ../../git.txt:444
+#, no-wrap
+msgid ""
+"--work-tree=<path>::\n"
+"\tSet the path to the working tree. It can be an absolute path\n"
+"\tor a path relative to the current working directory.\n"
+"\tThis can also be controlled by setting the GIT_WORK_TREE\n"
+"\tenvironment variable and the core.worktree configuration\n"
+"\tvariable (see core.worktree in linkgit:git-config[1] for a\n"
+"\tmore detailed discussion).\n"
+msgstr ""
+"--work-tree=<path>::\n"
+"\t作業ツリーのパスを設定します。絶対パス、または現在の作業ディレクトリから\n"
+"\tの相対パスが指定できます。\n"
+"\tこの設定は環境変数 GIT_WORK_TREE またはconfig変数 core.worktree でも\n"
+"\t指定可能です\n"
+"\t(詳細は linkgit:git-config[1] の core.worktree を参照)。\n"
+
+#. type: Plain text
+#: ../../git.txt:449
+#, no-wrap
+msgid ""
+"--namespace=<path>::\n"
+"\tSet the Git namespace.  See linkgit:gitnamespaces[7] for more\n"
+"\tdetails.  Equivalent to setting the `GIT_NAMESPACE` environment\n"
+"\tvariable.\n"
+msgstr ""
+"--namespace=<path>::\n"
+"\tGit の名前空間を設定します。詳細は linkgit:gitnamespaces[7] を参照。\n"
+"\t環境変数 `GIT_NAMESPACE`を指定することでも設定可能です。\n"
+
+#. type: Plain text
+#: ../../git.txt:454
+#, no-wrap
+msgid ""
+"--bare::\n"
+"\tTreat the repository as a bare repository.  If GIT_DIR\n"
+"\tenvironment is not set, it is set to the current working\n"
+"\tdirectory.\n"
+msgstr ""
+"--bare::\n"
+"\tリポジトリを裸の(bare)リポジトリとして扱います。\n"
+"\t環境変数 GIT_DIR が設定されていない場合、現在の作業ディレクトリが\n"
+"\tが設定されます。\n"
+
+#. type: Plain text
+#: ../../git.txt:458
+#, no-wrap
+msgid ""
+"--no-replace-objects::\n"
+"\tDo not use replacement refs to replace Git objects. See\n"
+"\tlinkgit:git-replace[1] for more information.\n"
+msgstr ""
+"--no-replace-objects::\n"
+"\tGit オブジェクトが置換されないようにします。\n"
+"\t詳細は linkgit:git-replace[1] を参照。\n"
+
+#. type: Plain text
+#: ../../git.txt:463
+#, no-wrap
+msgid ""
+"--literal-pathspecs::\n"
+"\tTreat pathspecs literally, rather than as glob patterns. This is\n"
+"\tequivalent to setting the `GIT_LITERAL_PATHSPECS` environment\n"
+"\tvariable to `1`.\n"
+msgstr ""
+"--literal-pathspecs::\n"
+"\tパスの指定を文字通りに扱い、ワイルドカードのマッチング(glob)を行いません。\n"
+"\t環境変数 `GIT_LITERAL_PATHSPECS` を `1` に設定することでも指定可能です。\n"
+
+#. type: Title -
+#: ../../git.txt:466
+#, no-wrap
+msgid "GIT COMMANDS"
+msgstr "GITのコマンド"
+
+#. type: Plain text
+#: ../../git.txt:470
+msgid ""
+"We divide Git into high level (\"porcelain\") commands and low level "
+"(\"plumbing\") commands."
+msgstr ""
+"git は高レベルなコマンド(\"磁器\"(porcelain))と下位レベルのコマンド(\"配管"
+"\"(plumbing))に分けられます。"
+
+#. type: Title -
+#: ../../git.txt:472
+#, no-wrap
+msgid "High-level commands (porcelain)"
+msgstr "高レベルなコマンド(\"磁器\"(porcelain))"
+
+#. type: Plain text
+#: ../../git.txt:476
+msgid ""
+"We separate the porcelain commands into the main commands and some ancillary "
+"user utilities."
+msgstr ""
+"磁器(porcelain)のコマンドは主要コマンドとユーザ補助コマンドに分類されます。"
+
+#. type: Title ~
+#: ../../git.txt:478
+#, no-wrap
+msgid "Main porcelain commands"
+msgstr "主要な磁器(porcelain)コマンド"
+
+#. type: Title ~
+#: ../../git.txt:483
+#, no-wrap
+msgid "Ancillary Commands"
+msgstr "補助コマンド"
+
+#. type: Plain text
+#: ../../git.txt:485
+msgid "Manipulators:"
+msgstr "操縦者(Manipulators):"
+
+#. type: Plain text
+#: ../../git.txt:489
+msgid "Interrogators:"
+msgstr "質問者(Interrogators):"
+
+#. type: Title ~
+#: ../../git.txt:494
+#, no-wrap
+msgid "Interacting with Others"
+msgstr "他者との相互作用"
+
+#. type: Plain text
+#: ../../git.txt:498
+msgid ""
+"These commands are to interact with foreign SCM and with other people via "
+"patch over e-mail."
+msgstr ""
+"これらのコマンドは外部のSCMや他者からのe-mailパッチと相互作用することができま"
+"す。"
+
+#. type: Title -
+#: ../../git.txt:503
+#, no-wrap
+msgid "Low-level commands (plumbing)"
+msgstr "下位レベルのコマンド (\"配管\"(plumbing))"
+
+#. type: Plain text
+#: ../../git.txt:510
+msgid ""
+"Although Git includes its own porcelain layer, its low-level commands are "
+"sufficient to support development of alternative porcelains.  Developers of "
+"such porcelains might start by reading about linkgit:git-update-index[1] and "
+"linkgit:git-read-tree[1]."
+msgstr ""
+"Git には磁器(porcelain)レイヤのコマンドがありますが、 その下位レベルコマンド"
+"は代替の磁器を開発する為に役立ちます。 磁器の開発者は linkgit:git-update-"
+"index[1] とlinkgit:git-read-tree[1] から読み始めると良いでしょう。"
+
+#. type: Plain text
+#: ../../git.txt:517
+msgid ""
+"The interface (input, output, set of options and the semantics)  to these "
+"low-level commands are meant to be a lot more stable than Porcelain level "
+"commands, because these commands are primarily for scripted use.  The "
+"interface to Porcelain commands on the other hand are subject to change in "
+"order to improve the end user experience."
+msgstr ""
+"これら下位レベルコマンドのインターフェース(入力、出力、オプションとその意味)"
+"は、これらコマンドがスクリプト化して使用される為、磁器レベルのコマンドよりも"
+"ずっと安定性が求められます。一方、磁器コマンドのインターフェースはエンドユー"
+"ザの経験に基づく改良の為、変更されていく必要があります。"
+
+#. type: Plain text
+#: ../../git.txt:523
+msgid ""
+"The following description divides the low-level commands into commands that "
+"manipulate objects (in the repository, index, and working tree), commands "
+"that interrogate and compare objects, and commands that move objects and "
+"references between repositories."
+msgstr ""
+"以下の記述では下位レベルコマンドを以下の３つに分割します。1.リポジトリ、イン"
+"デックス、作業ツリー内のオブジェクトを操作するコマンド。2.質問し、オブジェク"
+"トを比較するコマンド。3.リポジトリ間でオブジェクトと参照を移動するコマンド。"
+
+#. type: Title ~
+#: ../../git.txt:526
+#, no-wrap
+msgid "Manipulation commands"
+msgstr "操作コマンド"
+
+#. type: Title ~
+#: ../../git.txt:532
+#, no-wrap
+msgid "Interrogation commands"
+msgstr "質問コマンド"
+
+#. type: Plain text
+#: ../../git.txt:538
+msgid ""
+"In general, the interrogate commands do not touch the files in the working "
+"tree."
+msgstr ""
+"一般に、質問コマンドは作業ツリー内のファイルを変更することはありません。"
+
+#. type: Title ~
+#: ../../git.txt:541
+#, no-wrap
+msgid "Synching repositories"
+msgstr "リポジトリの同期"
+
+#. type: Plain text
+#: ../../git.txt:547
+msgid ""
+"The following are helper commands used by the above; end users typically do "
+"not use them directly."
+msgstr ""
+"以下は上記コマンドにより使用されるヘルパープログラムです；エンドユーザは通常"
+"これらを直接使用することはありません。"
+
+#. type: Title ~
+#: ../../git.txt:552
+#, no-wrap
+msgid "Internal helper commands"
+msgstr "内部ヘルパーコマンド"
+
+#. type: Plain text
+#: ../../git.txt:556
+msgid ""
+"These are internal helper commands used by other commands; end users "
+"typically do not use them directly."
+msgstr ""
+"これらは他のコマンドにより使用される内部ヘルパーコマンドです；エンドユーザは"
+"通常これらを直接使用することはありません。"
+
+#. type: Title -
+#: ../../git.txt:561
+#, no-wrap
+msgid "Configuration Mechanism"
+msgstr "設定管理の仕組み"
+
+#. type: Plain text
+#: ../../git.txt:566
+msgid ""
+"Git uses a simple text format to store customizations that are per "
+"repository and are per user.  Such a configuration file may look like this:"
+msgstr ""
+"Gitはリポジトリ毎およびユーザ毎のカスタマイズ設定をシンプルなテキスト形式で管"
+"理します。 設定ファイルは以下のような形式です："
+
+#. type: delimited block -
+#: ../../git.txt:571
+#, no-wrap
+msgid ""
+"#\n"
+"# A '#' or ';' character indicates a comment.\n"
+"#\n"
+msgstr ""
+"#\n"
+"# '#' または ';' の文字はコメントを表します。\n"
+"#\n"
+
+#. type: delimited block -
+#: ../../git.txt:576
+#, no-wrap
+msgid ""
+"; core variables\n"
+"[core]\n"
+"\t; Don't trust file modes\n"
+"\tfilemode = false\n"
+msgstr ""
+"; コア部分の変数\n"
+"[core]\n"
+"\t; ファイルのモードを信用しない\n"
+"\tfilemode = false\n"
+
+#. type: delimited block -
+#: ../../git.txt:581
+#, no-wrap
+msgid ""
+"; user identity\n"
+"[user]\n"
+"\tname = \"Junio C Hamano\"\n"
+"\temail = \"gitster@pobox.com\"\n"
+msgstr ""
+"; ユーザ情報\n"
+"[user]\n"
+"\tname = \"Junio C Hamano\"\n"
+"\temail = \"gitster@pobox.com\"\n"
+
+#. type: Plain text
+#: ../../git.txt:587
+msgid ""
+"Various commands read from the configuration file and adjust their operation "
+"accordingly.  See linkgit:git-config[1] for a list and more details about "
+"the configuration mechanism."
+msgstr ""
+"様々なコマンドが設定ファイルを読み込んで、コマンドの動作を調整します。 利用可"
+"能な設定の一覧とその詳細は linkgit:git-config[1] を参照してください。"
+
+#. type: Title -
+#: ../../git.txt:590
+#, no-wrap
+msgid "Identifier Terminology"
+msgstr "識別用語"
+
+#. type: Plain text
+#: ../../git.txt:593
+#, no-wrap
+msgid ""
+"<object>::\n"
+"\tIndicates the object name for any type of object.\n"
+msgstr ""
+"<object>::\n"
+"\t任意のオブジェクト型に対するオブジェクト名を指します。\n"
+
+#. type: Plain text
+#: ../../git.txt:596
+#, no-wrap
+msgid ""
+"<blob>::\n"
+"\tIndicates a blob object name.\n"
+msgstr ""
+"<blob>::\n"
+"\tblob オブジェクトの名前を指します。\n"
+
+#. type: Plain text
+#: ../../git.txt:599
+#, no-wrap
+msgid ""
+"<tree>::\n"
+"\tIndicates a tree object name.\n"
+msgstr ""
+"<tree>::\n"
+"\ttreeオブジェクトの名前を指します。\n"
+
+#. type: Plain text
+#: ../../git.txt:602
+#, no-wrap
+msgid ""
+"<commit>::\n"
+"\tIndicates a commit object name.\n"
+msgstr ""
+"<commit>::\n"
+"\tcommitオブジェクトの名前を指し示します。\n"
+
+#. type: Plain text
+#: ../../git.txt:608
+#, no-wrap
+msgid ""
+"<tree-ish>::\n"
+"\tIndicates a tree, commit or tag object name.  A\n"
+"\tcommand that takes a <tree-ish> argument ultimately wants to\n"
+"\toperate on a <tree> object but automatically dereferences\n"
+"\t<commit> and <tag> objects that point at a <tree>.\n"
+msgstr ""
+"<tree-ish>::\n"
+"\ttree, commit または tag オブジェクトの名前を指します。\n"
+"\t<tree-ish> の引数を取るコマンドは、最終的には <tree> オブジェクト\n"
+"\tに対して作用しますが、<tree> を指し示す <commit> と <tag>\n"
+"\tオブジェクトを引数に指定することも可能です。\n"
+
+#. type: Plain text
+#: ../../git.txt:614
+#, no-wrap
+msgid ""
+"<commit-ish>::\n"
+"\tIndicates a commit or tag object name.  A\n"
+"\tcommand that takes a <commit-ish> argument ultimately wants to\n"
+"\toperate on a <commit> object but automatically dereferences\n"
+"\t<tag> objects that point at a <commit>.\n"
+msgstr ""
+"<commit-ish>::\n"
+"\tコミットまたはタグオブジェクトの名前を指します。\n"
+"\t<commit-ish> の引数を取るコマンドは、最終的には <commit>\n"
+"\tオブジェクトに対して作用しますが、<commit> を指し示す <tag>\n"
+"\tオブジェクトを引数に指定することも可能です。\n"
+
+#. type: Plain text
+#: ../../git.txt:618
+#, no-wrap
+msgid ""
+"<type>::\n"
+"\tIndicates that an object type is required.\n"
+"\tCurrently one of: `blob`, `tree`, `commit`, or `tag`.\n"
+msgstr ""
+"<type>::\n"
+"\tオブジェクトタイプが必要であることを示します。\n"
+"\t一般に `blob`, `tree`, `commit`, または `tag` のどれかです。\n"
+
+#. type: Plain text
+#: ../../git.txt:622
+#, no-wrap
+msgid ""
+"<file>::\n"
+"\tIndicates a filename - almost always relative to the\n"
+"\troot of the tree structure `GIT_INDEX_FILE` describes.\n"
+msgstr ""
+"<file>::\n"
+"\tファイル名を指します。- 通常は `GIT_INDEX_FILE` が表す\n"
+"\tツリー構造のルート位置からの相対パスです。\n"
+
+#. type: Title -
+#: ../../git.txt:624
+#, no-wrap
+msgid "Symbolic Identifiers"
+msgstr "シンボリックな識別子"
+
+#. type: Plain text
+#: ../../git.txt:627
+msgid ""
+"Any Git command accepting any <object> can also use the following symbolic "
+"notation:"
+msgstr ""
+"任意の <object> を引数に持つすべての git コマンドにて 以下のシンボリックな表"
+"記を使用できます。"
+
+#. type: Labeled list
+#: ../../git.txt:628
+#, no-wrap
+msgid "HEAD"
+msgstr "HEAD"
+
+#. type: Plain text
+#: ../../git.txt:630
+msgid "indicates the head of the current branch."
+msgstr "現在のブランチの head を指します。"
+
+#. type: Plain text
+#: ../../git.txt:634
+#, no-wrap
+msgid ""
+"<tag>::\n"
+"\ta valid tag 'name'\n"
+"\t(i.e. a `refs/tags/<tag>` reference).\n"
+msgstr ""
+"<tag>::\n"
+"\t有効なタグの'名前'\n"
+"\t(つまり `refs/tags/<tag>` の参照)。\n"
+
+#. type: Plain text
+#: ../../git.txt:638
+#, no-wrap
+msgid ""
+"<head>::\n"
+"\ta valid head 'name'\n"
+"\t(i.e. a `refs/heads/<head>` reference).\n"
+msgstr ""
+"<head>::\n"
+"\t有効な head (ブランチ)の'名前'。\n"
+"\t(つまり `refs/heads/<head>` の参照)。\n"
+
+#. type: Plain text
+#: ../../git.txt:641
+msgid ""
+"For a more complete list of ways to spell object names, see \"SPECIFYING "
+"REVISIONS\" section in linkgit:gitrevisions[7]."
+msgstr ""
+"オブジェクトの名前を表す方法のより完全な一覧は linkgit:gitrevisions[7] の\"リ"
+"ビジョンの指定方法\" の節を参照してください。"
+
+#. type: Title -
+#: ../../git.txt:644
+#, no-wrap
+msgid "File/Directory Structure"
+msgstr "ファイル/ディレクトリ構造"
+
+#. type: Plain text
+#: ../../git.txt:647
+msgid "Please see the linkgit:gitrepository-layout[5] document."
+msgstr "linkgit:gitrepository-layout[5] のドキュメントを参照してください。"
+
+#. type: Plain text
+#: ../../git.txt:649
+msgid "Read linkgit:githooks[5] for more details about each hook."
+msgstr "各フックの詳細は linkgit:githooks[5] を参照してください。"
+
+#. type: Plain text
+#: ../../git.txt:652
+msgid ""
+"Higher level SCMs may provide and manage additional information in the `"
+"$GIT_DIR`."
+msgstr ""
+"より高レベルなSCMにより `$GIT_DIR` 内で追加情報が提供・管理される場合もありま"
+"す。 "
+
+#. type: Title -
+#: ../../git.txt:655
+#, no-wrap
+msgid "Terminology"
+msgstr "用語"
+
+#. type: Plain text
+#: ../../git.txt:657
+msgid "Please see linkgit:gitglossary[7]."
+msgstr "linkgit:gitglossary[7] のドキュメントを参照してください。"
+
+#. type: Title -
+#: ../../git.txt:660
+#, no-wrap
+msgid "Environment Variables"
+msgstr "環境変数"
+
+#. type: Plain text
+#: ../../git.txt:662
+msgid "Various Git commands use the following environment variables:"
+msgstr "様々な git コマンドが以下の環境変数を参照しています。"
+
+#. type: Title ~
+#: ../../git.txt:664
+#, no-wrap
+msgid "The Git Repository"
+msgstr "Gitリポジトリ"
+
+#. type: Plain text
+#: ../../git.txt:668
+msgid ""
+"These environment variables apply to 'all' core Git commands. Nb: it is "
+"worth noting that they may be used/overridden by SCMS sitting above Git so "
+"take care if using Cogito etc."
+msgstr ""
+"これらの環境変数は '全ての' 中核となる git コマンドに適用されます。 注意: こ"
+"れらの値をgit の上位に位置する SCMS によって利用/上書きすることは何の価値もな"
+"いので、Cogito などを利用する場合は注意してください。"
+
+#. type: Labeled list
+#: ../../git.txt:669
+#, no-wrap
+msgid "'GIT_INDEX_FILE'"
+msgstr "'GIT_INDEX_FILE'"
+
+#. type: Plain text
+#: ../../git.txt:673
+msgid ""
+"This environment allows the specification of an alternate index file. If not "
+"specified, the default of `$GIT_DIR/index` is used."
+msgstr ""
+"この環境変数により使用するインデックスファイルを指定できます。指定されていな"
+"い場合、デフォルトでは `$GIT_DIR/index` が使用されます。"
+
+#. type: Labeled list
+#: ../../git.txt:674
+#, no-wrap
+msgid "'GIT_OBJECT_DIRECTORY'"
+msgstr "'GIT_OBJECT_DIRECTORY'"
+
+#. type: Plain text
+#: ../../git.txt:679
+msgid ""
+"If the object storage directory is specified via this environment variable "
+"then the sha1 directories are created underneath - otherwise the default `"
+"$GIT_DIR/objects` directory is used."
+msgstr ""
+"オブジェクトの格納ディレクトリがこの環境変数により指定されていた場合、sha1 "
+"ディレクトリはこの下に作成されます。- 定義されていない場合、デフォルトでは `"
+"$GIT_DIR/objects` ディレクトリが使用されます。"
+
+#. type: Labeled list
+#: ../../git.txt:680
+#, no-wrap
+msgid "'GIT_ALTERNATE_OBJECT_DIRECTORIES'"
+msgstr "'GIT_ALTERNATE_OBJECT_DIRECTORIES'"
+
+#. type: Plain text
+#: ../../git.txt:686
+msgid ""
+"Due to the immutable nature of Git objects, old objects can be archived into "
+"shared, read-only directories. This variable specifies a \":\" separated (on "
+"Windows \";\" separated) list of Git object directories which can be used to "
+"search for Git objects. New objects will not be written to these directories."
+msgstr ""
+"Git オブジェクトの不変性により、古いオブジェクトは共有化された読み取り専用の"
+"ディレクトリに保管することができます。この変数に \":\" 区切り(Windowsでは\";"
+"\")でGit オブジェクトのディレクトリを指定すると、Git オブジェクトの検索場所と"
+"して利用できます。 新しいオブジェクトはこれらのディレクトリには書き込まれませ"
+"ん。"
+
+#. type: Labeled list
+#: ../../git.txt:687
+#, no-wrap
+msgid "'GIT_DIR'"
+msgstr "'GIT_DIR'"
+
+#. type: Plain text
+#: ../../git.txt:692
+msgid ""
+"If the 'GIT_DIR' environment variable is set then it specifies a path to use "
+"instead of the default `.git` for the base of the repository.  The '--git-"
+"dir' command-line option also sets this value."
+msgstr ""
+"環境変数 'GIT_DIR' が設定されていた場合、デフォルトの `.git` の代わりにその値"
+"がリポジトリへのパスとして使用されます。 コマンドラインオプション '--git-"
+"dir' でも指定可能です。"
+
+#. type: Labeled list
+#: ../../git.txt:693
+#, no-wrap
+msgid "'GIT_WORK_TREE'"
+msgstr "'GIT_WORK_TREE'"
+
+#. type: Plain text
+#: ../../git.txt:697
+msgid ""
+"Set the path to the root of the working tree.  This can also be controlled "
+"by the '--work-tree' command line option and the core.worktree configuration "
+"variable."
+msgstr ""
+"作業ツリーのルートのパスを指定します。 コマンドラインオプション '--work-"
+"tree' または構成変数 core.worktree でも 指定可能です。"
+
+#. type: Labeled list
+#: ../../git.txt:698
+#, no-wrap
+msgid "'GIT_NAMESPACE'"
+msgstr "'GIT_NAMESPACE'"
+
+#. type: Plain text
+#: ../../git.txt:701
+msgid ""
+"Set the Git namespace; see linkgit:gitnamespaces[7] for details.  The '--"
+"namespace' command-line option also sets this value."
+msgstr ""
+"Gitの名前空間を指定します；詳細は linkgit:gitnamespaces[7] を参照してくださ"
+"い。 コマンドラインオプション  '--namespace' でも指定可能です。"
+
+#. type: Labeled list
+#: ../../git.txt:702
+#, no-wrap
+msgid "'GIT_CEILING_DIRECTORIES'"
+msgstr "'GIT_CEILING_DIRECTORIES'"
+
+#. type: Plain text
+#: ../../git.txt:716
+msgid ""
+"This should be a colon-separated list of absolute paths.  If set, it is a "
+"list of directories that Git should not chdir up into while looking for a "
+"repository directory (useful for excluding slow-loading network "
+"directories).  It will not exclude the current working directory or a "
+"GIT_DIR set on the command line or in the environment.  Normally, Git has to "
+"read the entries in this list and resolve any symlink that might be present "
+"in order to compare them with the current directory.  However, if even this "
+"access is slow, you can add an empty entry to the list to tell Git that the "
+"subsequent entries are not symlinks and needn't be resolved; e.g., "
+"'GIT_CEILING_DIRECTORIES=/maybe/symlink::/very/slow/non/symlink'."
+msgstr ""
+"コロンで区切られた絶対パスのリストです。この変数を設定すると、gitは設定した"
+"ディレクトリよりも上のディレクトリからレポジトリディレクトリを探しません(読み"
+"込みの遅いネットワークディレクトリを除外する時に便利です)。 ただし、カレント"
+"作業ディレクトリまたはコマンドラインまたは環境変数で指定された GIT_DIR は除外"
+"されます。 通常、Gitはカレントディレクトリと比較をするためにこのリストエント"
+"リを読み込み、 存在するシンボリックリンクを解決させなければなりません。しか"
+"し、このアクセスが遅い場合は このリストに空のエントリを追加し、その後のエント"
+"リがシンボリックリンクではなく、解決させる 必要はないとGitに伝えることができ"
+"ます； 例えば 'GIT_CEILING_DIRECTORIES=/maybe/symlink::/very/slow/non/"
+"symlink' のようにして。 "
+
+#. type: Labeled list
+#: ../../git.txt:717
+#, no-wrap
+msgid "'GIT_DISCOVERY_ACROSS_FILESYSTEM'"
+msgstr "'GIT_DISCOVERY_ACROSS_FILESYSTEM'"
+
+#. type: Plain text
+#: ../../git.txt:726
+msgid ""
+"When run in a directory that does not have \".git\" repository directory, "
+"Git tries to find such a directory in the parent directories to find the top "
+"of the working tree, but by default it does not cross filesystem "
+"boundaries.  This environment variable can be set to true to tell Git not to "
+"stop at filesystem boundaries.  Like 'GIT_CEILING_DIRECTORIES', this will "
+"not affect an explicit repository directory set via 'GIT_DIR' or on the "
+"command line."
+msgstr ""
+"リポジトリディレクトリ \".git\" の存在しない場所で Git を実行すると Gitは 親"
+"ディレクトリをたどって作業ツリーのトップを探しますが、 デフォルトではファイル"
+"システムの境界は越えません。 この環境変数を true に設定すると、Gitはファイル"
+"システムの境界を越えて 作業ツリーのトップを探すようになります。 "
+"'GIT_CEILING_DIRECTORIES' のように、'GIT_DIR' またはコマンドラインで 明示的に"
+"リポジトリディレクトリを指定した場合は、この環境変数の影響は受けません。 "
+
+#. type: Title ~
+#: ../../git.txt:728
+#, no-wrap
+msgid "Git Commits"
+msgstr "Gitコミット"
+
+#. type: Labeled list
+#: ../../git.txt:729
+#, no-wrap
+msgid "'GIT_AUTHOR_NAME'"
+msgstr "'GIT_AUTHOR_NAME'"
+
+#. type: Labeled list
+#: ../../git.txt:730
+#, no-wrap
+msgid "'GIT_AUTHOR_EMAIL'"
+msgstr "'GIT_AUTHOR_EMAIL'"
+
+#. type: Labeled list
+#: ../../git.txt:731
+#, no-wrap
+msgid "'GIT_AUTHOR_DATE'"
+msgstr "'GIT_AUTHOR_DATE'"
+
+#. type: Labeled list
+#: ../../git.txt:732
+#, no-wrap
+msgid "'GIT_COMMITTER_NAME'"
+msgstr "'GIT_COMMITTER_NAME'"
+
+#. type: Labeled list
+#: ../../git.txt:733
+#, no-wrap
+msgid "'GIT_COMMITTER_EMAIL'"
+msgstr "'GIT_COMMITTER_EMAIL'"
+
+#. type: Labeled list
+#: ../../git.txt:734
+#, no-wrap
+msgid "'GIT_COMMITTER_DATE'"
+msgstr "'GIT_COMMITTER_DATE'"
+
+#. type: Labeled list
+#: ../../git.txt:735
+#, no-wrap
+msgid "'EMAIL'"
+msgstr "'EMAIL'"
+
+#. type: Plain text
+#: ../../git.txt:737
+msgid "see linkgit:git-commit-tree[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Title ~
+#: ../../git.txt:739
+#, no-wrap
+msgid "Git Diffs"
+msgstr "Git Diff(差分表示)"
+
+#. type: Labeled list
+#: ../../git.txt:740
+#, no-wrap
+msgid "'GIT_DIFF_OPTS'"
+msgstr "'GIT_DIFF_OPTS'"
+
+#. type: Plain text
+#: ../../git.txt:745
+msgid ""
+"Only valid setting is \"--unified=??\" or \"-u??\" to set the number of "
+"context lines shown when a unified diff is created.  This takes precedence "
+"over any \"-U\" or \"--unified\" option value passed on the Git diff command "
+"line."
+msgstr ""
+"有効な設定は \"--unified=??\" または \"-u??\" で、\"??\" にはunified diff の"
+"コンテキストの 行数を指定します。これは git diff コマンドの \"-U\" または "
+"\"--unified\" オプションの指定よりも 優先されます。"
+
+#. type: Labeled list
+#: ../../git.txt:746
+#, no-wrap
+msgid "'GIT_EXTERNAL_DIFF'"
+msgstr "'GIT_EXTERNAL_DIFF'"
+
+#. type: Plain text
+#: ../../git.txt:750
+msgid ""
+"When the environment variable 'GIT_EXTERNAL_DIFF' is set, the program named "
+"by it is called, instead of the diff invocation described above.  For a path "
+"that is added, removed, or modified,"
+msgstr ""
+"環境変数 'GIT_EXTERNAL_DIFF' が設定されている場合、diff が実行される代わり"
+"に、ここで指定されているプログラムが呼び出されます。追加、削除、変更されたパ"
+"スに対して"
+
+#. type: Plain text
+#: ../../git.txt:751
+msgid "'GIT_EXTERNAL_DIFF' is called with 7 parameters:"
+msgstr "'GIT_EXTERNAL_DIFF' が以下の７つのパラメータとともに呼び出されます："
+
+#. type: Plain text
+#: ../../git.txt:753
+msgid "path old-file old-hex old-mode new-file new-hex new-mode"
+msgstr ""
+"パス 古いファイル 古いhex 古いモード 新しいファイル 新しいhex 新しいモード"
+
+#. type: Plain text
+#: ../../git.txt:755
+msgid "where:"
+msgstr "各パラメータの説明："
+
+#. type: Labeled list
+#: ../../git.txt:756
+#, no-wrap
+msgid "<old|new>-file"
+msgstr "<古い|新しい>ファイル"
+
+#. type: Plain text
+#: ../../git.txt:757
+msgid "are files GIT_EXTERNAL_DIFF can use to read the"
+msgstr "GIT_EXTERNAL_DIFF がファイルの中身を読み込む為に使用する"
+
+#. type: Plain text
+#: ../../git.txt:758
+msgid "contents of <old|new>,"
+msgstr "新旧のファイル名"
+
+#. type: Labeled list
+#: ../../git.txt:758
+#, no-wrap
+msgid "<old|new>-hex"
+msgstr "<古い|新しい>hex"
+
+#. type: Plain text
+#: ../../git.txt:759
+msgid "are the 40-hexdigit SHA-1 hashes,"
+msgstr "40桁16進の SHA1 ハッシュ値"
+
+#. type: Labeled list
+#: ../../git.txt:759
+#, no-wrap
+msgid "<old|new>-mode"
+msgstr "<古い|新しい>モード"
+
+#. type: Plain text
+#: ../../git.txt:760
+msgid "are the octal representation of the file modes."
+msgstr "ファイルモードの8進数表現"
+
+#. type: Plain text
+#: ../../git.txt:766
+msgid ""
+"The file parameters can point at the user's working file (e.g. `new-file` in "
+"\"git-diff-files\"), `/dev/null` (e.g. `old-file` when a new file is added), "
+"or a temporary file (e.g. `old-file` in the index).  'GIT_EXTERNAL_DIFF' "
+"should not worry about unlinking the temporary file --- it is removed when "
+"'GIT_EXTERNAL_DIFF' exits."
+msgstr ""
+"ファイルパラメータはユーザの作業ファイル(例えば、\"git-diff-files\"内の `新し"
+"いファイル`)、`/dev/null` (例えば、新しいファイルが追加された時の `古いファイ"
+"ル`)、または一時ファイル(例えば、索引内の `古いファイル`)を指し示すこともあり"
+"ます。'GIT_EXTERNAL_DIFF' は一時ファイルを削除することに気を使う必要はありま"
+"せん。--- 'GIT_EXTERNAL_DIFF' が終了すると一時ファイルは削除されます。"
+
+#. type: Plain text
+#: ../../git.txt:769
+msgid ""
+"For a path that is unmerged, 'GIT_EXTERNAL_DIFF' is called with 1 parameter, "
+"<path>."
+msgstr ""
+"マージされなかったパスに対しては 'GIT_EXTERNAL_DIFF' は1つのパラメータ "
+"<path> とともに呼び出されます。"
+
+#. type: Title ~
+#: ../../git.txt:771
+#, no-wrap
+msgid "other"
+msgstr "その他"
+
+#. type: Labeled list
+#: ../../git.txt:772
+#, no-wrap
+msgid "'GIT_MERGE_VERBOSITY'"
+msgstr "'GIT_MERGE_VERBOSITY'"
+
+#. type: Plain text
+#: ../../git.txt:776
+msgid ""
+"A number controlling the amount of output shown by the recursive merge "
+"strategy.  Overrides merge.verbosity.  See linkgit:git-merge[1]"
+msgstr ""
+"再帰的なマージ戦略により表示される出力の合計値を管理するための数値です。"
+"merge.verbosity を上書きします。linkgit:git-merge[1] 参照。"
+
+#. type: Labeled list
+#: ../../git.txt:777
+#, no-wrap
+msgid "'GIT_PAGER'"
+msgstr "'GIT_PAGER'"
+
+#. type: Plain text
+#: ../../git.txt:782
+msgid ""
+"This environment variable overrides `$PAGER`. If it is set to an empty "
+"string or to the value \"cat\", Git will not launch a pager.  See also the "
+"`core.pager` option in linkgit:git-config[1]."
+msgstr ""
+"この環境変数は `$PAGER` を上書きします。これを空文字または \"cat\" に指定する"
+"と、git はページャを起動しません。`core.pager` オプションについてはlinkgit:"
+"git-config[1] 参照して下さい。"
+
+#. type: Labeled list
+#: ../../git.txt:783
+#, no-wrap
+msgid "'GIT_EDITOR'"
+msgstr "'GIT_EDITOR'"
+
+#. type: Plain text
+#: ../../git.txt:788
+msgid ""
+"This environment variable overrides `$EDITOR` and `$VISUAL`.  It is used by "
+"several Git commands when, on interactive mode, an editor is to be launched. "
+"See also linkgit:git-var[1] and the `core.editor` option in linkgit:git-"
+"config[1]."
+msgstr ""
+"この環境変数は `$EDITOR` と `$VISUAL` を上書きします。 この値はGitの様々なコ"
+"マンドでインタラクティブモードやエディターを起動するときに使われます。 "
+"linkgit:git-var[1] および linkgit:git-config[1] の`core.editor`オプションを参"
+"照。"
+
+#. type: Labeled list
+#: ../../git.txt:789
+#, no-wrap
+msgid "'GIT_SSH'"
+msgstr "'GIT_SSH'"
+
+#. type: Plain text
+#: ../../git.txt:799
+msgid ""
+"If this environment variable is set then 'git fetch' and 'git push' will use "
+"this command instead of 'ssh' when they need to connect to a remote system.  "
+"The '$GIT_SSH' command will be given exactly two or four arguments: the "
+"'username@host' (or just 'host')  from the URL and the shell command to "
+"execute on that remote system, optionally preceded by '-p' (literally) and "
+"the 'port' from the URL when it specifies something other than the default "
+"SSH port."
+msgstr ""
+"この環境変数が設定されていた場合、'git-fetch' と 'git-push' は リモートシステ"
+"ムに接続する必要がある時に 'ssh' の代わりにこのコマンドを使用しま"
+"す。'$GIT_SSH' コマンドには必ず２つまたは4つの引数が渡されます： 接続先URL "
+"の 'username@host'(あるいは単に 'host')、そのリモートシステム上で 実行する"
+"シェルコマンド、そしてデフォルトのSSHポート以外が指定されていた場合には オプ"
+"ションで '-p' と 接続時のポート。"
+
+#. type: Plain text
+#: ../../git.txt:803
+msgid ""
+"To pass options to the program that you want to list in GIT_SSH you will "
+"need to wrap the program and options into a shell script, then set GIT_SSH "
+"to refer to the shell script."
+msgstr ""
+"GIT_SSH 内でリストしたいプログラムにオプションを渡したい時は、プログラムを"
+"ラップしてシェルスクリプトにオプションを渡し、GIT_SSHがそのシェルスクリプトを"
+"参照するように設定する必要があります。"
+
+#. type: Plain text
+#: ../../git.txt:807
+msgid ""
+"Usually it is easier to configure any desired options through your personal "
+"`.ssh/config` file.  Please consult your ssh documentation for further "
+"details."
+msgstr ""
+"通常は `.ssh/config` ファイルにて望ましいオプションを設定した方が容易です。詳"
+"細は ssh のドキュメントを参照してください。"
+
+#. type: Labeled list
+#: ../../git.txt:808
+#, no-wrap
+msgid "'GIT_ASKPASS'"
+msgstr "'GIT_ASKPASS'"
+
+#. type: Plain text
+#: ../../git.txt:814
+msgid ""
+"If this environment variable is set, then Git commands which need to acquire "
+"passwords or passphrases (e.g. for HTTP or IMAP authentication)  will call "
+"this program with a suitable prompt as command line argument and read the "
+"password from its STDOUT. See also the 'core.askpass' option in linkgit:git-"
+"config[1]."
+msgstr ""
+"この環境変数が設定されていた場合、パスワードまたはパスフレーズ（HTTPやIMAP認"
+"証用)の入力 が必要な場合に、コマンドライン引数として適切なプロンプトとともに"
+"このプログラムがコールされ、 標準入力からパスワードを読み込みます。linkgit:"
+"git-config[1]の 'core.askpass' も参照。"
+
+#. type: Labeled list
+#: ../../git.txt:815
+#, no-wrap
+msgid "'GIT_CONFIG_NOSYSTEM'"
+msgstr "'GIT_CONFIG_NOSYSTEM'"
+
+#. type: Plain text
+#: ../../git.txt:822
+msgid ""
+"Whether to skip reading settings from the system-wide `$(prefix)/etc/"
+"gitconfig` file.  This environment variable can be used along with `$HOME` "
+"and `$XDG_CONFIG_HOME` to create a predictable environment for a picky "
+"script, or you can set it temporarily to avoid using a buggy `/etc/"
+"gitconfig` file while waiting for someone with sufficient permissions to fix "
+"it."
+msgstr ""
+"システムワイドな `$(prefix)/etc/gitconfig` の設定をスキップするかどうかを指定"
+"します。 この環境変数は `$HOME` と `$XDG_CONFIG_HOME` とともに使われ、  えり"
+"好みのあるスクリプトを予測した変数で動作させる為に使います。 もしくは`/etc/"
+"gitconfig` ファイルに不具合があった場合に、権限をもつ人が修正 するまでの間、"
+"その不具合を回避するために設定します。"
+
+#. type: Labeled list
+#: ../../git.txt:823
+#, no-wrap
+msgid "'GIT_FLUSH'"
+msgstr "'GIT_FLUSH'"
+
+#. type: Plain text
+#: ../../git.txt:833
+#, no-wrap
+msgid ""
+"If this environment variable is set to \"1\", then commands such\n"
+"as 'git blame' (in incremental mode), 'git rev-list', 'git log',\n"
+"'git check-attr', 'git check-ignore', and 'git whatchanged' will\n"
+"force a flush of the output stream after each record have been\n"
+"flushed. If this\n"
+"variable is set to \"0\", the output of these commands will be done\n"
+"using completely buffered I/O.   If this environment variable is\n"
+"not set, Git will choose buffered or record-oriented flushing\n"
+"based on whether stdout appears to be redirected to a file or not.\n"
+msgstr "この環境変数を \"1\" にした場合、'git-blame'(インクリメンタルモード)、'git-rev-list', 'git-log',そして 'git-whatchanged' などのコマンドが呼ばれた時に、各コミットの境界レコードがフラッシュされた後に出力ストリームが強制的にフラッシュされます。この変数を \"0\" にした場合、コマンド出力のI/Oが完全にバッファリングされます。この環境変数が設定されていない場合、git は標準出力がファイルにリダイレクトされているかどうかによってバッファリングされるかレコードの境界でフラッシュされるかが決定されます。"
+
+#. type: Labeled list
+#: ../../git.txt:834
+#, no-wrap
+msgid "'GIT_TRACE'"
+msgstr "'GIT_TRACE'"
+
+#. type: Plain text
+#: ../../git.txt:847
+msgid ""
+"If this variable is set to \"1\", \"2\" or \"true\" (comparison is case "
+"insensitive), Git will print `trace:` messages on stderr telling about alias "
+"expansion, built-in command execution and external command execution.  If "
+"this variable is set to an integer value greater than 1 and lower than 10 "
+"(strictly) then Git will interpret this value as an open file descriptor and "
+"will try to write the trace messages into this file descriptor.  "
+"Alternatively, if this variable is set to an absolute path (starting with a "
+"'/' character), Git will interpret this as a file path and will try to write "
+"the trace messages into it."
+msgstr ""
+"この変数が \"1\", \"2\" または \"true\" (大文字小文字を区別します)に設定され"
+"ていた場合、git は `trace:` のメッセージを標準エラーに出力し、エイリアスの展"
+"開、実行される built-in コマンド、外部コマンド実行について説明します。この値"
+"が 1 より大きく10より小さい整数が指定された場合、git はこの値をファイル記述子"
+"として解釈し、このファイル記述子にトレースメッセージを書き込もうとします。代"
+"わりに、この値が絶対パスが指定されていた場合('/'の文字から始まる場合)、git は"
+"これをファイルパスとして解釈し、トレースメッセージをそこに書き込もうとしま"
+"す。"
+
+#. type: Labeled list
+#: ../../git.txt:848
+#, no-wrap
+msgid "'GIT_TRACE_PACK_ACCESS'"
+msgstr "'GIT_TRACE_PACK_ACCESS'"
+
+#. type: Plain text
+#: ../../git.txt:854
+msgid ""
+"If this variable is set to a path, a file will be created at the given path "
+"logging all accesses to any packs. For each access, the pack file name and "
+"an offset in the pack is recorded. This may be helpful for troubleshooting "
+"some pack-related performance problems."
+msgstr ""
+"この変数にパスが設定されていた場合、任意のパックファイルへのアクセス全てが指"
+"定したパスに 記録されます。各アクセスにたいしてパックファイル名とパックないの"
+"オフセットが記録されます。 この設定はパックに関連したパフォーマンス問題の調査"
+"に役立つことがあります。"
+
+#. type: Labeled list
+#: ../../git.txt:855
+#, no-wrap
+msgid "'GIT_TRACE_PACKET'"
+msgstr "'GIT_TRACE_PACKET'"
+
+#. type: Plain text
+#: ../../git.txt:860
+msgid ""
+"If this variable is set, it shows a trace of all packets coming in or out of "
+"a given program. This can help with debugging object negotiation or other "
+"protocol issues. Tracing is turned off at a packet starting with \"PACK\"."
+msgstr ""
+"この変数が設定されていた場合、指定したプログラムの入力と出力のパケット全部を "
+"トレースすることができます。これはオブジェクトのネゴシエーションや他のプロト"
+"コル問題の デバッグに役立つことがあります。トレースは\"PACK\"で始まるパケット"
+"でOFFにできます。"
+
+#. type: Labeled list
+#: ../../git.txt:861
+#, no-wrap
+msgid "GIT_LITERAL_PATHSPECS"
+msgstr "GIT_LITERAL_PATHSPECS"
+
+#. type: Plain text
+#: ../../git.txt:869
+msgid ""
+"Setting this variable to `1` will cause Git to treat all pathspecs "
+"literally, rather than as glob patterns. For example, running "
+"`GIT_LITERAL_PATHSPECS=1 git log -- '*.c'` will search for commits that "
+"touch the path `*.c`, not any paths that the glob `*.c` matches. You might "
+"want this if you are feeding literal paths to Git (e.g., paths previously "
+"given to you by `git ls-tree`, `--raw` diff output, etc)."
+msgstr ""
+"この変数を `1` にすると、Gitは全ての pathspec 指定を文字通りあつかい、ワイル"
+"ドカード パターン(glob)の展開はしません。たとえば、`GIT_LITERAL_PATHSPECS=1 "
+"git log -- '*.c'` は `*.c` に一致する任意のパスではなく、 `*.c` のパスをさ"
+"わっているコミットを探します。 この偏すはGitに文字通りのパス（つまり、`git "
+"ls-tree` や `--raw` の diff出力などによって指定されるパス）を渡したい場合に有"
+"効です。"
+
+#. type: Title -
+#: ../../git.txt:872
+#, no-wrap
+msgid "Discussion[[Discussion]]"
+msgstr "議論[[Discussion]]"
+
+#. type: Plain text
+#: ../../git.txt:877
+msgid ""
+"More detail on the following is available from the link:user-manual.html#git-"
+"concepts[Git concepts chapter of the user-manual] and linkgit:gitcore-"
+"tutorial[7]."
+msgstr ""
+"下記の詳細は  link:user-manual.html#git-concepts[ユーザマニュアルのGitの概念"
+"の章]を 参照してください。"
+
+#. type: Plain text
+#: ../../git.txt:884
+msgid ""
+"A Git project normally consists of a working directory with a \".git\" "
+"subdirectory at the top level.  The .git directory contains, among other "
+"things, a compressed object database representing the complete history of "
+"the project, an \"index\" file which links that history to the current "
+"contents of the working tree, and named pointers into that history such as "
+"tags and branch heads."
+msgstr ""
+"Git管理されているプロジェクトは通常、作業ディレクトリおよび その最上位のディ"
+"レクトリ階層に \".git\"のサブディレクトリを持ちます。 .git ディレクトリはプロ"
+"ジェクトの完全な履歴を表現する圧縮済みのオブジェクトデータベース およびその履"
+"歴と現在の作業ツリーの中身をリンクさせる \"index\" ファイル およびタグやブラ"
+"ンチの先端(head)のような履歴を指し示す名前つきのポインタとから 構成されていま"
+"す。"
+
+#. type: Plain text
+#: ../../git.txt:889
+msgid ""
+"The object database contains objects of three main types: blobs, which hold "
+"file data; trees, which point to blobs and other trees to build up directory "
+"hierarchies; and commits, which each reference a single tree and some number "
+"of parent commits."
+msgstr ""
+"オブジェクトデータベースは主に３つの型があります：blob(ファイルデータを保持す"
+"るもの); tree（blobおよび他のツリーを指し示し、ディレクトリ階層を構築するも"
+"の)； commit(１つのtreeと複数の親commitへの参照)。"
+
+#. type: Plain text
+#: ../../git.txt:894
+msgid ""
+"The commit, equivalent to what other systems call a \"changeset\" or "
+"\"version\", represents a step in the project's history, and each parent "
+"represents an immediately preceding step.  Commits with more than one parent "
+"represent merges of independent lines of development."
+msgstr ""
+"commitは他のシステムで\"changeset\"または\"version\"と呼ばれているものと等価"
+"で、 プロジェクトの履歴の1ステップを表現し、それぞれの親が1つ前のステップを表"
+"しています。 複数の親をもつcommitは独立した開発ラインのマージを表現します。"
+
+#. type: Plain text
+#: ../../git.txt:900
+msgid ""
+"All objects are named by the SHA-1 hash of their contents, normally written "
+"as a string of 40 hex digits.  Such names are globally unique.  The entire "
+"history leading up to a commit can be vouched for by signing just that "
+"commit.  A fourth object type, the tag, is provided for this purpose."
+msgstr ""
+"全てのobjectはその中身のSHA-1ハッシュにより名前が付けられ、 通常は40桁の16進"
+"数で記述されます。この名前はglobalにユニークです。 あるコミットまでの一繋がり"
+"の履歴はそのコミットに署名をすることによって保証することができます。 4番目の"
+"object型である tag はこの為に用意されたものです。"
+
+#. type: Plain text
+#: ../../git.txt:903
+msgid ""
+"When first created, objects are stored in individual files, but for "
+"efficiency may later be compressed together into \"pack files\"."
+msgstr ""
+"objectは初めに作成されるときは個々のファイルとして保存されますが、 後には利便"
+"性から\"packファイル\"のかたちでまとめて圧縮されます。"
+
+#. type: Plain text
+#: ../../git.txt:910
+msgid ""
+"Named pointers called refs mark interesting points in history.  A ref may "
+"contain the SHA-1 name of an object or the name of another ref.  Refs with "
+"names beginning `ref/head/` contain the SHA-1 name of the most recent commit "
+"(or \"head\") of a branch under development.  SHA-1 names of tags of "
+"interest are stored under `ref/tags/`.  A special ref named `HEAD` contains "
+"the name of the currently checked-out branch."
+msgstr ""
+"refと呼ばれる名前付きのポインタは履歴内の興味のある場所を指し示します。 １つ"
+"のrefはあるobjectのSHA-1名または他のrefの名前を含みます。 `ref/head/` の名前"
+"で始まるrefは開発中ブランチの最新コミットのSHA-1名を含んでいます。 tagのSHA-1"
+"名は `ref/tags/` 配下に保存されます。 `HEAD` という名前の特別なrefには 現在"
+"チェックアウトしているブランチの名前が保存されています。"
+
+#. type: Plain text
+#: ../../git.txt:919
+msgid ""
+"The index file is initialized with a list of all paths and, for each path, a "
+"blob object and a set of attributes.  The blob object represents the "
+"contents of the file as of the head of the current branch.  The attributes "
+"(last modified time, size, etc.) are taken from the corresponding file in "
+"the working tree.  Subsequent changes to the working tree can be found by "
+"comparing these attributes.  The index may be updated with new content, and "
+"new commits may be created from the content stored in the index."
+msgstr ""
+"indexファイルは全てのパスの一覧で初期化されており、それぞれのパス、blobオブ"
+"ジェクト、属性の集合を含んでいます。blobオブジェクトは現在のブランチ head の"
+"ファイルの中身を表現しています。属性(最終更新日時、サイズなど)は作業ツリー内"
+"の対応するファイルから取得されます。作業ツリーにて追加した変更はこれらの属性"
+"と比較することにより検出されます。indexは新しいコンテンツにより更新され、新し"
+"いコミットはindex内に格納されているコンテンツから作成されます。"
+
+#. type: Plain text
+#: ../../git.txt:923
+msgid ""
+"The index is also capable of storing multiple entries (called \"stages\")  "
+"for a given pathname.  These stages are used to hold the various unmerged "
+"version of a file when a merge is in progress."
+msgstr ""
+"indexは同一パス名の複数のエントリ(\"ステージ\"と呼びます)を格納することもでき"
+"ます。これらステージはマージ作業中の様々な未マージのバージョンを保持する目的"
+"で利用されます。"
+
+#. type: Title -
+#: ../../git.txt:925
+#, no-wrap
+msgid "FURTHER DOCUMENTATION"
+msgstr "さらに進んだドキュメント"
+
+#. type: Plain text
+#: ../../git.txt:930
+msgid ""
+"See the references in the \"description\" section to get started using Git.  "
+"The following is probably more detail than necessary for a first-time user."
+msgstr ""
+"Gitを使い始めるには\"説明\"内のリファレンスをみてください。 下記のリンクは初"
+"めてのユーザにとってはおそらく詳しすぎる内容です。"
+
+#. type: Plain text
+#: ../../git.txt:934
+msgid ""
+"The link:user-manual.html#git-concepts[Git concepts chapter of the user-"
+"manual] and linkgit:gitcore-tutorial[7] both provide introductions to the "
+"underlying Git architecture."
+msgstr ""
+"link:user-manual.html#git-concepts[ユーザマニュアルのGitの概念の章]および "
+"linkgit:gitcore-tutorial[7]はGitのアーキテクチャに対する序論です。"
+
+#. type: Plain text
+#: ../../git.txt:936
+msgid "See linkgit:gitworkflows[7] for an overview of recommended workflows."
+msgstr ""
+"推奨するワークフローの概要は linkgit:gitworkflows[7] を参照してください。"
+
+#. type: Plain text
+#: ../../git.txt:939
+msgid ""
+"See also the link:howto-index.html[howto] documents for some useful examples."
+msgstr "有用な例として link:howto-index.html[howto] も参照してください。"
+
+#. type: Plain text
+#: ../../git.txt:942
+msgid ""
+"The internals are documented in the link:technical/api-index.html[Git API "
+"documentation]."
+msgstr ""
+"Git内部のドキュメントは link:technical/api-index.html[Git API documentation] "
+"にあります。"
+
+#. type: Plain text
+#: ../../git.txt:945
+msgid ""
+"Users migrating from CVS may also want to read linkgit:gitcvs-migration[7]."
+msgstr ""
+"CVSから移行しようとしている方は linkgit:gitcvs-migration[7] も読むと良いで"
+"しょう。"
+
+#. type: Title -
+#: ../../git.txt:948
+#, no-wrap
+msgid "Authors"
+msgstr "作者"
+
+#. type: Plain text
+#: ../../git.txt:953
+msgid ""
+"Git was started by Linus Torvalds, and is currently maintained by Junio C "
+"Hamano. Numerous contributions have come from the Git mailing list <git@vger."
+"kernel.org>.  http://www.ohloh.net/p/git/contributors/summary gives you a "
+"more complete list of contributors."
+msgstr ""
+"Gitは Linus Torvalds によって開発が開始され、現在は Junio C Hamano がメンテナ"
+"ンス をしています。Gitのメーリングリスト <git@vger.kernel.org> にはたくさんの"
+"コントリビューター がいます。コントリビューターのリストは http://www.ohloh."
+"net/p/git/contributors/summary にて確認できます。"
+
+#. type: Plain text
+#: ../../git.txt:957
+msgid ""
+"If you have a clone of git.git itself, the output of linkgit:git-shortlog[1] "
+"and linkgit:git-blame[1] can show you the authors for specific parts of the "
+"project."
+msgstr ""
+"git.git の複製が手元にあるなら、linkgit:git-shortlog[1] と linkgit:git-blame"
+"[1] の 出力により、プロジェクトの特定部位の作者を確認できます。"
+
+#. type: Title -
+#: ../../git.txt:959
+#, no-wrap
+msgid "Reporting Bugs"
+msgstr "バグ報告"
+
+#. type: Plain text
+#: ../../git.txt:964
+msgid ""
+"Report bugs to the Git mailing list <git@vger.kernel.org> where the "
+"development and maintenance is primarily done.  You do not have to be "
+"subscribed to the list to send a message there."
+msgstr ""
+"バグはGitメーリングリスト <git@vger.kernel.org> に報告してください。 開発とメ"
+"ンテナンスはこのメーリングリスト上で行われています。報告前にメーリングリスト"
+"の購読設定をする必要はありません。"
+
+#. type: Title -
+#: ../../git.txt:966
+#, no-wrap
+msgid "SEE ALSO"
+msgstr "関連項目"
+
+#. type: Plain text
+#: ../../git.txt:972
+msgid ""
+"linkgit:gittutorial[7], linkgit:gittutorial-2[7], link:everyday.html"
+"[Everyday Git], linkgit:gitcvs-migration[7], linkgit:gitglossary[7], linkgit:"
+"gitcore-tutorial[7], linkgit:gitcli[7], link:user-manual.html[The Git User's "
+"Manual], linkgit:gitworkflows[7]"
+msgstr ""
+"linkgit:gittutorial[7], linkgit:gittutorial-2[7], link:everyday.html"
+"[Everyday Git], linkgit:gitcvs-migration[7], linkgit:gitglossary[7], linkgit:"
+"gitcore-tutorial[7], linkgit:gitcli[7], link:user-manual.html[The Git User's "
+"Manual], linkgit:gitworkflows[7]"
+
+#. type: Title -
+#: ../../git.txt:974
+#, no-wrap
+msgid "GIT"
+msgstr "GIT"
+
+#. type: Plain text
+#: ../../git.txt:975
+msgid "Part of the linkgit:git[1] suite"
+msgstr "linkgit:git[1] スイートの一部"
