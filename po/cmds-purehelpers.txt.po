@@ -1,0 +1,221 @@
+# Japanese translations for Git package
+# Copyright (C) 2013 Git Japanese translation team
+# This file is distributed under the same license as the Git package.
+# Automatically generated, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Git v1.8.4\n"
+"POT-Creation-Date: 2013-11-29 23:50+0900\n"
+"PO-Revision-Date: 2013-11-29 23:50+0900\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Labeled list
+#: ../../cmds-purehelpers.txt:1
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-check-attr[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-purehelpers.txt:3
+msgid "Display gitattributes information."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-purehelpers.txt:4
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-check-ignore[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-purehelpers.txt:6
+msgid "Debug gitignore / exclude files."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-purehelpers.txt:7
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-check-mailmap[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-purehelpers.txt:9
+msgid "Show canonical names and email addresses of contacts."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-purehelpers.txt:10
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-check-ref-format[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-purehelpers.txt:12
+msgid "Ensures that a reference name is well formed."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-purehelpers.txt:13
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-column[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-purehelpers.txt:15
+msgid "Display data in columns."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-purehelpers.txt:16
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-credential[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-purehelpers.txt:18
+msgid "Retrieve and store user credentials."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-purehelpers.txt:19
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-credential-cache[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-purehelpers.txt:21
+msgid "Helper to temporarily store passwords in memory."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-purehelpers.txt:22
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-credential-store[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-purehelpers.txt:24
+msgid "Helper to store credentials on disk."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-purehelpers.txt:25
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-fmt-merge-msg[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-purehelpers.txt:27
+msgid "Produce a merge commit message."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-purehelpers.txt:28
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-mailinfo[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-purehelpers.txt:30
+msgid "Extracts patch and authorship from a single e-mail message."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-purehelpers.txt:31
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-mailsplit[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-purehelpers.txt:33
+msgid "Simple UNIX mbox splitter program."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-purehelpers.txt:34
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-merge-one-file[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-purehelpers.txt:36
+msgid "The standard helper program to use with git-merge-index."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-purehelpers.txt:37
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-patch-id[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-purehelpers.txt:39
+msgid "Compute unique ID for a patch."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-purehelpers.txt:40
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-peek-remote[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-purehelpers.txt:42
+msgid "(deprecated) List the references in a remote repository."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-purehelpers.txt:43
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-sh-i18n[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-purehelpers.txt:45
+msgid "Git's i18n setup code for shell scripts."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-purehelpers.txt:46
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-sh-setup[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-purehelpers.txt:48
+msgid "Common Git shell script setup code."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-purehelpers.txt:49
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-stripspace[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-purehelpers.txt:51
+msgid "Remove unnecessary whitespace."
+msgstr ""

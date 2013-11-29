@@ -1,0 +1,196 @@
+# Japanese translations for Git package
+# Copyright (C) 2013 Git Japanese translation team
+# This file is distributed under the same license as the Git package.
+#
+# Automatically generated, 2013.
+# Yasuaki Narita <narita.ys@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Git v1.8.4\n"
+"POT-Creation-Date: 2013-11-29 23:50+0900\n"
+"PO-Revision-Date: 2013-11-30 00:20+0900\n"
+"Last-Translator: Yasuaki Narita <narita.ys@gmail.com>\n"
+"Language-Team: American English <kde-i18n-doc@kde.org>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.4\n"
+
+#. type: Labeled list
+#: ../../cmds-ancillaryinterrogators.txt:1
+#, no-wrap
+msgid "linkgit:git-annotate[1]"
+msgstr "linkgit:git-annotate[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillaryinterrogators.txt:3
+msgid "Annotate file lines with commit information."
+msgstr "ファイルの各行にコミット情報の注釈をつけます"
+
+#. type: Labeled list
+#: ../../cmds-ancillaryinterrogators.txt:4
+#, no-wrap
+msgid "linkgit:git-blame[1]"
+msgstr "linkgit:git-blame[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillaryinterrogators.txt:6
+msgid "Show what revision and author last modified each line of a file."
+msgstr "ファイルの各行が最後に更新されたリビジョンと著者を表示します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillaryinterrogators.txt:7
+#, no-wrap
+msgid "linkgit:git-cherry[1]"
+msgstr "linkgit:git-cherry[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillaryinterrogators.txt:9
+msgid "Find commits not merged upstream."
+msgstr "上流にマージされていないコミットを探します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillaryinterrogators.txt:10
+#, no-wrap
+msgid "linkgit:git-count-objects[1]"
+msgstr "linkgit:git-count-objects[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillaryinterrogators.txt:12
+msgid "Count unpacked number of objects and their disk consumption."
+msgstr "pack化されていないオブジェクトの数とディスク消費量を集計します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillaryinterrogators.txt:13
+#, no-wrap
+msgid "linkgit:git-difftool[1]"
+msgstr "linkgit:git-difftool[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillaryinterrogators.txt:15
+msgid "Show changes using common diff tools."
+msgstr "一般のdiffツールを使って変更を表示します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillaryinterrogators.txt:16
+#, no-wrap
+msgid "linkgit:git-fsck[1]"
+msgstr "linkgit:git-fsck[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillaryinterrogators.txt:18
+msgid "Verifies the connectivity and validity of the objects in the database."
+msgstr "データベース内のオブジェクトの連結性と妥当性を検証します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillaryinterrogators.txt:19
+#, no-wrap
+msgid "linkgit:git-get-tar-commit-id[1]"
+msgstr "linkgit:git-get-tar-commit-id[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillaryinterrogators.txt:21
+msgid "Extract commit ID from an archive created using git-archive."
+msgstr ""
+"git-archiveを使用して作成されたアーカイブからコミットIDを抜き取ります。"
+
+#. type: Labeled list
+#: ../../cmds-ancillaryinterrogators.txt:22
+#, no-wrap
+msgid "linkgit:git-help[1]"
+msgstr "linkgit:git-help[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillaryinterrogators.txt:24
+msgid "Display help information about Git."
+msgstr "Gitのヘルプ情報を表示します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillaryinterrogators.txt:25
+#, no-wrap
+msgid "linkgit:git-instaweb[1]"
+msgstr "linkgit:git-instaweb[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillaryinterrogators.txt:27
+msgid "Instantly browse your working repository in gitweb."
+msgstr "即座に作業リポジトリをgitwebで閲覧します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillaryinterrogators.txt:28
+#, no-wrap
+msgid "linkgit:git-merge-tree[1]"
+msgstr "linkgit:git-merge-tree[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillaryinterrogators.txt:30
+msgid "Show three-way merge without touching index."
+msgstr "indexを触らずに3wayマージの結果を表示します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillaryinterrogators.txt:31
+#, no-wrap
+msgid "linkgit:git-rerere[1]"
+msgstr "linkgit:git-rerere[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillaryinterrogators.txt:33
+msgid "Reuse recorded resolution of conflicted merges."
+msgstr "コンフリクトの解消結果を再利用します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillaryinterrogators.txt:34
+#, no-wrap
+msgid "linkgit:git-rev-parse[1]"
+msgstr "linkgit:git-rev-parse[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillaryinterrogators.txt:36
+msgid "Pick out and massage parameters."
+msgstr "各Gitコマンドがパラメータを処理しやすいように選別します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillaryinterrogators.txt:37
+#, no-wrap
+msgid "linkgit:git-show-branch[1]"
+msgstr "linkgit:git-show-branch[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillaryinterrogators.txt:39
+msgid "Show branches and their commits."
+msgstr "ブランチとそのコミット情報を表示します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillaryinterrogators.txt:40
+#, no-wrap
+msgid "linkgit:git-verify-tag[1]"
+msgstr "linkgit:git-verify-tag[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillaryinterrogators.txt:42
+msgid "Check the GPG signature of tags."
+msgstr "タグのGPG署名を検証します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillaryinterrogators.txt:43
+#, no-wrap
+msgid "linkgit:git-whatchanged[1]"
+msgstr "linkgit:git-whatchanged[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillaryinterrogators.txt:45
+msgid "Show logs with difference each commit introduces."
+msgstr "各コミットのログと更新ファイルを表示します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillaryinterrogators.txt:46
+#, no-wrap
+msgid "linkgit:gitweb[1]"
+msgstr "linkgit:gitweb[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillaryinterrogators.txt:48
+msgid "Git web interface (web frontend to Git repositories)."
+msgstr "Gitのwebインターフェース(Gitリポジトリのwebフロントエンド)。"

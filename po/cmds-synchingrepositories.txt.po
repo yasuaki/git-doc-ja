@@ -1,0 +1,76 @@
+# Japanese translations for Git package
+# Copyright (C) 2013 Git Japanese translation team
+# This file is distributed under the same license as the Git package.
+# Automatically generated, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Git v1.8.4\n"
+"POT-Creation-Date: 2013-11-29 23:50+0900\n"
+"PO-Revision-Date: 2013-11-29 23:50+0900\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Labeled list
+#: ../../cmds-synchingrepositories.txt:1
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-daemon[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-synchingrepositories.txt:3
+msgid "A really simple server for Git repositories."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-synchingrepositories.txt:4
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-fetch-pack[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-synchingrepositories.txt:6
+msgid "Receive missing objects from another repository."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-synchingrepositories.txt:7
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-http-backend[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-synchingrepositories.txt:9
+msgid "Server side implementation of Git over HTTP."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-synchingrepositories.txt:10
+#, no-wrap
+msgid "linkgit:git-send-pack[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-synchingrepositories.txt:12
+msgid "Push objects over Git protocol to another repository."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-synchingrepositories.txt:13
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-update-server-info[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-synchingrepositories.txt:15
+msgid "Update auxiliary info file to help dumb servers."
+msgstr ""

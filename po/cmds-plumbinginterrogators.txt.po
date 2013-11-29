@@ -1,0 +1,220 @@
+# Japanese translations for Git package
+# Copyright (C) 2013 Git Japanese translation team
+# This file is distributed under the same license as the Git package.
+#
+# Automatically generated, 2013.
+# Yasuaki Narita <narita.ys@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Git v1.8.4\n"
+"POT-Creation-Date: 2013-11-29 23:50+0900\n"
+"PO-Revision-Date: 2013-11-30 02:09+0900\n"
+"Last-Translator: Yasuaki Narita <narita.ys@gmail.com>\n"
+"Language-Team: Japanese <>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.4\n"
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:1
+#, no-wrap
+msgid "linkgit:git-cat-file[1]"
+msgstr "linkgit:git-cat-file[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:3
+msgid "Provide content or type and size information for repository objects."
+msgstr "リポジトリオブジェクトの中身またはタイプ、サイズ情報を出力します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:4
+#, no-wrap
+msgid "linkgit:git-diff-files[1]"
+msgstr "linkgit:git-diff-files[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:6
+msgid "Compares files in the working tree and the index."
+msgstr "作業ツリーとindex内のファイルを比較します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:7
+#, no-wrap
+msgid "linkgit:git-diff-index[1]"
+msgstr "linkgit:git-diff-index[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:9
+msgid "Compare a tree to the working tree or index."
+msgstr "作業ツリーまたはindexのツリーどうしを比較します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:10
+#, no-wrap
+msgid "linkgit:git-diff-tree[1]"
+msgstr "linkgit:git-diff-tree[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:12
+msgid "Compares the content and mode of blobs found via two tree objects."
+msgstr "2つのツリーオブジェクト間のコンテンツとblobのモードを比較します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:13
+#, no-wrap
+msgid "linkgit:git-for-each-ref[1]"
+msgstr "linkgit:git-for-each-ref[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:15
+msgid "Output information on each ref."
+msgstr "各参照(ref)の情報を出力します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:16
+#, no-wrap
+msgid "linkgit:git-ls-files[1]"
+msgstr "linkgit:git-ls-files[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:18
+msgid "Show information about files in the index and the working tree."
+msgstr "indexと作業ツリー内のファイルの情報を表示します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:19
+#, no-wrap
+msgid "linkgit:git-ls-remote[1]"
+msgstr "linkgit:git-ls-remote[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:21
+msgid "List references in a remote repository."
+msgstr "リモートリポジトリのリファレンス一覧を表示します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:22
+#, no-wrap
+msgid "linkgit:git-ls-tree[1]"
+msgstr "linkgit:git-ls-tree[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:24
+msgid "List the contents of a tree object."
+msgstr "ツリーオブジェクトの中身を一覧表示します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:25
+#, no-wrap
+msgid "linkgit:git-merge-base[1]"
+msgstr "linkgit:git-merge-base[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:27
+msgid "Find as good common ancestors as possible for a merge."
+msgstr "マージするための最適な共通祖先を探し出します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:28
+#, no-wrap
+msgid "linkgit:git-name-rev[1]"
+msgstr "linkgit:git-name-rev[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:30
+msgid "Find symbolic names for given revs."
+msgstr "指定リビジョンのシンボリック名を探します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:31
+#, no-wrap
+msgid "linkgit:git-pack-redundant[1]"
+msgstr "linkgit:git-pack-redundant[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:33
+msgid "Find redundant pack files."
+msgstr "冗長なpackファイルを探します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:34
+#, no-wrap
+msgid "linkgit:git-rev-list[1]"
+msgstr "linkgit:git-rev-list[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:36
+msgid "Lists commit objects in reverse chronological order."
+msgstr "年代の逆順にコミットオブジェクトを一覧表示します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:37
+#, no-wrap
+msgid "linkgit:git-show-index[1]"
+msgstr "linkgit:git-show-index[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:39
+msgid "Show packed archive index."
+msgstr "pack化データのindexを表示します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:40
+#, no-wrap
+msgid "linkgit:git-show-ref[1]"
+msgstr "linkgit:git-show-ref[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:42
+msgid "List references in a local repository."
+msgstr "ローカルリポジトリ内のリファレンスを一覧表示します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:43
+#, no-wrap
+msgid "linkgit:git-tar-tree[1]"
+msgstr "linkgit:git-tar-tree[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:45
+msgid ""
+"(deprecated) Create a tar archive of the files in the named tree object."
+msgstr ""
+"（非推奨）指定したツリーオブジェクトに含まれるファイルのtarアーカイブを生成し"
+"ます。"
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:46
+#, no-wrap
+msgid "linkgit:git-unpack-file[1]"
+msgstr "linkgit:git-unpack-file[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:48
+msgid "Creates a temporary file with a blob's contents."
+msgstr "blobコンテンツをもつ一時ファイルを生成します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:49
+#, no-wrap
+msgid "linkgit:git-var[1]"
+msgstr "linkgit:git-var[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:51
+msgid "Show a Git logical variable."
+msgstr "Gitの論理変数を表示します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:52
+#, no-wrap
+msgid "linkgit:git-verify-pack[1]"
+msgstr "linkgit:git-verify-pack[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:54
+msgid "Validate packed Git archive files."
+msgstr "pack化されたGitアーカイブファイルを検証します。"

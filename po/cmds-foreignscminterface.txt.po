@@ -1,0 +1,129 @@
+# Japanese translations for Git package
+# Copyright (C) 2013 Git Japanese translation team
+# This file is distributed under the same license as the Git package.
+#
+# Automatically generated, 2013.
+# Yasuaki Narita <narita.ys@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Git v1.8.4\n"
+"POT-Creation-Date: 2013-11-29 23:50+0900\n"
+"PO-Revision-Date: 2013-11-30 00:49+0900\n"
+"Last-Translator: Yasuaki Narita <narita.ys@gmail.com>\n"
+"Language-Team: American English <kde-i18n-doc@kde.org>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.4\n"
+
+#. type: Labeled list
+#: ../../cmds-foreignscminterface.txt:1
+#, no-wrap
+msgid "linkgit:git-archimport[1]"
+msgstr "linkgit:git-archimport[1]"
+
+#. type: Plain text
+#: ../../cmds-foreignscminterface.txt:3
+msgid "Import an Arch repository into Git."
+msgstr "ArchリポジトリをGitにインポートします。"
+
+#. type: Labeled list
+#: ../../cmds-foreignscminterface.txt:4
+#, no-wrap
+msgid "linkgit:git-cvsexportcommit[1]"
+msgstr "linkgit:git-cvsexportcommit[1]"
+
+#. type: Plain text
+#: ../../cmds-foreignscminterface.txt:6
+msgid "Export a single commit to a CVS checkout."
+msgstr "１つのコミットをCVSのチェックアウトにエクスポートします。"
+
+#. type: Labeled list
+#: ../../cmds-foreignscminterface.txt:7
+#, no-wrap
+msgid "linkgit:git-cvsimport[1]"
+msgstr "linkgit:git-cvsimport[1]"
+
+#. type: Plain text
+#: ../../cmds-foreignscminterface.txt:9
+msgid "Salvage your data out of another SCM people love to hate."
+msgstr "人々が愛憎する別のSCMからデータを救済します。"
+
+#. type: Labeled list
+#: ../../cmds-foreignscminterface.txt:10
+#, no-wrap
+msgid "linkgit:git-cvsserver[1]"
+msgstr "linkgit:git-cvsserver[1]"
+
+#. type: Plain text
+#: ../../cmds-foreignscminterface.txt:12
+msgid "A CVS server emulator for Git."
+msgstr "GitのためのCVSサーバのエミュレーター。"
+
+#. type: Labeled list
+#: ../../cmds-foreignscminterface.txt:13
+#, no-wrap
+msgid "linkgit:git-imap-send[1]"
+msgstr "linkgit:git-imap-send[1]"
+
+#. type: Plain text
+#: ../../cmds-foreignscminterface.txt:15
+msgid "Send a collection of patches from stdin to an IMAP folder."
+msgstr "標準入力からIMAPフォルダーにパッチの集合を送信します。"
+
+#. type: Labeled list
+#: ../../cmds-foreignscminterface.txt:16
+#, no-wrap
+msgid "linkgit:git-p4[1]"
+msgstr "linkgit:git-p4[1]"
+
+#. type: Plain text
+#: ../../cmds-foreignscminterface.txt:18
+msgid "Import from and submit to Perforce repositories."
+msgstr "Perforceリポジトリからインポートまたは登録をします。"
+
+#. type: Labeled list
+#: ../../cmds-foreignscminterface.txt:19
+#, no-wrap
+msgid "linkgit:git-quiltimport[1]"
+msgstr "linkgit:git-quiltimport[1]"
+
+#. type: Plain text
+#: ../../cmds-foreignscminterface.txt:21
+msgid "Applies a quilt patchset onto the current branch."
+msgstr "quiltのパッチセットを現在のブランチに適用します。"
+
+#. type: Labeled list
+#: ../../cmds-foreignscminterface.txt:22
+#, no-wrap
+msgid "linkgit:git-request-pull[1]"
+msgstr "linkgit:git-request-pull[1]"
+
+#. type: Plain text
+#: ../../cmds-foreignscminterface.txt:24
+msgid "Generates a summary of pending changes."
+msgstr "保留中の変更のサマリを生成します。"
+
+#. type: Labeled list
+#: ../../cmds-foreignscminterface.txt:25
+#, no-wrap
+msgid "linkgit:git-send-email[1]"
+msgstr "linkgit:git-send-email[1]"
+
+#. type: Plain text
+#: ../../cmds-foreignscminterface.txt:27
+msgid "Send a collection of patches as emails."
+msgstr "パッチの集合をメール送信します。"
+
+#. type: Labeled list
+#: ../../cmds-foreignscminterface.txt:28
+#, no-wrap
+msgid "linkgit:git-svn[1]"
+msgstr "linkgit:git-svn[1]"
+
+#. type: Plain text
+#: ../../cmds-foreignscminterface.txt:30
+msgid "Bidirectional operation between a Subversion repository and Git."
+msgstr "SubversionとGit間の双方向の操作をします。"

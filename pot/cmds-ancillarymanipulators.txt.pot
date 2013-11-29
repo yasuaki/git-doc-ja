@@ -1,0 +1,171 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Git Japanese translation team
+# This file is distributed under the same license as the Git package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Git v1.8.4\n"
+"POT-Creation-Date: 2013-11-29 23:50+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:1
+#, no-wrap
+msgid "linkgit:git-config[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:3
+msgid "Get and set repository or global options."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:4
+#, no-wrap
+msgid "linkgit:git-fast-export[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:6
+msgid "Git data exporter."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:7
+#, no-wrap
+msgid "linkgit:git-fast-import[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:9
+msgid "Backend for fast Git data importers."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:10
+#, no-wrap
+msgid "linkgit:git-filter-branch[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:12
+msgid "Rewrite branches."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:13
+#, no-wrap
+msgid "linkgit:git-lost-found[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:15
+msgid "(deprecated) Recover lost refs that luckily have not yet been pruned."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:16
+#, no-wrap
+msgid "linkgit:git-mergetool[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:18
+msgid "Run merge conflict resolution tools to resolve merge conflicts."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:19
+#, no-wrap
+msgid "linkgit:git-pack-refs[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:21
+msgid "Pack heads and tags for efficient repository access."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:22
+#, no-wrap
+msgid "linkgit:git-prune[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:24
+msgid "Prune all unreachable objects from the object database."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:25
+#, no-wrap
+msgid "linkgit:git-reflog[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:27
+msgid "Manage reflog information."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:28
+#, no-wrap
+msgid "linkgit:git-relink[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:30
+msgid "Hardlink common objects in local repositories."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:31
+#, no-wrap
+msgid "linkgit:git-remote[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:33
+msgid "manage set of tracked repositories."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:34
+#, no-wrap
+msgid "linkgit:git-repack[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:36
+msgid "Pack unpacked objects in a repository."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:37
+#, no-wrap
+msgid "linkgit:git-replace[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:39
+msgid "Create, list, delete refs to replace objects."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:40
+#, no-wrap
+msgid "linkgit:git-repo-config[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:42
+msgid "(deprecated) Get and set repository or global options."
+msgstr ""

@@ -1,0 +1,216 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Git Japanese translation team
+# This file is distributed under the same license as the Git package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Git v1.8.4\n"
+"POT-Creation-Date: 2013-11-29 23:50+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:1
+#, no-wrap
+msgid "linkgit:git-cat-file[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:3
+msgid "Provide content or type and size information for repository objects."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:4
+#, no-wrap
+msgid "linkgit:git-diff-files[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:6
+msgid "Compares files in the working tree and the index."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:7
+#, no-wrap
+msgid "linkgit:git-diff-index[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:9
+msgid "Compare a tree to the working tree or index."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:10
+#, no-wrap
+msgid "linkgit:git-diff-tree[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:12
+msgid "Compares the content and mode of blobs found via two tree objects."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:13
+#, no-wrap
+msgid "linkgit:git-for-each-ref[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:15
+msgid "Output information on each ref."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:16
+#, no-wrap
+msgid "linkgit:git-ls-files[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:18
+msgid "Show information about files in the index and the working tree."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:19
+#, no-wrap
+msgid "linkgit:git-ls-remote[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:21
+msgid "List references in a remote repository."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:22
+#, no-wrap
+msgid "linkgit:git-ls-tree[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:24
+msgid "List the contents of a tree object."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:25
+#, no-wrap
+msgid "linkgit:git-merge-base[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:27
+msgid "Find as good common ancestors as possible for a merge."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:28
+#, no-wrap
+msgid "linkgit:git-name-rev[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:30
+msgid "Find symbolic names for given revs."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:31
+#, no-wrap
+msgid "linkgit:git-pack-redundant[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:33
+msgid "Find redundant pack files."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:34
+#, no-wrap
+msgid "linkgit:git-rev-list[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:36
+msgid "Lists commit objects in reverse chronological order."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:37
+#, no-wrap
+msgid "linkgit:git-show-index[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:39
+msgid "Show packed archive index."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:40
+#, no-wrap
+msgid "linkgit:git-show-ref[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:42
+msgid "List references in a local repository."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:43
+#, no-wrap
+msgid "linkgit:git-tar-tree[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:45
+msgid ""
+"(deprecated) Create a tar archive of the files in the named tree object."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:46
+#, no-wrap
+msgid "linkgit:git-unpack-file[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:48
+msgid "Creates a temporary file with a blob's contents."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:49
+#, no-wrap
+msgid "linkgit:git-var[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:51
+msgid "Show a Git logical variable."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbinginterrogators.txt:52
+#, no-wrap
+msgid "linkgit:git-verify-pack[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-plumbinginterrogators.txt:54
+msgid "Validate packed Git archive files."
+msgstr ""

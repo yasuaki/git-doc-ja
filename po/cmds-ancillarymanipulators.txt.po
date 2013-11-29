@@ -1,0 +1,177 @@
+# Japanese translations for Git package
+# Copyright (C) 2013 Git Japanese translation team
+# This file is distributed under the same license as the Git package.
+#
+# Automatically generated, 2013.
+# Yasuaki Narita <narita.ys@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Git v1.8.4\n"
+"POT-Creation-Date: 2013-11-29 23:50+0900\n"
+"PO-Revision-Date: 2013-11-30 00:40+0900\n"
+"Last-Translator: Yasuaki Narita <narita.ys@gmail.com>\n"
+"Language-Team: American English <kde-i18n-doc@kde.org>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.4\n"
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:1
+#, no-wrap
+msgid "linkgit:git-config[1]"
+msgstr "linkgit:git-config[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:3
+msgid "Get and set repository or global options."
+msgstr "リポジトリまたはグローバルなオプションを確認または設定します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:4
+#, no-wrap
+msgid "linkgit:git-fast-export[1]"
+msgstr "linkgit:git-fast-export[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:6
+msgid "Git data exporter."
+msgstr "Gitデータをエクスポートします。"
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:7
+#, no-wrap
+msgid "linkgit:git-fast-import[1]"
+msgstr "linkgit:git-fast-import[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:9
+msgid "Backend for fast Git data importers."
+msgstr "Gitデータを高速にインポートするためのバックエンド。"
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:10
+#, no-wrap
+msgid "linkgit:git-filter-branch[1]"
+msgstr "linkgit:git-filter-branch[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:12
+msgid "Rewrite branches."
+msgstr "ブランチを書き換えます。"
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:13
+#, no-wrap
+msgid "linkgit:git-lost-found[1]"
+msgstr "linkgit:git-lost-found[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:15
+msgid "(deprecated) Recover lost refs that luckily have not yet been pruned."
+msgstr ""
+"（非推奨）紛失したブランチ/タグ情報でまだ完全には廃棄されていないものを修復し"
+"ます。"
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:16
+#, no-wrap
+msgid "linkgit:git-mergetool[1]"
+msgstr "linkgit:git-mergetool[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:18
+msgid "Run merge conflict resolution tools to resolve merge conflicts."
+msgstr "コンフリクトの解消ツールを起動します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:19
+#, no-wrap
+msgid "linkgit:git-pack-refs[1]"
+msgstr "linkgit:git-pack-refs[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:21
+msgid "Pack heads and tags for efficient repository access."
+msgstr ""
+"リポジトリのアクセス速度を改善するためにheadとtagの情報をpack化します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:22
+#, no-wrap
+msgid "linkgit:git-prune[1]"
+msgstr "linkgit:git-prune[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:24
+msgid "Prune all unreachable objects from the object database."
+msgstr "到達不能なオブジェクトをオブジェクトデータベースから廃棄します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:25
+#, no-wrap
+msgid "linkgit:git-reflog[1]"
+msgstr "linkgit:git-reflog[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:27
+msgid "Manage reflog information."
+msgstr "reflog情報を管理します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:28
+#, no-wrap
+msgid "linkgit:git-relink[1]"
+msgstr "linkgit:git-relink[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:30
+msgid "Hardlink common objects in local repositories."
+msgstr "ローカルリポジトリ内の共通オブジェクトをハードリンク化します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:31
+#, no-wrap
+msgid "linkgit:git-remote[1]"
+msgstr "linkgit:git-remote[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:33
+msgid "manage set of tracked repositories."
+msgstr "追跡するリポジトリの情報を管理します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:34
+#, no-wrap
+msgid "linkgit:git-repack[1]"
+msgstr "linkgit:git-repack[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:36
+msgid "Pack unpacked objects in a repository."
+msgstr "リポジトリ内のpack化されていないオブジェクトをpack化します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:37
+#, no-wrap
+msgid "linkgit:git-replace[1]"
+msgstr "linkgit:git-replace[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:39
+msgid "Create, list, delete refs to replace objects."
+msgstr "オブジェクトの置換設定を追加/削除または一覧表示します。"
+
+#. type: Labeled list
+#: ../../cmds-ancillarymanipulators.txt:40
+#, no-wrap
+msgid "linkgit:git-repo-config[1]"
+msgstr "linkgit:git-repo-config[1]"
+
+#. type: Plain text
+#: ../../cmds-ancillarymanipulators.txt:42
+msgid "(deprecated) Get and set repository or global options."
+msgstr ""
+"（非推奨）リポジトリまたはグローバルなオプションを確認または設定します。"

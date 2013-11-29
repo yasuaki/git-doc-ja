@@ -1,0 +1,72 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Git Japanese translation team
+# This file is distributed under the same license as the Git package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Git v1.8.4\n"
+"POT-Creation-Date: 2013-11-29 23:50+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Labeled list
+#: ../../cmds-synchingrepositories.txt:1
+#, no-wrap
+msgid "linkgit:git-daemon[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-synchingrepositories.txt:3
+msgid "A really simple server for Git repositories."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-synchingrepositories.txt:4
+#, no-wrap
+msgid "linkgit:git-fetch-pack[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-synchingrepositories.txt:6
+msgid "Receive missing objects from another repository."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-synchingrepositories.txt:7
+#, no-wrap
+msgid "linkgit:git-http-backend[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-synchingrepositories.txt:9
+msgid "Server side implementation of Git over HTTP."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-synchingrepositories.txt:10
+#, no-wrap
+msgid "linkgit:git-send-pack[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-synchingrepositories.txt:12
+msgid "Push objects over Git protocol to another repository."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-synchingrepositories.txt:13
+#, no-wrap
+msgid "linkgit:git-update-server-info[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-synchingrepositories.txt:15
+msgid "Update auxiliary info file to help dumb servers."
+msgstr ""

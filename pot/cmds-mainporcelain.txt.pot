@@ -1,0 +1,424 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Git Japanese translation team
+# This file is distributed under the same license as the Git package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Git v1.8.4\n"
+"POT-Creation-Date: 2013-11-29 23:50+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:1
+#, no-wrap
+msgid "linkgit:git-add[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:3
+msgid "Add file contents to the index."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:4
+#, no-wrap
+msgid "linkgit:git-am[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:6
+msgid "Apply a series of patches from a mailbox."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:7
+#, no-wrap
+msgid "linkgit:git-archive[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:9
+msgid "Create an archive of files from a named tree."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:10
+#, no-wrap
+msgid "linkgit:git-bisect[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:12
+msgid "Find by binary search the change that introduced a bug."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:13
+#, no-wrap
+msgid "linkgit:git-branch[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:15
+msgid "List, create, or delete branches."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:16
+#, no-wrap
+msgid "linkgit:git-bundle[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:18
+msgid "Move objects and refs by archive."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:19
+#, no-wrap
+msgid "linkgit:git-checkout[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:21
+msgid "Checkout a branch or paths to the working tree."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:22
+#, no-wrap
+msgid "linkgit:git-cherry-pick[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:24
+msgid "Apply the changes introduced by some existing commits."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:25
+#, no-wrap
+msgid "linkgit:git-citool[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:27
+msgid "Graphical alternative to git-commit."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:28
+#, no-wrap
+msgid "linkgit:git-clean[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:30
+msgid "Remove untracked files from the working tree."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:31
+#, no-wrap
+msgid "linkgit:git-clone[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:33
+msgid "Clone a repository into a new directory."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:34
+#, no-wrap
+msgid "linkgit:git-commit[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:36
+msgid "Record changes to the repository."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:37
+#, no-wrap
+msgid "linkgit:git-describe[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:39
+msgid "Show the most recent tag that is reachable from a commit."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:40
+#, no-wrap
+msgid "linkgit:git-diff[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:42
+msgid "Show changes between commits, commit and working tree, etc."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:43
+#, no-wrap
+msgid "linkgit:git-fetch[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:45
+msgid "Download objects and refs from another repository."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:46
+#, no-wrap
+msgid "linkgit:git-format-patch[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:48
+msgid "Prepare patches for e-mail submission."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:49
+#, no-wrap
+msgid "linkgit:git-gc[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:51
+msgid "Cleanup unnecessary files and optimize the local repository."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:52
+#, no-wrap
+msgid "linkgit:git-grep[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:54
+msgid "Print lines matching a pattern."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:55
+#, no-wrap
+msgid "linkgit:git-gui[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:57
+msgid "A portable graphical interface to Git."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:58
+#, no-wrap
+msgid "linkgit:git-init[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:60
+msgid "Create an empty Git repository or reinitialize an existing one."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:61
+#, no-wrap
+msgid "linkgit:git-log[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:63
+msgid "Show commit logs."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:64
+#, no-wrap
+msgid "linkgit:git-merge[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:66
+msgid "Join two or more development histories together."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:67
+#, no-wrap
+msgid "linkgit:git-mv[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:69
+msgid "Move or rename a file, a directory, or a symlink."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:70
+#, no-wrap
+msgid "linkgit:git-notes[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:72
+msgid "Add or inspect object notes."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:73
+#, no-wrap
+msgid "linkgit:git-pull[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:75
+msgid "Fetch from and integrate with another repository or a local branch."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:76
+#, no-wrap
+msgid "linkgit:git-push[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:78
+msgid "Update remote refs along with associated objects."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:79
+#, no-wrap
+msgid "linkgit:git-rebase[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:81
+msgid "Forward-port local commits to the updated upstream head."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:82
+#, no-wrap
+msgid "linkgit:git-reset[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:84
+msgid "Reset current HEAD to the specified state."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:85
+#, no-wrap
+msgid "linkgit:git-revert[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:87
+msgid "Revert some existing commits."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:88
+#, no-wrap
+msgid "linkgit:git-rm[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:90
+msgid "Remove files from the working tree and from the index."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:91
+#, no-wrap
+msgid "linkgit:git-shortlog[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:93
+msgid "Summarize 'git log' output."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:94
+#, no-wrap
+msgid "linkgit:git-show[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:96
+msgid "Show various types of objects."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:97
+#, no-wrap
+msgid "linkgit:git-stash[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:99
+msgid "Stash the changes in a dirty working directory away."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:100
+#, no-wrap
+msgid "linkgit:git-status[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:102
+msgid "Show the working tree status."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:103
+#, no-wrap
+msgid "linkgit:git-submodule[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:105
+msgid "Initialize, update or inspect submodules."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:106
+#, no-wrap
+msgid "linkgit:git-tag[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:108
+msgid "Create, list, delete or verify a tag object signed with GPG."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-mainporcelain.txt:109
+#, no-wrap
+msgid "linkgit:gitk[1]"
+msgstr ""
+
+#. type: Plain text
+#: ../../cmds-mainporcelain.txt:111
+msgid "The Git repository browser."
+msgstr ""

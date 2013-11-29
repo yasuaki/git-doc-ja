@@ -1,0 +1,233 @@
+# Japanese translations for Git package
+# Copyright (C) 2013 Git Japanese translation team
+# This file is distributed under the same license as the Git package.
+# Automatically generated, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Git v1.8.4\n"
+"POT-Creation-Date: 2013-11-29 23:50+0900\n"
+"PO-Revision-Date: 2013-11-29 23:50+0900\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: Labeled list
+#: ../../cmds-plumbingmanipulators.txt:1
+#, fuzzy, no-wrap
+#| msgid "linkgit:git-pull[1]"
+msgid "linkgit:git-apply[1]"
+msgstr "linkgit:git-pull[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbingmanipulators.txt:3
+msgid "Apply a patch to files and/or to the index."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbingmanipulators.txt:4
+#, fuzzy, no-wrap
+#| msgid "linkgit:git-checkout[1]"
+msgid "linkgit:git-checkout-index[1]"
+msgstr "linkgit:git-checkout[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbingmanipulators.txt:6
+#, fuzzy
+#| msgid "Remove untracked files from the working tree."
+msgid "Copy files from the index to the working tree."
+msgstr "作業ツリーからGit管理外のファイルを削除します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbingmanipulators.txt:7
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-commit-tree[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-plumbingmanipulators.txt:9
+msgid "Create a new commit object."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbingmanipulators.txt:10
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-hash-object[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-plumbingmanipulators.txt:12
+msgid "Compute object ID and optionally creates a blob from a file."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbingmanipulators.txt:13
+#, fuzzy, no-wrap
+#| msgid "linkgit:git-repack[1]"
+msgid "linkgit:git-index-pack[1]"
+msgstr "linkgit:git-repack[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbingmanipulators.txt:15
+msgid "Build pack index file for an existing packed archive."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbingmanipulators.txt:16
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-merge-file[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-plumbingmanipulators.txt:18
+msgid "Run a three-way file merge."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbingmanipulators.txt:19
+#, fuzzy, no-wrap
+#| msgid "linkgit:git-merge[1]"
+msgid "linkgit:git-merge-index[1]"
+msgstr "linkgit:git-merge[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbingmanipulators.txt:21
+msgid "Run a merge for files needing merging."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbingmanipulators.txt:22
+#, fuzzy, no-wrap
+#| msgid "linkgit:git-tag[1]"
+msgid "linkgit:git-mktag[1]"
+msgstr "linkgit:git-tag[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbingmanipulators.txt:24
+msgid "Creates a tag object."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbingmanipulators.txt:25
+#, fuzzy, no-wrap
+#| msgid "linkgit:git-merge[1]"
+msgid "linkgit:git-mktree[1]"
+msgstr "linkgit:git-merge[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbingmanipulators.txt:27
+msgid "Build a tree-object from ls-tree formatted text."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbingmanipulators.txt:28
+#, fuzzy, no-wrap
+#| msgid "linkgit:git-count-objects[1]"
+msgid "linkgit:git-pack-objects[1]"
+msgstr "linkgit:git-count-objects[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbingmanipulators.txt:30
+#, fuzzy
+#| msgid "Create an archive of files from a named tree."
+msgid "Create a packed archive of objects."
+msgstr "指定ツリーに含まれるファイルのアーカイブを生成します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbingmanipulators.txt:31
+#, fuzzy, no-wrap
+#| msgid "linkgit:git-repack[1]"
+msgid "linkgit:git-prune-packed[1]"
+msgstr "linkgit:git-repack[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbingmanipulators.txt:33
+msgid "Remove extra objects that are already in pack files."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbingmanipulators.txt:34
+#, fuzzy, no-wrap
+#| msgid "linkgit:git-merge-tree[1]"
+msgid "linkgit:git-read-tree[1]"
+msgstr "linkgit:git-merge-tree[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbingmanipulators.txt:36
+#, fuzzy
+#| msgid "Add file contents to the index."
+msgid "Reads tree information into the index."
+msgstr "ファイルをindexに追加します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbingmanipulators.txt:37
+#, fuzzy, no-wrap
+#| msgid "linkgit:git-submodule[1]"
+msgid "linkgit:git-symbolic-ref[1]"
+msgstr "linkgit:git-submodule[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbingmanipulators.txt:39
+msgid "Read, modify and delete symbolic refs."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbingmanipulators.txt:40
+#, fuzzy, no-wrap
+#| msgid "linkgit:git-count-objects[1]"
+msgid "linkgit:git-unpack-objects[1]"
+msgstr "linkgit:git-count-objects[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbingmanipulators.txt:42
+#, fuzzy
+#| msgid "Move objects and refs by archive."
+msgid "Unpack objects from a packed archive."
+msgstr "オブジェクトと参照(ref)をアーカイブ化して移動させます。"
+
+#. type: Labeled list
+#: ../../cmds-plumbingmanipulators.txt:43
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-update-index[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-plumbingmanipulators.txt:45
+#, fuzzy
+#| msgid "Remove files from the working tree and from the index."
+msgid "Register file contents in the working tree to the index."
+msgstr "作業ツリーとindexからファイルを削除します。"
+
+#. type: Labeled list
+#: ../../cmds-plumbingmanipulators.txt:46
+#, fuzzy, no-wrap
+#| msgid "see linkgit:git-commit-tree[1]"
+msgid "linkgit:git-update-ref[1]"
+msgstr "linkgit:git-commit-tree[1] 参照。"
+
+#. type: Plain text
+#: ../../cmds-plumbingmanipulators.txt:48
+msgid "Update the object name stored in a ref safely."
+msgstr ""
+
+#. type: Labeled list
+#: ../../cmds-plumbingmanipulators.txt:49
+#, fuzzy, no-wrap
+#| msgid "linkgit:git-merge-tree[1]"
+msgid "linkgit:git-write-tree[1]"
+msgstr "linkgit:git-merge-tree[1]"
+
+#. type: Plain text
+#: ../../cmds-plumbingmanipulators.txt:51
+#, fuzzy
+#| msgid "Prune all unreachable objects from the object database."
+msgid "Create a tree object from the current index."
+msgstr "到達不能なオブジェクトをオブジェクトデータベースから廃棄します。"
