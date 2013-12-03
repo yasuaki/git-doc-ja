@@ -1,0 +1,1235 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Git Japanese translation team
+# This file is distributed under the same license as the Git package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Git v1.8.4\n"
+"POT-Creation-Date: 2013-12-04 00:46+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title -
+#: ../../git.txt:5 ../../gittutorial.txt:5
+#, no-wrap
+msgid "NAME"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:10 ../../gittutorial.txt:9
+#, no-wrap
+msgid "SYNOPSIS"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:19 ../../gittutorial.txt:14
+#, no-wrap
+msgid "DESCRIPTION"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:966 ../../gittutorial.txt:664
+#, no-wrap
+msgid "SEE ALSO"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:974 ../../gittutorial.txt:675
+#, no-wrap
+msgid "GIT"
+msgstr ""
+
+#. type: Title =
+#: ../../gittutorial.txt:2
+#, no-wrap
+msgid "gittutorial(7)"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:7
+msgid ""
+"gittutorial - A tutorial introduction to Git (for version 1.5.1 or newer)"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:12
+#, no-wrap
+msgid "git *\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:18
+msgid ""
+"This tutorial explains how to import a new project into Git, make changes to "
+"it, and share changes with other developers."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:22
+msgid ""
+"If you are instead primarily interested in using Git to fetch a project, for "
+"example, to test the latest version, you may prefer to start with the first "
+"two chapters of link:user-manual.html[The Git User's Manual]."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:25
+msgid ""
+"First, note that you can get documentation for a command such as `git log --"
+"graph` with:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:28
+#, no-wrap
+msgid "$ man git-log\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:31
+msgid "or:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:34
+#, no-wrap
+msgid "$ git help log\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:38
+msgid ""
+"With the latter, you can use the manual viewer of your choice; see linkgit:"
+"git-help[1] for more information."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:42
+msgid ""
+"It is a good idea to introduce yourself to Git with your name and public "
+"email address before doing any operation.  The easiest way to do so is:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:46
+#, no-wrap
+msgid ""
+"$ git config --global user.name \"Your Name Comes Here\"\n"
+"$ git config --global user.email you@yourdomain.example.com\n"
+msgstr ""
+
+#. type: Title -
+#: ../../gittutorial.txt:50
+#, no-wrap
+msgid "Importing a new project"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:54
+msgid ""
+"Assume you have a tarball project.tar.gz with your initial work.  You can "
+"place it under Git revision control as follows."
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:59
+#, no-wrap
+msgid ""
+"$ tar xzf project.tar.gz\n"
+"$ cd project\n"
+"$ git init\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:62
+msgid "Git will reply"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:65
+#, no-wrap
+msgid "Initialized empty Git repository in .git/\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:69
+msgid ""
+"You've now initialized the working directory--you may notice a new directory "
+"created, named \".git\"."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:72
+msgid ""
+"Next, tell Git to take a snapshot of the contents of all files under the "
+"current directory (note the '.'), with 'git add':"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:75
+#, no-wrap
+msgid "$ git add .\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:80
+msgid ""
+"This snapshot is now stored in a temporary staging area which Git calls the "
+"\"index\".  You can permanently store the contents of the index in the "
+"repository with 'git commit':"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:83 ../../gittutorial.txt:125
+#, no-wrap
+msgid "$ git commit\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:87
+msgid ""
+"This will prompt you for a commit message.  You've now stored the first "
+"version of your project in Git."
+msgstr ""
+
+#. type: Title -
+#: ../../gittutorial.txt:89
+#, no-wrap
+msgid "Making changes"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:92
+msgid "Modify some files, then add their updated contents to the index:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:95
+#, no-wrap
+msgid "$ git add file1 file2 file3\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:99
+msgid ""
+"You are now ready to commit.  You can see what is about to be committed "
+"using 'git diff' with the --cached option:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:102
+#, no-wrap
+msgid "$ git diff --cached\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:107
+msgid ""
+"(Without --cached, 'git diff' will show you any changes that you've made but "
+"not yet added to the index.)  You can also get a brief summary of the "
+"situation with 'git status':"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:118
+#, no-wrap
+msgid ""
+"$ git status\n"
+"# On branch master\n"
+"# Changes to be committed:\n"
+"#   (use \"git reset HEAD <file>...\" to unstage)\n"
+"#\n"
+"#\tmodified:   file1\n"
+"#\tmodified:   file2\n"
+"#\tmodified:   file3\n"
+"#\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:122
+msgid ""
+"If you need to make any further adjustments, do so now, and then add any "
+"newly modified content to the index.  Finally, commit your changes with:"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:129
+msgid ""
+"This will again prompt you for a message describing the change, and then "
+"record a new version of the project."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:131
+msgid "Alternatively, instead of running 'git add' beforehand, you can use"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:134 ../../gittutorial.txt:250
+#, no-wrap
+msgid "$ git commit -a\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:138
+msgid ""
+"which will automatically notice any modified (but not new) files, add them "
+"to the index, and commit, all in one step."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:147
+msgid ""
+"A note on commit messages: Though not required, it's a good idea to begin "
+"the commit message with a single short (less than 50 character)  line "
+"summarizing the change, followed by a blank line and then a more thorough "
+"description. The text up to the first blank line in a commit message is "
+"treated as the commit title, and that title is used throughout Git.  For "
+"example, linkgit:git-format-patch[1] turns a commit into email, and it uses "
+"the title on the Subject line and the rest of the commit in the body."
+msgstr ""
+
+#. type: Title -
+#: ../../gittutorial.txt:149
+#, no-wrap
+msgid "Git tracks content not files"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:157
+msgid ""
+"Many revision control systems provide an `add` command that tells the system "
+"to start tracking changes to a new file.  Git's `add` command does something "
+"simpler and more powerful: 'git add' is used both for new and newly modified "
+"files, and in both cases it takes a snapshot of the given files and stages "
+"that content in the index, ready for inclusion in the next commit."
+msgstr ""
+
+#. type: Title -
+#: ../../gittutorial.txt:159
+#, no-wrap
+msgid "Viewing project history"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:162
+msgid "At any point you can view the history of your changes using"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:165
+#, no-wrap
+msgid "$ git log\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:168
+msgid "If you also want to see complete diffs at each step, use"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:171
+#, no-wrap
+msgid "$ git log -p\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:175
+msgid "Often the overview of the change is useful to get a feel of each step"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:178
+#, no-wrap
+msgid "$ git log --stat --summary\n"
+msgstr ""
+
+#. type: Title -
+#: ../../gittutorial.txt:181
+#, no-wrap
+msgid "Managing branches"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:185
+msgid ""
+"A single Git repository can maintain multiple branches of development.  To "
+"create a new branch named \"experimental\", use"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:188
+#, no-wrap
+msgid "$ git branch experimental\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:191
+msgid "If you now run"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:194
+#, no-wrap
+msgid "$ git branch\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:197
+msgid "you'll get a list of all existing branches:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:201
+#, no-wrap
+msgid ""
+"  experimental\n"
+"* master\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:207
+msgid ""
+"The \"experimental\" branch is the one you just created, and the \"master\" "
+"branch is a default branch that was created for you automatically.  The "
+"asterisk marks the branch you are currently on; type"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:210
+#, no-wrap
+msgid "$ git checkout experimental\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:214
+msgid ""
+"to switch to the experimental branch.  Now edit a file, commit the change, "
+"and switch back to the master branch:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:219
+#, no-wrap
+msgid ""
+"(edit file)\n"
+"$ git commit -a\n"
+"$ git checkout master\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:223
+msgid ""
+"Check that the change you made is no longer visible, since it was made on "
+"the experimental branch and you're back on the master branch."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:225
+msgid "You can make a different change on the master branch:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:229
+#, no-wrap
+msgid ""
+"(edit file)\n"
+"$ git commit -a\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:233
+msgid ""
+"at this point the two branches have diverged, with different changes made in "
+"each.  To merge the changes made in experimental into master, run"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:236
+#, no-wrap
+msgid "$ git merge experimental\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:240
+msgid ""
+"If the changes don't conflict, you're done.  If there are conflicts, markers "
+"will be left in the problematic files showing the conflict;"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:243
+#, no-wrap
+msgid "$ git diff\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:247
+msgid "will show this.  Once you've edited the files to resolve the conflicts,"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:253
+msgid "will commit the result of the merge. Finally,"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:256
+#, no-wrap
+msgid "$ gitk\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:259
+msgid "will show a nice graphical representation of the resulting history."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:261
+msgid "At this point you could delete the experimental branch with"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:264
+#, no-wrap
+msgid "$ git branch -d experimental\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:268
+msgid ""
+"This command ensures that the changes in the experimental branch are already "
+"in the current branch."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:271
+msgid ""
+"If you develop on a branch crazy-idea, then regret it, you can always delete "
+"the branch with"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:274
+#, no-wrap
+msgid "$ git branch -D crazy-idea\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:278
+msgid ""
+"Branches are cheap and easy, so this is a good way to try something out."
+msgstr ""
+
+#. type: Title -
+#: ../../gittutorial.txt:280
+#, no-wrap
+msgid "Using Git for collaboration"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:285
+msgid ""
+"Suppose that Alice has started a new project with a Git repository in /home/"
+"alice/project, and that Bob, who has a home directory on the same machine, "
+"wants to contribute."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:287
+msgid "Bob begins with:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:290
+#, no-wrap
+msgid "bob$ git clone /home/alice/project myrepo\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:295
+msgid ""
+"This creates a new directory \"myrepo\" containing a clone of Alice's "
+"repository.  The clone is on an equal footing with the original project, "
+"possessing its own copy of the original project's history."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:297
+msgid "Bob then makes some changes and commits them:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:302
+#, no-wrap
+msgid ""
+"(edit files)\n"
+"bob$ git commit -a\n"
+"(repeat as necessary)\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:306
+msgid ""
+"When he's ready, he tells Alice to pull changes from the repository at /home/"
+"bob/myrepo.  She does this with:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:310
+#, no-wrap
+msgid ""
+"alice$ cd /home/alice/project\n"
+"alice$ git pull /home/bob/myrepo master\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:315
+msgid ""
+"This merges the changes from Bob's \"master\" branch into Alice's current "
+"branch.  If Alice has made her own changes in the meantime, then she may "
+"need to manually fix any conflicts."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:318
+msgid ""
+"The \"pull\" command thus performs two operations: it fetches changes from a "
+"remote branch, then merges them into the current branch."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:326
+msgid ""
+"Note that in general, Alice would want her local changes committed before "
+"initiating this \"pull\".  If Bob's work conflicts with what Alice did since "
+"their histories forked, Alice will use her working tree and the index to "
+"resolve conflicts, and existing local changes will interfere with the "
+"conflict resolution process (Git will still perform the fetch but will "
+"refuse to merge --- Alice will have to get rid of her local changes in some "
+"way and pull again when this happens)."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:331
+msgid ""
+"Alice can peek at what Bob did without merging first, using the \"fetch\" "
+"command; this allows Alice to inspect what Bob did, using a special symbol "
+"\"FETCH_HEAD\", in order to determine if he has anything worth pulling, like "
+"this:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:335
+#, no-wrap
+msgid ""
+"alice$ git fetch /home/bob/myrepo master\n"
+"alice$ git log -p HEAD..FETCH_HEAD\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:343
+msgid ""
+"This operation is safe even if Alice has uncommitted local changes.  The "
+"range notation \"HEAD..FETCH_HEAD\" means \"show everything that is "
+"reachable from the FETCH_HEAD but exclude anything that is reachable from "
+"HEAD\".  Alice already knows everything that leads to her current state "
+"(HEAD), and reviews what Bob has in his state (FETCH_HEAD) that she has not "
+"seen with this command."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:346
+msgid ""
+"If Alice wants to visualize what Bob did since their histories forked she "
+"can issue the following command:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:349
+#, no-wrap
+msgid "$ gitk HEAD..FETCH_HEAD\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:352
+msgid ""
+"This uses the same two-dot range notation we saw earlier with 'git log'."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:355
+msgid ""
+"Alice may want to view what both of them did since they forked.  She can use "
+"three-dot form instead of the two-dot form:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:358
+#, no-wrap
+msgid "$ gitk HEAD...FETCH_HEAD\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:362
+msgid ""
+"This means \"show everything that is reachable from either one, but exclude "
+"anything that is reachable from both of them\"."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:365
+msgid ""
+"Please note that these range notation can be used with both gitk and \"git "
+"log\"."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:371
+msgid ""
+"After inspecting what Bob did, if there is nothing urgent, Alice may decide "
+"to continue working without pulling from Bob.  If Bob's history does have "
+"something Alice would immediately need, Alice may choose to stash her work-"
+"in-progress first, do a \"pull\", and then finally unstash her work-in-"
+"progress on top of the resulting history."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:376
+msgid ""
+"When you are working in a small closely knit group, it is not unusual to "
+"interact with the same repository over and over again.  By defining 'remote' "
+"repository shorthand, you can make it easier:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:379
+#, no-wrap
+msgid "alice$ git remote add bob /home/bob/myrepo\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:384
+msgid ""
+"With this, Alice can perform the first part of the \"pull\" operation alone "
+"using the 'git fetch' command without merging them with her own branch, "
+"using:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:387
+#, no-wrap
+msgid "alice$ git fetch bob\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:393
+msgid ""
+"Unlike the longhand form, when Alice fetches from Bob using a remote "
+"repository shorthand set up with 'git remote', what was fetched is stored in "
+"a remote-tracking branch, in this case `bob/master`.  So after this:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:396
+#, no-wrap
+msgid "alice$ git log -p master..bob/master\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:400
+msgid ""
+"shows a list of all the changes that Bob made since he branched from Alice's "
+"master branch."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:403
+msgid ""
+"After examining those changes, Alice could merge the changes into her master "
+"branch:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:406
+#, no-wrap
+msgid "alice$ git merge bob/master\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:410
+msgid ""
+"This `merge` can also be done by 'pulling from her own remote-tracking "
+"branch', like this:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:413
+#, no-wrap
+msgid "alice$ git pull . remotes/bob/master\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:417
+msgid ""
+"Note that git pull always merges into the current branch, regardless of what "
+"else is given on the command line."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:419
+msgid "Later, Bob can update his repo with Alice's latest changes using"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:422
+#, no-wrap
+msgid "bob$ git pull\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:428
+msgid ""
+"Note that he doesn't need to give the path to Alice's repository; when Bob "
+"cloned Alice's repository, Git stored the location of her repository in the "
+"repository configuration, and that location is used for pulls:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:432
+#, no-wrap
+msgid ""
+"bob$ git config --get remote.origin.url\n"
+"/home/alice/project\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:437
+msgid ""
+"(The complete configuration created by 'git clone' is visible using `git "
+"config -l`, and the linkgit:git-config[1] man page explains the meaning of "
+"each option.)"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:440
+msgid ""
+"Git also keeps a pristine copy of Alice's master branch under the name "
+"\"origin/master\":"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:444
+#, no-wrap
+msgid ""
+"bob$ git branch -r\n"
+"  origin/master\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:448
+msgid ""
+"If Bob later decides to work from a different host, he can still perform "
+"clones and pulls using the ssh protocol:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:451
+#, no-wrap
+msgid "bob$ git clone alice.org:/home/alice/project myrepo\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:455
+msgid ""
+"Alternatively, Git has a native protocol, or can use rsync or http; see "
+"linkgit:git-pull[1] for details."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:459
+msgid ""
+"Git can also be used in a CVS-like mode, with a central repository that "
+"various users push changes to; see linkgit:git-push[1] and linkgit:gitcvs-"
+"migration[7]."
+msgstr ""
+
+#. type: Title -
+#: ../../gittutorial.txt:461
+#, no-wrap
+msgid "Exploring history"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:467
+msgid ""
+"Git history is represented as a series of interrelated commits.  We have "
+"already seen that the 'git log' command can list those commits.  Note that "
+"first line of each git log entry also gives a name for the commit:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:473
+#, no-wrap
+msgid ""
+"$ git log\n"
+"commit c82a22c39cbc32576f64f5c6b3f24b99ea8149c7\n"
+"Author: Junio C Hamano <junkio@cox.net>\n"
+"Date:   Tue May 16 17:18:22 2006 -0700\n"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:475
+#, no-wrap
+msgid "    merge-base: Clarify the comments on post processing.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:479
+msgid ""
+"We can give this name to 'git show' to see the details about this commit."
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:482
+#, no-wrap
+msgid "$ git show c82a22c39cbc32576f64f5c6b3f24b99ea8149c7\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:486
+msgid ""
+"But there are other ways to refer to commits.  You can use any initial part "
+"of the name that is long enough to uniquely identify the commit:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:492
+#, no-wrap
+msgid ""
+"$ git show c82a22c39c\t# the first few characters of the name are\n"
+"\t\t\t# usually enough\n"
+"$ git show HEAD\t\t# the tip of the current branch\n"
+"$ git show experimental\t# the tip of the \"experimental\" branch\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:496
+msgid ""
+"Every commit usually has one \"parent\" commit which points to the previous "
+"state of the project:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:501
+#, no-wrap
+msgid ""
+"$ git show HEAD^  # to see the parent of HEAD\n"
+"$ git show HEAD^^ # to see the grandparent of HEAD\n"
+"$ git show HEAD~4 # to see the great-great grandparent of HEAD\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:504
+msgid "Note that merge commits may have more than one parent:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:508
+#, no-wrap
+msgid ""
+"$ git show HEAD^1 # show the first parent of HEAD (same as HEAD^)\n"
+"$ git show HEAD^2 # show the second parent of HEAD\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:511
+msgid "You can also give commits names of your own; after running"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:514
+#, no-wrap
+msgid "$ git tag v2.5 1b2e1d63ff\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:520
+msgid ""
+"you can refer to 1b2e1d63ff by the name \"v2.5\".  If you intend to share "
+"this name with other people (for example, to identify a release version), "
+"you should create a \"tag\" object, and perhaps sign it; see linkgit:git-tag"
+"[1] for details."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:523
+msgid ""
+"Any Git command that needs to know a commit can take any of these names.  "
+"For example:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:530
+#, no-wrap
+msgid ""
+"$ git diff v2.5 HEAD\t # compare the current HEAD to v2.5\n"
+"$ git branch stable v2.5 # start a new branch named \"stable\" based\n"
+"\t\t\t # at v2.5\n"
+"$ git reset --hard HEAD^ # reset your current branch and working\n"
+"\t\t\t # directory to its state at HEAD^\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:540
+msgid ""
+"Be careful with that last command: in addition to losing any changes in the "
+"working directory, it will also remove all later commits from this branch.  "
+"If this branch is the only branch containing those commits, they will be "
+"lost.  Also, don't use 'git reset' on a publicly-visible branch that other "
+"developers pull from, as it will force needless merges on other developers "
+"to clean up the history.  If you need to undo changes that you have pushed, "
+"use 'git revert' instead."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:543
+msgid ""
+"The 'git grep' command can search for strings in any version of your "
+"project, so"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:546
+#, no-wrap
+msgid "$ git grep \"hello\" v2.5\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:549
+msgid "searches for all occurrences of \"hello\" in v2.5."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:552
+msgid ""
+"If you leave out the commit name, 'git grep' will search any of the files it "
+"manages in your current directory.  So"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:555
+#, no-wrap
+msgid "$ git grep \"hello\"\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:558
+msgid "is a quick way to search just the files that are tracked by Git."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:561
+msgid ""
+"Many Git commands also take sets of commits, which can be specified in a "
+"number of ways.  Here are some examples with 'git log':"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:568
+#, no-wrap
+msgid ""
+"$ git log v2.5..v2.6            # commits between v2.5 and v2.6\n"
+"$ git log v2.5..                # commits since v2.5\n"
+"$ git log --since=\"2 weeks ago\" # commits from the last 2 weeks\n"
+"$ git log v2.5.. Makefile       # commits since v2.5 which modify\n"
+"\t\t\t\t# Makefile\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:574
+msgid ""
+"You can also give 'git log' a \"range\" of commits where the first is not "
+"necessarily an ancestor of the second; for example, if the tips of the "
+"branches \"stable\" and \"master\" diverged from a common commit some time "
+"ago, then"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:577
+#, no-wrap
+msgid "$ git log stable..master\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:581
+msgid ""
+"will list commits made in the master branch but not in the stable branch, "
+"while"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:584
+#, no-wrap
+msgid "$ git log master..stable\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:588
+msgid ""
+"will show the list of commits made on the stable branch but not the master "
+"branch."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:593
+msgid ""
+"The 'git log' command has a weakness: it must present commits in a list.  "
+"When the history has lines of development that diverged and then merged back "
+"together, the order in which 'git log' presents those commits is meaningless."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:597
+msgid ""
+"Most projects with multiple contributors (such as the Linux kernel, or Git "
+"itself) have frequent merges, and 'gitk' does a better job of visualizing "
+"their history.  For example,"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:600
+#, no-wrap
+msgid "$ gitk --since=\"2 weeks ago\" drivers/\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:606
+msgid ""
+"allows you to browse any commits from the last 2 weeks of commits that "
+"modified files under the \"drivers\" directory.  (Note: you can adjust "
+"gitk's fonts by holding down the control key while pressing \"-\" or \"+\".)"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:610
+msgid ""
+"Finally, most commands that take filenames will optionally allow you to "
+"precede any filename by a commit, to specify a particular version of the "
+"file:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:613
+#, no-wrap
+msgid "$ git diff v2.5:Makefile HEAD:Makefile.in\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:616
+msgid "You can also use 'git show' to see any such file:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial.txt:619
+#, no-wrap
+msgid "$ git show v2.5:Makefile\n"
+msgstr ""
+
+#. type: Title -
+#: ../../gittutorial.txt:622
+#, no-wrap
+msgid "Next Steps"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:628
+msgid ""
+"This tutorial should be enough to perform basic distributed revision control "
+"for your projects.  However, to fully understand the depth and power of Git "
+"you need to understand two simple ideas on which it is based:"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:632
+msgid ""
+"The object database is the rather elegant system used to store the history "
+"of your project--files, directories, and commits."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:636
+msgid ""
+"The index file is a cache of the state of a directory tree, used to create "
+"commits, check out working directories, and hold the various trees involved "
+"in a merge."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:640
+msgid ""
+"Part two of this tutorial explains the object database, the index file, and "
+"a few other odds and ends that you'll need to make the most of Git. You can "
+"find it at linkgit:gittutorial-2[7]."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:643
+msgid ""
+"If you don't want to continue with that right away, a few other digressions "
+"that may be interesting at this point are:"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:648
+msgid ""
+"linkgit:git-format-patch[1], linkgit:git-am[1]: These convert series of git "
+"commits into emailed patches, and vice versa, useful for projects such as "
+"the Linux kernel which rely heavily on emailed patches."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:655
+msgid ""
+"linkgit:git-bisect[1]: When there is a regression in your project, one way "
+"to track down the bug is by searching through the history to find the exact "
+"commit that's to blame.  Git bisect can help you perform a binary search for "
+"that commit.  It is smart enough to perform a close-to-optimal search even "
+"in the case of complex non-linear history with lots of merged branches."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:658
+msgid "linkgit:gitworkflows[7]: Gives an overview of recommended workflows."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:660
+msgid "link:everyday.html[Everyday Git with 20 Commands Or So]"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:662
+msgid "linkgit:gitcvs-migration[7]: Git for CVS users."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:673
+msgid ""
+"linkgit:gittutorial-2[7], linkgit:gitcvs-migration[7], linkgit:gitcore-"
+"tutorial[7], linkgit:gitglossary[7], linkgit:git-help[1], linkgit:"
+"gitworkflows[7], link:everyday.html[Everyday Git], link:user-manual.html[The "
+"Git User's Manual]"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:676
+msgid "Part of the linkgit:git[1] suite."
+msgstr ""

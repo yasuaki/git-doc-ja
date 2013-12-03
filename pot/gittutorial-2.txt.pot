@@ -1,0 +1,749 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Git Japanese translation team
+# This file is distributed under the same license as the Git package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Git v1.8.4\n"
+"POT-Creation-Date: 2013-12-04 01:19+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title -
+#: ../../git.txt:5 ../../gittutorial.txt:5 ../../gittutorial-2.txt:5
+#, no-wrap
+msgid "NAME"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:10 ../../gittutorial.txt:9 ../../gittutorial-2.txt:9
+#, no-wrap
+msgid "SYNOPSIS"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:19 ../../gittutorial.txt:14 ../../gittutorial-2.txt:14
+#, no-wrap
+msgid "DESCRIPTION"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:966 ../../gittutorial.txt:664 ../../gittutorial-2.txt:424
+#, no-wrap
+msgid "SEE ALSO"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:974 ../../gittutorial.txt:675 ../../gittutorial-2.txt:434
+#, no-wrap
+msgid "GIT"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:12 ../../gittutorial-2.txt:12
+#, no-wrap
+msgid "git *\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:676 ../../gittutorial-2.txt:435
+msgid "Part of the linkgit:git[1] suite."
+msgstr ""
+
+#. type: Title =
+#: ../../gittutorial-2.txt:2
+#, no-wrap
+msgid "gittutorial-2(7)"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:7
+msgid "gittutorial-2 - A tutorial introduction to Git: part two"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:17
+msgid ""
+"You should work through linkgit:gittutorial[7] before reading this tutorial."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:22
+msgid ""
+"The goal of this tutorial is to introduce two fundamental pieces of Git's "
+"architecture--the object database and the index file--and to provide the "
+"reader with everything necessary to understand the rest of the Git "
+"documentation."
+msgstr ""
+
+#. type: Title -
+#: ../../gittutorial-2.txt:24
+#, no-wrap
+msgid "The Git object database"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:27
+msgid "Let's start a new project and create a small amount of history:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:43
+#, no-wrap
+msgid ""
+"$ mkdir test-project\n"
+"$ cd test-project\n"
+"$ git init\n"
+"Initialized empty Git repository in .git/\n"
+"$ echo 'hello world' > file.txt\n"
+"$ git add .\n"
+"$ git commit -a -m \"initial commit\"\n"
+"[master (root-commit) 54196cc] initial commit\n"
+" 1 file changed, 1 insertion(+)\n"
+" create mode 100644 file.txt\n"
+"$ echo 'hello world!' >file.txt\n"
+"$ git commit -a -m \"add emphasis\"\n"
+"[master c4d59f3] add emphasis\n"
+" 1 file changed, 1 insertion(+), 1 deletion(-)\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:46
+msgid "What are the 7 digits of hex that Git responded to the commit with?"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:57
+msgid ""
+"We saw in part one of the tutorial that commits have names like this.  It "
+"turns out that every object in the Git history is stored under a 40-digit "
+"hex name.  That name is the SHA-1 hash of the object's contents; among other "
+"things, this ensures that Git will never store the same data twice (since "
+"identical data is given an identical SHA-1 name), and that the contents of a "
+"Git object will never change (since that would change the object's name as "
+"well). The 7 char hex strings here are simply the abbreviation of such 40 "
+"character long strings.  Abbreviations can be used everywhere where the 40 "
+"character strings can be used, so long as they are unambiguous."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:62
+msgid ""
+"It is expected that the content of the commit object you created while "
+"following the example above generates a different SHA-1 hash than the one "
+"shown above because the commit object records the time when it was created "
+"and the name of the person performing the commit."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:67
+msgid ""
+"We can ask Git about this particular object with the `cat-file` command. "
+"Don't copy the 40 hex digits from this example but use those from your own "
+"version. Note that you can shorten it to only a few characters to save "
+"yourself typing all 40 hex digits:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:75
+#, no-wrap
+msgid ""
+"$ git cat-file -t 54196cc2\n"
+"commit\n"
+"$ git cat-file commit 54196cc2\n"
+"tree 92b8b694ffb1675e5975148e1121810081dbdffe\n"
+"author J. Bruce Fields <bfields@puzzle.fieldses.org> 1143414668 -0500\n"
+"committer J. Bruce Fields <bfields@puzzle.fieldses.org> 1143414668 -0500\n"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:77 ../../gittutorial-2.txt:180
+#, no-wrap
+msgid "initial commit\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:84
+msgid ""
+"A tree can refer to one or more \"blob\" objects, each corresponding to a "
+"file.  In addition, a tree can also refer to other tree objects, thus "
+"creating a directory hierarchy.  You can examine the contents of any tree "
+"using ls-tree (remember that a long enough initial portion of the SHA-1 will "
+"also work):"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:88
+#, no-wrap
+msgid ""
+"$ git ls-tree 92b8b694\n"
+"100644 blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad    file.txt\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:92
+msgid ""
+"Thus we see that this tree has one file in it.  The SHA-1 hash is a "
+"reference to that file's data:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:96
+#, no-wrap
+msgid ""
+"$ git cat-file -t 3b18e512\n"
+"blob\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:99
+msgid "A \"blob\" is just file data, which we can also examine with cat-file:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:103
+#, no-wrap
+msgid ""
+"$ git cat-file blob 3b18e512\n"
+"hello world\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:108
+msgid ""
+"Note that this is the old file data; so the object that Git named in its "
+"response to the initial tree was a tree with a snapshot of the directory "
+"state that was recorded by the first commit."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:111
+msgid ""
+"All of these objects are stored under their SHA-1 names inside the Git "
+"directory:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:129
+#, no-wrap
+msgid ""
+"$ find .git/objects/\n"
+".git/objects/\n"
+".git/objects/pack\n"
+".git/objects/info\n"
+".git/objects/3b\n"
+".git/objects/3b/18e512dba79e4c8300dd08aeb37f8e728b8dad\n"
+".git/objects/92\n"
+".git/objects/92/b8b694ffb1675e5975148e1121810081dbdffe\n"
+".git/objects/54\n"
+".git/objects/54/196cc2703dc165cbd373a65a4dcf22d50ae7f7\n"
+".git/objects/a0\n"
+".git/objects/a0/423896973644771497bdc03eb99d5281615b51\n"
+".git/objects/d0\n"
+".git/objects/d0/492b368b66bdabf2ac1fd8c92b39d3db916e59\n"
+".git/objects/c4\n"
+".git/objects/c4/d59f390b9cfd4318117afde11d601c1085f241\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:134
+msgid ""
+"and the contents of these files is just the compressed data plus a header "
+"identifying their length and their type.  The type is either a blob, a tree, "
+"a commit, or a tag."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:137
+msgid ""
+"The simplest commit to find is the HEAD commit, which we can find from .git/"
+"HEAD:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:141
+#, no-wrap
+msgid ""
+"$ cat .git/HEAD\n"
+"ref: refs/heads/master\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:147
+msgid ""
+"As you can see, this tells us which branch we're currently on, and it tells "
+"us this by naming a file under the .git directory, which itself contains a "
+"SHA-1 name referring to a commit object, which we can examine with cat-file:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:158
+#, no-wrap
+msgid ""
+"$ cat .git/refs/heads/master\n"
+"c4d59f390b9cfd4318117afde11d601c1085f241\n"
+"$ git cat-file -t c4d59f39\n"
+"commit\n"
+"$ git cat-file commit c4d59f39\n"
+"tree d0492b368b66bdabf2ac1fd8c92b39d3db916e59\n"
+"parent 54196cc2703dc165cbd373a65a4dcf22d50ae7f7\n"
+"author J. Bruce Fields <bfields@puzzle.fieldses.org> 1143418702 -0500\n"
+"committer J. Bruce Fields <bfields@puzzle.fieldses.org> 1143418702 -0500\n"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:160
+#, no-wrap
+msgid "add emphasis\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:163
+msgid "The \"tree\" object here refers to the new state of the tree:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:169
+#, no-wrap
+msgid ""
+"$ git ls-tree d0492b36\n"
+"100644 blob a0423896973644771497bdc03eb99d5281615b51    file.txt\n"
+"$ git cat-file blob a0423896\n"
+"hello world!\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:172
+msgid "and the \"parent\" object refers to the previous commit:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:178
+#, no-wrap
+msgid ""
+"$ git cat-file commit 54196cc2\n"
+"tree 92b8b694ffb1675e5975148e1121810081dbdffe\n"
+"author J. Bruce Fields <bfields@puzzle.fieldses.org> 1143414668 -0500\n"
+"committer J. Bruce Fields <bfields@puzzle.fieldses.org> 1143414668 -0500\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:184
+msgid ""
+"The tree object is the tree we examined first, and this commit is unusual in "
+"that it lacks any parent."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:189
+#, no-wrap
+msgid ""
+"Most commits have only one parent, but it is also common for a commit\n"
+"to have multiple parents.   In that case the commit represents a\n"
+"merge, with the parent references pointing to the heads of the merged\n"
+"branches.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:193
+msgid ""
+"Besides blobs, trees, and commits, the only remaining type of object is a "
+"\"tag\", which we won't discuss here; refer to linkgit:git-tag[1] for "
+"details."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:196
+msgid ""
+"So now we know how Git uses the object database to represent a project's "
+"history:"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:201
+msgid ""
+"\"commit\" objects refer to \"tree\" objects representing the snapshot of a "
+"directory tree at a particular point in the history, and refer to \"parent\" "
+"commits to show how they're connected into the project history."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:204
+msgid ""
+"\"tree\" objects represent the state of a single directory, associating "
+"directory names to \"blob\" objects containing file data and \"tree\" "
+"objects containing subdirectory information."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:205
+msgid "\"blob\" objects contain file data without any other structure."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:207
+msgid ""
+"References to commit objects at the head of each branch are stored in files "
+"under .git/refs/heads/."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:208
+msgid "The name of the current branch is stored in .git/HEAD."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:214
+msgid ""
+"Note, by the way, that lots of commands take a tree as an argument.  But as "
+"we can see above, a tree can be referred to in many different ways--by the "
+"SHA-1 name for that tree, by the name of a commit that refers to the tree, "
+"by the name of a branch whose head refers to that tree, etc.--and most such "
+"commands can accept any of these names."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:217
+msgid ""
+"In command synopses, the word \"tree-ish\" is sometimes used to designate "
+"such an argument."
+msgstr ""
+
+#. type: Title -
+#: ../../gittutorial-2.txt:219
+#, no-wrap
+msgid "The index file"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:225
+msgid ""
+"The primary tool we've been using to create commits is `git-commit -a`, "
+"which creates a commit including every change you've made to your working "
+"tree.  But what if you want to commit changes only to certain files? Or only "
+"certain changes to certain files?"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:228
+msgid ""
+"If we look at the way commits are created under the cover, we'll see that "
+"there are more flexible ways creating commits."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:230
+msgid "Continuing with our test-project, let's modify file.txt again:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:233
+#, no-wrap
+msgid "$ echo \"hello world, again\" >>file.txt\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:238
+msgid ""
+"but this time instead of immediately making the commit, let's take an "
+"intermediate step, and ask for diffs along the way to keep track of what's "
+"happening:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:248
+#, no-wrap
+msgid ""
+"$ git diff\n"
+"--- a/file.txt\n"
+"+++ b/file.txt\n"
+"@@ -1 +1,2 @@\n"
+" hello world!\n"
+"+hello world, again\n"
+"$ git add file.txt\n"
+"$ git diff\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:252
+msgid ""
+"The last diff is empty, but no new commits have been made, and the head "
+"still doesn't contain the new line:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:262
+#, no-wrap
+msgid ""
+"$ git diff HEAD\n"
+"diff --git a/file.txt b/file.txt\n"
+"index a042389..513feba 100644\n"
+"--- a/file.txt\n"
+"+++ b/file.txt\n"
+"@@ -1 +1,2 @@\n"
+" hello world!\n"
+"+hello world, again\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:268
+msgid ""
+"So 'git diff' is comparing against something other than the head.  The thing "
+"that it's comparing against is actually the index file, which is stored in ."
+"git/index in a binary format, but whose contents we can examine with ls-"
+"files:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:277
+#, no-wrap
+msgid ""
+"$ git ls-files --stage\n"
+"100644 513feba2e53ebbd2532419ded848ba19de88ba00 0       file.txt\n"
+"$ git cat-file -t 513feba2\n"
+"blob\n"
+"$ git cat-file blob 513feba2\n"
+"hello world!\n"
+"hello world, again\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:283
+msgid ""
+"So what our 'git add' did was store a new blob and then put a reference to "
+"it in the index file.  If we modify the file again, we'll see that the new "
+"modifications are reflected in the 'git diff' output:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:294
+#, no-wrap
+msgid ""
+"$ echo 'again?' >>file.txt\n"
+"$ git diff\n"
+"index 513feba..ba3da7b 100644\n"
+"--- a/file.txt\n"
+"+++ b/file.txt\n"
+"@@ -1,2 +1,3 @@\n"
+" hello world!\n"
+" hello world, again\n"
+"+again?\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:299
+msgid ""
+"With the right arguments, 'git diff' can also show us the difference between "
+"the working directory and the last commit, or between the index and the last "
+"commit:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:318
+#, no-wrap
+msgid ""
+"$ git diff HEAD\n"
+"diff --git a/file.txt b/file.txt\n"
+"index a042389..ba3da7b 100644\n"
+"--- a/file.txt\n"
+"+++ b/file.txt\n"
+"@@ -1 +1,3 @@\n"
+" hello world!\n"
+"+hello world, again\n"
+"+again?\n"
+"$ git diff --cached\n"
+"diff --git a/file.txt b/file.txt\n"
+"index a042389..513feba 100644\n"
+"--- a/file.txt\n"
+"+++ b/file.txt\n"
+"@@ -1 +1,2 @@\n"
+" hello world!\n"
+"+hello world, again\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:324
+msgid ""
+"At any time, we can create a new commit using 'git commit' (without the \"-a"
+"\" option), and verify that the state committed only includes the changes "
+"stored in the index file, not the additional change that is still only in "
+"our working tree:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:336
+#, no-wrap
+msgid ""
+"$ git commit -m \"repeat\"\n"
+"$ git diff HEAD\n"
+"diff --git a/file.txt b/file.txt\n"
+"index 513feba..ba3da7b 100644\n"
+"--- a/file.txt\n"
+"+++ b/file.txt\n"
+"@@ -1,2 +1,3 @@\n"
+" hello world!\n"
+" hello world, again\n"
+"+again?\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:341
+msgid ""
+"So by default 'git commit' uses the index to create the commit, not the "
+"working tree; the \"-a\" option to commit tells it to first update the index "
+"with all changes in the working tree."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:344
+msgid ""
+"Finally, it's worth looking at the effect of 'git add' on the index file:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:348
+#, no-wrap
+msgid ""
+"$ echo \"goodbye, world\" >closing.txt\n"
+"$ git add closing.txt\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:351
+msgid "The effect of the 'git add' was to add one entry to the index file:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:356
+#, no-wrap
+msgid ""
+"$ git ls-files --stage\n"
+"100644 8b9743b20d4b15be3955fc8d5cd2b09cd2336138 0       closing.txt\n"
+"100644 513feba2e53ebbd2532419ded848ba19de88ba00 0       file.txt\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:360
+msgid ""
+"And, as you can see with cat-file, this new entry refers to the current "
+"contents of the file:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:364
+#, no-wrap
+msgid ""
+"$ git cat-file blob 8b9743b2\n"
+"goodbye, world\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:368
+msgid ""
+"The \"status\" command is a useful way to get a quick summary of the "
+"situation:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../gittutorial-2.txt:382
+#, no-wrap
+msgid ""
+"$ git status\n"
+"# On branch master\n"
+"# Changes to be committed:\n"
+"#   (use \"git reset HEAD <file>...\" to unstage)\n"
+"#\n"
+"#       new file: closing.txt\n"
+"#\n"
+"# Changes not staged for commit:\n"
+"#   (use \"git add <file>...\" to update what will be committed)\n"
+"#\n"
+"#       modified: file.txt\n"
+"#\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:390
+msgid ""
+"Since the current state of closing.txt is cached in the index file, it is "
+"listed as \"Changes to be committed\".  Since file.txt has changes in the "
+"working directory that aren't reflected in the index, it is marked \"changed "
+"but not updated\".  At this point, running \"git commit\" would create a "
+"commit that added closing.txt (with its new contents), but that didn't "
+"modify file.txt."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:394
+msgid ""
+"Also, note that a bare `git diff` shows the changes to file.txt, but not the "
+"addition of closing.txt, because the version of closing.txt in the index "
+"file is identical to the one in the working directory."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:400
+msgid ""
+"In addition to being the staging area for new commits, the index file is "
+"also populated from the object database when checking out a branch, and is "
+"used to hold the trees involved in a merge operation.  See linkgit:gitcore-"
+"tutorial[7] and the relevant man pages for details."
+msgstr ""
+
+#. type: Title -
+#: ../../gittutorial-2.txt:402
+#, no-wrap
+msgid "What next?"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:408
+msgid ""
+"At this point you should know everything necessary to read the man pages for "
+"any of the git commands; one good place to start would be with the commands "
+"mentioned in link:everyday.html[Everyday Git].  You should be able to find "
+"any unknown jargon in linkgit:gitglossary[7]."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:411
+msgid ""
+"The link:user-manual.html[Git User's Manual] provides a more comprehensive "
+"introduction to Git."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:415
+msgid ""
+"linkgit:gitcvs-migration[7] explains how to import a CVS repository into "
+"Git, and shows how to use Git in a CVS-like way."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:418
+msgid ""
+"For some interesting examples of Git use, see the link:howto-index.html"
+"[howtos]."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:422
+msgid ""
+"For Git developers, linkgit:gitcore-tutorial[7] goes into detail on the "
+"lower-level Git mechanisms involved in, for example, creating a new commit."
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial-2.txt:432
+msgid ""
+"linkgit:gittutorial[7], linkgit:gitcvs-migration[7], linkgit:gitcore-tutorial"
+"[7], linkgit:gitglossary[7], linkgit:git-help[1], link:everyday.html"
+"[Everyday Git], link:user-manual.html[The Git User's Manual]"
+msgstr ""

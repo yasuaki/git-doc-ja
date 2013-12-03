@@ -1,0 +1,944 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2013-12-04 01:53+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title -
+#: ../../git.txt:5 ../../gittutorial.txt:5 ../../gittutorial-2.txt:5
+#: ../../git-add.txt:5
+#, no-wrap
+msgid "NAME"
+msgstr "名前"
+
+#. type: Title -
+#: ../../git.txt:10 ../../gittutorial.txt:9 ../../gittutorial-2.txt:9
+#: ../../git-add.txt:9
+#, no-wrap
+msgid "SYNOPSIS"
+msgstr "書式"
+
+#. type: Title -
+#: ../../git.txt:19 ../../gittutorial.txt:14 ../../gittutorial-2.txt:14
+#: ../../git-add.txt:17
+#, no-wrap
+msgid "DESCRIPTION"
+msgstr "説明"
+
+#. type: Title -
+#: ../../git.txt:383 ../../git-add.txt:51
+#, no-wrap
+msgid "OPTIONS"
+msgstr "オプション"
+
+#. type: Title -
+#: ../../git.txt:966 ../../gittutorial.txt:664 ../../gittutorial-2.txt:424
+#: ../../git-add.txt:396
+#, no-wrap
+msgid "SEE ALSO"
+msgstr "関連項目"
+
+#. type: Title -
+#: ../../git.txt:974 ../../gittutorial.txt:675 ../../gittutorial-2.txt:434
+#: ../../git-add.txt:405
+#, no-wrap
+msgid "GIT"
+msgstr "GIT"
+
+#. type: Plain text
+#: ../../git.txt:975 ../../git-add.txt:406
+msgid "Part of the linkgit:git[1] suite"
+msgstr "linkgit:git[1] スイートの一部"
+
+#. type: Title =
+#: ../../git-add.txt:2
+#, fuzzy, no-wrap
+msgid "git-add(1)"
+msgstr "git-add(1)"
+
+#. type: Plain text
+#: ../../git-add.txt:7
+#, fuzzy
+msgid "git-add - Add file contents to the index"
+msgstr "git-add - 索引(index)にファイルの内容を追加する"
+
+#. type: Plain text
+#: ../../git-add.txt:15
+#, fuzzy, no-wrap
+msgid ""
+"'git add' [-n] [-v] [--force | -f] [--interactive | -i] [--patch | -p]\n"
+"\t  [--edit | -e] [--[no-]all | --[no-]ignore-removal | [--update | -u]]\n"
+"\t  [--intent-to-add | -N] [--refresh] [--ignore-errors] [--ignore-missing]\n"
+"\t  [--] [<pathspec>...]\n"
+msgstr ""
+"'git add' [-n] [-v] [--force | -f] [--interactive | -i] [--patch | -p]\n"
+"\t  [--edit | -e] [--all | [--update | -u]] [--intent-to-add | -N]\n"
+"\t  [--refresh] [--ignore-errors] [--] [<filepattern>...]\n"
+
+#. type: Plain text
+#: ../../git-add.txt:24
+msgid ""
+"This command updates the index using the current content found in the "
+"working tree, to prepare the content staged for the next commit.  It "
+"typically adds the current content of existing paths as a whole, but with "
+"some options it can also be used to add content with only part of the "
+"changes made to the working tree files applied, or remove paths that do not "
+"exist in the working tree anymore."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:30
+#, fuzzy
+msgid ""
+"The \"index\" holds a snapshot of the content of the working tree, and it is "
+"this snapshot that is taken as the contents of the next commit.  Thus after "
+"making any changes to the working directory, and before running the commit "
+"command, you must use the `add` command to add any new or modified files to "
+"the index."
+msgstr ""
+"\"索引\" はワーキングツリーのコンテンツのスナップショットをひとつ保持していま"
+"す。 そしてそのスナップショットは次回のコミットのコンテンツとして扱われま"
+"す。 従ってワーキングディレクトリに何か変更を加えた後は、 commit コマンドを実"
+"行する前に 'add' コマンドを使って、 新しいファイルや修正したファイルを索引に"
+"追加しなければなりません。"
+
+#. type: Plain text
+#: ../../git-add.txt:35
+#, fuzzy
+msgid ""
+"This command can be performed multiple times before a commit.  It only adds "
+"the content of the specified file(s) at the time the add command is run; if "
+"you want subsequent changes included in the next commit, then you must run "
+"`git add` again to add the new content to the index."
+msgstr ""
+"このコマンドはコミット前に複数回にわたって実行できます。 追加されるのは add "
+"コマンドで指定された(複数の)ファイルの、 その時点の内容のみです。 後から変更"
+"した内容を次のコミットに含めたければ、 その新しい内容をインデックスに追加する"
+"ために 'git add' を再度実行する必要があります。"
+
+#. type: Plain text
+#: ../../git-add.txt:38
+#, fuzzy
+msgid ""
+"The `git status` command can be used to obtain a summary of which files have "
+"changes that are staged for the next commit."
+msgstr ""
+"'git status' コマンドで、次回のコミットのために stage された変更点を持った"
+"ファイルの一覧を取得できます。"
+
+#. type: Plain text
+#: ../../git-add.txt:45
+#, fuzzy
+msgid ""
+"The `git add` command will not add ignored files by default.  If any ignored "
+"files were explicitly specified on the command line, `git add` will fail "
+"with a list of ignored files.  Ignored files reached by directory recursion "
+"or filename globbing performed by Git (quote your globs before the shell) "
+"will be silently ignored.  The 'git add' command can be used to add ignored "
+"files with the `-f` (force) option."
+msgstr ""
+"'git add' コマンドはデフォルトで無視ファイル(訳注: .gitignore に登録された"
+"ファイル)を追加しません。 無視ファイルがコマンドラインで明示的に指定された場"
+"合、'git add' は無視ファイルの一覧を表示して失敗します。 ディレクトリ再帰や"
+"Gitによるファイル名のグロビング (シェルに解釈されないよう引用符で囲みます)  "
+"の結果として無視ファイルが含まれていた場合、黙って無視します。 'add' コマンド"
+"は '-f'(force)オプションと一緒に使えば 無視ファイルを追加することができます。"
+
+#. type: Plain text
+#: ../../git-add.txt:48
+#, fuzzy
+msgid ""
+"Please see linkgit:git-commit[1] for alternative ways to add content to a "
+"commit."
+msgstr "コミットに追加する別の方法は linkgit:git-commit[1] を見てください。"
+
+#. type: Plain text
+#: ../../git-add.txt:58
+#, fuzzy, no-wrap
+msgid ""
+"<pathspec>...::\n"
+"\tFiles to add content from.  Fileglobs (e.g. `*.c`) can\n"
+"\tbe given to add all matching files.  Also a\n"
+"\tleading directory name (e.g. `dir` to add `dir/file1`\n"
+"\tand `dir/file2`) can be given to add all files in the\n"
+"\tdirectory, recursively.\n"
+msgstr ""
+"<filepattern>...::\n"
+"\tコンテンツを追加するファイルを指定します。\n"
+"\tファイルグロブ(例 '*.c')でマッチするファイルを\n"
+"\tすべて追加することができます。また、\n"
+"\tディレクトリ名を指定してそのディレクトリ配下を\n"
+"\t再帰的に全て追加することが可能です。\n"
+"\t(例: 'dir/file1' と 'dir/file2' を追加するために 'dir'\n"
+"\tを指定する)\n"
+
+#. type: Plain text
+#: ../../git-add.txt:63
+#, fuzzy, no-wrap
+msgid ""
+"-n::\n"
+"--dry-run::\n"
+"\tDon't actually add the file(s), just show if they exist and/or will\n"
+"\tbe ignored.\n"
+msgstr ""
+"-n::\n"
+"--dry-run::\n"
+"\tファイルが存在すればそれを表示するだけで、\n"
+"\t実際にはファイルを追加しません。\n"
+
+#. type: Plain text
+#: ../../git-add.txt:67
+#, fuzzy, no-wrap
+msgid ""
+"-v::\n"
+"--verbose::\n"
+"        Be verbose.\n"
+msgstr ""
+"-v::\n"
+"--verbose::\n"
+"\t冗長表示になります。\n"
+
+#. type: Plain text
+#: ../../git-add.txt:71
+#, fuzzy, no-wrap
+msgid ""
+"-f::\n"
+"--force::\n"
+"\tAllow adding otherwise ignored files.\n"
+msgstr ""
+"-f::\n"
+"--force::\n"
+"\t無視ファイルであっても追加します。\n"
+
+#. type: Plain text
+#: ../../git-add.txt:78
+#, fuzzy, no-wrap
+msgid ""
+"-i::\n"
+"--interactive::\n"
+"\tAdd modified contents in the working tree interactively to\n"
+"\tthe index. Optional path arguments may be supplied to limit\n"
+"\toperation to a subset of the working tree. See ``Interactive\n"
+"\tmode'' for details.\n"
+msgstr ""
+"-i::\n"
+"--interactive::\n"
+"\t修正したワーキングツリーのコンテンツを対話的に索引に追加します。\n"
+"\t操作をワーキングツリーの一部に限定するためにファイルパスを\n"
+"\t指定することもできます。\n"
+"\t詳細は''Interactive mode''を見てください。\n"
+
+#. type: Plain text
+#: ../../git-add.txt:85
+#, no-wrap
+msgid ""
+"-p::\n"
+"--patch::\n"
+"\tInteractively choose hunks of patch between the index and the\n"
+"\twork tree and add them to the index. This gives the user a chance\n"
+"\tto review the difference before adding modified contents to the\n"
+"\tindex.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:89
+#, no-wrap
+msgid ""
+"This effectively runs `add --interactive`, but bypasses the\n"
+"initial command menu and directly jumps to the `patch` subcommand.\n"
+"See ``Interactive mode'' for details.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:94
+#, fuzzy, no-wrap
+msgid ""
+"-e, \\--edit::\n"
+"\tOpen the diff vs. the index in an editor and let the user\n"
+"\tedit it.  After the editor was closed, adjust the hunk headers\n"
+"\tand apply the patch to the index.\n"
+msgstr ""
+"-e, \\--edit::\n"
+"\tエディタを開いて索引に対する差分を編集できます。\n"
+"\tエディタを終了後は hunk ヘッダ(訳注: 差分に含まれる位置情報)を調整し、\n"
+"\tパッチとして索引に適用します。\n"
+
+#. type: Plain text
+#: ../../git-add.txt:100
+#, no-wrap
+msgid ""
+"The intent of this option is to pick and choose lines of the patch to\n"
+"apply, or even to modify the contents of lines to be staged. This can be\n"
+"quicker and more flexible than using the interactive hunk selector.\n"
+"However, it is easy to confuse oneself and create a patch that does not\n"
+"apply to the index. See EDITING PATCHES below.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:106
+#, no-wrap
+msgid ""
+"-u::\n"
+"--update::\n"
+"\tUpdate the index just where it already has an entry matching\n"
+"\t<pathspec>.  This removes as well as modifies index entries to\n"
+"\tmatch the working tree, but adds no new files.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:111
+#, no-wrap
+msgid ""
+"If no <pathspec> is given, the current version of Git defaults to\n"
+"\".\"; in other words, update all tracked files in the current directory\n"
+"and its subdirectories. This default will change in a future version\n"
+"of Git, hence the form without <pathspec> should not be used.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:119
+#, no-wrap
+msgid ""
+"-A::\n"
+"--all::\n"
+"--no-ignore-removal::\n"
+"\tUpdate the index not only where the working tree has a file\n"
+"\tmatching <pathspec> but also where the index already has an\n"
+"\tentry.\tThis adds, modifies, and removes index entries to\n"
+"\tmatch the working tree.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:124
+#, no-wrap
+msgid ""
+"If no <pathspec> is given, the current version of Git defaults to\n"
+"\".\"; in other words, update all files in the current directory\n"
+"and its subdirectories. This default will change in a future version\n"
+"of Git, hence the form without <pathspec> should not be used.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:131
+#, no-wrap
+msgid ""
+"--no-all::\n"
+"--ignore-removal::\n"
+"\tUpdate the index by adding new files that are unknown to the\n"
+"\tindex and files modified in the working tree, but ignore\n"
+"\tfiles that have been removed from the working tree.  This\n"
+"\toption is a no-op when no <pathspec> is used.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:137
+#, no-wrap
+msgid ""
+"This option is primarily to help the current users of Git, whose\n"
+"\"git add <pathspec>...\" ignores removed files.  In future versions\n"
+"of Git, \"git add <pathspec>...\" will be a synonym to \"git add -A\n"
+"<pathspec>...\" and \"git add --ignore-removal <pathspec>...\" will behave like\n"
+"today's \"git add <pathspec>...\", ignoring removed files.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:145
+#, fuzzy, no-wrap
+msgid ""
+"-N::\n"
+"--intent-to-add::\n"
+"\tRecord only the fact that the path will be added later. An entry\n"
+"\tfor the path is placed in the index with no content. This is\n"
+"\tuseful for, among other things, showing the unstaged content of\n"
+"\tsuch files with `git diff` and committing them with `git commit\n"
+"\t-a`.\n"
+msgstr ""
+"-N::\n"
+"--intent-to-add::\n"
+"\t指定したパスのファイルが、後で add されるということだけを記録します。\n"
+"\t索引には空のファイルが登録されます。\n"
+"\tこれはstageされていないファイルのうち、'git diff' で表示させたり、\n"
+"\t'git commit -a' でコミットしたいファイルに対して使用すると便利です。\n"
+
+#. type: Plain text
+#: ../../git-add.txt:149
+#, fuzzy, no-wrap
+msgid ""
+"--refresh::\n"
+"\tDon't add the file(s), but only refresh their stat()\n"
+"\tinformation in the index.\n"
+msgstr ""
+"--refresh::\n"
+"\tファイルは追加せず、\n"
+"\t索引にあるファイルのstat()情報だけをリフレッシュします。\n"
+
+#. type: Plain text
+#: ../../git-add.txt:156
+#, fuzzy, no-wrap
+msgid ""
+"--ignore-errors::\n"
+"\tIf some files could not be added because of errors indexing\n"
+"\tthem, do not abort the operation, but continue adding the\n"
+"\tothers. The command shall still exit with non-zero status.\n"
+"\tThe configuration variable `add.ignoreErrors` can be set to\n"
+"\ttrue to make this the default behaviour.\n"
+msgstr ""
+"--ignore-errors::\n"
+"\tエラーによりファイルを索引に追加することに失敗しても、\n"
+"\t操作を中断せず、他のファイルの追加を続けます。\n"
+"\tそのときコマンドは0以外のステータスで終了します。\n"
+
+#. type: Plain text
+#: ../../git-add.txt:162
+#, no-wrap
+msgid ""
+"--ignore-missing::\n"
+"\tThis option can only be used together with --dry-run. By using\n"
+"\tthis option the user can check if any of the given files would\n"
+"\tbe ignored, no matter if they are already present in the work\n"
+"\ttree or not.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:167
+#, fuzzy, no-wrap
+msgid ""
+"\\--::\n"
+"\tThis option can be used to separate command-line options from\n"
+"\tthe list of files, (useful when filenames might be mistaken\n"
+"\tfor command-line options).\n"
+msgstr ""
+"\\--::\n"
+"\tこのオプションはコマンドラインオプションと、\n"
+"\tコマンドラインで指定するファイルのリストとを分けるために使えます。\n"
+"\t(ファイル名がコマンドラインオプションに間違えられそうなときに役立ちます)\n"
+
+#. type: Title -
+#: ../../git-add.txt:170
+#, fuzzy, no-wrap
+msgid "Configuration"
+msgstr "Configuration"
+
+#. type: Plain text
+#: ../../git-add.txt:176
+#, fuzzy
+msgid ""
+"The optional configuration variable `core.excludesfile` indicates a path to "
+"a file containing patterns of file names to exclude from git-add, similar to "
+"$GIT_DIR/info/exclude.  Patterns in the exclude file are used in addition to "
+"those in info/exclude.  See linkgit:gitignore[5]."
+msgstr ""
+"設定変数 'core.excludesfile' に git-add から除外するファイルの名のパターンを"
+"指定できます。 これは $GIT_DIR/info/exclude に似ています。 除外ファイルのパ"
+"ターンは、この info/exclude に加えて使われます。 linkgit:gitrepository-layout"
+"[5] 参照。"
+
+#. type: Title -
+#: ../../git-add.txt:179
+#, fuzzy, no-wrap
+msgid "EXAMPLES"
+msgstr "EXAMPLES"
+
+#. type: Plain text
+#: ../../git-add.txt:183
+#, fuzzy
+msgid ""
+"Adds content from all `*.txt` files under `Documentation` directory and its "
+"subdirectories:"
+msgstr ""
+"'Documentation' ディレクトリおよびそのサブディレクトリ以下にある、 すべての "
+"'\\*.txt' ファイルの内容を追加します。"
+
+#. type: delimited block -
+#: ../../git-add.txt:186
+#, fuzzy, no-wrap
+msgid "$ git add Documentation/\\*.txt\n"
+msgstr "$ git add Documentation/\\*.txt\n"
+
+#. type: Plain text
+#: ../../git-add.txt:191
+#, fuzzy
+msgid ""
+"Note that the asterisk `*` is quoted from the shell in this example; this "
+"lets the command include the files from subdirectories of `Documentation/` "
+"directory."
+msgstr ""
+"この例のアスタリスク `\\*` はシェルからエスケープしていることに注意してくださ"
+"い。 こうすることで 'Documentation/' ディレクトリの、 サブディレクトリのファ"
+"イルも含まれます。"
+
+#. type: Plain text
+#: ../../git-add.txt:193
+#, fuzzy
+msgid "Considers adding content from all git-*.sh scripts:"
+msgstr "git-*.sh スクリプトをすべて追加する場合を考えます："
+
+#. type: delimited block -
+#: ../../git-add.txt:196
+#, fuzzy, no-wrap
+msgid "$ git add git-*.sh\n"
+msgstr "$ git add git-*.sh\n"
+
+#. type: Plain text
+#: ../../git-add.txt:201
+#, fuzzy
+msgid ""
+"Because this example lets the shell expand the asterisk (i.e. you are "
+"listing the files explicitly), it does not consider `subdir/git-foo.sh`."
+msgstr ""
+"この例ではシェルにアスタリスクを展開させるので (つまり、明示的にファイルリス"
+"トを指定したのと同じ)、 'subdir/git-foo.sh' は対象となりません。"
+
+#. type: Title -
+#: ../../git-add.txt:203
+#, fuzzy, no-wrap
+msgid "Interactive mode"
+msgstr "Interactive mode"
+
+#. type: Plain text
+#: ../../git-add.txt:207
+#, fuzzy
+msgid ""
+"When the command enters the interactive mode, it shows the output of the "
+"'status' subcommand, and then goes into its interactive command loop."
+msgstr ""
+"インタラクティブモードに入ると、 'status' サブコマンドの出力を表示します。 そ"
+"の後、対話コマンドループに進みます。"
+
+#. type: Plain text
+#: ../../git-add.txt:212
+#, fuzzy
+msgid ""
+"The command loop shows the list of subcommands available, and gives a prompt "
+"\"What now> \".  In general, when the prompt ends with a single '>', you can "
+"pick only one of the choices given and type return, like this:"
+msgstr ""
+"コマンドループでは使用可能なサブコマンドのリストを表示し、 \"What now> \"とい"
+"うプロンプトを表示します。 プロンプトがひとつの '>' で終わっているときは、 与"
+"えられたサブコマンドからひとつだけ選択できます。 例えば以下のように："
+
+#. type: delimited block -
+#: ../../git-add.txt:218
+#, fuzzy, no-wrap
+msgid ""
+"    *** Commands ***\n"
+"      1: status       2: update       3: revert       4: add untracked\n"
+"      5: patch        6: diff         7: quit         8: help\n"
+"    What now> 1\n"
+msgstr ""
+"    *** Commands ***\n"
+"      1: status       2: update       3: revert       4: add untracked\n"
+"      5: patch        6: diff         7: quit         8: help\n"
+"    What now> 1\n"
+
+#. type: Plain text
+#: ../../git-add.txt:222
+#, fuzzy
+msgid ""
+"You also could say `s` or `sta` or `status` above as long as the choice is "
+"unique."
+msgstr ""
+"You also could say \"s\" or \"sta\" or \"status\" above as long as the "
+"choice is unique.  選択が一意に決定できるだけの長さがあれば、\"s\"や\"sta\"や"
+"\"status\" と答えることも可能です。"
+
+#. type: Plain text
+#: ../../git-add.txt:224
+#, fuzzy
+msgid "The main command loop has 6 subcommands (plus help and quit)."
+msgstr ""
+"The main command loop has 6 subcommands (plus help and quit).  メインコマンド"
+"ループは6個のサブコマンド(および help と quit)  を持っています。"
+
+#. type: Labeled list
+#: ../../git-add.txt:225
+#, fuzzy, no-wrap
+msgid "status"
+msgstr "status"
+
+#. type: Plain text
+#: ../../git-add.txt:232
+#, fuzzy
+msgid ""
+"This shows the change between HEAD and index (i.e. what will be committed if "
+"you say `git commit`), and between index and working tree files (i.e. what "
+"you could stage further before `git commit` using `git add`) for each path.  "
+"A sample output looks like this:"
+msgstr ""
+"このコマンドは HEAD と索引の間の変更 (つまり\"git commit\"でコミットされる内"
+"容)および、 索引とワーキングツリーのファイルとの間の変更 (\"git commit\"の前"
+"に\"git-add\"でstage可能な内容)を、 各パスごとに表示します。出力例はこちらの"
+"とおり："
+
+#. type: delimited block -
+#: ../../git-add.txt:237
+#, fuzzy, no-wrap
+msgid ""
+"              staged     unstaged path\n"
+"     1:       binary      nothing foo.png\n"
+"     2:     +403/-35        +1/-1 git-add--interactive.perl\n"
+msgstr ""
+"              staged     unstaged path\n"
+"     1:       binary      nothing foo.png\n"
+"     2:     +403/-35        +1/-1 git-add--interactive.perl\n"
+
+#. type: Plain text
+#: ../../git-add.txt:248
+#, fuzzy
+msgid ""
+"It shows that foo.png has differences from HEAD (but that is binary so line "
+"count cannot be shown) and there is no difference between indexed copy and "
+"the working tree version (if the working tree version were also different, "
+"'binary' would have been shown in place of 'nothing').  The other file, git-"
+"add{litdd}interactive.perl, has 403 lines added and 35 lines deleted if you "
+"commit what is in the index, but working tree file has further modifications "
+"(one addition and one deletion)."
+msgstr ""
+"上記は foo.png が HEAD との間に違いがあることを示しており (ただし、バイナリ"
+"ファイルの行数は表示されません)、 索引に追加されているコピーとワーキングツ"
+"リーの版との間には、 違いがないことを示しています (もしワーキングツリーと異"
+"なっていれば、 'nothing' とあるところに 'binary' と表示されます)。 もう一方の"
+"ファイル (git-add--interactive.perl) は、 コミットすれば403行追加され、35行削"
+"除される内容を索引に持っており、 ワーキングツリーのファイルにはさらに変更が加"
+"えられています (1行追加、1行削除)。"
+
+#. type: Labeled list
+#: ../../git-add.txt:249
+#, fuzzy, no-wrap
+msgid "update"
+msgstr "update"
+
+#. type: Plain text
+#: ../../git-add.txt:258
+#, fuzzy
+msgid ""
+"This shows the status information and issues an \"Update>>\" prompt.  When "
+"the prompt ends with double '>>', you can make more than one selection, "
+"concatenated with whitespace or comma.  Also you can say ranges.  E.g. \"2-5 "
+"7,9\" to choose 2,3,4,5,7,9 from the list.  If the second number in a range "
+"is omitted, all remaining patches are taken.  E.g. \"7-\" to choose 7,8,9 "
+"from the list.  You can say '*' to choose everything."
+msgstr ""
+"このコマンドはstatusの情報を表示したあと、 \"Update>>\"プロンプトを表示しま"
+"す。 プロンプトがふたつの '>>' で終わっている場合、 スペースまたはカンマで区"
+"切って、ひとつ以上の選択肢を選べます。 また、範囲指定も可能です。つまり、リス"
+"トから 2,3,4,5,7,9 を選ぶために \"2-5 7,9\" を指定できます。 範囲指定の後ろの"
+"数字が省略されると、残りのパスすべてが選択されます。 つまり、7,8,9をリストか"
+"ら選ぶために \"7-\" を指定できます。 全部を選ぶために'*' を指定可能です。"
+
+#. type: Plain text
+#: ../../git-add.txt:261
+#, fuzzy
+msgid "What you chose are then highlighted with '*', like this:"
+msgstr "選択したパスは以下のように '*' でハイライトされます："
+
+#. type: delimited block -
+#: ../../git-add.txt:266
+#, fuzzy, no-wrap
+msgid ""
+"           staged     unstaged path\n"
+"  1:       binary      nothing foo.png\n"
+"* 2:     +403/-35        +1/-1 git-add--interactive.perl\n"
+msgstr ""
+"           staged     unstaged path\n"
+"  1:       binary      nothing foo.png\n"
+"* 2:     +403/-35        +1/-1 git-add--interactive.perl\n"
+
+#. type: Plain text
+#: ../../git-add.txt:270
+#, fuzzy
+msgid "To remove selection, prefix the input with `-` like this:"
+msgstr "選択を解除するには、先に '-' をつけて入力します："
+
+#. type: delimited block -
+#: ../../git-add.txt:273
+#, fuzzy, no-wrap
+msgid "Update>> -2\n"
+msgstr "Update>> -2\n"
+
+#. type: Plain text
+#: ../../git-add.txt:277
+#, fuzzy
+msgid ""
+"After making the selection, answer with an empty line to stage the contents "
+"of working tree files for selected paths in the index."
+msgstr ""
+"選択が終わった後は、何も入力せずに Enter だけを入力すれば、 選択したパスの"
+"ワーキングツリーのファイルの内容が、 インデックスに追加されます。"
+
+#. type: Labeled list
+#: ../../git-add.txt:278
+#, fuzzy, no-wrap
+msgid "revert"
+msgstr "revert"
+
+#. type: Plain text
+#: ../../git-add.txt:283
+#, fuzzy
+msgid ""
+"This has a very similar UI to 'update', and the staged information for "
+"selected paths are reverted to that of the HEAD version.  Reverting new "
+"paths makes them untracked."
+msgstr ""
+"これは 'update' とよく似たインターフェースを持っています。 選択したパスの "
+"stage された情報を HEAD の内容に戻します。 新しく追加したパスは git が追跡し"
+"ていない状態に戻されます。"
+
+#. type: Labeled list
+#: ../../git-add.txt:284
+#, fuzzy, no-wrap
+msgid "add untracked"
+msgstr "add untracked"
+
+#. type: Plain text
+#: ../../git-add.txt:288
+#, fuzzy
+msgid ""
+"This has a very similar UI to 'update' and 'revert', and lets you add "
+"untracked paths to the index."
+msgstr ""
+"これは 'update' と 'revert' によく似ていて、 git が追跡していないパスを索引に"
+"追加できます。"
+
+#. type: Labeled list
+#: ../../git-add.txt:289
+#, fuzzy, no-wrap
+msgid "patch"
+msgstr "patch"
+
+#. type: Plain text
+#: ../../git-add.txt:296
+#, fuzzy
+msgid ""
+"This lets you choose one path out of a 'status' like selection.  After "
+"choosing the path, it presents the diff between the index and the working "
+"tree file and asks you if you want to stage the change of each hunk.  You "
+"can select one of the following options and type return:"
+msgstr ""
+"これは 'status' 出力からパスをひとつ選択します。選択した後、 索引とワーキング"
+"ツリーのファイルとの diff を表示し、 各 hunk ごとにその変更点を stage するか"
+"どうか聞いてきます。 可能な回答は："
+
+#. type: Plain text
+#: ../../git-add.txt:311
+#, fuzzy
+msgid ""
+"y - stage this hunk n - do not stage this hunk q - quit; do not stage this "
+"hunk nor any of the remaining ones a - stage this hunk and all later hunks "
+"in the file d - do not stage this hunk nor any of the later hunks in the "
+"file g - select a hunk to go to / - search for a hunk matching the given "
+"regex j - leave this hunk undecided, see next undecided hunk J - leave this "
+"hunk undecided, see next hunk k - leave this hunk undecided, see previous "
+"undecided hunk K - leave this hunk undecided, see previous hunk s - split "
+"the current hunk into smaller hunks e - manually edit the current hunk ? - "
+"print help"
+msgstr ""
+"y - 処理中の hunk を索引に追加します。 n - 処理中の hunk を索引に追加しませ"
+"ん。 q - 終了します。処理中の hunk およびそれ以降の hunk は索引に追加しませ"
+"ん。 a - 処理中の hunk およびそれ以降のファイル中の hunk を索引に追加しま"
+"す。 d - 処理中の hunk およびそれ以降のファイル中の hunk を索引に追加しませ"
+"ん。 g - 処理対象となる(別の) hunk を選択します。 / - 入力した正規表現にマッ"
+"チする hunk を検索します。 j - 処理中の hunk を保留にし、次の保留されている "
+"hunk を表示します。 J - 処理中の hunk を保留にし、次の hunk を表示します。 k "
+"- 処理中の hunk を保留にし、ひとつ前の保留されている hunk を表示します。 K - "
+"処理中の hunk を保留にし、ひとつ前の hunk を表示します。 s - 現在の hunk を小"
+"さい hunk に分割します。 e - 現在の hunk を手動で編集します。 ? - ヘルプを表"
+"示します。"
+
+#. type: Plain text
+#: ../../git-add.txt:314
+#, fuzzy
+msgid ""
+"After deciding the fate for all hunks, if there is any hunk that was chosen, "
+"the index is updated with the selected hunks."
+msgstr ""
+"すべての hunk をどう処理するか決定した後、索引に追加するよう選ばれた hunk が"
+"あればその hunk で索引を更新します。"
+
+#. type: Plain text
+#: ../../git-add.txt:317
+msgid ""
+"You can omit having to type return here, by setting the configuration "
+"variable `interactive.singlekey` to `true`."
+msgstr ""
+
+#. type: Labeled list
+#: ../../git-add.txt:318
+#, fuzzy, no-wrap
+msgid "diff"
+msgstr "diff"
+
+#. type: Plain text
+#: ../../git-add.txt:322
+#, fuzzy
+msgid ""
+"This lets you review what will be committed (i.e. between HEAD and index)."
+msgstr "コミットされる内容(HEAD と索引の diff)を表示します"
+
+#. type: Title -
+#: ../../git-add.txt:325
+#, no-wrap
+msgid "EDITING PATCHES"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:335
+msgid ""
+"Invoking `git add -e` or selecting `e` from the interactive hunk selector "
+"will open a patch in your editor; after the editor exits, the result is "
+"applied to the index. You are free to make arbitrary changes to the patch, "
+"but note that some changes may have confusing results, or even result in a "
+"patch that cannot be applied.  If you want to abort the operation entirely "
+"(i.e., stage nothing new in the index), simply delete all lines of the "
+"patch. The list below describes some common things you may see in a patch, "
+"and which editing operations make sense on them."
+msgstr ""
+
+#. type: Labeled list
+#: ../../git-add.txt:337
+#, no-wrap
+msgid "added content"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:341
+msgid ""
+"Added content is represented by lines beginning with \"{plus}\". You can "
+"prevent staging any addition lines by deleting them."
+msgstr ""
+
+#. type: Labeled list
+#: ../../git-add.txt:342
+#, no-wrap
+msgid "removed content"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:346
+msgid ""
+"Removed content is represented by lines beginning with \"-\". You can "
+"prevent staging their removal by converting the \"-\" to a \" \" (space)."
+msgstr ""
+
+#. type: Labeled list
+#: ../../git-add.txt:347
+#, no-wrap
+msgid "modified content"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:354
+msgid ""
+"Modified content is represented by \"-\" lines (removing the old content)  "
+"followed by \"{plus}\" lines (adding the replacement content). You can "
+"prevent staging the modification by converting \"-\" lines to \" \", and "
+"removing \"{plus}\" lines. Beware that modifying only half of the pair is "
+"likely to introduce confusing changes to the index."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:362
+msgid ""
+"There are also more complex operations that can be performed. But beware "
+"that because the patch is applied only to the index and not the working "
+"tree, the working tree will appear to \"undo\" the change in the index.  For "
+"example, introducing a new line into the index that is in neither the HEAD "
+"nor the working tree will stage the new line for commit, but the line will "
+"appear to be reverted in the working tree."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:364
+msgid "Avoid using these constructs, or do so with extreme caution."
+msgstr ""
+
+#. type: Labeled list
+#: ../../git-add.txt:366
+#, no-wrap
+msgid "removing untouched content"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:372
+msgid ""
+"Content which does not differ between the index and working tree may be "
+"shown on context lines, beginning with a \" \" (space).  You can stage "
+"context lines for removal by converting the space to a \"-\". The resulting "
+"working tree file will appear to re-add the content."
+msgstr ""
+
+#. type: Labeled list
+#: ../../git-add.txt:373
+#, no-wrap
+msgid "modifying existing content"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:380
+msgid ""
+"One can also modify context lines by staging them for removal (by converting "
+"\" \" to \"-\") and adding a \"{plus}\" line with the new content.  "
+"Similarly, one can modify \"{plus}\" lines for existing additions or "
+"modifications. In all cases, the new modification will appear reverted in "
+"the working tree."
+msgstr ""
+
+#. type: Labeled list
+#: ../../git-add.txt:381
+#, no-wrap
+msgid "new content"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:386
+msgid ""
+"You may also add new content that does not exist in the patch; simply add "
+"new lines, each starting with \"{plus}\". The addition will appear reverted "
+"in the working tree."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:390
+msgid ""
+"There are also several operations which should be avoided entirely, as they "
+"will make the patch impossible to apply:"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:392
+msgid "adding context (\" \") or removal (\"-\") lines"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:393
+msgid "deleting context or removal lines"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:394
+msgid "modifying the contents of context or removal lines"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-add.txt:403
+#, fuzzy
+msgid ""
+"linkgit:git-status[1] linkgit:git-rm[1] linkgit:git-reset[1] linkgit:git-mv"
+"[1] linkgit:git-commit[1] linkgit:git-update-index[1]"
+msgstr ""
+"linkgit:git-status[1] linkgit:git-rm[1] linkgit:git-reset[1] linkgit:git-mv"
+"[1] linkgit:git-commit[1] linkgit:git-update-index[1] linkgit:git-status[1] "
+"linkgit:git-rm[1] linkgit:git-reset[1] linkgit:git-mv[1] linkgit:git-commit"
+"[1] linkgit:git-update-index[1]"
