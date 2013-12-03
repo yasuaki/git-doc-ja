@@ -1,0 +1,51 @@
+linkgit:git-check-attr[1]::
+	gitattributesの情報を表示します。
+
+linkgit:git-check-ignore[1]::
+	gitignoreのファイル除外動作をデバッグします。
+
+linkgit:git-check-mailmap[1]::
+	正規化された名前とemailアドレスを表示します。
+
+linkgit:git-check-ref-format[1]::
+	参照(ref)の名前が有効かどうかをチェックします。
+
+linkgit:git-column[1]::
+	データを整形して表示します。
+
+linkgit:git-credential[1]::
+	ユーザの認証情報を取得して保存します。
+
+linkgit:git-credential-cache[1]::
+	メモリ上にパスワードを一時保存するためのヘルパー。
+
+linkgit:git-credential-store[1]::
+	認証情報をディスクに保存するためのヘルパー。
+
+linkgit:git-fmt-merge-msg[1]::
+	マージ時のコミットメッセージを生成します。
+
+linkgit:git-mailinfo[1]::
+	１つのe-mailメッセージからパッチと著者を取得します。
+
+linkgit:git-mailsplit[1]::
+	UNIXのmboxを分割するプログラム。
+
+linkgit:git-merge-one-file[1]::
+	git-merge-indexと一緒に使われる標準のヘルパープログラム
+
+linkgit:git-patch-id[1]::
+	パッチのユニークなID値を計算します。
+
+linkgit:git-peek-remote[1]::
+	（非推奨）リモートリポジトリ内のリファレンス(ref)を一覧表示します。
+
+linkgit:git-sh-i18n[1]::
+	Gitのシェルスクリプトを国際化対応させるためのセットアップ用コード
+
+linkgit:git-sh-setup[1]::
+	Git用のシェルスクリプトのセットアップ用コード。
+
+linkgit:git-stripspace[1]::
+	不要な空白文字を削除します。
+

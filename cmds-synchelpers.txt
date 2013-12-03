@@ -1,0 +1,21 @@
+linkgit:git-http-fetch[1]::
+	HTTP経由でリモートのGitリポジトリからダウンロードします。
+
+linkgit:git-http-push[1]::
+	HTTP/DAV越しで他リポジトリにオブジェクトをpushします。
+
+linkgit:git-parse-remote[1]::
+	リモートリポジトリにアクセスするためのパラメータをパースするためのヘルパー。
+
+linkgit:git-receive-pack[1]::
+	リポジトリ内にpushされるデータを受けとります。
+
+linkgit:git-shell[1]::
+	SSH接続をGitのみに制限したい時に使用するログインシェル。
+
+linkgit:git-upload-archive[1]::
+	アーカイブをgit-archiveに送ります。
+
+linkgit:git-upload-pack[1]::
+	objectをpack化してgit-fetch-packに送ります。
+

@@ -20,7 +20,7 @@ git - おバカなソース追跡ツール
 Git
 は高速で、拡張性のある、分散型のリビジョン管理システムです。非常に豊富なコマンドセットを持ち、高レベルな操作と内部への完全なアクセスの両方が可能です。
 
-初めての方は linkgit:gittutorial[7] を参照してください。そして、link:everyday.html [日々の git 利用]
+初めての方は linkgit:gittutorial[7] を参照してください。そして、link:everyday.html[日々の git 利用]
 を参照して便利なコマンドの最小セットを憶えてください。 より深い導入としては link:user-manual.html[Gitユーザマニュアル]
 もあります。
 

@@ -1,0 +1,51 @@
+linkgit:git-apply[1]::
+	ファイルまたはindexにパッチを適用します。
+
+linkgit:git-checkout-index[1]::
+	indexから作業ツリーにファイルをコピーします。
+
+linkgit:git-commit-tree[1]::
+	commitオブジェクトを新規作成します。
+
+linkgit:git-hash-object[1]::
+	オブジェクトのID値を計算し、ファイルからblobを生成します。
+
+linkgit:git-index-pack[1]::
+	既存のpack化されたアーカイブに対してpack indexファイルを生成します。
+
+linkgit:git-merge-file[1]::
+	3-wayマージをします。
+
+linkgit:git-merge-index[1]::
+	マージが必要なファイルに対してマージをします。
+
+linkgit:git-mktag[1]::
+	tagオブジェクトを作成します。
+
+linkgit:git-mktree[1]::
+	ls-tree形式のテキストからtreeオブジェクトを生成します。
+
+linkgit:git-pack-objects[1]::
+	objectのpack化されたアーカイブを作成します。
+
+linkgit:git-prune-packed[1]::
+	既にpack化されている冗長なobjectを削除します。
+
+linkgit:git-read-tree[1]::
+	treeの情報をindexに反映します。
+
+linkgit:git-symbolic-ref[1]::
+	シンボリックなrefを表示/更新/削除します。
+
+linkgit:git-unpack-objects[1]::
+	pack化されたアーカイブからobjectを展開します。
+
+linkgit:git-update-index[1]::
+	作業ツリー内のファイルコンテンツをindexに登録します。
+
+linkgit:git-update-ref[1]::
+	ref内に格納されているオブジェクト名を安全に更新します。
+
+linkgit:git-write-tree[1]::
+	現在のindexからtreeオブジェクトを生成します。
+

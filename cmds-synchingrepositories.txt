@@ -1,0 +1,15 @@
+linkgit:git-daemon[1]::
+	Gitリポジトリを公開する為のシンプルなサーバプログラム。
+
+linkgit:git-fetch-pack[1]::
+	他リポジトリから手元に無いオブジェクトを取得します。
+
+linkgit:git-http-backend[1]::
+	HTTP経由でGitを公開する為のサーバ側CGIプログラム。
+
+linkgit:git-send-pack[1]::
+	Gitプロトコル経由でobjectを他リポジトリにpushします。
+
+linkgit:git-update-server-info[1]::
+	補助情報ファイルを更新し、dumbサーバを手助けします。
+
