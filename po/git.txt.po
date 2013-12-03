@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Git v1.8.4\n"
-"POT-Creation-Date: 2013-11-27 01:13+0900\n"
+"POT-Creation-Date: 2013-11-29 23:16+0900\n"
 "PO-Revision-Date: 2013-11-27 01:52+0900\n"
 "Last-Translator: Yasuaki Narita <narita.ys@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -82,9 +82,9 @@ msgid ""
 "html[Git User's Manual] has a more in-depth introduction."
 msgstr ""
 "初めての方は linkgit:gittutorial[7] を参照してください。そして、link:"
-"everyday.html [日々の git 利用] を参照して便利なコマンドの最小セットを憶えて"
-"ください。 より深い導入としては link:user-manual.html[Gitユーザマニュアル] も"
-"あります。"
+"everyday.html[日々の git 利用] を参照して便利なコマンドの最小セットを憶えてく"
+"ださい。 より深い導入としては link:user-manual.html[Gitユーザマニュアル] もあ"
+"ります。"
 
 #. type: Plain text
 #: ../../git.txt:33
