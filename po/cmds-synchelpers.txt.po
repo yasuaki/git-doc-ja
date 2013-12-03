@@ -1,101 +1,97 @@
 # Japanese translations for Git package
 # Copyright (C) 2013 Git Japanese translation team
 # This file is distributed under the same license as the Git package.
-# Automatically generated, 2013.
 #
+# Automatically generated, 2013.
+# Yasuaki Narita <narita.ys@gmail.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Git v1.8.4\n"
 "POT-Creation-Date: 2013-11-29 23:50+0900\n"
-"PO-Revision-Date: 2013-11-29 23:50+0900\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2013-12-03 23:28+0900\n"
+"Last-Translator: Yasuaki Narita <narita.ys@gmail.com>\n"
+"Language-Team: Japanese <>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.4\n"
 
 #. type: Labeled list
 #: ../../cmds-synchelpers.txt:1
-#, fuzzy, no-wrap
-#| msgid "see linkgit:git-commit-tree[1]"
+#, no-wrap
 msgid "linkgit:git-http-fetch[1]"
-msgstr "linkgit:git-commit-tree[1] 参照。"
+msgstr "linkgit:git-http-fetch[1]"
 
 #. type: Plain text
 #: ../../cmds-synchelpers.txt:3
 msgid "Download from a remote Git repository via HTTP."
-msgstr ""
+msgstr "HTTP経由でリモートのGitリポジトリからダウンロードします。"
 
 #. type: Labeled list
 #: ../../cmds-synchelpers.txt:4
-#, fuzzy, no-wrap
-#| msgid "see linkgit:git-commit-tree[1]"
+#, no-wrap
 msgid "linkgit:git-http-push[1]"
-msgstr "linkgit:git-commit-tree[1] 参照。"
+msgstr "linkgit:git-http-push[1]"
 
 #. type: Plain text
 #: ../../cmds-synchelpers.txt:6
 msgid "Push objects over HTTP/DAV to another repository."
-msgstr ""
+msgstr "HTTP/DAV越しで他リポジトリにオブジェクトをpushします。"
 
 #. type: Labeled list
 #: ../../cmds-synchelpers.txt:7
-#, fuzzy, no-wrap
-#| msgid "see linkgit:git-commit-tree[1]"
+#, no-wrap
 msgid "linkgit:git-parse-remote[1]"
-msgstr "linkgit:git-commit-tree[1] 参照。"
+msgstr "linkgit:git-parse-remote[1]"
 
 #. type: Plain text
 #: ../../cmds-synchelpers.txt:9
 msgid "Routines to help parsing remote repository access parameters."
 msgstr ""
+"リモートリポジトリにアクセスするためのパラメータをパースするためのヘルパー。"
 
 #. type: Labeled list
 #: ../../cmds-synchelpers.txt:10
-#, fuzzy, no-wrap
-#| msgid "see linkgit:git-commit-tree[1]"
+#, no-wrap
 msgid "linkgit:git-receive-pack[1]"
-msgstr "linkgit:git-commit-tree[1] 参照。"
+msgstr "linkgit:git-receive-pack[1]"
 
 #. type: Plain text
 #: ../../cmds-synchelpers.txt:12
 msgid "Receive what is pushed into the repository."
-msgstr ""
+msgstr "リポジトリ内にpushされるデータを受けとります。"
 
 #. type: Labeled list
 #: ../../cmds-synchelpers.txt:13
-#, fuzzy, no-wrap
-#| msgid "see linkgit:git-commit-tree[1]"
+#, no-wrap
 msgid "linkgit:git-shell[1]"
-msgstr "linkgit:git-commit-tree[1] 参照。"
+msgstr "linkgit:git-shell[1]"
 
 #. type: Plain text
 #: ../../cmds-synchelpers.txt:15
 msgid "Restricted login shell for Git-only SSH access."
-msgstr ""
+msgstr "SSH接続をGitのみに制限したい時に使用するログインシェル。"
 
 #. type: Labeled list
 #: ../../cmds-synchelpers.txt:16
-#, fuzzy, no-wrap
-#| msgid "see linkgit:git-commit-tree[1]"
+#, no-wrap
 msgid "linkgit:git-upload-archive[1]"
-msgstr "linkgit:git-commit-tree[1] 参照。"
+msgstr "linkgit:git-upload-archive[1]"
 
 #. type: Plain text
 #: ../../cmds-synchelpers.txt:18
 msgid "Send archive back to git-archive."
-msgstr ""
+msgstr "アーカイブをgit-archiveに送ります。"
 
 #. type: Labeled list
 #: ../../cmds-synchelpers.txt:19
-#, fuzzy, no-wrap
-#| msgid "see linkgit:git-commit-tree[1]"
+#, no-wrap
 msgid "linkgit:git-upload-pack[1]"
-msgstr "linkgit:git-commit-tree[1] 参照。"
+msgstr "linkgit:git-upload-pack[1]"
 
 #. type: Plain text
 #: ../../cmds-synchelpers.txt:21
 msgid "Send objects packed back to git-fetch-pack."
-msgstr ""
+msgstr "objectをpack化してgit-fetch-packに送ります。"
