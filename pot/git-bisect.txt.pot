@@ -1,0 +1,672 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Git Japanese translation team
+# This file is distributed under the same license as the Git package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Git v1.8.4\n"
+"POT-Creation-Date: 2013-12-07 00:31+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title -
+#: ../../git.txt:5 ../../gittutorial.txt:5 ../../gittutorial-2.txt:5
+#: ../../git-add.txt:5 ../../git-bisect.txt:6 ../../git-cherry-pick.txt:5
+#: ../../git-clean.txt:5 ../../git-grep.txt:5 ../../gitglossary.txt:5
+#, no-wrap
+msgid "NAME"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:10 ../../gittutorial.txt:9 ../../gittutorial-2.txt:9
+#: ../../git-add.txt:9 ../../git-bisect.txt:10 ../../git-cherry-pick.txt:9
+#: ../../git-clean.txt:9 ../../git-grep.txt:10 ../../gitglossary.txt:9
+#, no-wrap
+msgid "SYNOPSIS"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:19 ../../gittutorial.txt:14 ../../gittutorial-2.txt:14
+#: ../../git-add.txt:17 ../../git-bisect.txt:14 ../../git-cherry-pick.txt:13
+#: ../../git-clean.txt:14 ../../git-grep.txt:28 ../../gitglossary.txt:13
+#, no-wrap
+msgid "DESCRIPTION"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:966 ../../gittutorial.txt:664 ../../gittutorial-2.txt:424
+#: ../../git-add.txt:396 ../../git-bisect.txt:333 ../../gitglossary.txt:18
+#, no-wrap
+msgid "SEE ALSO"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:974 ../../gittutorial.txt:675 ../../gittutorial-2.txt:434
+#: ../../git-add.txt:405 ../../git-bisect.txt:338 ../../git-cherry-pick.txt:83
+#: ../../git-clean.txt:63 ../../git-grep.txt:201 ../../gitglossary.txt:26
+#, no-wrap
+msgid "GIT"
+msgstr ""
+
+#. type: Plain text
+#: ../../git.txt:975 ../../git-add.txt:406 ../../git-bisect.txt:339
+#: ../../git-cherry-pick.txt:84 ../../git-clean.txt:64 ../../git-grep.txt:202
+msgid "Part of the linkgit:git[1] suite"
+msgstr ""
+
+#. type: Title -
+#: ../../git-add.txt:179 ../../git-bisect.txt:260
+#, no-wrap
+msgid "EXAMPLES"
+msgstr ""
+
+#. type: Title =
+#: ../../git-bisect.txt:3
+#, no-wrap
+msgid "git-bisect(1)"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:8
+msgid "git-bisect - Find by binary search the change that introduced a bug"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:12
+msgid "'git bisect' <subcommand> <options>"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:17
+msgid ""
+"The command takes various subcommands, and different options depending on "
+"the subcommand:"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:28
+#, no-wrap
+msgid ""
+" git bisect help\n"
+" git bisect start [<bad> [<good>...]] [--] [<paths>...]\n"
+" git bisect bad [<rev>]\n"
+" git bisect good [<rev>...]\n"
+" git bisect skip [(<rev>|<range>)...]\n"
+" git bisect reset [<commit>]\n"
+" git bisect visualize\n"
+" git bisect replay <logfile>\n"
+" git bisect log\n"
+" git bisect run <cmd>...\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:32
+msgid ""
+"This command uses 'git rev-list --bisect' to help drive the binary search "
+"process to find which change introduced a bug, given an old \"good\" commit "
+"object name and a later \"bad\" commit object name."
+msgstr ""
+
+#. type: Title ~
+#: ../../git-bisect.txt:34
+#, no-wrap
+msgid "Getting help"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:38
+msgid ""
+"Use \"git bisect\" to get a short usage description, and \"git bisect help\" "
+"or \"git bisect -h\" to get a long usage description."
+msgstr ""
+
+#. type: Title ~
+#: ../../git-bisect.txt:40
+#, no-wrap
+msgid "Basic bisect commands: start, bad, good"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:44
+msgid ""
+"Using the Linux kernel tree as an example, basic use of the bisect command "
+"is as follows:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:50
+#, no-wrap
+msgid ""
+"$ git bisect start\n"
+"$ git bisect bad                 # Current version is bad\n"
+"$ git bisect good v2.6.13-rc2    # v2.6.13-rc2 was the last version\n"
+"                                 # tested that was good\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:55
+msgid ""
+"When you have specified at least one bad and one good version, the command "
+"bisects the revision tree and outputs something similar to the following:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:58
+#, no-wrap
+msgid "Bisecting: 675 revisions left to test after this\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:63
+msgid ""
+"The state in the middle of the set of revisions is then checked out.  You "
+"would now compile that kernel and boot it. If the booted kernel works "
+"correctly, you would then issue the following command:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:66
+#, no-wrap
+msgid "$ git bisect good\t\t\t# this one is good\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:69
+msgid "The output of this command would be something similar to the following:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:72
+#, no-wrap
+msgid "Bisecting: 337 revisions left to test after this\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:77
+msgid ""
+"You keep repeating this process, compiling the tree, testing it, and "
+"depending on whether it is good or bad issuing the command \"git bisect good"
+"\" or \"git bisect bad\" to ask for the next bisection."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:80
+msgid ""
+"Eventually there will be no more revisions left to bisect, and you will have "
+"been left with the first bad kernel revision in \"refs/bisect/bad\"."
+msgstr ""
+
+#. type: Title ~
+#: ../../git-bisect.txt:82
+#, no-wrap
+msgid "Bisect reset"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:86
+msgid ""
+"After a bisect session, to clean up the bisection state and return to the "
+"original HEAD, issue the following command:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:89 ../../user-manual.txt:515
+#, no-wrap
+msgid "$ git bisect reset\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:94
+msgid ""
+"By default, this will return your tree to the commit that was checked out "
+"before `git bisect start`.  (A new `git bisect start` will also do that, as "
+"it cleans up the old bisection state.)"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:97
+msgid ""
+"With an optional argument, you can return to a different commit instead:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:100
+#, no-wrap
+msgid "$ git bisect reset <commit>\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:105
+msgid ""
+"For example, `git bisect reset HEAD` will leave you on the current bisection "
+"commit and avoid switching commits at all, while `git bisect reset bisect/"
+"bad` will check out the first bad revision."
+msgstr ""
+
+#. type: Title ~
+#: ../../git-bisect.txt:107
+#, no-wrap
+msgid "Bisect visualize"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:111
+msgid ""
+"To see the currently remaining suspects in 'gitk', issue the following "
+"command during the bisection process:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:114 ../../user-manual.txt:527
+#, no-wrap
+msgid "$ git bisect visualize\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:117
+msgid "`view` may also be used as a synonym for `visualize`."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:121
+msgid ""
+"If the 'DISPLAY' environment variable is not set, 'git log' is used "
+"instead.  You can also give command line options such as `-p` and `--stat`."
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:124
+#, no-wrap
+msgid "$ git bisect view --stat\n"
+msgstr ""
+
+#. type: Title ~
+#: ../../git-bisect.txt:127
+#, no-wrap
+msgid "Bisect log and bisect replay"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:131
+msgid ""
+"After having marked revisions as good or bad, issue the following command to "
+"show what has been done so far:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:134
+#, no-wrap
+msgid "$ git bisect log\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:140
+msgid ""
+"If you discover that you made a mistake in specifying the status of a "
+"revision, you can save the output of this command to a file, edit it to "
+"remove the incorrect entries, and then issue the following commands to "
+"return to a corrected state:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:144
+#, no-wrap
+msgid ""
+"$ git bisect reset\n"
+"$ git bisect replay that-file\n"
+msgstr ""
+
+#. type: Title ~
+#: ../../git-bisect.txt:147
+#, no-wrap
+msgid "Avoiding testing a commit"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:154
+msgid ""
+"If, in the middle of a bisect session, you know that the next suggested "
+"revision is not a good one to test (e.g. the change the commit introduces is "
+"known not to work in your environment and you know it does not have anything "
+"to do with the bug you are chasing), you may want to find a nearby commit "
+"and try that instead."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:156
+msgid "For example:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:163
+#, no-wrap
+msgid ""
+"$ git bisect good/bad\t\t\t# previous round was good or bad.\n"
+"Bisecting: 337 revisions left to test after this\n"
+"$ git bisect visualize\t\t\t# oops, that is uninteresting.\n"
+"$ git reset --hard HEAD~3\t\t# try 3 revisions before what\n"
+"\t\t\t\t\t# was suggested\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:167
+msgid ""
+"Then compile and test the chosen revision, and afterwards mark the revision "
+"as good or bad in the usual manner."
+msgstr ""
+
+#. type: Title ~
+#: ../../git-bisect.txt:169
+#, no-wrap
+msgid "Bisect skip"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:173
+msgid ""
+"Instead of choosing by yourself a nearby commit, you can ask git to do it "
+"for you by issuing the command:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:176
+#, no-wrap
+msgid "$ git bisect skip                 # Current version cannot be tested\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:180
+msgid ""
+"But git may eventually be unable to tell the first bad commit among a bad "
+"commit and one or more skipped commits."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:183
+msgid ""
+"You can even skip a range of commits, instead of just one commit, using the "
+"\"'<commit1>'..'<commit2>'\" notation. For example:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:186
+#, no-wrap
+msgid "$ git bisect skip v2.5..v2.6\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:190
+msgid ""
+"This tells the bisect process that no commit after `v2.5`, up to and "
+"including `v2.6`, should be tested."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:193
+msgid ""
+"Note that if you also want to skip the first commit of the range you would "
+"issue the command:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:196
+#, no-wrap
+msgid "$ git bisect skip v2.5 v2.5..v2.6\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:200
+msgid ""
+"This tells the bisect process that the commits between `v2.5` included and "
+"`v2.6` included should be skipped."
+msgstr ""
+
+#. type: Title ~
+#: ../../git-bisect.txt:202
+#, no-wrap
+msgid "Cutting down bisection by giving more parameters to bisect start"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:207
+msgid ""
+"You can further cut down the number of trials, if you know what part of the "
+"tree is involved in the problem you are tracking down, by specifying path "
+"parameters when issuing the `bisect start` command:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:210
+#, no-wrap
+msgid "$ git bisect start -- arch/i386 include/asm-i386\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:215
+msgid ""
+"If you know beforehand more than one good commit, you can narrow the bisect "
+"space down by specifying all of the good commits immediately after the bad "
+"commit when issuing the `bisect start` command:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:220
+#, no-wrap
+msgid ""
+"$ git bisect start v2.6.20-rc6 v2.6.20-rc4 v2.6.20-rc1 --\n"
+"                   # v2.6.20-rc6 is bad\n"
+"                   # v2.6.20-rc4 and v2.6.20-rc1 are good\n"
+msgstr ""
+
+#. type: Title ~
+#: ../../git-bisect.txt:223
+#, no-wrap
+msgid "Bisect run"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:227
+msgid ""
+"If you have a script that can tell if the current source code is good or "
+"bad, you can bisect by issuing the command:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:230
+#, no-wrap
+msgid "$ git bisect run my_script arguments\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:236
+msgid ""
+"Note that the script (`my_script` in the above example) should exit with "
+"code 0 if the current source code is good, and exit with a code between 1 "
+"and 127 (inclusive), except 125, if the current source code is bad."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:240
+msgid ""
+"Any other exit code will abort the bisect process. It should be noted that a "
+"program that terminates via \"exit(-1)\" leaves $? = 255, (see the exit(3) "
+"manual page), as the value is chopped with \"& 0377\"."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:244
+msgid ""
+"The special exit code 125 should be used when the current source code cannot "
+"be tested. If the script exits with this code, the current revision will be "
+"skipped (see `git bisect skip` above)."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:250
+msgid ""
+"You may often find that during a bisect session you want to have temporary "
+"modifications (e.g. s/#define DEBUG 0/#define DEBUG 1/ in a header file, or "
+"\"revision that does not have this commit needs this patch applied to work "
+"around another problem this bisection is not interested in\") applied to the "
+"revision being tested."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:258
+msgid ""
+"To cope with such a situation, after the inner 'git bisect' finds the next "
+"revision to test, the script can apply the patch before compiling, run the "
+"real test, and afterwards decide if the revision (possibly with the needed "
+"patch) passed the test and then rewind the tree to the pristine state.  "
+"Finally the script should exit with the status of the real test to let the "
+"\"git bisect run\" command loop determine the eventual outcome of the bisect "
+"session."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:263
+msgid "Automatically bisect a broken build between v1.2 and HEAD:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:267
+#, no-wrap
+msgid ""
+"$ git bisect start HEAD v1.2 --      # HEAD is bad, v1.2 is good\n"
+"$ git bisect run make                # \"make\" builds the app\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:270
+msgid "Automatically bisect a test failure between origin and HEAD:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:274
+#, no-wrap
+msgid ""
+"$ git bisect start HEAD origin --    # HEAD is bad, origin is good\n"
+"$ git bisect run make test           # \"make test\" builds and tests\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:277 ../../git-bisect.txt:316
+msgid "Automatically bisect a broken test suite:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:285
+#, no-wrap
+msgid ""
+"$ cat ~/test.sh\n"
+"#!/bin/sh\n"
+"make || exit 125                   # this skips broken builds\n"
+"make test                          # \"make test\" runs the test suite\n"
+"$ git bisect start v1.3 v1.1 --    # v1.3 is bad, v1.1 is good\n"
+"$ git bisect run ~/test.sh\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:289
+msgid ""
+"Here we use a \"test.sh\" custom script. In this script, if \"make\" fails, "
+"we skip the current commit."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:293
+msgid ""
+"It is safer to use a custom script outside the repository to prevent "
+"interactions between the bisect, make and test processes and the script."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:296
+msgid ""
+"\"make test\" should \"exit 0\", if the test suite passes, and \"exit 1\" "
+"otherwise."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:298
+msgid "Automatically bisect a broken test case:"
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:306
+#, no-wrap
+msgid ""
+"$ cat ~/test.sh\n"
+"#!/bin/sh\n"
+"make || exit 125                     # this skips broken builds\n"
+"~/check_test_case.sh                 # does the test case passes ?\n"
+"$ git bisect start HEAD HEAD~10 --   # culprit is among the last 10\n"
+"$ git bisect run ~/test.sh\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:310
+msgid ""
+"Here \"check_test_case.sh\" should \"exit 0\" if the test case passes, and "
+"\"exit 1\" otherwise."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:314
+msgid ""
+"It is safer if both \"test.sh\" and \"check_test_case.sh\" scripts are "
+"outside the repository to prevent interactions between the bisect, make and "
+"test processes and the scripts."
+msgstr ""
+
+#. type: delimited block -
+#: ../../git-bisect.txt:320
+#, no-wrap
+msgid ""
+"$ git bisect start HEAD HEAD~10 --   # culprit is among the last 10\n"
+"$ git bisect run sh -c \"make || exit 125; ~/check_test_case.sh\"\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:323
+msgid "Does the same as the previous example, but on a single line."
+msgstr ""
+
+#. type: Title -
+#: ../../git-bisect.txt:325 ../../git-cherry-pick.txt:75
+#: ../../git-clean.txt:59 ../../git-grep.txt:192
+#, no-wrap
+msgid "Author"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:327
+msgid "Written by Linus Torvalds <torvalds@osdl.org>"
+msgstr ""
+
+#. type: Title -
+#: ../../git-bisect.txt:329 ../../git-cherry-pick.txt:79
+#: ../../git-grep.txt:197
+#, no-wrap
+msgid "Documentation"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:331 ../../git-cherry-pick.txt:81
+#: ../../git-grep.txt:199
+msgid "Documentation by Junio C Hamano and the git-list <git@vger.kernel.org>."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:336
+msgid ""
+"link:git-bisect-lk2009.html[Fighting regressions with git bisect], linkgit:"
+"git-blame[1]."
+msgstr ""

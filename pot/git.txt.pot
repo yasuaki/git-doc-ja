@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Git v1.8.4\n"
-"POT-Creation-Date: 2013-11-29 23:16+0900\n"
+"POT-Creation-Date: 2013-12-04 01:53+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,8 @@ msgid "git(1)"
 msgstr ""
 
 #. type: Title -
-#: ../../git.txt:5
+#: ../../git.txt:5 ../../gittutorial.txt:5 ../../gittutorial-2.txt:5
+#: ../../git-add.txt:5
 #, no-wrap
 msgid "NAME"
 msgstr ""
@@ -34,7 +35,8 @@ msgid "git - the stupid content tracker"
 msgstr ""
 
 #. type: Title -
-#: ../../git.txt:10
+#: ../../git.txt:10 ../../gittutorial.txt:9 ../../gittutorial-2.txt:9
+#: ../../git-add.txt:9
 #, no-wrap
 msgid "SYNOPSIS"
 msgstr ""
@@ -51,7 +53,8 @@ msgid ""
 msgstr ""
 
 #. type: Title -
-#: ../../git.txt:19
+#: ../../git.txt:19 ../../gittutorial.txt:14 ../../gittutorial-2.txt:14
+#: ../../git-add.txt:17
 #, no-wrap
 msgid "DESCRIPTION"
 msgstr ""
@@ -543,7 +546,7 @@ msgid ""
 msgstr ""
 
 #. type: Title -
-#: ../../git.txt:383
+#: ../../git.txt:383 ../../git-add.txt:51
 #, no-wrap
 msgid "OPTIONS"
 msgstr ""
@@ -1739,7 +1742,8 @@ msgid ""
 msgstr ""
 
 #. type: Title -
-#: ../../git.txt:966
+#: ../../git.txt:966 ../../gittutorial.txt:664 ../../gittutorial-2.txt:424
+#: ../../git-add.txt:396
 #, no-wrap
 msgid "SEE ALSO"
 msgstr ""
@@ -1754,12 +1758,13 @@ msgid ""
 msgstr ""
 
 #. type: Title -
-#: ../../git.txt:974
+#: ../../git.txt:974 ../../gittutorial.txt:675 ../../gittutorial-2.txt:434
+#: ../../git-add.txt:405
 #, no-wrap
 msgid "GIT"
 msgstr ""
 
 #. type: Plain text
-#: ../../git.txt:975
+#: ../../git.txt:975 ../../git-add.txt:406
 msgid "Part of the linkgit:git[1] suite"
 msgstr ""

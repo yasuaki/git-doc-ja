@@ -1,0 +1,87 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Git Japanese translation team
+# This file is distributed under the same license as the Git package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Git v1.8.4\n"
+"POT-Creation-Date: 2013-12-07 00:31+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title -
+#: ../../git.txt:5 ../../gittutorial.txt:5 ../../gittutorial-2.txt:5
+#: ../../git-add.txt:5 ../../git-bisect.txt:6 ../../git-cherry-pick.txt:5
+#: ../../git-clean.txt:5 ../../git-grep.txt:5 ../../gitglossary.txt:5
+#, no-wrap
+msgid "NAME"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:10 ../../gittutorial.txt:9 ../../gittutorial-2.txt:9
+#: ../../git-add.txt:9 ../../git-bisect.txt:10 ../../git-cherry-pick.txt:9
+#: ../../git-clean.txt:9 ../../git-grep.txt:10 ../../gitglossary.txt:9
+#, no-wrap
+msgid "SYNOPSIS"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:19 ../../gittutorial.txt:14 ../../gittutorial-2.txt:14
+#: ../../git-add.txt:17 ../../git-bisect.txt:14 ../../git-cherry-pick.txt:13
+#: ../../git-clean.txt:14 ../../git-grep.txt:28 ../../gitglossary.txt:13
+#, no-wrap
+msgid "DESCRIPTION"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:966 ../../gittutorial.txt:664 ../../gittutorial-2.txt:424
+#: ../../git-add.txt:396 ../../git-bisect.txt:333 ../../gitglossary.txt:18
+#, no-wrap
+msgid "SEE ALSO"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:974 ../../gittutorial.txt:675 ../../gittutorial-2.txt:434
+#: ../../git-add.txt:405 ../../git-bisect.txt:338 ../../git-cherry-pick.txt:83
+#: ../../git-clean.txt:63 ../../git-grep.txt:201 ../../gitglossary.txt:26
+#, no-wrap
+msgid "GIT"
+msgstr ""
+
+#. type: Plain text
+#: ../../gittutorial.txt:676 ../../gittutorial-2.txt:435
+#: ../../gitglossary.txt:27
+msgid "Part of the linkgit:git[1] suite."
+msgstr ""
+
+#. type: Title =
+#: ../../gitglossary.txt:2
+#, no-wrap
+msgid "gitglossary(7)"
+msgstr ""
+
+#. type: Plain text
+#: ../../gitglossary.txt:7
+msgid "gitglossary - A GIT Glossary"
+msgstr ""
+
+#. type: Plain text
+#: ../../gitglossary.txt:11
+#, no-wrap
+msgid "*\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../gitglossary.txt:24
+msgid ""
+"linkgit:gittutorial[7], linkgit:gittutorial-2[7], linkgit:gitcvs-migration"
+"[7], link:everyday.html[Everyday git], link:user-manual.html[The Git User's "
+"Manual]"
+msgstr ""

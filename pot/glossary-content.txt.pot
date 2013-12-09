@@ -1,0 +1,859 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Git Japanese translation team
+# This file is distributed under the same license as the Git package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Git v1.8.4\n"
+"POT-Creation-Date: 2013-12-07 00:31+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Plain text
+#: ../../glossary-content.txt:5
+#, no-wrap
+msgid ""
+"[[def_alternate_object_database]]alternate object database::\n"
+"\tVia the alternates mechanism, a <<def_repository,repository>>\n"
+"\tcan inherit part of its <<def_object_database,object database>>\n"
+"\tfrom another object database, which is called \"alternate\".\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:16
+#, no-wrap
+msgid ""
+"[[def_bare_repository]]bare repository::\n"
+"\tA bare repository is normally an appropriately\n"
+"\tnamed <<def_directory,directory>> with a `.git` suffix that does not\n"
+"\thave a locally checked-out copy of any of the files under\n"
+"\trevision control. That is, all of the `git`\n"
+"\tadministrative and control files that would normally be present in the\n"
+"\thidden `.git` sub-directory are directly present in the\n"
+"\t`repository.git` directory instead,\n"
+"\tand no other files are present and checked out. Usually publishers of\n"
+"\tpublic repositories make bare repositories available.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:19
+#, no-wrap
+msgid ""
+"[[def_blob_object]]blob object::\n"
+"\tUntyped <<def_object,object>>, e.g. the contents of a file.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:30
+#, no-wrap
+msgid ""
+"[[def_branch]]branch::\n"
+"\tA \"branch\" is an active line of development.  The most recent\n"
+"\t<<def_commit,commit>> on a branch is referred to as the tip of\n"
+"\tthat branch.  The tip of the branch is referenced by a branch\n"
+"\t<<def_head,head>>, which moves forward as additional development\n"
+"\tis done on the branch.  A single git\n"
+"\t<<def_repository,repository>> can track an arbitrary number of\n"
+"\tbranches, but your <<def_working_tree,working tree>> is\n"
+"\tassociated with just one of them (the \"current\" or \"checked out\"\n"
+"\tbranch), and <<def_HEAD,HEAD>> points to that branch.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:33
+#, no-wrap
+msgid ""
+"[[def_cache]]cache::\n"
+"\tObsolete for: <<def_index,index>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:38
+#, no-wrap
+msgid ""
+"[[def_chain]]chain::\n"
+"\tA list of objects, where each <<def_object,object>> in the list contains\n"
+"\ta reference to its successor (for example, the successor of a\n"
+"\t<<def_commit,commit>> could be one of its <<def_parent,parents>>).\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:43
+#, no-wrap
+msgid ""
+"[[def_changeset]]changeset::\n"
+"\tBitKeeper/cvsps speak for \"<<def_commit,commit>>\". Since git does not\n"
+"\tstore changes, but states, it really does not make sense to use the term\n"
+"\t\"changesets\" with git.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:51
+#, no-wrap
+msgid ""
+"[[def_checkout]]checkout::\n"
+"\tThe action of updating all or part of the\n"
+"\t<<def_working_tree,working tree>> with a <<def_tree_object,tree object>>\n"
+"\tor <<def_blob_object,blob>> from the\n"
+"\t<<def_object_database,object database>>, and updating the\n"
+"\t<<def_index,index>> and <<def_HEAD,HEAD>> if the whole working tree has\n"
+"\tbeen pointed at a new <<def_branch,branch>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:59
+#, no-wrap
+msgid ""
+"[[def_cherry-picking]]cherry-picking::\n"
+"\tIn <<def_SCM,SCM>> jargon, \"cherry pick\" means to choose a subset of\n"
+"\tchanges out of a series of changes (typically commits) and record them\n"
+"\tas a new series of changes on top of a different codebase. In GIT, this is\n"
+"\tperformed by the \"git cherry-pick\" command to extract the change introduced\n"
+"\tby an existing <<def_commit,commit>> and to record it based on the tip\n"
+"\tof the current <<def_branch,branch>> as a new commit.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:64
+#, no-wrap
+msgid ""
+"[[def_clean]]clean::\n"
+"\tA <<def_working_tree,working tree>> is clean, if it\n"
+"\tcorresponds to the <<def_revision,revision>> referenced by the current\n"
+"\t<<def_head,head>>. Also see \"<<def_dirty,dirty>>\".\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:72
+#, no-wrap
+msgid ""
+"[[def_commit]]commit::\n"
+"\tAs a noun: A single point in the\n"
+"\tgit history; the entire history of a project is represented as a\n"
+"\tset of interrelated commits.  The word \"commit\" is often\n"
+"\tused by git in the same places other revision control systems\n"
+"\tuse the words \"revision\" or \"version\".  Also used as a short\n"
+"\thand for <<def_commit_object,commit object>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:77
+#, no-wrap
+msgid ""
+"As a verb: The action of storing a new snapshot of the project's\n"
+"state in the git history, by creating a new commit representing the current\n"
+"state of the <<def_index,index>> and advancing <<def_HEAD,HEAD>>\n"
+"to point at the new commit.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:84
+#, no-wrap
+msgid ""
+"[[def_commit_object]]commit object::\n"
+"\tAn <<def_object,object>> which contains the information about a\n"
+"\tparticular <<def_revision,revision>>, such as <<def_parent,parents>>, committer,\n"
+"\tauthor, date and the <<def_tree_object,tree object>> which corresponds\n"
+"\tto the top <<def_directory,directory>> of the stored\n"
+"\trevision.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:88
+#, no-wrap
+msgid ""
+"[[def_core_git]]core git::\n"
+"\tFundamental data structures and utilities of git. Exposes only limited\n"
+"\tsource code management tools.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:94
+#, no-wrap
+msgid ""
+"[[def_DAG]]DAG::\n"
+"\tDirected acyclic graph. The <<def_commit_object,commit objects>> form a\n"
+"\tdirected acyclic graph, because they have parents (directed), and the\n"
+"\tgraph of commit objects is acyclic (there is no <<def_chain,chain>>\n"
+"\twhich begins and ends with the same <<def_object,object>>).\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:100
+#, no-wrap
+msgid ""
+"[[def_dangling_object]]dangling object::\n"
+"\tAn <<def_unreachable_object,unreachable object>> which is not\n"
+"\t<<def_reachable,reachable>> even from other unreachable objects; a\n"
+"\tdangling object has no references to it from any\n"
+"\treference or <<def_object,object>> in the <<def_repository,repository>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:106
+#, no-wrap
+msgid ""
+"[[def_detached_HEAD]]detached HEAD::\n"
+"\tNormally the <<def_HEAD,HEAD>> stores the name of a\n"
+"\t<<def_branch,branch>>.  However, git also allows you to <<def_checkout,check out>>\n"
+"\tan arbitrary <<def_commit,commit>> that isn't necessarily the tip of any\n"
+"\tparticular branch.  In this case HEAD is said to be \"detached\".\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:109
+#, no-wrap
+msgid ""
+"[[def_dircache]]dircache::\n"
+"\tYou are *waaaaay* behind. See <<def_index,index>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:112
+#, no-wrap
+msgid ""
+"[[def_directory]]directory::\n"
+"\tThe list you get with \"ls\" :-)\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:117
+#, no-wrap
+msgid ""
+"[[def_dirty]]dirty::\n"
+"\tA <<def_working_tree,working tree>> is said to be \"dirty\" if\n"
+"\tit contains modifications which have not been <<def_commit,committed>> to the current\n"
+"\t<<def_branch,branch>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:122
+#, no-wrap
+msgid ""
+"[[def_ent]]ent::\n"
+"\tFavorite synonym to \"<<def_tree-ish,tree-ish>>\" by some total geeks. See\n"
+"\t`http://en.wikipedia.org/wiki/Ent_(Middle-earth)` for an in-depth\n"
+"\texplanation. Avoid this term, not to confuse people.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:126
+#, no-wrap
+msgid ""
+"[[def_evil_merge]]evil merge::\n"
+"\tAn evil merge is a <<def_merge,merge>> that introduces changes that\n"
+"\tdo not appear in any <<def_parent,parent>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:136
+#, no-wrap
+msgid ""
+"[[def_fast_forward]]fast forward::\n"
+"\tA fast-forward is a special type of <<def_merge,merge>> where you have a\n"
+"\t<<def_revision,revision>> and you are \"merging\" another\n"
+"\t<<def_branch,branch>>'s changes that happen to be a descendant of what\n"
+"\tyou have. In such these cases, you do not make a new <<def_merge,merge>>\n"
+"\t<<def_commit,commit>> but instead just update to his\n"
+"\trevision. This will happen frequently on a\n"
+"\t<<def_tracking_branch,tracking branch>> of a remote\n"
+"\t<<def_repository,repository>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:143
+#, no-wrap
+msgid ""
+"[[def_fetch]]fetch::\n"
+"\tFetching a <<def_branch,branch>> means to get the\n"
+"\tbranch's <<def_head_ref,head ref>> from a remote\n"
+"\t<<def_repository,repository>>, to find out which objects are\n"
+"\tmissing from the local <<def_object_database,object database>>,\n"
+"\tand to get them, too.  See also linkgit:git-fetch[1].\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:148
+#, no-wrap
+msgid ""
+"[[def_file_system]]file system::\n"
+"\tLinus Torvalds originally designed git to be a user space file system,\n"
+"\ti.e. the infrastructure to hold files and directories. That ensured the\n"
+"\tefficiency and speed of git.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:151
+#, no-wrap
+msgid ""
+"[[def_git_archive]]git archive::\n"
+"\tSynonym for <<def_repository,repository>> (for arch people).\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:158
+#, no-wrap
+msgid ""
+"[[def_grafts]]grafts::\n"
+"\tGrafts enables two otherwise different lines of development to be joined\n"
+"\ttogether by recording fake ancestry information for commits. This way\n"
+"\tyou can make git pretend the set of <<def_parent,parents>> a <<def_commit,commit>> has\n"
+"\tis different from what was recorded when the commit was\n"
+"\tcreated. Configured via the `.git/info/grafts` file.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:161
+#, no-wrap
+msgid ""
+"[[def_hash]]hash::\n"
+"\tIn git's context, synonym to <<def_object_name,object name>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:167
+#, no-wrap
+msgid ""
+"[[def_head]]head::\n"
+"\tA <<def_ref,named reference>> to the <<def_commit,commit>> at the tip of a\n"
+"\t<<def_branch,branch>>.  Heads are stored in\n"
+"\t`$GIT_DIR/refs/heads/`, except when using packed refs. (See\n"
+"\tlinkgit:git-pack-refs[1].)\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:175
+#, no-wrap
+msgid ""
+"[[def_HEAD]]HEAD::\n"
+"\tThe current <<def_branch,branch>>.  In more detail: Your <<def_working_tree,\n"
+"\tworking tree>> is normally derived from the state of the tree\n"
+"\treferred to by HEAD.  HEAD is a reference to one of the\n"
+"\t<<def_head,heads>> in your repository, except when using a\n"
+"\t<<def_detached_HEAD,detached HEAD>>, in which case it may\n"
+"\treference an arbitrary commit.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:178
+#, no-wrap
+msgid ""
+"[[def_head_ref]]head ref::\n"
+"\tA synonym for <<def_head,head>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:188
+#, no-wrap
+msgid ""
+"[[def_hook]]hook::\n"
+"\tDuring the normal execution of several git commands, call-outs are made\n"
+"\tto optional scripts that allow a developer to add functionality or\n"
+"\tchecking. Typically, the hooks allow for a command to be pre-verified\n"
+"\tand potentially aborted, and allow for a post-notification after the\n"
+"\toperation is done. The hook scripts are found in the\n"
+"\t`$GIT_DIR/hooks/` directory, and are enabled by simply\n"
+"\tremoving the `.sample` suffix from the filename. In earlier versions\n"
+"\tof git you had to make them executable.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:195
+#, no-wrap
+msgid ""
+"[[def_index]]index::\n"
+"\tA collection of files with stat information, whose contents are stored\n"
+"\tas objects. The index is a stored version of your\n"
+"\t<<def_working_tree,working tree>>. Truth be told, it can also contain a second, and even\n"
+"\ta third version of a working tree, which are used\n"
+"\twhen <<def_merge,merging>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:201
+#, no-wrap
+msgid ""
+"[[def_index_entry]]index entry::\n"
+"\tThe information regarding a particular file, stored in the\n"
+"\t<<def_index,index>>. An index entry can be unmerged, if a\n"
+"\t<<def_merge,merge>> was started, but not yet finished (i.e. if\n"
+"\tthe index contains multiple versions of that file).\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:208
+#, no-wrap
+msgid ""
+"[[def_master]]master::\n"
+"\tThe default development <<def_branch,branch>>. Whenever you\n"
+"\tcreate a git <<def_repository,repository>>, a branch named\n"
+"\t\"master\" is created, and becomes the active branch. In most\n"
+"\tcases, this contains the local development, though that is\n"
+"\tpurely by convention and is not required.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:222
+#, no-wrap
+msgid ""
+"[[def_merge]]merge::\n"
+"\tAs a verb: To bring the contents of another\n"
+"\t<<def_branch,branch>> (possibly from an external\n"
+"\t<<def_repository,repository>>) into the current branch.  In the\n"
+"\tcase where the merged-in branch is from a different repository,\n"
+"\tthis is done by first <<def_fetch,fetching>> the remote branch\n"
+"\tand then merging the result into the current branch.  This\n"
+"\tcombination of fetch and merge operations is called a\n"
+"\t<<def_pull,pull>>.  Merging is performed by an automatic process\n"
+"\tthat identifies changes made since the branches diverged, and\n"
+"\tthen applies all those changes together.  In cases where changes\n"
+"\tconflict, manual intervention may be required to complete the\n"
+"\tmerge.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:229
+#, no-wrap
+msgid ""
+"As a noun: unless it is a <<def_fast_forward,fast forward>>, a\n"
+"successful merge results in the creation of a new <<def_commit,commit>>\n"
+"representing the result of the merge, and having as\n"
+"<<def_parent,parents>> the tips of the merged <<def_branch,branches>>.\n"
+"This commit is referred to as a \"merge commit\", or sometimes just a\n"
+"\"merge\".\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:234
+#, no-wrap
+msgid ""
+"[[def_object]]object::\n"
+"\tThe unit of storage in git. It is uniquely identified by the\n"
+"\t<<def_SHA1,SHA1>> of its contents. Consequently, an\n"
+"\tobject can not be changed.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:239
+#, no-wrap
+msgid ""
+"[[def_object_database]]object database::\n"
+"\tStores a set of \"objects\", and an individual <<def_object,object>> is\n"
+"\tidentified by its <<def_object_name,object name>>. The objects usually\n"
+"\tlive in `$GIT_DIR/objects/`.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:242
+#, no-wrap
+msgid ""
+"[[def_object_identifier]]object identifier::\n"
+"\tSynonym for <<def_object_name,object name>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:248
+#, no-wrap
+msgid ""
+"[[def_object_name]]object name::\n"
+"\tThe unique identifier of an <<def_object,object>>. The <<def_hash,hash>>\n"
+"\tof the object's contents using the Secure Hash Algorithm\n"
+"\t1 and usually represented by the 40 character hexadecimal encoding of\n"
+"\tthe <<def_hash,hash>> of the object.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:254
+#, no-wrap
+msgid ""
+"[[def_object_type]]object type::\n"
+"\tOne of the identifiers \"<<def_commit_object,commit>>\",\n"
+"\t\"<<def_tree_object,tree>>\", \"<<def_tag_object,tag>>\" or\n"
+"\t\"<<def_blob_object,blob>>\" describing the type of an\n"
+"\t<<def_object,object>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:258
+#, no-wrap
+msgid ""
+"[[def_octopus]]octopus::\n"
+"\tTo <<def_merge,merge>> more than two <<def_branch,branches>>. Also denotes an\n"
+"\tintelligent predator.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:266
+#, no-wrap
+msgid ""
+"[[def_origin]]origin::\n"
+"\tThe default upstream <<def_repository,repository>>. Most projects have\n"
+"\tat least one upstream project which they track. By default\n"
+"\t'origin' is used for that purpose. New upstream updates\n"
+"\twill be fetched into remote <<def_tracking_branch,tracking branches>> named\n"
+"\torigin/name-of-upstream-branch, which you can see using\n"
+"\t`git branch -r`.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:270
+#, no-wrap
+msgid ""
+"[[def_pack]]pack::\n"
+"\tA set of objects which have been compressed into one file (to save space\n"
+"\tor to transmit them efficiently).\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:275
+#, no-wrap
+msgid ""
+"[[def_pack_index]]pack index::\n"
+"\tThe list of identifiers, and other information, of the objects in a\n"
+"\t<<def_pack,pack>>, to assist in efficiently accessing the contents of a\n"
+"\tpack.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:280
+#, no-wrap
+msgid ""
+"[[def_parent]]parent::\n"
+"\tA <<def_commit_object,commit object>> contains a (possibly empty) list\n"
+"\tof the logical predecessor(s) in the line of development, i.e. its\n"
+"\tparents.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:287
+#, no-wrap
+msgid ""
+"[[def_pickaxe]]pickaxe::\n"
+"\tThe term <<def_pickaxe,pickaxe>> refers to an option to the diffcore\n"
+"\troutines that help select changes that add or delete a given text\n"
+"\tstring. With the `--pickaxe-all` option, it can be used to view the full\n"
+"\t<<def_changeset,changeset>> that introduced or removed, say, a\n"
+"\tparticular line of text. See linkgit:git-diff[1].\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:290
+#, no-wrap
+msgid ""
+"[[def_plumbing]]plumbing::\n"
+"\tCute name for <<def_core_git,core git>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:296
+#, no-wrap
+msgid ""
+"[[def_porcelain]]porcelain::\n"
+"\tCute name for programs and program suites depending on\n"
+"\t<<def_core_git,core git>>, presenting a high level access to\n"
+"\tcore git. Porcelains expose more of a <<def_SCM,SCM>>\n"
+"\tinterface than the <<def_plumbing,plumbing>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:300
+#, no-wrap
+msgid ""
+"[[def_pull]]pull::\n"
+"\tPulling a <<def_branch,branch>> means to <<def_fetch,fetch>> it and\n"
+"\t<<def_merge,merge>> it.  See also linkgit:git-pull[1].\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:312
+#, no-wrap
+msgid ""
+"[[def_push]]push::\n"
+"\tPushing a <<def_branch,branch>> means to get the branch's\n"
+"\t<<def_head_ref,head ref>> from a remote <<def_repository,repository>>,\n"
+"\tfind out if it is a direct ancestor to the branch's local\n"
+"\thead ref, and in that case, putting all\n"
+"\tobjects, which are <<def_reachable,reachable>> from the local\n"
+"\thead ref, and which are missing from the remote\n"
+"\trepository, into the remote\n"
+"\t<<def_object_database,object database>>, and updating the remote\n"
+"\thead ref. If the remote <<def_head,head>> is not an\n"
+"\tancestor to the local head, the push fails.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:322
+#, no-wrap
+msgid ""
+"[[def_reachable]]reachable::\n"
+"\tAll of the ancestors of a given <<def_commit,commit>> are said to be\n"
+"\t\"reachable\" from that commit. More\n"
+"\tgenerally, one <<def_object,object>> is reachable from\n"
+"\tanother if we can reach the one from the other by a <<def_chain,chain>>\n"
+"\tthat follows <<def_tag,tags>> to whatever they tag,\n"
+"\t<<def_commit_object,commits>> to their parents or trees, and\n"
+"\t<<def_tree_object,trees>> to the trees or <<def_blob_object,blobs>>\n"
+"\tthat they contain.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:327
+#, no-wrap
+msgid ""
+"[[def_rebase]]rebase::\n"
+"\tTo reapply a series of changes from a <<def_branch,branch>> to a\n"
+"\tdifferent base, and reset the <<def_head,head>> of that branch\n"
+"\tto the result.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:332
+#, no-wrap
+msgid ""
+"[[def_ref]]ref::\n"
+"\tA 40-byte hex representation of a <<def_SHA1,SHA1>> or a name that\n"
+"\tdenotes a particular <<def_object,object>>. These may be stored in\n"
+"\t`$GIT_DIR/refs/`.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:338
+#, no-wrap
+msgid ""
+"[[def_reflog]]reflog::\n"
+"\tA reflog shows the local \"history\" of a ref.  In other words,\n"
+"\tit can tell you what the 3rd last revision in _this_ repository\n"
+"\twas, and what was the current state in _this_ repository,\n"
+"\tyesterday 9:14pm.  See linkgit:git-reflog[1] for details.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:351
+#, no-wrap
+msgid ""
+"[[def_refspec]]refspec::\n"
+"\tA \"refspec\" is used by <<def_fetch,fetch>> and\n"
+"\t<<def_push,push>> to describe the mapping between remote\n"
+"\t<<def_ref,ref>> and local ref. They are combined with a colon in\n"
+"\tthe format <src>:<dst>, preceded by an optional plus sign, +.\n"
+"\tFor example: `git fetch $URL\n"
+"\trefs/heads/master:refs/heads/origin` means \"grab the master\n"
+"\t<<def_branch,branch>> <<def_head,head>> from the $URL and store\n"
+"\tit as my origin branch head\". And `git push\n"
+"\t$URL refs/heads/master:refs/heads/to-upstream` means \"publish my\n"
+"\tmaster branch head as to-upstream branch at $URL\". See also\n"
+"\tlinkgit:git-push[1].\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:359
+#, no-wrap
+msgid ""
+"[[def_repository]]repository::\n"
+"\tA collection of <<def_ref,refs>> together with an\n"
+"\t<<def_object_database,object database>> containing all objects\n"
+"\twhich are <<def_reachable,reachable>> from the refs, possibly\n"
+"\taccompanied by meta data from one or more <<def_porcelain,porcelains>>. A\n"
+"\trepository can share an object database with other repositories\n"
+"\tvia <<def_alternate_object_database,alternates mechanism>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:363
+#, no-wrap
+msgid ""
+"[[def_resolve]]resolve::\n"
+"\tThe action of fixing up manually what a failed automatic\n"
+"\t<<def_merge,merge>> left behind.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:368
+#, no-wrap
+msgid ""
+"[[def_revision]]revision::\n"
+"\tA particular state of files and directories which was stored in the\n"
+"\t<<def_object_database,object database>>. It is referenced by a\n"
+"\t<<def_commit_object,commit object>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:372
+#, no-wrap
+msgid ""
+"[[def_rewind]]rewind::\n"
+"\tTo throw away part of the development, i.e. to assign the\n"
+"\t<<def_head,head>> to an earlier <<def_revision,revision>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:375
+#, no-wrap
+msgid ""
+"[[def_SCM]]SCM::\n"
+"\tSource code management (tool).\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:378
+#, no-wrap
+msgid ""
+"[[def_SHA1]]SHA1::\n"
+"\tSynonym for <<def_object_name,object name>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:389
+#, no-wrap
+msgid ""
+"[[def_shallow_repository]]shallow repository::\n"
+"\tA shallow <<def_repository,repository>> has an incomplete\n"
+"\thistory some of whose <<def_commit,commits>> have <<def_parent,parents>> cauterized away (in other\n"
+"\twords, git is told to pretend that these commits do not have the\n"
+"\tparents, even though they are recorded in the <<def_commit_object,commit\n"
+"\tobject>>). This is sometimes useful when you are interested only in the\n"
+"\trecent history of a project even though the real history recorded in the\n"
+"\tupstream is much larger. A shallow repository\n"
+"\tis created by giving the `--depth` option to linkgit:git-clone[1], and\n"
+"\tits history can be later deepened with linkgit:git-fetch[1].\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:397
+#, no-wrap
+msgid ""
+"[[def_symref]]symref::\n"
+"\tSymbolic reference: instead of containing the <<def_SHA1,SHA1>>\n"
+"\tid itself, it is of the format 'ref: refs/some/thing' and when\n"
+"\treferenced, it recursively dereferences to this reference.\n"
+"\t'<<def_HEAD,HEAD>>' is a prime example of a symref. Symbolic\n"
+"\treferences are manipulated with the linkgit:git-symbolic-ref[1]\n"
+"\tcommand.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:407
+#, no-wrap
+msgid ""
+"[[def_tag]]tag::\n"
+"\tA <<def_ref,ref>> pointing to a <<def_tag_object,tag>> or\n"
+"\t<<def_commit_object,commit object>>. In contrast to a <<def_head,head>>,\n"
+"\ta tag is not changed by a <<def_commit,commit>>. Tags (not\n"
+"\t<<def_tag_object,tag objects>>) are stored in `$GIT_DIR/refs/tags/`. A\n"
+"\tgit tag has nothing to do with a Lisp tag (which would be\n"
+"\tcalled an <<def_object_type,object type>> in git's context). A\n"
+"\ttag is most typically used to mark a particular point in the\n"
+"\tcommit ancestry <<def_chain,chain>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:413
+#, no-wrap
+msgid ""
+"[[def_tag_object]]tag object::\n"
+"\tAn <<def_object,object>> containing a <<def_ref,ref>> pointing to\n"
+"\tanother object, which can contain a message just like a\n"
+"\t<<def_commit_object,commit object>>. It can also contain a (PGP)\n"
+"\tsignature, in which case it is called a \"signed tag object\".\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:420
+#, no-wrap
+msgid ""
+"[[def_topic_branch]]topic branch::\n"
+"\tA regular git <<def_branch,branch>> that is used by a developer to\n"
+"\tidentify a conceptual line of development. Since branches are very easy\n"
+"\tand inexpensive, it is often desirable to have several small branches\n"
+"\tthat each contain very well defined concepts or small incremental yet\n"
+"\trelated changes.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:428
+#, no-wrap
+msgid ""
+"[[def_tracking_branch]]tracking branch::\n"
+"\tA regular git <<def_branch,branch>> that is used to follow changes from\n"
+"\tanother <<def_repository,repository>>. A tracking\n"
+"\tbranch should not contain direct modifications or have local commits\n"
+"\tmade to it. A tracking branch can usually be\n"
+"\tidentified as the right-hand-side <<def_ref,ref>> in a Pull:\n"
+"\t<<def_refspec,refspec>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:433
+#, no-wrap
+msgid ""
+"[[def_tree]]tree::\n"
+"\tEither a <<def_working_tree,working tree>>, or a <<def_tree_object,tree\n"
+"\tobject>> together with the dependent <<def_blob_object,blob>> and tree objects\n"
+"\t(i.e. a stored representation of a working tree).\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:438
+#, no-wrap
+msgid ""
+"[[def_tree_object]]tree object::\n"
+"\tAn <<def_object,object>> containing a list of file names and modes along\n"
+"\twith refs to the associated blob and/or tree objects. A\n"
+"\t<<def_tree,tree>> is equivalent to a <<def_directory,directory>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:443
+#, no-wrap
+msgid ""
+"[[def_tree-ish]]tree-ish::\n"
+"\tA <<def_ref,ref>> pointing to either a <<def_commit_object,commit\n"
+"\tobject>>, a <<def_tree_object,tree object>>, or a <<def_tag_object,tag\n"
+"\tobject>> pointing to a tag or commit or tree object.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:447
+#, no-wrap
+msgid ""
+"[[def_unmerged_index]]unmerged index::\n"
+"\tAn <<def_index,index>> which contains unmerged\n"
+"\t<<def_index_entry,index entries>>.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:451
+#, no-wrap
+msgid ""
+"[[def_unreachable_object]]unreachable object::\n"
+"\tAn <<def_object,object>> which is not <<def_reachable,reachable>> from a\n"
+"\t<<def_branch,branch>>, <<def_tag,tag>>, or any other reference.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:457
+#, no-wrap
+msgid ""
+"[[def_upstream_branch]]upstream branch::\n"
+"\tThe default <<def_branch,branch>> that is merged into the branch in\n"
+"\tquestion (or the branch in question is rebased onto). It is configured\n"
+"\tvia branch.<name>.remote and branch.<name>.merge. If the upstream branch\n"
+"\tof 'A' is 'origin/B' sometimes we say \"'A' is tracking 'origin/B'\".\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../glossary-content.txt:461
+#, no-wrap
+msgid ""
+"[[def_working_tree]]working tree::\n"
+"\tThe tree of actual checked out files.  The working tree is\n"
+"\tnormally equal to the <<def_HEAD,HEAD>> plus any local changes\n"
+"\tthat you have made but not yet committed.\n"
+msgstr ""

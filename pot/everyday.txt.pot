@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Git v1.8.4\n"
-"POT-Creation-Date: 2013-12-04 01:53+0900\n"
+"POT-Creation-Date: 2013-12-07 00:31+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,9 +122,9 @@ msgstr ""
 msgid "linkgit:git-tag[1] to mark known point."
 msgstr ""
 
-#. type: Title ~
+#. type: Title -
 #: ../../everyday.txt:51 ../../everyday.txt:127 ../../everyday.txt:230
-#: ../../everyday.txt:312
+#: ../../everyday.txt:312 ../../user-manual.txt:728 ../../user-manual.txt:2061
 #, no-wrap
 msgid "Examples"
 msgstr ""

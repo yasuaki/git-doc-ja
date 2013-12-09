@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2013-12-04 01:53+0900\n"
+"POT-Creation-Date: 2013-12-07 00:31+0900\n"
 "PO-Revision-Date: 2013-12-04 01:44+0900\n"
 "Last-Translator: Yasuaki Narita <narita.ys@gmail.com>\n"
 "Language-Team: Japanese <>\n"
@@ -154,9 +154,9 @@ msgstr "linkgit:git-rebase[1] はトピックブランチのメンテナンス�
 msgid "linkgit:git-tag[1] to mark known point."
 msgstr "linkgit:git-tag[1] は既知のポイントにマークを付けます。"
 
-#. type: Title ~
+#. type: Title -
 #: ../../everyday.txt:51 ../../everyday.txt:127 ../../everyday.txt:230
-#: ../../everyday.txt:312
+#: ../../everyday.txt:312 ../../user-manual.txt:728 ../../user-manual.txt:2061
 #, fuzzy, no-wrap
 msgid "Examples"
 msgstr "Examples"

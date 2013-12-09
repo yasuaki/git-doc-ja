@@ -1,0 +1,173 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Git Japanese translation team
+# This file is distributed under the same license as the Git package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Git v1.8.4\n"
+"POT-Creation-Date: 2013-12-07 00:31+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title -
+#: ../../git.txt:5 ../../gittutorial.txt:5 ../../gittutorial-2.txt:5
+#: ../../git-add.txt:5 ../../git-bisect.txt:6 ../../git-cherry-pick.txt:5
+#: ../../git-clean.txt:5 ../../git-grep.txt:5 ../../gitglossary.txt:5
+#, no-wrap
+msgid "NAME"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:10 ../../gittutorial.txt:9 ../../gittutorial-2.txt:9
+#: ../../git-add.txt:9 ../../git-bisect.txt:10 ../../git-cherry-pick.txt:9
+#: ../../git-clean.txt:9 ../../git-grep.txt:10 ../../gitglossary.txt:9
+#, no-wrap
+msgid "SYNOPSIS"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:19 ../../gittutorial.txt:14 ../../gittutorial-2.txt:14
+#: ../../git-add.txt:17 ../../git-bisect.txt:14 ../../git-cherry-pick.txt:13
+#: ../../git-clean.txt:14 ../../git-grep.txt:28 ../../gitglossary.txt:13
+#, no-wrap
+msgid "DESCRIPTION"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:383 ../../git-add.txt:51 ../../git-cherry-pick.txt:19
+#: ../../git-clean.txt:27 ../../git-grep.txt:33
+#, no-wrap
+msgid "OPTIONS"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:974 ../../gittutorial.txt:675 ../../gittutorial-2.txt:434
+#: ../../git-add.txt:405 ../../git-bisect.txt:338 ../../git-cherry-pick.txt:83
+#: ../../git-clean.txt:63 ../../git-grep.txt:201 ../../gitglossary.txt:26
+#, no-wrap
+msgid "GIT"
+msgstr ""
+
+#. type: Plain text
+#: ../../git.txt:975 ../../git-add.txt:406 ../../git-bisect.txt:339
+#: ../../git-cherry-pick.txt:84 ../../git-clean.txt:64 ../../git-grep.txt:202
+msgid "Part of the linkgit:git[1] suite"
+msgstr ""
+
+#. type: Title -
+#: ../../git-bisect.txt:325 ../../git-cherry-pick.txt:75
+#: ../../git-clean.txt:59 ../../git-grep.txt:192
+#, no-wrap
+msgid "Author"
+msgstr ""
+
+#. type: Title =
+#: ../../git-clean.txt:2
+#, no-wrap
+msgid "git-clean(1)"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-clean.txt:7
+msgid "git-clean - Remove untracked files from the working tree"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-clean.txt:12
+#, no-wrap
+msgid "'git clean' [-d] [-f] [-n] [-q] [-x | -X] [--] <path>...\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-clean.txt:18
+msgid ""
+"Cleans the working tree by recursively removing files that are not under "
+"version control, starting from the current directory."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-clean.txt:22
+msgid ""
+"Normally, only files unknown to git are removed, but if the '-x' option is "
+"specified, ignored files are also removed. This can, for example, be useful "
+"to remove all build products."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-clean.txt:25
+msgid ""
+"If any optional `<path>...` arguments are given, only those paths are "
+"affected."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-clean.txt:33
+#, no-wrap
+msgid ""
+"-d::\n"
+"\tRemove untracked directories in addition to untracked files.\n"
+"\tIf an untracked directory is managed by a different git\n"
+"\trepository, it is not removed by default.  Use -f option twice\n"
+"\tif you really want to remove such a directory.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-clean.txt:38
+#, no-wrap
+msgid ""
+"-f::\n"
+"--force::\n"
+"\tIf the git configuration variable clean.requireForce is not set\n"
+"\tto false, 'git clean' will refuse to run unless given -f or -n.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-clean.txt:42
+#, no-wrap
+msgid ""
+"-n::\n"
+"--dry-run::\n"
+"\tDon't actually remove anything, just show what would be done.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-clean.txt:47
+#, no-wrap
+msgid ""
+"-q::\n"
+"--quiet::\n"
+"\tBe quiet, only report errors, but not the files that are\n"
+"\tsuccessfully removed.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-clean.txt:53
+#, no-wrap
+msgid ""
+"-x::\n"
+"\tDon't use the ignore rules.  This allows removing all untracked\n"
+"\tfiles, including build products.  This can be used (possibly in\n"
+"\tconjunction with 'git reset') to create a pristine\n"
+"\tworking directory to test a clean build.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-clean.txt:57
+#, no-wrap
+msgid ""
+"-X::\n"
+"\tRemove only files ignored by git.  This may be useful to rebuild\n"
+"\teverything from scratch, but keep manually created files.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-clean.txt:61
+msgid "Written by Pavel Roskin <proski@gnu.org>"
+msgstr ""

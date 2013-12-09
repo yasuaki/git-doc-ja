@@ -1,0 +1,204 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Git Japanese translation team
+# This file is distributed under the same license as the Git package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Git v1.8.4\n"
+"POT-Creation-Date: 2013-12-07 00:31+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title -
+#: ../../git.txt:5 ../../gittutorial.txt:5 ../../gittutorial-2.txt:5
+#: ../../git-add.txt:5 ../../git-bisect.txt:6 ../../git-cherry-pick.txt:5
+#: ../../git-clean.txt:5 ../../git-grep.txt:5 ../../gitglossary.txt:5
+#, no-wrap
+msgid "NAME"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:10 ../../gittutorial.txt:9 ../../gittutorial-2.txt:9
+#: ../../git-add.txt:9 ../../git-bisect.txt:10 ../../git-cherry-pick.txt:9
+#: ../../git-clean.txt:9 ../../git-grep.txt:10 ../../gitglossary.txt:9
+#, no-wrap
+msgid "SYNOPSIS"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:19 ../../gittutorial.txt:14 ../../gittutorial-2.txt:14
+#: ../../git-add.txt:17 ../../git-bisect.txt:14 ../../git-cherry-pick.txt:13
+#: ../../git-clean.txt:14 ../../git-grep.txt:28 ../../gitglossary.txt:13
+#, no-wrap
+msgid "DESCRIPTION"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:383 ../../git-add.txt:51 ../../git-cherry-pick.txt:19
+#: ../../git-clean.txt:27 ../../git-grep.txt:33
+#, no-wrap
+msgid "OPTIONS"
+msgstr ""
+
+#. type: Title -
+#: ../../git.txt:974 ../../gittutorial.txt:675 ../../gittutorial-2.txt:434
+#: ../../git-add.txt:405 ../../git-bisect.txt:338 ../../git-cherry-pick.txt:83
+#: ../../git-clean.txt:63 ../../git-grep.txt:201 ../../gitglossary.txt:26
+#, no-wrap
+msgid "GIT"
+msgstr ""
+
+#. type: Plain text
+#: ../../git.txt:975 ../../git-add.txt:406 ../../git-bisect.txt:339
+#: ../../git-cherry-pick.txt:84 ../../git-clean.txt:64 ../../git-grep.txt:202
+msgid "Part of the linkgit:git[1] suite"
+msgstr ""
+
+#. type: Title -
+#: ../../git-bisect.txt:325 ../../git-cherry-pick.txt:75
+#: ../../git-clean.txt:59 ../../git-grep.txt:192
+#, no-wrap
+msgid "Author"
+msgstr ""
+
+#. type: Title -
+#: ../../git-bisect.txt:329 ../../git-cherry-pick.txt:79
+#: ../../git-grep.txt:197
+#, no-wrap
+msgid "Documentation"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-bisect.txt:331 ../../git-cherry-pick.txt:81
+#: ../../git-grep.txt:199
+msgid "Documentation by Junio C Hamano and the git-list <git@vger.kernel.org>."
+msgstr ""
+
+#. type: Title =
+#: ../../git-cherry-pick.txt:2
+#, no-wrap
+msgid "git-cherry-pick(1)"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:7
+msgid "git-cherry-pick - Apply the change introduced by an existing commit"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:11
+msgid "'git cherry-pick' [--edit] [-n] [-m parent-number] [-s] [-x] <commit>"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:17
+msgid ""
+"Given one existing commit, apply the change the patch introduces, and record "
+"a new commit that records it.  This requires your working tree to be clean "
+"(no modifications from the HEAD commit)."
+msgstr ""
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:24
+#, no-wrap
+msgid ""
+"<commit>::\n"
+"\tCommit to cherry-pick.\n"
+"\tFor a more complete list of ways to spell commits, see the\n"
+"\t\"SPECIFYING REVISIONS\" section in linkgit:git-rev-parse[1].\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:29
+#, no-wrap
+msgid ""
+"-e::\n"
+"--edit::\n"
+"\tWith this option, 'git cherry-pick' will let you edit the commit\n"
+"\tmessage prior to committing.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:42
+#, no-wrap
+msgid ""
+"-x::\n"
+"\tWhen recording the commit, append to the original commit\n"
+"\tmessage a note that indicates which commit this change\n"
+"\twas cherry-picked from.  Append the note only for cherry\n"
+"\tpicks without conflicts.  Do not use this option if\n"
+"\tyou are cherry-picking from your private branch because\n"
+"\tthe information is useless to the recipient.  If on the\n"
+"\tother hand you are cherry-picking between two publicly\n"
+"\tvisible branches (e.g. backporting a fix to a\n"
+"\tmaintenance branch for an older release from a\n"
+"\tdevelopment branch), adding this information can be\n"
+"\tuseful.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:47
+#, no-wrap
+msgid ""
+"-r::\n"
+"\tIt used to be that the command defaulted to do `-x`\n"
+"\tdescribed above, and `-r` was to disable it.  Now the\n"
+"\tdefault is not to do `-x` so this option is a no-op.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:55
+#, no-wrap
+msgid ""
+"-m parent-number::\n"
+"--mainline parent-number::\n"
+"\tUsually you cannot cherry-pick a merge because you do not know which\n"
+"\tside of the merge should be considered the mainline.  This\n"
+"\toption specifies the parent number (starting from 1) of\n"
+"\tthe mainline and allows cherry-pick to replay the change\n"
+"\trelative to the specified parent.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:65
+#, no-wrap
+msgid ""
+"-n::\n"
+"--no-commit::\n"
+"\tUsually the command automatically creates a commit.\n"
+"\tThis flag applies the change necessary to cherry-pick\n"
+"\tthe named commit to your working tree and the index,\n"
+"\tbut does not make the commit.  In addition, when this\n"
+"\toption is used, your index does not have to match the\n"
+"\tHEAD commit.  The cherry-pick is done against the\n"
+"\tbeginning state of your index.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:68
+#, no-wrap
+msgid ""
+"This is useful when cherry-picking more than one commits'\n"
+"effect to your index in a row.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:72
+#, no-wrap
+msgid ""
+"-s::\n"
+"--signoff::\n"
+"\tAdd Signed-off-by line at the end of the commit message.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:77
+msgid "Written by Junio C Hamano <gitster@pobox.com>"
+msgstr ""

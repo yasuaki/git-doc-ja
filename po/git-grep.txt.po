@@ -1,0 +1,592 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2013-12-07 00:31+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title -
+#: ../../git.txt:5 ../../gittutorial.txt:5 ../../gittutorial-2.txt:5
+#: ../../git-add.txt:5 ../../git-bisect.txt:6 ../../git-cherry-pick.txt:5
+#: ../../git-clean.txt:5 ../../git-grep.txt:5 ../../gitglossary.txt:5
+#, no-wrap
+msgid "NAME"
+msgstr "名前"
+
+#. type: Title -
+#: ../../git.txt:10 ../../gittutorial.txt:9 ../../gittutorial-2.txt:9
+#: ../../git-add.txt:9 ../../git-bisect.txt:10 ../../git-cherry-pick.txt:9
+#: ../../git-clean.txt:9 ../../git-grep.txt:10 ../../gitglossary.txt:9
+#, no-wrap
+msgid "SYNOPSIS"
+msgstr "書式"
+
+#. type: Title -
+#: ../../git.txt:19 ../../gittutorial.txt:14 ../../gittutorial-2.txt:14
+#: ../../git-add.txt:17 ../../git-bisect.txt:14 ../../git-cherry-pick.txt:13
+#: ../../git-clean.txt:14 ../../git-grep.txt:28 ../../gitglossary.txt:13
+#, no-wrap
+msgid "DESCRIPTION"
+msgstr "説明"
+
+#. type: Title -
+#: ../../git.txt:383 ../../git-add.txt:51 ../../git-cherry-pick.txt:19
+#: ../../git-clean.txt:27 ../../git-grep.txt:33
+#, no-wrap
+msgid "OPTIONS"
+msgstr "オプション"
+
+#. type: Title -
+#: ../../git.txt:974 ../../gittutorial.txt:675 ../../gittutorial-2.txt:434
+#: ../../git-add.txt:405 ../../git-bisect.txt:338 ../../git-cherry-pick.txt:83
+#: ../../git-clean.txt:63 ../../git-grep.txt:201 ../../gitglossary.txt:26
+#, no-wrap
+msgid "GIT"
+msgstr "GIT"
+
+#. type: Plain text
+#: ../../git.txt:975 ../../git-add.txt:406 ../../git-bisect.txt:339
+#: ../../git-cherry-pick.txt:84 ../../git-clean.txt:64 ../../git-grep.txt:202
+msgid "Part of the linkgit:git[1] suite"
+msgstr "linkgit:git[1] スイートの一部"
+
+#. type: Title -
+#: ../../git-bisect.txt:325 ../../git-cherry-pick.txt:75
+#: ../../git-clean.txt:59 ../../git-grep.txt:192
+#, fuzzy, no-wrap
+msgid "Author"
+msgstr "Author"
+
+#. type: Title -
+#: ../../git-bisect.txt:329 ../../git-cherry-pick.txt:79
+#: ../../git-grep.txt:197
+#, fuzzy, no-wrap
+msgid "Documentation"
+msgstr "Documentation"
+
+#. type: Plain text
+#: ../../git-bisect.txt:331 ../../git-cherry-pick.txt:81
+#: ../../git-grep.txt:199
+#, fuzzy
+msgid "Documentation by Junio C Hamano and the git-list <git@vger.kernel.org>."
+msgstr ""
+"#-#-#-#-#  git-bisect.txt.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"このドキュメントは Junio C Hamano と git-list <git@vger.kernel.org> 有志に"
+"よって書かれました。\n"
+"#-#-#-#-#  git-cherry-pick.txt.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"このドキュメントは Junio C Hamano と git-list <git@vger.kernel.org> 有志に"
+"よって書かれました。\n"
+"#-#-#-#-#  git-grep.txt.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"ドキュメントは、Junio C Hamano と git-list <git@vger.kernel.org> によって記述"
+"されました。"
+
+#. type: Title =
+#: ../../git-grep.txt:2
+#, fuzzy, no-wrap
+msgid "git-grep(1)"
+msgstr "git-grep(1)"
+
+#. type: Plain text
+#: ../../git-grep.txt:7
+#, fuzzy
+msgid "git-grep - Print lines matching a pattern"
+msgstr "git-grep - 指定したパターンにマッチした行を表示します"
+
+#. type: Plain text
+#: ../../git-grep.txt:26
+#, fuzzy, no-wrap
+msgid ""
+"'git grep' [--cached]\n"
+"\t   [-a | --text] [-I] [-i | --ignore-case] [-w | --word-regexp]\n"
+"\t   [-v | --invert-match] [-h|-H] [--full-name]\n"
+"\t   [-E | --extended-regexp] [-G | --basic-regexp]\n"
+"\t   [-F | --fixed-strings] [-n]\n"
+"\t   [-l | --files-with-matches] [-L | --files-without-match]\n"
+"\t   [-z | --null]\n"
+"\t   [-c | --count] [--all-match] [-q | --quiet]\n"
+"\t   [--max-depth <depth>]\n"
+"\t   [--color | --no-color]\n"
+"\t   [-A <post-context>] [-B <pre-context>] [-C <context>]\n"
+"\t   [-f <file>] [-e] <pattern>\n"
+"\t   [--and|--or|--not|(|)|-e <pattern>...] [<tree>...]\n"
+"\t   [--] [<pathspec>...]\n"
+msgstr ""
+"'git grep' [--cached]\n"
+"\t   [-a | --text] [-I] [-i | --ignore-case] [-w | --word-regexp]\n"
+"\t   [-v | --invert-match] [-h|-H] [--full-name]\n"
+"\t   [-E | --extended-regexp] [-G | --basic-regexp]\n"
+"\t   [-F | --fixed-strings] [-n]\n"
+"\t   [-l | --files-with-matches] [-L | --files-without-match]\n"
+"\t   [-z | --null]\n"
+"\t   [-c | --count] [--all-match] [-q | --quiet]\n"
+"\t   [--max-depth <depth>]\n"
+"\t   [--color | --no-color]\n"
+"\t   [-A <post-context>] [-B <pre-context>] [-C <context>]\n"
+"\t   [-f <file>] [-e] <pattern>\n"
+"\t   [--and|--or|--not|(|)|-e <pattern>...] [<tree>...]\n"
+"\t   [--] [<pathspec>...]\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:31
+#, fuzzy
+msgid ""
+"Look for specified patterns in the tracked files in the work tree, blobs "
+"registered in the index file, or blobs in given tree objects."
+msgstr ""
+"ワークツリーの中の追跡されているファイル群、インデックスファイルに登録された"
+"データ、 もしくは与えられたツリーオブジェクトのデータの中から、指定されたパ"
+"ターンを検索します。"
+
+#. type: Plain text
+#: ../../git-grep.txt:37
+#, fuzzy, no-wrap
+msgid ""
+"--cached::\n"
+"\tInstead of searching in the working tree files, check\n"
+"\tthe blobs registered in the index file.\n"
+msgstr ""
+"--cached::\n"
+"\tワーキングツリー内のファイルを探す代わりに、\n"
+"\tインデックスファイルに登録されている塊を調べます。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:41
+#, fuzzy, no-wrap
+msgid ""
+"-a::\n"
+"--text::\n"
+"\tProcess binary files as if they were text.\n"
+msgstr ""
+"-a::\n"
+"--text::\n"
+"\tバイナリファイルをテキストファイルのように扱います。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:46
+#, fuzzy, no-wrap
+msgid ""
+"-i::\n"
+"--ignore-case::\n"
+"\tIgnore case differences between the patterns and the\n"
+"\tfiles.\n"
+msgstr ""
+"-i::\n"
+"--ignore-case::\n"
+"\tパターンとファイルの大文字小文字の違いを無視します。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:49
+#, fuzzy, no-wrap
+msgid ""
+"-I::\n"
+"\tDon't match the pattern in binary files.\n"
+msgstr ""
+"-I::\n"
+"\tバイナリファイルはパターンにマッチさせません。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:53
+#, fuzzy, no-wrap
+msgid ""
+"--max-depth <depth>::\n"
+"\tFor each <pathspec> given on command line, descend at most <depth>\n"
+"\tlevels of directories. A negative value means no limit.\n"
+msgstr ""
+"--max-depth <depth>::\n"
+"\tコマンドラインから与えられたそれぞれの<pathspec>における、下るディレクトリの最大<深さ>を表します。\n"
+"     負の値を与えられた場合、制限なしを意味します。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:59
+#, fuzzy, no-wrap
+msgid ""
+"-w::\n"
+"--word-regexp::\n"
+"\tMatch the pattern only at word boundary (either begin at the\n"
+"\tbeginning of a line, or preceded by a non-word character; end at\n"
+"\tthe end of a line or followed by a non-word character).\n"
+msgstr ""
+"-w::\n"
+"--word-regexp::\n"
+"     単語境界(行頭か単語に含まれない文字で始まり、行末か単語に含まれない文字で終わる)のみにマッチします。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:63
+#, fuzzy, no-wrap
+msgid ""
+"-v::\n"
+"--invert-match::\n"
+"\tSelect non-matching lines.\n"
+msgstr ""
+"-v::\n"
+"--invert-match::\n"
+"\tマッチしなかった行が出力されます(訳注：結果が反転するということです)\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:71
+#, fuzzy, no-wrap
+msgid ""
+"-h::\n"
+"-H::\n"
+"\tBy default, the command shows the filename for each\n"
+"\tmatch.  `-h` option is used to suppress this output.\n"
+"\t`-H` is there for completeness and does not do anything\n"
+"\texcept it overrides `-h` given earlier on the command\n"
+"\tline.\n"
+msgstr ""
+"-h::\n"
+"-H::\n"
+"     通常、このコマンドはマッチした内容と一緒にファイル名を表示しますが、\n"
+"     `-h`オプションはその出力を抑制します。\n"
+"     `-H`はコマンドの前方で与えられた`-h`オプションを上書きすることが出来る以外は、\n"
+"     完全性のために存在しています。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:77
+#, fuzzy, no-wrap
+msgid ""
+"--full-name::\n"
+"\tWhen run from a subdirectory, the command usually\n"
+"\toutputs paths relative to the current directory.  This\n"
+"\toption forces paths to be output relative to the project\n"
+"\ttop directory.\n"
+msgstr ""
+"--full-name::\n"
+"     プロジェクトのサブディレクトリからコマンドを実行した場合、通常は現在位置からの\n"
+"     相対パスで出力されますが、このオプションは強制的にプロジェクトの\n"
+"     トップディレクトリからの相対パスで出力します。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:84
+#, fuzzy, no-wrap
+msgid ""
+"-E::\n"
+"--extended-regexp::\n"
+"-G::\n"
+"--basic-regexp::\n"
+"\tUse POSIX extended/basic regexp for patterns.  Default\n"
+"\tis to use basic regexp.\n"
+msgstr ""
+"-E::\n"
+"--extended-regexp::\n"
+"-G::\n"
+"--basic-regexp::\n"
+"     パターンに使用する正規表現の種類を選択します(POSIX extended もしくは POSIX basic)\n"
+"     デフォルトはPOSIX basicです。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:89
+#, fuzzy, no-wrap
+msgid ""
+"-F::\n"
+"--fixed-strings::\n"
+"\tUse fixed strings for patterns (don't interpret pattern\n"
+"\tas a regex).\n"
+msgstr ""
+"-F::\n"
+"--fixed-strings::\n"
+"     パターンに固定文字列を使用します(パターンを正規表現として解釈しません)\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:92
+#, fuzzy, no-wrap
+msgid ""
+"-n::\n"
+"\tPrefix the line number to matching lines.\n"
+msgstr ""
+"-n::\n"
+"\tマッチした行の先頭に行番号を付けます。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:102
+#, fuzzy, no-wrap
+msgid ""
+"-l::\n"
+"--files-with-matches::\n"
+"--name-only::\n"
+"-L::\n"
+"--files-without-match::\n"
+"\tInstead of showing every matched line, show only the\n"
+"\tnames of files that contain (or do not contain) matches.\n"
+"\tFor better compatibility with 'git diff', --name-only is a\n"
+"\tsynonym for --files-with-matches.\n"
+msgstr ""
+"-l::\n"
+"--files-with-matches::\n"
+"--name-only::\n"
+"-L::\n"
+"--files-without-match::\n"
+"\tマッチした行を表示する代わりに、マッチした(もしくはマッチしなかった)ファイル名を表示します。\n"
+"     'git diff'とのより良い互換性のため、 --files-with-matches と同義の --name-only があります。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:107
+#, fuzzy, no-wrap
+msgid ""
+"-z::\n"
+"--null::\n"
+"\tOutput \\0 instead of the character that normally follows a\n"
+"\tfile name.\n"
+msgstr ""
+"-z::\n"
+"--null::\n"
+"     ファイル名に続いて出力される文字を、\\0(NULL)に変更して出力します。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:112
+#, fuzzy, no-wrap
+msgid ""
+"-c::\n"
+"--count::\n"
+"\tInstead of showing every matched line, show the number of\n"
+"\tlines that match.\n"
+msgstr ""
+"-c::\n"
+"--count::\n"
+"\tマッチした行の内容を表示する代わりに、マッチした行数を表示します。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:115
+#, fuzzy, no-wrap
+msgid ""
+"--color::\n"
+"\tShow colored matches.\n"
+msgstr ""
+"--color::\n"
+"\tマッチ部分に色を付けて表示します。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:119
+#, fuzzy, no-wrap
+msgid ""
+"--no-color::\n"
+"\tTurn off match highlighting, even when the configuration file\n"
+"\tgives the default to color output.\n"
+msgstr ""
+"--no-color::\n"
+"\t設定ファイルのデフォルトが色付きの出力になっている時でも、マッチ部分の色づけを無効にします。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:125
+#, fuzzy, no-wrap
+msgid ""
+"-[ABC] <context>::\n"
+"\tShow `context` trailing (`A` -- after), or leading (`B`\n"
+"\t-- before), or both (`C` -- context) lines, and place a\n"
+"\tline containing `--` between contiguous groups of\n"
+"\tmatches.\n"
+msgstr ""
+"-[ABC] <context>::\n"
+"     マッチ箇所前後の文脈を指定行分表示し、文脈の区切りに -- を置きます。\n"
+"     オプションは後ろの文脈のみ(A -- after)、前の文脈のみ(B -- before)、もしくは前後の文脈(C -- context) です。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:128
+#, fuzzy, no-wrap
+msgid ""
+"-<num>::\n"
+"\tA shortcut for specifying -C<num>.\n"
+msgstr ""
+"-<num>::\n"
+"\t-C<num> のショートカットです。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:137
+#, fuzzy, no-wrap
+msgid ""
+"-p::\n"
+"--show-function::\n"
+"\tShow the preceding line that contains the function name of\n"
+"\tthe match, unless the matching line is a function name itself.\n"
+"\tThe name is determined in the same way as 'git diff' works out\n"
+"\tpatch hunk headers (see 'Defining a custom hunk-header' in\n"
+"\tlinkgit:gitattributes[5]).\n"
+"/ --show-function::\n"
+msgstr ""
+"-p::\n"
+"     もしマッチした行が関数名では無い場合、その前の関数名を含んだ行を表示します。\n"
+"     名前の決定は、'git diff'と同じく hunk-header を使って決定されます。\n"
+"     (参考 'Defining a custom hunk-header' in linkgit:gitattributes[5])\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:140
+#, fuzzy, no-wrap
+msgid ""
+"-f <file>::\n"
+"\tRead patterns from <file>, one per line.\n"
+msgstr ""
+"-f <file>::\n"
+"\t<file>から、１行につき一つずつパターンを読み込みます.\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:146
+#, fuzzy, no-wrap
+msgid ""
+"-e::\n"
+"\tThe next parameter is the pattern. This option has to be\n"
+"\tused for patterns starting with - and should be used in\n"
+"\tscripts passing user input to grep.  Multiple patterns are\n"
+"\tcombined by 'or'.\n"
+msgstr ""
+"-e::\n"
+"     次のパラメータがパターンであることを明示的に表します。\n"
+"     このオプションはパターンが'-'から始まる場合は必須ですし、\n"
+"     スクリプトからユーザー入力をgrepに渡すような場合も推奨されます。\n"
+"     複数のパターン(訳注: -eが複数個ある場合)は'or'で結合されます。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:155
+#, fuzzy, no-wrap
+msgid ""
+"--and::\n"
+"--or::\n"
+"--not::\n"
+"( ... )::\n"
+"\tSpecify how multiple patterns are combined using Boolean\n"
+"\texpressions.  `--or` is the default operator.  `--and` has\n"
+"\thigher precedence than `--or`.  `-e` has to be used for all\n"
+"\tpatterns.\n"
+msgstr ""
+"--and::\n"
+"--or::\n"
+"--not::\n"
+"( ... )::\n"
+"     複数のパターンがどのブール式で結合されるかを明示します。\n"
+"     `--or`はデフォルトオペレーションです、`--and` は `--or` よりも\n"
+"     優先が高いです。全てのパターンは`-e`を使う必要があります。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:160
+#, fuzzy, no-wrap
+msgid ""
+"--all-match::\n"
+"\tWhen giving multiple pattern expressions combined with `--or`,\n"
+"\tthis flag is specified to limit the match to files that\n"
+"\thave lines to match all of them.\n"
+msgstr ""
+"--all-match::\n"
+"     複数のパターンが `--or` で結合されて与えられた際、\n"
+"     このフラグは、全てのパターンにマッチしたファイルのみに制限します。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:165
+#, fuzzy, no-wrap
+msgid ""
+"-q::\n"
+"--quiet::\n"
+"\tDo not output matched lines; instead, exit with status 0 when\n"
+"\tthere is a match and with non-zero status when there isn't.\n"
+msgstr ""
+"-q::\n"
+"--quiet::\n"
+"\tマッチした行を表示しません。代わりに、終了コードをマッチがあった時は0、\n"
+"     無かった時は非0で返します。\n"
+
+#. type: Labeled list
+#: ../../git-grep.txt:166
+#, fuzzy, no-wrap
+msgid "`<tree>...`"
+msgstr "`<tree>...`"
+
+#. type: Plain text
+#: ../../git-grep.txt:168
+#, fuzzy
+msgid "Search blobs in the trees for specified patterns."
+msgstr "指定されたツリーの中を検索します。"
+
+#. type: Plain text
+#: ../../git-grep.txt:172
+#, fuzzy, no-wrap
+msgid ""
+"\\--::\n"
+"\tSignals the end of options; the rest of the parameters\n"
+"\tare <pathspec> limiters.\n"
+msgstr ""
+"\\--::\n"
+"\tオプションの終端を表します。\n"
+"     それ以降のパラメータは、<pathspec>リミッターです。\n"
+
+#. type: Plain text
+#: ../../git-grep.txt:176
+#, fuzzy, no-wrap
+msgid ""
+"<pathspec>...::\n"
+"\tIf given, limit the search to paths matching at least one pattern.\n"
+"\tBoth leading paths match and glob(7) patterns are supported.\n"
+msgstr ""
+"<pathspec>...::\n"
+"\t与えられた場合は、少なくとも一つのパターンにマッチしたパスのみに探索が制限されます。\n"
+"     パスの前方部分を渡すか、glob(7)記法の両方がサポートされています。\n"
+
+#. type: Title -
+#: ../../git-grep.txt:178
+#, fuzzy, no-wrap
+msgid "Example"
+msgstr "Example"
+
+#. type: Labeled list
+#: ../../git-grep.txt:179
+#, fuzzy, no-wrap
+msgid "git grep 'time_t' -- '*.[ch]'"
+msgstr "git grep 'time_t' -- '*.[ch]'"
+
+#. type: Plain text
+#: ../../git-grep.txt:182
+#, fuzzy
+msgid ""
+"Looks for `time_t` in all tracked .c and .h files in the working directory "
+"and its subdirectories."
+msgstr ""
+"現在ディレクトリと、そのサブディレクトリの中にある、 全ての.c、.hファイルの中"
+"から`time_t`を探します。"
+
+#. type: Labeled list
+#: ../../git-grep.txt:183
+#, fuzzy, no-wrap
+msgid "git grep -e \\'#define\\' --and \\( -e MAX_PATH -e PATH_MAX \\)"
+msgstr "git grep -e \\'#define\\' --and \\( -e MAX_PATH -e PATH_MAX \\)"
+
+#. type: Plain text
+#: ../../git-grep.txt:186
+#, fuzzy
+msgid ""
+"Looks for a line that has `#define` and either `MAX_PATH` or `PATH_MAX`."
+msgstr ""
+"`#define` と、 `MAX_PATH` か `PATH_MAX` のどちらかを含んでいる行を探します。"
+
+#. type: Labeled list
+#: ../../git-grep.txt:187
+#, fuzzy, no-wrap
+msgid "git grep --all-match -e NODE -e Unexpected"
+msgstr "git grep --all-match -e NODE -e Unexpected"
+
+#. type: Plain text
+#: ../../git-grep.txt:190
+#, fuzzy
+msgid ""
+"Looks for a line that has `NODE` or `Unexpected` in files that have lines "
+"that match both."
+msgstr ""
+"`NODE` と `Unexpected` の両方のマッチを含んだファイルの、マッチした行を探しま"
+"す。"
+
+#. type: Plain text
+#: ../../git-grep.txt:195
+#, fuzzy
+msgid ""
+"Originally written by Linus Torvalds <torvalds@osdl.org>, later revamped by "
+"Junio C Hamano."
+msgstr ""
+"オリジナル版は Linus Torvalds <torvalds@osdl.org> によって記述され、 後に "
+"Junio C Hamano によって改造されました。"

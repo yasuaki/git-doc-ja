@@ -1,0 +1,263 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2013-12-07 00:31+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title -
+#: ../../git.txt:5 ../../gittutorial.txt:5 ../../gittutorial-2.txt:5
+#: ../../git-add.txt:5 ../../git-bisect.txt:6 ../../git-cherry-pick.txt:5
+#: ../../git-clean.txt:5 ../../git-grep.txt:5 ../../gitglossary.txt:5
+#, no-wrap
+msgid "NAME"
+msgstr "名前"
+
+#. type: Title -
+#: ../../git.txt:10 ../../gittutorial.txt:9 ../../gittutorial-2.txt:9
+#: ../../git-add.txt:9 ../../git-bisect.txt:10 ../../git-cherry-pick.txt:9
+#: ../../git-clean.txt:9 ../../git-grep.txt:10 ../../gitglossary.txt:9
+#, no-wrap
+msgid "SYNOPSIS"
+msgstr "書式"
+
+#. type: Title -
+#: ../../git.txt:19 ../../gittutorial.txt:14 ../../gittutorial-2.txt:14
+#: ../../git-add.txt:17 ../../git-bisect.txt:14 ../../git-cherry-pick.txt:13
+#: ../../git-clean.txt:14 ../../git-grep.txt:28 ../../gitglossary.txt:13
+#, no-wrap
+msgid "DESCRIPTION"
+msgstr "説明"
+
+#. type: Title -
+#: ../../git.txt:383 ../../git-add.txt:51 ../../git-cherry-pick.txt:19
+#: ../../git-clean.txt:27 ../../git-grep.txt:33
+#, no-wrap
+msgid "OPTIONS"
+msgstr "オプション"
+
+#. type: Title -
+#: ../../git.txt:974 ../../gittutorial.txt:675 ../../gittutorial-2.txt:434
+#: ../../git-add.txt:405 ../../git-bisect.txt:338 ../../git-cherry-pick.txt:83
+#: ../../git-clean.txt:63 ../../git-grep.txt:201 ../../gitglossary.txt:26
+#, no-wrap
+msgid "GIT"
+msgstr "GIT"
+
+#. type: Plain text
+#: ../../git.txt:975 ../../git-add.txt:406 ../../git-bisect.txt:339
+#: ../../git-cherry-pick.txt:84 ../../git-clean.txt:64 ../../git-grep.txt:202
+msgid "Part of the linkgit:git[1] suite"
+msgstr "linkgit:git[1] スイートの一部"
+
+#. type: Title -
+#: ../../git-bisect.txt:325 ../../git-cherry-pick.txt:75
+#: ../../git-clean.txt:59 ../../git-grep.txt:192
+#, fuzzy, no-wrap
+msgid "Author"
+msgstr "Author"
+
+#. type: Title -
+#: ../../git-bisect.txt:329 ../../git-cherry-pick.txt:79
+#: ../../git-grep.txt:197
+#, fuzzy, no-wrap
+msgid "Documentation"
+msgstr "Documentation"
+
+#. type: Plain text
+#: ../../git-bisect.txt:331 ../../git-cherry-pick.txt:81
+#: ../../git-grep.txt:199
+#, fuzzy
+msgid "Documentation by Junio C Hamano and the git-list <git@vger.kernel.org>."
+msgstr ""
+"#-#-#-#-#  git-bisect.txt.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"このドキュメントは Junio C Hamano と git-list <git@vger.kernel.org> 有志に"
+"よって書かれました。\n"
+"#-#-#-#-#  git-cherry-pick.txt.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"このドキュメントは Junio C Hamano と git-list <git@vger.kernel.org> 有志に"
+"よって書かれました。\n"
+"#-#-#-#-#  git-grep.txt.po (PACKAGE VERSION)  #-#-#-#-#\n"
+"ドキュメントは、Junio C Hamano と git-list <git@vger.kernel.org> によって記述"
+"されました。"
+
+#. type: Title =
+#: ../../git-cherry-pick.txt:2
+#, fuzzy, no-wrap
+msgid "git-cherry-pick(1)"
+msgstr "git-cherry-pick(1)"
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:7
+#, fuzzy
+msgid "git-cherry-pick - Apply the change introduced by an existing commit"
+msgstr "git-cherry-pick - 既存のコミットを取り出して、その変更を適用します。"
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:11
+#, fuzzy
+msgid "'git cherry-pick' [--edit] [-n] [-m parent-number] [-s] [-x] <commit>"
+msgstr "'git cherry-pick' [--edit] [-n] [-m parent-number] [-s] [-x] <commit>"
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:17
+#, fuzzy
+msgid ""
+"Given one existing commit, apply the change the patch introduces, and record "
+"a new commit that records it.  This requires your working tree to be clean "
+"(no modifications from the HEAD commit)."
+msgstr ""
+"既存のコミットを一つ渡し、そのパッチによる変更を適用し、新しいコミットを記録"
+"します。 ワーキングツリーがクリーンであることが必要です(HEADコミットから何も"
+"変更されていないということです)"
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:24
+#, fuzzy, no-wrap
+msgid ""
+"<commit>::\n"
+"\tCommit to cherry-pick.\n"
+"\tFor a more complete list of ways to spell commits, see the\n"
+"\t\"SPECIFYING REVISIONS\" section in linkgit:git-rev-parse[1].\n"
+msgstr ""
+"<commit>::\n"
+"\tチェリーピックするコミットを選択します。\n"
+"\tコミットに関する完全な記述方法については、\n"
+"\tlinkgit:git-rev-parse[1] の \"SPECIFYING REVISIONS\" を参考にして下さい。\n"
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:29
+#, fuzzy, no-wrap
+msgid ""
+"-e::\n"
+"--edit::\n"
+"\tWith this option, 'git cherry-pick' will let you edit the commit\n"
+"\tmessage prior to committing.\n"
+msgstr ""
+"-e::\n"
+"--edit::\n"
+"\tこのオプションと一緒に'git cherry-pick' すると、\n"
+"\tコミットメッセージをコミットする前に編集出来ます。\n"
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:42
+#, fuzzy, no-wrap
+msgid ""
+"-x::\n"
+"\tWhen recording the commit, append to the original commit\n"
+"\tmessage a note that indicates which commit this change\n"
+"\twas cherry-picked from.  Append the note only for cherry\n"
+"\tpicks without conflicts.  Do not use this option if\n"
+"\tyou are cherry-picking from your private branch because\n"
+"\tthe information is useless to the recipient.  If on the\n"
+"\tother hand you are cherry-picking between two publicly\n"
+"\tvisible branches (e.g. backporting a fix to a\n"
+"\tmaintenance branch for an older release from a\n"
+"\tdevelopment branch), adding this information can be\n"
+"\tuseful.\n"
+msgstr ""
+"-x::\n"
+"\tコミットを記録する際、通常のコミットメッセージに加え、この変更が\n"
+"     どこのコミットからチェリーピックされたのかを、追記します。\n"
+"\t追記されるのは、チェリーピック時にコンフリクトが起きなかった時だけです。\n"
+"     もしあなたの個人的なブランチからチェリーピックする場合、\n"
+"     受け手にとって不要な情報なので、このオプションは使わないで下さい。\n"
+"\t一方、お互いに公開されている参照可能な二つのブランチ(例. 開発ブランチから\n"
+"\tメンテナンスブランチへ、旧リリース版のためにバックポーティングする)ならば、\n"
+"\tこの情報を加えることは役に立つことがあります。\n"
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:47
+#, fuzzy, no-wrap
+msgid ""
+"-r::\n"
+"\tIt used to be that the command defaulted to do `-x`\n"
+"\tdescribed above, and `-r` was to disable it.  Now the\n"
+"\tdefault is not to do `-x` so this option is a no-op.\n"
+msgstr ""
+"-r::\n"
+"\t上で説明した`-x`がデフォルトオプションとして使われていた時、\n"
+"\t`-r`はそれを無効にする役割を担っていました。\n"
+"\t今はデフォルトでは'-x'が無効のため、このオプションは何もしません。\n"
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:55
+#, fuzzy, no-wrap
+msgid ""
+"-m parent-number::\n"
+"--mainline parent-number::\n"
+"\tUsually you cannot cherry-pick a merge because you do not know which\n"
+"\tside of the merge should be considered the mainline.  This\n"
+"\toption specifies the parent number (starting from 1) of\n"
+"\tthe mainline and allows cherry-pick to replay the change\n"
+"\trelative to the specified parent.\n"
+msgstr ""
+"-m 親番号::\n"
+"--mainline 親番号::\n"
+"\t通常、マージコミットをチェリーピックすることはできません。\n"
+"\t何故なら、マージした親のどちらがメインラインなのか\n"
+"\t判断できないからです。\n"
+"\tこのオプションはメインラインの親番号(1 から開始する数値)を指定し、\n"
+"\t指定した親との相対的な変更を適用する為のオプションです。\n"
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:65
+#, fuzzy, no-wrap
+msgid ""
+"-n::\n"
+"--no-commit::\n"
+"\tUsually the command automatically creates a commit.\n"
+"\tThis flag applies the change necessary to cherry-pick\n"
+"\tthe named commit to your working tree and the index,\n"
+"\tbut does not make the commit.  In addition, when this\n"
+"\toption is used, your index does not have to match the\n"
+"\tHEAD commit.  The cherry-pick is done against the\n"
+"\tbeginning state of your index.\n"
+msgstr ""
+"-n::\n"
+"--no-commit::\n"
+"\t通常、チェリーピックは自動的にコミットを作成します。\n"
+"\tこのフラグは、指定されたコミットをチェリーピックするのに\n"
+"\t必要な変更をあなたのワーキングツリーとインデックスに適用しますが、\n"
+"\tコミットはしません。 加えてこのオプションが使われた場合、\n"
+"\tあなたのインデックスがHEADコミットである必要はありません。\n"
+"\tチェリーピックはあなたのインデックスの初期状態に対して変更を加えるでしょう。\n"
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:68
+#, fuzzy, no-wrap
+msgid ""
+"This is useful when cherry-picking more than one commits'\n"
+"effect to your index in a row.\n"
+msgstr ""
+"これは、一つ以上のコミットをチェリーピックして\n"
+"インデックスの行に影響を与えるのに便利です。\n"
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:72
+#, fuzzy, no-wrap
+msgid ""
+"-s::\n"
+"--signoff::\n"
+"\tAdd Signed-off-by line at the end of the commit message.\n"
+msgstr ""
+"-s::\n"
+"--signoff::\n"
+"\tコミットメッセージの最後に署名を加えます。\n"
+
+#. type: Plain text
+#: ../../git-cherry-pick.txt:77
+#, fuzzy
+msgid "Written by Junio C Hamano <gitster@pobox.com>"
+msgstr ""
+"このプログラムは Junio C Hamano <gitster@pobox.com> によって書かれました。"
