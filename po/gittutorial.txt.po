@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2013-12-04 00:46+0900\n"
-"PO-Revision-Date: 2013-12-10 00:08+0900\n"
+"PO-Revision-Date: 2013-12-18 13:03+0900\n"
 "Last-Translator: Yasuaki Narita <narita.ys@gmail.com>\n"
 "Language-Team: Japanese <>\n"
 "Language: ja\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Poedit 1.6.1\n"
 
 #. type: Title -
 #: ../../git.txt:5 ../../gittutorial.txt:5
@@ -81,8 +81,8 @@ msgid ""
 "example, to test the latest version, you may prefer to start with the first "
 "two chapters of link:user-manual.html[The Git User's Manual]."
 msgstr ""
-"もしあなたの主な目的がプロジェクトの変更を取得すること(例えば最新"
-"バージョンのソースを取得してテストするなど)であるなら 、 link:user-manual.html[Git ユー"
+"もしあなたの主な目的がプロジェクトの変更を取得すること(例えば最新バージョンの"
+"ソースを取得してテストするなど)であるなら 、 link:user-manual.html[Git ユー"
 "ザーマニュアル] の最初の２つの章から始める方が良いかもしれません。"
 
 #. type: Plain text
@@ -117,8 +117,8 @@ msgid ""
 "With the latter, you can use the manual viewer of your choice; see linkgit:"
 "git-help[1] for more information."
 msgstr ""
-"後者の方法では、マニュアルのビューアを指定できます；詳細は linkgit:git-help"
-"[1] を参照して下さい。 "
+"後者の方法では、マニュアルのビューアを指定できます；詳細は linkgit:git-"
+"help[1] を参照して下さい。 "
 
 #. type: Plain text
 #: ../../gittutorial.txt:42
@@ -151,7 +151,8 @@ msgid ""
 "Assume you have a tarball project.tar.gz with your initial work.  You can "
 "place it under Git revision control as follows."
 msgstr ""
-"tarで圧縮されたファイル project.tar.gz を Git のリビジョン管理させる手順を説明します。最初に以下のコマンドを実行します。"
+"tarで圧縮されたファイル project.tar.gz を Git のリビジョン管理させる手順を説"
+"明します。最初に以下のコマンドを実行します。"
 
 #. type: delimited block -
 #: ../../gittutorial.txt:59
@@ -181,7 +182,9 @@ msgstr "Initialized empty Git repository in .git/\n"
 msgid ""
 "You've now initialized the working directory--you may notice a new directory "
 "created, named \".git\"."
-msgstr "そして、作業ディレクトリが初期化され、\".git\" という名前の ディレクトリが作成されます。"
+msgstr ""
+"そして、作業ディレクトリが初期化され、\".git\" という名前の ディレクトリが作"
+"成されます。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:72
@@ -205,8 +208,9 @@ msgid ""
 "\"index\".  You can permanently store the contents of the index in the "
 "repository with 'git commit':"
 msgstr ""
-"取得したスナップショットは \"索引(index)\" と呼ばれる一時エリアに格納されます。 "
-"索引の 中身を永続的にリポジトリに保管するには 'git-commit' コマンドを使います："
+"取得したスナップショットは \"索引(index)\" と呼ばれる一時エリアに格納されま"
+"す。 索引の 中身を永続的にリポジトリに保管するには 'git-commit' コマンドを使"
+"います："
 
 #. type: delimited block -
 #: ../../gittutorial.txt:83 ../../gittutorial.txt:125
@@ -219,7 +223,9 @@ msgstr "$ git commit\n"
 msgid ""
 "This will prompt you for a commit message.  You've now stored the first "
 "version of your project in Git."
-msgstr "コミットメッセージの入力が求められます。 その後、プロジェクトの最初のバージョンが Git に格納されます。"
+msgstr ""
+"コミットメッセージの入力が求められます。 その後、プロジェクトの最初のバージョ"
+"ンが Git に格納されます。"
 
 #. type: Title -
 #: ../../gittutorial.txt:89
@@ -261,7 +267,8 @@ msgid ""
 "situation with 'git status':"
 msgstr ""
 "(--cached を指定しない場合、'git-diff' は修正されているがまだ索引に 追加され"
-"ていない変更を表示します。) 簡潔なサマリを表示するには 'git-status' を使用します:"
+"ていない変更を表示します。) 簡潔なサマリを表示するには 'git-status' を使用し"
+"ます:"
 
 #. type: delimited block -
 #: ../../gittutorial.txt:118
@@ -293,8 +300,8 @@ msgid ""
 "If you need to make any further adjustments, do so now, and then add any "
 "newly modified content to the index.  Finally, commit your changes with:"
 msgstr ""
-"必要な場合はさらに変更し、新しい変更内容を索引に追加します。 "
-"最後に、変更をコミットします："
+"必要な場合はさらに変更し、新しい変更内容を索引に追加します。 最後に、変更をコ"
+"ミットします："
 
 #. type: Plain text
 #: ../../gittutorial.txt:129
@@ -302,13 +309,15 @@ msgid ""
 "This will again prompt you for a message describing the change, and then "
 "record a new version of the project."
 msgstr ""
-"この操作を行なうとエディタが起動され、変更内容を説明するメッセージの入力を要求されます。 "
-"メッセージを入力しエディタを終了するとプロジェクトの新しいバージョンが記録されます。"
+"この操作を行なうとエディタが起動され、変更内容を説明するメッセージの入力を要"
+"求されます。 メッセージを入力しエディタを終了するとプロジェクトの新しいバー"
+"ジョンが記録されます。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:131
 msgid "Alternatively, instead of running 'git add' beforehand, you can use"
-msgstr "別のやり方として、 'git-add' を実行せずに、以下のようにするやり方もあります。"
+msgstr ""
+"別のやり方として、 'git-add' を実行せずに、以下のようにするやり方もあります。"
 
 #. type: delimited block -
 #: ../../gittutorial.txt:134 ../../gittutorial.txt:250
@@ -322,8 +331,8 @@ msgid ""
 "which will automatically notice any modified (but not new) files, add them "
 "to the index, and commit, all in one step."
 msgstr ""
-"この方法では変更ファイル(ただし新規ファイルは除く)が自動的に検出され、"
-"索引への追加とコミットが1ステップで実行されます。"
+"この方法では変更ファイル(ただし新規ファイルは除く)が自動的に検出され、索引へ"
+"の追加とコミットが1ステップで実行されます。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:147
@@ -336,11 +345,12 @@ msgid ""
 "example, linkgit:git-format-patch[1] turns a commit into email, and it uses "
 "the title on the Subject line and the rest of the commit in the body."
 msgstr ""
-"コミットメッセージに関する注意: 必須ではありませんが、格納メッセージは１行の短文(50文字未満)で変更の概要を書き、 "
-"空行を１つ挟んだ後ろに詳細を書くことを推奨します。 "
-"コミットメッセージの最初の空行までのテキストは、コミットのタイトルとしてGitが扱うようにしている為です。 "
-"例えば、linkgit:git-format-patch[1] コマンドではコミットを email に変換しますが、 "
-"このタイトルをメールのSubjectとし、残りを本文として扱います。 "
+"コミットメッセージに関する注意: 必須ではありませんが、格納メッセージは１行の"
+"短文(50文字未満)で変更の概要を書き、 空行を１つ挟んだ後ろに詳細を書くことを推"
+"奨します。 コミットメッセージの最初の空行までのテキストは、コミットのタイトル"
+"としてGitが扱うようにしている為です。 例えば、linkgit:git-format-patch[1] コ"
+"マンドではコミットを email に変換しますが、 このタイトルをメールのSubjectと"
+"し、残りを本文として扱います。 "
 
 #. type: Title -
 #: ../../gittutorial.txt:149
@@ -358,10 +368,10 @@ msgid ""
 "that content in the index, ready for inclusion in the next commit."
 msgstr ""
 "多くのリビジョン管理システムでは `add` コマンドは新規ファイルを追跡対象に加え"
-"る役目をします。一方Gitの `add` コマンドは、よりシンプルでパワフルです： 'git-"
-"add' は新規ファイルと新しい変更ファイルの両方に対して使用され、 どちらの場合"
-"にも指定したファイルのスナップショットをとってファイル内容を索引に登録し、次のコ"
-"ミットに含める準備をします。"
+"る役目をします。一方Gitの `add` コマンドは、よりシンプルでパワフルです： "
+"'git-add' は新規ファイルと新しい変更ファイルの両方に対して使用され、 どちらの"
+"場合にも指定したファイルのスナップショットをとってファイル内容を索引に登録"
+"し、次のコミットに含める準備をします。"
 
 #. type: Title -
 #: ../../gittutorial.txt:159
@@ -414,8 +424,8 @@ msgid ""
 "A single Git repository can maintain multiple branches of development.  To "
 "create a new branch named \"experimental\", use"
 msgstr ""
-"Git は１つのリポジトリ内に複数のブランチを作成できます。 "
-"\"experimental\" という名前の新しいブランチを作成するには次のようにします。"
+"Git は１つのリポジトリ内に複数のブランチを作成できます。 \"experimental\" と"
+"いう名前の新しいブランチを作成するには次のようにします。"
 
 #. type: delimited block -
 #: ../../gittutorial.txt:188
@@ -493,8 +503,8 @@ msgid ""
 "Check that the change you made is no longer visible, since it was made on "
 "the experimental branch and you're back on the master branch."
 msgstr ""
-"そうすると変更内容がもはや見えなくなっているはずです。"
-"これは、experimental ブランチで変更した後、master ブランチに戻っている為です。"
+"そうすると変更内容がもはや見えなくなっているはずです。これは、experimental ブ"
+"ランチで変更した後、master ブランチに戻っている為です。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:225
@@ -533,7 +543,8 @@ msgid ""
 "will be left in the problematic files showing the conflict;"
 msgstr ""
 "変更がコンフリクト(競合)しない場合は、これでマージ完了です。 コンフリクトがあ"
-"る時は、マーカーが問題のあるファイル内に残り、 コンフリクトを示すでしょう。そして、"
+"る時は、マーカーが問題のあるファイル内に残り、 コンフリクトを示すでしょう。そ"
+"して、"
 
 #. type: delimited block -
 #: ../../gittutorial.txt:243
@@ -544,7 +555,9 @@ msgstr "$ git diff\n"
 #. type: Plain text
 #: ../../gittutorial.txt:247
 msgid "will show this.  Once you've edited the files to resolve the conflicts,"
-msgstr "コマンドを実行するとマーカーの位置を示します。 ファイルを編集してコンフリクトを解消させてから、"
+msgstr ""
+"コマンドを実行するとマーカーの位置を示します。 ファイルを編集してコンフリクト"
+"を解消させてから、"
 
 #. type: Plain text
 #: ../../gittutorial.txt:253
@@ -565,7 +578,8 @@ msgstr "を実行すると、実行結果の履歴がグラフ表示されます
 #. type: Plain text
 #: ../../gittutorial.txt:261
 msgid "At this point you could delete the experimental branch with"
-msgstr "マージが完了したので、experimental ブランチは次のようにして削除できます。"
+msgstr ""
+"マージが完了したので、experimental ブランチは次のようにして削除できます。"
 
 #. type: delimited block -
 #: ../../gittutorial.txt:264
@@ -578,14 +592,18 @@ msgstr "$ git branch -d experimental\n"
 msgid ""
 "This command ensures that the changes in the experimental branch are already "
 "in the current branch."
-msgstr "このコマンドは experimental ブランチの変更が現在のブランチにマージ済みであることを確認してからブランチを削除します。"
+msgstr ""
+"このコマンドは experimental ブランチの変更が現在のブランチにマージ済みである"
+"ことを確認してからブランチを削除します。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:271
 msgid ""
 "If you develop on a branch crazy-idea, then regret it, you can always delete "
 "the branch with"
-msgstr "ブランチ crazy-idea 上での開発が失敗し、それをマージせずに削除したい場合は、次のようにします。"
+msgstr ""
+"ブランチ crazy-idea 上での開発が失敗し、それをマージせずに削除したい場合は、"
+"次のようにします。"
 
 #. type: delimited block -
 #: ../../gittutorial.txt:274
@@ -612,8 +630,8 @@ msgid ""
 "alice/project, and that Bob, who has a home directory on the same machine, "
 "wants to contribute."
 msgstr ""
-"アリスが始めたプロジェクトのGitリポジトリが/home/alice/project にあり、"
-"同一マシン上にアカウントを持つボブがアリスの仕事を手伝おうとしていたとします。"
+"アリスが始めたプロジェクトのGitリポジトリが/home/alice/project にあり、同一マ"
+"シン上にアカウントを持つボブがアリスの仕事を手伝おうとしていたとします。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:287
@@ -633,8 +651,9 @@ msgid ""
 "repository.  The clone is on an equal footing with the original project, "
 "possessing its own copy of the original project's history."
 msgstr ""
-"これによりアリスのリポジトリを複製した \"myrepo\" という 新規ディレクトリが作成されます。 "
-"この複製は元プロジェクトと対等であり、元プロジェクトの履歴がコピーされています。 "
+"これによりアリスのリポジトリを複製した \"myrepo\" という 新規ディレクトリが作"
+"成されます。 この複製は元プロジェクトと対等であり、元プロジェクトの履歴がコ"
+"ピーされています。 "
 
 #. type: Plain text
 #: ../../gittutorial.txt:297
@@ -659,8 +678,8 @@ msgid ""
 "When he's ready, he tells Alice to pull changes from the repository at /home/"
 "bob/myrepo.  She does this with:"
 msgstr ""
-"準備ができたら、ボブは /home/bob/myrepo にあるリポジトリから変更を取得(pull)す"
-"るようアリスに伝えます。 アリスは次のコマンドで変更を取得します："
+"準備ができたら、ボブは /home/bob/myrepo にあるリポジトリから変更を取得(pull)"
+"するようアリスに伝えます。 アリスは次のコマンドで変更を取得します："
 
 #. type: delimited block -
 #: ../../gittutorial.txt:310
@@ -679,15 +698,18 @@ msgid ""
 "branch.  If Alice has made her own changes in the meantime, then she may "
 "need to manually fix any conflicts."
 msgstr ""
-"この結果、ボブの \"master\" ブランチの変更をアリスの現在のブランチにマージされます。 "
-"もしアリスが自身の変更もしている場合は、彼女は手動でコンフリクト(競合)を解消する必要があるかもしれません。"
+"この結果、ボブの \"master\" ブランチの変更をアリスの現在のブランチにマージさ"
+"れます。 もしアリスが自身の変更もしている場合は、彼女は手動でコンフリクト(競"
+"合)を解消する必要があるかもしれません。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:318
 msgid ""
 "The \"pull\" command thus performs two operations: it fetches changes from a "
 "remote branch, then merges them into the current branch."
-msgstr "\"pull\" コマンドは次の２つの操作をしています：リモートのブランチから変更を取得し、取得結果を現在のブランチにマージ。"
+msgstr ""
+"\"pull\" コマンドは次の２つの操作をしています：リモートのブランチから変更を取"
+"得し、取得結果を現在のブランチにマージ。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:326
@@ -700,13 +722,13 @@ msgid ""
 "refuse to merge --- Alice will have to get rid of her local changes in some "
 "way and pull again when this happens)."
 msgstr ""
-"注意：一般的に\"pull\"をする前には自身のローカルな変更はコミットしておくほうが "
-"良いでしょう。ボブとアリスの変更が分岐し競合した場合、競合を解消するために"
-"作業ツリーとインデックスが使用されることになりますが、コミットしていないローカルな変更が "
-"存在した場合には、それらが競合を解消させる妨げになってしまうからです。 "
-"（ローカルにコミットしていない変更がある状態で\"pull\"をした場合でも "
-"Gitは変更を取得しますが、マージは拒否します。 その場合、アリスはローカルの変更を何らかの方法で取り除いた後に、再度pullする "
-"必要があります)"
+"注意：一般的に\"pull\"をする前には自身のローカルな変更はコミットしておくほう"
+"が 良いでしょう。ボブとアリスの変更が分岐し競合した場合、競合を解消するために"
+"作業ツリーとインデックスが使用されることになりますが、コミットしていないロー"
+"カルな変更が 存在した場合には、それらが競合を解消させる妨げになってしまうから"
+"です。 （ローカルにコミットしていない変更がある状態で\"pull\"をした場合でも "
+"Gitは変更を取得しますが、マージは拒否します。 その場合、アリスはローカルの変"
+"更を何らかの方法で取り除いた後に、再度pullする 必要があります)"
 
 #. type: Plain text
 #: ../../gittutorial.txt:331
@@ -716,9 +738,9 @@ msgid ""
 "\"FETCH_HEAD\", in order to determine if he has anything worth pulling, like "
 "this:"
 msgstr ""
-"アリスはマージをしなくても\"fetch\"コマンドを使用してボブの作業を確認できます。 "
-"\"fetch\"をすると特別なシンボル\"FETCH_HEAD\"が使用可能になり、 "
-"ボブの作業がpullに値するかどうかが次のようにして検査できます："
+"アリスはマージをしなくても\"fetch\"コマンドを使用してボブの作業を確認できま"
+"す。 \"fetch\"をすると特別なシンボル\"FETCH_HEAD\"が使用可能になり、 ボブの作"
+"業がpullに値するかどうかが次のようにして検査できます："
 
 #. type: delimited block -
 #: ../../gittutorial.txt:335
@@ -742,16 +764,18 @@ msgid ""
 msgstr ""
 "この操作はたとえアリスがコミットしていないローカルな変更を持っていても安全で"
 "す。 範囲表記 \"HEAD..FETCH_HEAD\" は \"FETCH_HEADから到達可能な全履歴のうち"
-"HEADから到達可能な履歴は除外して表示する\"という意味です。 "
-"アリスはすでに現在の状態(HEAD)から到達可能な履歴は全て知っているので、 "
-"このコマンドを使うことでボブの状態(FETCH_HEAD)にある未知の履歴をレビューすることができます。"
+"HEADから到達可能な履歴は除外して表示する\"という意味です。 アリスはすでに現在"
+"の状態(HEAD)から到達可能な履歴は全て知っているので、 このコマンドを使うことで"
+"ボブの状態(FETCH_HEAD)にある未知の履歴をレビューすることができます。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:346
 msgid ""
 "If Alice wants to visualize what Bob did since their histories forked she "
 "can issue the following command:"
-msgstr "フォーク後のボブの変更履歴を可視化して表示したい場合、アリスは次のコマンドを実行します。"
+msgstr ""
+"フォーク後のボブの変更履歴を可視化して表示したい場合、アリスは次のコマンドを"
+"実行します。"
 
 #. type: delimited block -
 #: ../../gittutorial.txt:349
@@ -763,7 +787,9 @@ msgstr "$ gitk HEAD..FETCH_HEAD\n"
 #: ../../gittutorial.txt:352
 msgid ""
 "This uses the same two-dot range notation we saw earlier with 'git log'."
-msgstr "ここでも先ほどの 'git log' で説明した２つのドットで表した範囲表記を使用しています。"
+msgstr ""
+"ここでも先ほどの 'git log' で説明した２つのドットで表した範囲表記を使用してい"
+"ます。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:355
@@ -771,8 +797,8 @@ msgid ""
 "Alice may want to view what both of them did since they forked.  She can use "
 "three-dot form instead of the two-dot form:"
 msgstr ""
-"アリスは分岐以降に彼ら二人が行った作業を見たいかもしれません。 その場合は2つドッ"
-"トのかわりに3つのドットを使用します："
+"アリスは分岐以降に彼ら二人が行った作業を見たいかもしれません。 その場合は2つ"
+"ドットのかわりに3つのドットを使用します："
 
 #. type: delimited block -
 #: ../../gittutorial.txt:358
@@ -785,14 +811,18 @@ msgstr "$ gitk HEAD...FETCH_HEAD\n"
 msgid ""
 "This means \"show everything that is reachable from either one, but exclude "
 "anything that is reachable from both of them\"."
-msgstr "これは \"どちらか一方からは到達可能な履歴のみ表示し、両方から到達可能な履歴は表示しない\" という意味です。"
+msgstr ""
+"これは \"どちらか一方からは到達可能な履歴のみ表示し、両方から到達可能な履歴は"
+"表示しない\" という意味です。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:365
 msgid ""
 "Please note that these range notation can be used with both gitk and \"git "
 "log\"."
-msgstr "これら範囲表記はgitkと\"git log\" 両方で使用可能であることに注意してください。"
+msgstr ""
+"これら範囲表記はgitkと\"git log\" 両方で使用可能であることに注意してくださ"
+"い。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:371
@@ -815,9 +845,9 @@ msgid ""
 "interact with the same repository over and over again.  By defining 'remote' "
 "repository shorthand, you can make it easier:"
 msgstr ""
-"小さいお互いによく連絡をとりあうグループで作業をするときには、 "
-"同じリポジトリと繰り返し通信するのはよくあることです。 "
-"'リモート'のリポジトリの略称を定義するとその作業がしやすくなります："
+"小さいお互いによく連絡をとりあうグループで作業をするときには、 同じリポジトリ"
+"と繰り返し通信するのはよくあることです。 'リモート'のリポジトリの略称を定義す"
+"るとその作業がしやすくなります："
 
 #. type: delimited block -
 #: ../../gittutorial.txt:379
@@ -832,8 +862,8 @@ msgid ""
 "using the 'git fetch' command without merging them with her own branch, "
 "using:"
 msgstr ""
-"こうすることで、アリスはボブのリポジトリのパスを書かなくても'git fetch'をするときに "
-"\"bob\" という名前を使えるようになります："
+"こうすることで、アリスはボブのリポジトリのパスを書かなくても'git fetch'をする"
+"ときに \"bob\" という名前を使えるようになります："
 
 #. type: delimited block -
 #: ../../gittutorial.txt:387
@@ -848,8 +878,8 @@ msgid ""
 "repository shorthand set up with 'git remote', what was fetched is stored in "
 "a remote-tracking branch, in this case `bob/master`.  So after this:"
 msgstr ""
-"パスを指定した時と違い、'git remote' で設定したリモートリポジトリの略称を使って"
-"変更を取得した場合には、取得した情報はリモート追跡ブランチに保存されます。 "
+"パスを指定した時と違い、'git remote' で設定したリモートリポジトリの略称を使っ"
+"て変更を取得した場合には、取得した情報はリモート追跡ブランチに保存されます。 "
 "この例の場合は `bob/master` です。従ってこの後には："
 
 #. type: delimited block -
@@ -864,8 +894,8 @@ msgid ""
 "shows a list of all the changes that Bob made since he branched from Alice's "
 "master branch."
 msgstr ""
-"を実行すると、アリスの master ブランチから分岐した以降のボブの変更全て"
-"が表示されます。"
+"を実行すると、アリスの master ブランチから分岐した以降のボブの変更全てが表示"
+"されます。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:403
@@ -903,13 +933,15 @@ msgid ""
 "Note that git pull always merges into the current branch, regardless of what "
 "else is given on the command line."
 msgstr ""
-"git pull は常に現在のブランチにマージすることに注意してください。 これは他に"
-"何かコマンドラインで与えられていても関係ありません。"
+"git pull は常に現在のブランチにマージすることに注意してください。 これはコマ"
+"ンドラインで他の引数を与えても変わりません。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:419
 msgid "Later, Bob can update his repo with Alice's latest changes using"
-msgstr "その後、ボブは次のようにしてアリスの最新の変更を彼のリポジトリに反映できます。"
+msgstr ""
+"その後、ボブは次のようにしてアリスの最新の変更を彼のリポジトリに反映できま"
+"す。"
 
 #. type: delimited block -
 #: ../../gittutorial.txt:422
@@ -919,20 +951,19 @@ msgstr "bob$ git pull\n"
 
 #. type: Plain text
 #: ../../gittutorial.txt:428
-#, fuzzy
 msgid ""
 "Note that he doesn't need to give the path to Alice's repository; when Bob "
 "cloned Alice's repository, Git stored the location of her repository in the "
 "repository configuration, and that location is used for pulls:"
 msgstr ""
-"彼がアリスのリポジトリパスを与える必要がないことに注意してください; これはボ"
-"ブがアリスのリポジトリを複製したときに、git は彼女の リポジトリの位置をリポジ"
-"トリ構成内に格納しているためです。 そして、そのリポジトリ位置が pull した時に"
-"使用されます。"
+"ボブはgit pullの引数にアリスのリポジトリパスを指定する必要がない点に注意して"
+"ください。ボブがアリスのリポジトリを複製した時に、Gitがアリスのリポジトリ位置"
+"を設定ファイル内に自動的に保存されています。git pull した時にその値が使われて"
+"います："
 
 #. type: delimited block -
 #: ../../gittutorial.txt:432
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "bob$ git config --get remote.origin.url\n"
 "/home/alice/project\n"
@@ -942,29 +973,27 @@ msgstr ""
 
 #. type: Plain text
 #: ../../gittutorial.txt:437
-#, fuzzy
 msgid ""
 "(The complete configuration created by 'git clone' is visible using `git "
 "config -l`, and the linkgit:git-config[1] man page explains the meaning of "
 "each option.)"
 msgstr ""
-"('git-clone' により作成された完全な構成は `git config -l` を使用する と確認で"
-"きます。また、linkgit:git-config[1] の man ページにて 各オプションの意味が説"
-"明されています)"
+"('git-clone' が追加した設定の完全なリストは `git config -l` コマンドで確認で"
+"きます。また、linkgit:git-config[1] の man ページに各オプションの説明がありま"
+"す)"
 
 #. type: Plain text
 #: ../../gittutorial.txt:440
-#, fuzzy
 msgid ""
 "Git also keeps a pristine copy of Alice's master branch under the name "
 "\"origin/master\":"
 msgstr ""
-"また、gitは \"origin/master\" という名前でアリスの master ブランチの 初期コ"
-"ピーを保持します:"
+"Gitは \"origin/master\" という名前でアリスの master ブランチのコピーを保持し"
+"ています:"
 
 #. type: delimited block -
 #: ../../gittutorial.txt:444
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "bob$ git branch -r\n"
 "  origin/master\n"
@@ -974,60 +1003,56 @@ msgstr ""
 
 #. type: Plain text
 #: ../../gittutorial.txt:448
-#, fuzzy
 msgid ""
 "If Bob later decides to work from a different host, he can still perform "
 "clones and pulls using the ssh protocol:"
 msgstr ""
-"ボブが後に異なるホストで作業することを決めたなら、彼は、 ssh プロトコルを使用"
-"して clone と pull をすることができます："
+"ボブが後に異なるホストで作業することを決めたなら、彼は ssh プロトコルで "
+"clone と pull ができます："
 
 #. type: delimited block -
 #: ../../gittutorial.txt:451
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "bob$ git clone alice.org:/home/alice/project myrepo\n"
 msgstr "bob$ git clone alice.org:/home/alice/project myrepo\n"
 
 #. type: Plain text
 #: ../../gittutorial.txt:455
-#, fuzzy
 msgid ""
 "Alternatively, Git has a native protocol, or can use rsync or http; see "
 "linkgit:git-pull[1] for details."
 msgstr ""
-"代わりに、gitが持っているネイティブなプロトコルか、rsync, http を 使用するこ"
-"ともできます； 詳細は linkgit:git-pull[1] を参照してください。"
+"別の方法としては、Gitが持っているネイティブなプロトコルや、rsync, http も使用"
+"できます； 詳細は linkgit:git-pull[1] を参照してください。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:459
-#, fuzzy
 msgid ""
 "Git can also be used in a CVS-like mode, with a central repository that "
 "various users push changes to; see linkgit:git-push[1] and linkgit:gitcvs-"
 "migration[7]."
 msgstr ""
 "git はまた、CVS ライクなモードで使用することもできます。 つまり、中央リポジト"
-"リを持ち、様々なユーザが変更を push するような使用法です。 それらの詳細は "
-"linkgit:git-push[1] と linkgit:gitcvs-migration[7] を 参照してください。"
+"リを持ち、様々なユーザが変更を push するような使用法です。詳細は linkgit:git-"
+"push[1] と linkgit:gitcvs-migration[7] を参照してください。"
 
 #. type: Title -
 #: ../../gittutorial.txt:461
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Exploring history"
 msgstr "履歴の探索"
 
 #. type: Plain text
 #: ../../gittutorial.txt:467
-#, fuzzy
 msgid ""
 "Git history is represented as a series of interrelated commits.  We have "
 "already seen that the 'git log' command can list those commits.  Note that "
 "first line of each git log entry also gives a name for the commit:"
 msgstr ""
 "git の履歴は一連の相関的なコミットにより表されています。 我々は既に 'git-"
-"log' コマンドがそれらのコミットをリスト表示するのを 見ました。 各 git log エ"
-"ントリの最初の行が、そのコミットに対する名前を示していることに 注意してくださ"
-"い。"
+"log' コマンドがそれらのコミットをリスト表示するのを見ました。各 git log エン"
+"トリの最初の行が、そのコミットに対する名前を示していることに注意してくださ"
+"い："
 
 #. type: delimited block -
 #: ../../gittutorial.txt:473
@@ -1045,13 +1070,12 @@ msgstr ""
 
 #. type: delimited block -
 #: ../../gittutorial.txt:475
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "    merge-base: Clarify the comments on post processing.\n"
 msgstr "    merge-base: Clarify the comments on post processing.\n"
 
 #. type: Plain text
 #: ../../gittutorial.txt:479
-#, fuzzy
 msgid ""
 "We can give this name to 'git show' to see the details about this commit."
 msgstr ""
@@ -1060,24 +1084,22 @@ msgstr ""
 
 #. type: delimited block -
 #: ../../gittutorial.txt:482
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "$ git show c82a22c39cbc32576f64f5c6b3f24b99ea8149c7\n"
 msgstr "$ git show c82a22c39cbc32576f64f5c6b3f24b99ea8149c7\n"
 
 #. type: Plain text
 #: ../../gittutorial.txt:486
-#, fuzzy
 msgid ""
 "But there are other ways to refer to commits.  You can use any initial part "
 "of the name that is long enough to uniquely identify the commit:"
 msgstr ""
-"しかし、それ以外にもコミットを参照する方法があります。 git log が示すコミット"
-"の名前全てではなく、 そのコミットを一意に特定できるだけの十分な長さをもった先"
-"頭の数文字を 用いる方法です。"
+"しかし、それ以外にもコミットを参照する方法があります。そのコミットを一意に特"
+"定できるだけの十分な長さをもった先頭の数文字を用いる方法です："
 
 #. type: delimited block -
 #: ../../gittutorial.txt:492
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "$ git show c82a22c39c\t# the first few characters of the name are\n"
 "\t\t\t# usually enough\n"
@@ -1091,17 +1113,16 @@ msgstr ""
 
 #. type: Plain text
 #: ../../gittutorial.txt:496
-#, fuzzy
 msgid ""
 "Every commit usually has one \"parent\" commit which points to the previous "
 "state of the project:"
 msgstr ""
-"全てのコミットは常に１つの \"parent\"(親) のコミットを持ち、 それはプロジェク"
-"トの１つ前の状態を指し示します："
+"全てのコミットは常に１つの \"parent\"(親) のコミットを持ち、プロジェクトの１"
+"つ前の状態を指し示しています："
 
 #. type: delimited block -
 #: ../../gittutorial.txt:501
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "$ git show HEAD^  # to see the parent of HEAD\n"
 "$ git show HEAD^^ # to see the grandparent of HEAD\n"
@@ -1113,13 +1134,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../../gittutorial.txt:504
-#, fuzzy
 msgid "Note that merge commits may have more than one parent:"
 msgstr "マージコミットは１つ以上の親を持つ場合があることに注意してください："
 
 #. type: delimited block -
 #: ../../gittutorial.txt:508
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "$ git show HEAD^1 # show the first parent of HEAD (same as HEAD^)\n"
 "$ git show HEAD^2 # show the second parent of HEAD\n"
@@ -1129,24 +1149,22 @@ msgstr ""
 
 #. type: Plain text
 #: ../../gittutorial.txt:511
-#, fuzzy
 msgid "You can also give commits names of your own; after running"
-msgstr "また、コミットの名前をつけることもできます；次のコマンド"
+msgstr "コミットに名前をつけることもできます；次のコマンド"
 
 #. type: delimited block -
 #: ../../gittutorial.txt:514
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "$ git tag v2.5 1b2e1d63ff\n"
 msgstr "$ git tag v2.5 1b2e1d63ff\n"
 
 #. type: Plain text
 #: ../../gittutorial.txt:520
-#, fuzzy
 msgid ""
 "you can refer to 1b2e1d63ff by the name \"v2.5\".  If you intend to share "
 "this name with other people (for example, to identify a release version), "
-"you should create a \"tag\" object, and perhaps sign it; see linkgit:git-tag"
-"[1] for details."
+"you should create a \"tag\" object, and perhaps sign it; see linkgit:git-"
+"tag[1] for details."
 msgstr ""
 "を実行すると、\"v2.5\" という名前で 1b2e1d63ff を参照できるようになります。 "
 "この名前を(例えば、リリースバージョンを特定する為に)他の人々と共有するには、 "
@@ -1155,17 +1173,16 @@ msgstr ""
 
 #. type: Plain text
 #: ../../gittutorial.txt:523
-#, fuzzy
 msgid ""
 "Any Git command that needs to know a commit can take any of these names.  "
 "For example:"
 msgstr ""
-"コミットを知る必要のあるどんな git コマンドも、 この名前を用いることができま"
-"す。 例えば以下のとおりです:"
+"コミットを引数にとるどんな git コマンドも、この名前を利用できます。例えば以下"
+"のように："
 
 #. type: delimited block -
 #: ../../gittutorial.txt:530
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "$ git diff v2.5 HEAD\t # compare the current HEAD to v2.5\n"
 "$ git branch stable v2.5 # start a new branch named \"stable\" based\n"
@@ -1181,7 +1198,6 @@ msgstr ""
 
 #. type: Plain text
 #: ../../gittutorial.txt:540
-#, fuzzy
 msgid ""
 "Be careful with that last command: in addition to losing any changes in the "
 "working directory, it will also remove all later commits from this branch.  "
@@ -1191,72 +1207,67 @@ msgid ""
 "to clean up the history.  If you need to undo changes that you have pushed, "
 "use 'git revert' instead."
 msgstr ""
-"上記の最後のコマンドに注意してください： 作業ディレクトリ内の変更を失うことに"
-"加えて、このブランチから 全ての保留中のコミットを削除してしまうでしょう。 も"
-"しこのブランチがそれらコミットを含む唯一のブランチであった場合、 それらコミッ"
-"トは削除されます。 また、他の開発者がそこから pull するような公的に目に見える"
-"ブランチでは 'git-reset' は使用しないでください。もしそうすると、他の開発者"
-"に 履歴をきれいにするために、不必要なマージを強制させることになります。 あな"
-"たが push した変更を元に戻す必要があるなら、'git-revert' を その代わりに使用"
-"してください。"
+"上記の最後のコマンドに注意してください：このコマンドは作業ディレクトリ内の変"
+"更を失うことに加えて、このブランチにあった全ての保留中のコミットを削除してし"
+"まうでしょう。 もしこのブランチがそれらコミットを含む唯一のブランチであった場"
+"合、それらコミットは削除されてしまいます。また、他の開発者が pull するような"
+"公開ブランチでは 'git-reset' は使用しないでください。もしそうすると、他の開発"
+"者に 履歴をきれいにするための不要なマージ作業をさせることになってしまいます。"
+"あなたが push した変更を元に戻す必要があるる場合は、'git-revert' を代わりに使"
+"用してください。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:543
-#, fuzzy
 msgid ""
 "The 'git grep' command can search for strings in any version of your "
 "project, so"
 msgstr ""
-"'git-grep' コマンドは当該プロジェクトの任意のバージョン内の文字列を検索するこ"
-"とができます。 例えば、"
+"'git-grep' コマンドは当該プロジェクトの任意のバージョン内の文字列を検索しま"
+"す。 例えば、"
 
 #. type: delimited block -
 #: ../../gittutorial.txt:546
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "$ git grep \"hello\" v2.5\n"
 msgstr "$ git grep \"hello\" v2.5\n"
 
 #. type: Plain text
 #: ../../gittutorial.txt:549
-#, fuzzy
 msgid "searches for all occurrences of \"hello\" in v2.5."
 msgstr "は v2.5 内の \"hello\" を全文検索します。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:552
-#, fuzzy
 msgid ""
 "If you leave out the commit name, 'git grep' will search any of the files it "
 "manages in your current directory.  So"
 msgstr ""
-"コミット名を省いた場合、'git-grep' は現在のディレクトリ内で履歴管理 対象下に"
-"ある全てのファイルを検索します。 従って、次のコマンド"
+"コミット名を省いた場合、'git-grep' は現在のディレクトリ内でGit管理下にある全"
+"ファイルを検索します。 従って、次のコマンド"
 
 #. type: delimited block -
 #: ../../gittutorial.txt:555
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "$ git grep \"hello\"\n"
 msgstr "$ git grep \"hello\"\n"
 
 #. type: Plain text
 #: ../../gittutorial.txt:558
-#, fuzzy
 msgid "is a quick way to search just the files that are tracked by Git."
-msgstr "は、git により追跡されているファイルに対して検索する手っとり早い方法です。"
+msgstr "は、Gitにより管理されているファイルだけを検索するのに便利です。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:561
-#, fuzzy
 msgid ""
 "Many Git commands also take sets of commits, which can be specified in a "
 "number of ways.  Here are some examples with 'git log':"
 msgstr ""
-"git コマンドはまた、コミットの集合を扱うこともできます。 その方法は何通りもの"
-"方法があります。 以下は、'git-log' における使用例です。"
+"多くのGit コマンドはまた、コミットの集合を扱うこともできます。その方法は何通"
+"りもあります。以下は、'git-log' における使用例です。"
 
 #. type: delimited block -
 #: ../../gittutorial.txt:568
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "$ git log v2.5..v2.6            # commits between v2.5 and v2.6\n"
 "$ git log v2.5..                # commits since v2.5\n"
@@ -1272,95 +1283,89 @@ msgstr ""
 
 #. type: Plain text
 #: ../../gittutorial.txt:574
-#, fuzzy
 msgid ""
 "You can also give 'git log' a \"range\" of commits where the first is not "
 "necessarily an ancestor of the second; for example, if the tips of the "
 "branches \"stable\" and \"master\" diverged from a common commit some time "
 "ago, then"
 msgstr ""
-"`git log` にコミットの \"範囲\" を指定することもできます。 その際、範囲指定の"
-"１つ目は必ずしも２つ目の祖先である必要はありません； 例えば、ブランチ "
-"\"stable-release\" と \"master\" の先端(tip)は、 ある時点の共通のコミットから"
-"枝分かれしている場合、次のコマンド"
+"`git log` にはコミットの \"範囲\" も指定できます。その際、範囲指定の１つ目は"
+"必ずしも２つ目の祖先である必要はありません；例えば、ブランチ \"stable-release"
+"\" と \"master\" の先端(tip)が、ある時点の共通のコミットから枝分かれしている"
+"場合、次のコマンド"
 
 #. type: delimited block -
 #: ../../gittutorial.txt:577
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "$ git log stable..master\n"
-msgstr "$ git log stable..experimental\n"
+msgstr "$ git log stable..master\n"
 
 #. type: Plain text
 #: ../../gittutorial.txt:581
-#, fuzzy
 msgid ""
 "will list commits made in the master branch but not in the stable branch, "
 "while"
 msgstr ""
-"は、ブランチ experimental にあって、ブランチ stable に存在しないコミットとリ"
-"ストを 表示します。一方、次のコマンド"
+"は、ブランチ master にあって、ブランチ stable に存在しないコミットを一覧表示"
+"します。一方、次のコマンド"
 
 #. type: delimited block -
 #: ../../gittutorial.txt:584
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "$ git log master..stable\n"
-msgstr "$ git log experimental..stable\n"
+msgstr "$ git log master..stable\n"
 
 #. type: Plain text
 #: ../../gittutorial.txt:588
-#, fuzzy
 msgid ""
 "will show the list of commits made on the stable branch but not the master "
 "branch."
 msgstr ""
-"は、ブランチ stable にあって、ブランチ experimental に存在しない コミットのリ"
-"ストを表示します。"
+"は、ブランチ stable にあって、ブランチ master に存在しないコミットを一覧表示"
+"します。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:593
-#, fuzzy
 msgid ""
 "The 'git log' command has a weakness: it must present commits in a list.  "
 "When the history has lines of development that diverged and then merged back "
 "together, the order in which 'git log' presents those commits is meaningless."
 msgstr ""
 "'git-log' コマンドには弱点があります: それはコミットのリスト表示に関するもの"
-"です。 履歴が枝分かれし両者がマージされた開発ラインを持つ場合、'git-log' の "
-"コミットの表示順序には意味がありません。"
+"です。履歴が枝分かれし両者がマージされた開発ラインを持つ場合、'git-log' の コ"
+"ミットの表示順序には意味がありません。（訳注：とはいえ、--graph のオプション"
+"を付ければ、マージの関係が確認できるので大きな問題ではありません）"
 
 #. type: Plain text
 #: ../../gittutorial.txt:597
-#, fuzzy
 msgid ""
 "Most projects with multiple contributors (such as the Linux kernel, or Git "
 "itself) have frequent merges, and 'gitk' does a better job of visualizing "
 "their history.  For example,"
 msgstr ""
-"複数の貢献者を持つプロジェクト(例えば Linux カーネルや git自身)は、 頻繁に"
-"マージが行われます。'gitk' はそれら履歴をビジュアルに表示するので 大変重宝し"
-"ます。 例えば、次のコマンド"
+"複数の貢献者を持つ多くのプロジェクト(例えば Linux カーネルや git自身)では、頻"
+"繁にマージが行われます。'gitk' はそれら履歴をビジュアルに表示するので 大変重"
+"宝します。 例えば、次のコマンド"
 
 #. type: delimited block -
 #: ../../gittutorial.txt:600
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "$ gitk --since=\"2 weeks ago\" drivers/\n"
 msgstr "$ gitk --since=\"2 weeks ago\" drivers/\n"
 
 #. type: Plain text
 #: ../../gittutorial.txt:606
-#, fuzzy
 msgid ""
 "allows you to browse any commits from the last 2 weeks of commits that "
 "modified files under the \"drivers\" directory.  (Note: you can adjust "
 "gitk's fonts by holding down the control key while pressing \"-\" or \"+\".)"
 msgstr ""
-"を行うことで、最近２週間に \"drivers\" ディレクトリを修正したコミットを 閲覧"
-"することができます。 (注意: gitk のフォントはコントロールキーを押さえながら "
-"\"-\" か \"+\" を押すことで調整できます。)"
+"は最近２週間に \"drivers\" ディレクトリを修正したコミットを表示します。 (注"
+"意: gitk のフォントはコントロールキーを押さえながら \"-\" か \"+\" を押すこと"
+"で調整できます。)"
 
 #. type: Plain text
 #: ../../gittutorial.txt:610
-#, fuzzy
 msgid ""
 "Finally, most commands that take filenames will optionally allow you to "
 "precede any filename by a commit, to specify a particular version of the "
@@ -1372,100 +1377,91 @@ msgstr ""
 
 #. type: delimited block -
 #: ../../gittutorial.txt:613
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "$ git diff v2.5:Makefile HEAD:Makefile.in\n"
 msgstr "$ git diff v2.5:Makefile HEAD:Makefile.in\n"
 
 #. type: Plain text
 #: ../../gittutorial.txt:616
-#, fuzzy
 msgid "You can also use 'git show' to see any such file:"
 msgstr "'git-show' コマンドでも、次のようにファイルを指定できます："
 
 #. type: delimited block -
 #: ../../gittutorial.txt:619
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "$ git show v2.5:Makefile\n"
 msgstr "$ git show v2.5:Makefile\n"
 
 #. type: Title -
 #: ../../gittutorial.txt:622
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Next Steps"
 msgstr "次のステップ"
 
 #. type: Plain text
 #: ../../gittutorial.txt:628
-#, fuzzy
 msgid ""
 "This tutorial should be enough to perform basic distributed revision control "
 "for your projects.  However, to fully understand the depth and power of Git "
 "you need to understand two simple ideas on which it is based:"
 msgstr ""
-"このチュートリアルは、あなたのプロジェクトで基本的な分散リビジョン管理を 行う"
-"には十分なはずです。 しかし、git の奥深さと能力を十分に理解するには、git の "
-"ベースになっている２つのシンプルなアイデアを理解する必要があります。："
+"このチュートリアルは、あなたがプロジェクトで分散リビジョン管理を行う基礎とし"
+"ては十分な内容です。しかし、Gitの奥深さと能力を十分理解するには、Gitの基礎と"
+"なる２つのシンプルな概念を理解する必要があります。："
 
 #. type: Plain text
 #: ../../gittutorial.txt:632
-#, fuzzy
 msgid ""
 "The object database is the rather elegant system used to store the history "
 "of your project--files, directories, and commits."
 msgstr ""
-"オブジェクトデータベースはどちらかというと簡潔なシステムであり、 あなたのプロ"
-"ジェクトの履歴(ファイル、ディレクトリ、コミット)を 格納しているのに使用されま"
-"す。"
+"オブジェクトデータベース：プロジェクト(ファイル、ディレクトリ、コミット)の履"
+"歴を格納するために使われる簡潔なシステムです"
 
 #. type: Plain text
 #: ../../gittutorial.txt:636
-#, fuzzy
 msgid ""
 "The index file is a cache of the state of a directory tree, used to create "
 "commits, check out working directories, and hold the various trees involved "
 "in a merge."
 msgstr ""
-"索引ファイルはディレクトリツリー状態のキャッシュです。 コミットを作成する時や"
-"作業ディレクトリをチェックアウトする時、 マージ時に必要となる様々なツリーを保"
-"持するのに使用されます。"
+"indexファイル：これはディレクトリツリーの状態を管理するキャッシュです。コミッ"
+"トを作成する時、作業ディレクトリをチェックアウトする時、 マージ時に必要となる"
+"様々なツリーを保持するのに使用されます。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:640
-#, fuzzy
 msgid ""
 "Part two of this tutorial explains the object database, the index file, and "
 "a few other odds and ends that you'll need to make the most of Git. You can "
 "find it at linkgit:gittutorial-2[7]."
 msgstr ""
-"チュートリアルのパート２では、 オブジェクトデータベース、索引ファイル、そし"
-"て git を最大限利用するため必要となる残りの部分について説明します。 linkgit:"
+"チュートリアルのパート２では、 オブジェクトデータベース、indexファイル、そし"
+"て Git を最大限利用するため必要となる残りの部分について説明します。 linkgit:"
 "gittutorial-2[7]を参照して下さい."
 
 #. type: Plain text
 #: ../../gittutorial.txt:643
-#, fuzzy
 msgid ""
 "If you don't want to continue with that right away, a few other digressions "
 "that may be interesting at this point are:"
 msgstr ""
-"今すぐ続きを学習したくない人は、この時点から他に以下のような 脱線をしてみるの"
-"も面白いでしょう。"
+"今すぐ続きを学習したくない人は、下記のなかから興味のあるものを読んでみても良"
+"いかもしれません："
 
 #. type: Plain text
 #: ../../gittutorial.txt:648
-#, fuzzy
 msgid ""
 "linkgit:git-format-patch[1], linkgit:git-am[1]: These convert series of git "
 "commits into emailed patches, and vice versa, useful for projects such as "
 "the Linux kernel which rely heavily on emailed patches."
 msgstr ""
-"linkgit:git-format-patch[1], linkgit:git-am[1]: これらは 一連の git のコミッ"
-"トを E-mail のパッチに変換し、またその逆を 行います。Linux カーネルのように "
-"E-mail のパッチに強く依存している プロジェクトで役に立ちます。"
+"linkgit:git-format-patch[1], linkgit:git-am[1]: これらコマンドは 一連の git "
+"コミットの E-mail パッチへの変換と、その逆をします。Linux カーネルのように E-"
+"mail のパッチに強く依存している プロジェクトで役に立ちます。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:655
-#, fuzzy
 msgid ""
 "linkgit:git-bisect[1]: When there is a regression in your project, one way "
 "to track down the bug is by searching through the history to find the exact "
@@ -1473,11 +1469,10 @@ msgid ""
 "that commit.  It is smart enough to perform a close-to-optimal search even "
 "in the case of complex non-linear history with lots of merged branches."
 msgstr ""
-"linkgit:git-bisect[1]: プロジェクトに後戻りがあった時に、 そのバグを追跡する"
-"方法としては、履歴を検索し原因となる適切なコミットを 見つけ出す方法がありま"
-"す。 git bisect はそのコミットをバイナリ検索する手助けをします。 多くのマージ"
-"ブランチを持つ複雑で非線形な場合であっても、 最適に検索を実行することができま"
-"す。"
+"linkgit:git-bisect[1]: プロジェクトで不具合を見つけた時に、履歴からその元に"
+"なったコミットを探し出して原因を調査することがあると思います。git bisect は二"
+"分探索によりコミットを探す手助けをします。 多くのマージブランチを持つ複雑で非"
+"線形な場合にも、 最適な探索ができます。"
 
 #. type: Plain text
 #: ../../gittutorial.txt:658
@@ -1505,12 +1500,10 @@ msgid ""
 "Git User's Manual]"
 msgstr ""
 "linkgit:gittutorial-2[7], linkgit:gitcvs-migration[7], linkgit:gitcore-"
-"tutorial[7], linkgit:gitglossary[7], linkgit:git-help[1], link:everyday.html"
-"[Everyday git], link:user-manual.html[Gitユーザマニュアル]"
+"tutorial[7], linkgit:gitglossary[7], linkgit:git-help[1], link:everyday."
+"html[Everyday git], link:user-manual.html[Gitユーザマニュアル]"
 
 #. type: Plain text
 #: ../../gittutorial.txt:676
 msgid "Part of the linkgit:git[1] suite."
 msgstr "linkgit:git[1] スイートの一部"
-
-
