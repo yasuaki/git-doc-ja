@@ -1,0 +1,1276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>gittutorial(7)</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family:'Lucida Grande','Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>gittutorial(7)</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_名前">名前</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>gittutorial - Git チュートリアル (バージョン 1.5.1 以降用)</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_書式">書式</h2>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content">git *</pre>
+<div class="attribution">
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_説明">説明</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>このチュートリアルでは git に新しいプロジェクトソースをインポートする方法と、
+そこに変更を加える方法、そして他の開発者と変更を共有する方法を説明します。</p></div>
+<div class="paragraph"><p>もしあなたの主な目的がプロジェクトの変更を取得すること(例えば最新バージョンのソースを取得してテストするなど)であるなら 、
+<a href="user-manual.html">Git ユーザーマニュアル</a> の最初の２つの章から始める方が良いかもしれません。</p></div>
+<div class="paragraph"><p>まず最初に、`git log --graph`のようなコマンドに対するマニュアルは 以下の方法で取得できることを憶えてください：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ man git-log</code></pre>
+</div></div>
+<div class="paragraph"><p>もしくは:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git help log</code></pre>
+</div></div>
+<div class="paragraph"><p>後者の方法では、マニュアルのビューアを指定できます；詳細は <a href="git-help.html">git-help(1)</a> を参照して下さい。</p></div>
+<div class="paragraph"><p>Gitの操作を開始する前に氏名とメールアドレスを設定することを推奨します。 最も簡単な方法は以下の通りです:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git config --global user.name "氏名"
+$ git config --global user.email you@yourdomain.example.com</code></pre>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_新規プロジェクトのインポート">新規プロジェクトのインポート</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>tarで圧縮されたファイル project.tar.gz を Git のリビジョン管理させる手順を説明します。最初に以下のコマンドを実行します。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ tar xzf project.tar.gz
+$ cd project
+$ git init</code></pre>
+</div></div>
+<div class="paragraph"><p>この操作を終えると Git は以下のメッセージを表示します。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>Initialized empty Git repository in .git/</code></pre>
+</div></div>
+<div class="paragraph"><p>そして、作業ディレクトリが初期化され、".git" という名前の ディレクトリが作成されます。</p></div>
+<div class="paragraph"><p>次に、カレントディレクトリ配下の全ファイルのスナップショットを取得する為、 <em>git-add</em> コマンドを実行します('.'があることに注意)：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git add .</code></pre>
+</div></div>
+<div class="paragraph"><p>取得したスナップショットは "索引(index)" と呼ばれる一時エリアに格納されます。 索引の 中身を永続的にリポジトリに保管するには
+<em>git-commit</em> コマンドを使います：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git commit</code></pre>
+</div></div>
+<div class="paragraph"><p>コミットメッセージの入力が求められます。 その後、プロジェクトの最初のバージョンが Git に格納されます。</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_変更の記録">変更の記録</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>ファイルを変更した後、更新内容を索引に追加します：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git add file1 file2 file3</code></pre>
+</div></div>
+<div class="paragraph"><p>これでコミットする準備ができました。<em>git-diff</em> を --cached オプション付きで 実行するとコミット予定の内容を確認できます：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git diff --cached</code></pre>
+</div></div>
+<div class="paragraph"><p>(--cached を指定しない場合、<em>git-diff</em> は修正されているがまだ索引に 追加されていない変更を表示します。)
+簡潔なサマリを表示するには <em>git-status</em> を使用します:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD &lt;file&gt;..." to unstage)
+#
+#       modified:   file1
+#       modified:   file2
+#       modified:   file3
+#</code></pre>
+</div></div>
+<div class="paragraph"><p>必要な場合はさらに変更し、新しい変更内容を索引に追加します。 最後に、変更をコミットします：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git commit</code></pre>
+</div></div>
+<div class="paragraph"><p>この操作を行なうとエディタが起動され、変更内容を説明するメッセージの入力を要求されます。
+メッセージを入力しエディタを終了するとプロジェクトの新しいバージョンが記録されます。</p></div>
+<div class="paragraph"><p>別のやり方として、 <em>git-add</em> を実行せずに、以下のようにするやり方もあります。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git commit -a</code></pre>
+</div></div>
+<div class="paragraph"><p>この方法では変更ファイル(ただし新規ファイルは除く)が自動的に検出され、索引への追加とコミットが1ステップで実行されます。</p></div>
+<div class="paragraph"><p>コミットメッセージに関する注意: 必須ではありませんが、格納メッセージは１行の短文(50文字未満)で変更の概要を書き、
+空行を１つ挟んだ後ろに詳細を書くことを推奨します。
+コミットメッセージの最初の空行までのテキストは、コミットのタイトルとしてGitが扱うようにしている為です。
+例えば、<a href="git-format-patch.html">git-format-patch(1)</a> コマンドではコミットを email に変換しますが、
+このタイトルをメールのSubjectとし、残りを本文として扱います。</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_git_はファイルではなくファイルの中身を追跡する">Git はファイルではなくファイルの中身を追跡する</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>多くのリビジョン管理システムでは <code>add</code> コマンドは新規ファイルを追跡対象に加える役目をします。一方Gitの <code>add</code>
+コマンドは、よりシンプルでパワフルです： <em>git-add</em> は新規ファイルと新しい変更ファイルの両方に対して使用され、
+どちらの場合にも指定したファイルのスナップショットをとってファイル内容を索引に登録し、次のコミットに含める準備をします。</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_プロジェクトの履歴を参照する">プロジェクトの履歴を参照する</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>どんな時でも、次のコマンドを実行して変更履歴をみることができます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git log</code></pre>
+</div></div>
+<div class="paragraph"><p>各ステップの完全な差分を参照したい時は、次のようにします。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git log -p</code></pre>
+</div></div>
+<div class="paragraph"><p>変更の概要(ファイル名、修正行数など)を確認するには次のようにします。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git log --stat --summary</code></pre>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ブランチの管理">ブランチの管理</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Git は１つのリポジトリ内に複数のブランチを作成できます。 "experimental" という名前の新しいブランチを作成するには次のようにします。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git branch experimental</code></pre>
+</div></div>
+<div class="paragraph"><p>次のコマンドを実行すると</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git branch</code></pre>
+</div></div>
+<div class="paragraph"><p>存在する全てのブランチのリストが表示されます：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>  experimental
+* master</code></pre>
+</div></div>
+<div class="paragraph"><p>"experimental" ブランチは今あなたが作成したものです、そして、 "master" ブランチは自動的に作成されたデフォルトブランチです。
+"*" のマークは現在作業中のブランチを指しています。; 以下のコマンド</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git checkout experimental</code></pre>
+</div></div>
+<div class="paragraph"><p>を打つと experimental ブランチにスイッチします。 さて、ファイルを編集し、コミットし、master ブランチに戻ってください:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>(ファイルを編集)
+$ git commit -a
+$ git checkout master</code></pre>
+</div></div>
+<div class="paragraph"><p>そうすると変更内容がもはや見えなくなっているはずです。これは、experimental ブランチで変更した後、master ブランチに戻っている為です。</p></div>
+<div class="paragraph"><p>master ブランチ上で別の変更をしてみましょう：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>(ファイルを編集)
+$ git commit -a</code></pre>
+</div></div>
+<div class="paragraph"><p>この時点で２つのブランチは分岐しました。それぞれ異なる変更が行なわれています。 experimental の変更を master
+にマージするには、以下のようにします。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git merge experimental</code></pre>
+</div></div>
+<div class="paragraph"><p>変更がコンフリクト(競合)しない場合は、これでマージ完了です。 コンフリクトがある時は、マーカーが問題のあるファイル内に残り、
+コンフリクトを示すでしょう。そして、</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git diff</code></pre>
+</div></div>
+<div class="paragraph"><p>コマンドを実行するとマーカーの位置を示します。 ファイルを編集してコンフリクトを解消させてから、</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git commit -a</code></pre>
+</div></div>
+<div class="paragraph"><p>コマンドを実行すると、マージ結果がコミットされます。 最後に、</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ gitk</code></pre>
+</div></div>
+<div class="paragraph"><p>を実行すると、実行結果の履歴がグラフ表示されます。</p></div>
+<div class="paragraph"><p>マージが完了したので、experimental ブランチは次のようにして削除できます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git branch -d experimental</code></pre>
+</div></div>
+<div class="paragraph"><p>このコマンドは experimental ブランチの変更が現在のブランチにマージ済みであることを確認してからブランチを削除します。</p></div>
+<div class="paragraph"><p>ブランチ crazy-idea 上での開発が失敗し、それをマージせずに削除したい場合は、次のようにします。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git branch -D crazy-idea</code></pre>
+</div></div>
+<div class="paragraph"><p>ブランチは手軽で簡単です。何かを試す時にはとても便利です。</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_gitを利用した共同開発">Gitを利用した共同開発</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>アリスが始めたプロジェクトのGitリポジトリが/home/alice/project
+にあり、同一マシン上にアカウントを持つボブがアリスの仕事を手伝おうとしていたとします。</p></div>
+<div class="paragraph"><p>ボブが最初にすることは:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>bob$ git clone /home/alice/project myrepo</code></pre>
+</div></div>
+<div class="paragraph"><p>これによりアリスのリポジトリを複製した "myrepo" という 新規ディレクトリが作成されます。
+この複製は元プロジェクトと対等であり、元プロジェクトの履歴がコピーされています。</p></div>
+<div class="paragraph"><p>ボブはこの複製した環境でいくつかの変更とコミットをします：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>(ファイルを編集)
+bob$ git commit -a
+(必要なだけ繰り返す)</code></pre>
+</div></div>
+<div class="paragraph"><p>準備ができたら、ボブは /home/bob/myrepo にあるリポジトリから変更を取得(pull)するようアリスに伝えます。
+アリスは次のコマンドで変更を取得します：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>alice$ cd /home/alice/project
+alice$ git pull /home/bob/myrepo master</code></pre>
+</div></div>
+<div class="paragraph"><p>この結果、ボブの "master" ブランチの変更をアリスの現在のブランチにマージされます。
+もしアリスが自身の変更もしている場合は、彼女は手動でコンフリクト(競合)を解消する必要があるかもしれません。</p></div>
+<div class="paragraph"><p>"pull" コマンドは次の２つの操作をしています：リモートのブランチから変更を取得し、取得結果を現在のブランチにマージ。</p></div>
+<div class="paragraph"><p>注意：一般的に"pull"をする前には自身のローカルな変更はコミットしておくほうが
+良いでしょう。ボブとアリスの変更が分岐し競合した場合、競合を解消するために作業ツリーとインデックスが使用されることになりますが、コミットしていないローカルな変更が
+存在した場合には、それらが競合を解消させる妨げになってしまうからです。 （ローカルにコミットしていない変更がある状態で"pull"をした場合でも
+Gitは変更を取得しますが、マージは拒否します。 その場合、アリスはローカルの変更を何らかの方法で取り除いた後に、再度pullする 必要があります)</p></div>
+<div class="paragraph"><p>アリスはマージをしなくても"fetch"コマンドを使用してボブの作業を確認できます。
+"fetch"をすると特別なシンボル"FETCH_HEAD"が使用可能になり、 ボブの作業がpullに値するかどうかが次のようにして検査できます：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>alice$ git fetch /home/bob/myrepo master
+alice$ git log -p HEAD..FETCH_HEAD</code></pre>
+</div></div>
+<div class="paragraph"><p>この操作はたとえアリスがコミットしていないローカルな変更を持っていても安全です。 範囲表記 "HEAD..FETCH_HEAD" は
+"FETCH_HEADから到達可能な全履歴のうちHEADから到達可能な履歴は除外して表示する"という意味です。
+アリスはすでに現在の状態(HEAD)から到達可能な履歴は全て知っているので、
+このコマンドを使うことでボブの状態(FETCH_HEAD)にある未知の履歴をレビューすることができます。</p></div>
+<div class="paragraph"><p>フォーク後のボブの変更履歴を可視化して表示したい場合、アリスは次のコマンドを実行します。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ gitk HEAD..FETCH_HEAD</code></pre>
+</div></div>
+<div class="paragraph"><p>ここでも先ほどの <em>git log</em> で説明した２つのドットで表した範囲表記を使用しています。</p></div>
+<div class="paragraph"><p>アリスは分岐以降に彼ら二人が行った作業を見たいかもしれません。 その場合は2つドットのかわりに3つのドットを使用します：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ gitk HEAD...FETCH_HEAD</code></pre>
+</div></div>
+<div class="paragraph"><p>これは "どちらか一方からは到達可能な履歴のみ表示し、両方から到達可能な履歴は表示しない" という意味です。</p></div>
+<div class="paragraph"><p>これら範囲表記はgitkと"git log" 両方で使用可能であることに注意してください。</p></div>
+<div class="paragraph"><p>ボブの作業を検査した後、急を要するものがなければ、 アリスはボブからpullをせ ずに自分の作業を続行することができます。
+もしボブの履歴にすぐ必要となるもの があれば、アリスはまず最初に処理中の作業を退避(stash)してから "pull"
+をし、その後で履歴の先頭に作業中の変更を再適用することもできます。</p></div>
+<div class="paragraph"><p>小さいお互いによく連絡をとりあうグループで作業をするときには、 同じリポジトリと繰り返し通信するのはよくあることです。
+'リモート'のリポジトリの略称を定義するとその作業がしやすくなります：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>alice$ git remote add bob /home/bob/myrepo</code></pre>
+</div></div>
+<div class="paragraph"><p>こうすることで、アリスはボブのリポジトリのパスを書かなくても'git fetch'をするときに "bob" という名前を使えるようになります：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>alice$ git fetch bob</code></pre>
+</div></div>
+<div class="paragraph"><p>パスを指定した時と違い、<em>git remote</em>
+で設定したリモートリポジトリの略称を使って変更を取得した場合には、取得した情報はリモート追跡ブランチに保存されます。 この例の場合は
+<code>bob/master</code> です。従ってこの後には：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>alice$ git log -p master..bob/master</code></pre>
+</div></div>
+<div class="paragraph"><p>を実行すると、アリスの master ブランチから分岐した以降のボブの変更全てが表示されます。</p></div>
+<div class="paragraph"><p>それら変更を確認した後に、アリスは彼女の master ブランチに変更をマージすることができます:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>alice$ git merge bob/master</code></pre>
+</div></div>
+<div class="paragraph"><p>この <code>merge</code> は <em>彼女自身のリモート追跡ブランチから取得(pull)する</em> ことによって行うこともできます。次のように：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>alice$ git pull . remotes/bob/master</code></pre>
+</div></div>
+<div class="paragraph"><p>git pull は常に現在のブランチにマージすることに注意してください。 これはコマンドラインで他の引数を与えても変わりません。</p></div>
+<div class="paragraph"><p>その後、ボブは次のようにしてアリスの最新の変更を彼のリポジトリに反映できます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>bob$ git pull</code></pre>
+</div></div>
+<div class="paragraph"><p>ボブはgit
+pullの引数にアリスのリポジトリパスを指定する必要がない点に注意してください。ボブがアリスのリポジトリを複製した時に、Gitがアリスのリポジトリ位置を設定ファイル内に自動的に保存されています。git
+pull した時にその値が使われています：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>bob$ git config --get remote.origin.url
+/home/alice/project</code></pre>
+</div></div>
+<div class="paragraph"><p>(<em>git-clone</em> が追加した設定の完全なリストは <code>git config -l</code>
+コマンドで確認できます。また、<a href="git-config.html">git-config(1)</a> の man ページに各オプションの説明があります)</p></div>
+<div class="paragraph"><p>Gitは "origin/master" という名前でアリスの master ブランチのコピーを保持しています:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>bob$ git branch -r
+  origin/master</code></pre>
+</div></div>
+<div class="paragraph"><p>ボブが後に異なるホストで作業することを決めたなら、彼は ssh プロトコルで clone と pull ができます：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>bob$ git clone alice.org:/home/alice/project myrepo</code></pre>
+</div></div>
+<div class="paragraph"><p>別の方法としては、Gitが持っているネイティブなプロトコルや、rsync, http も使用できます； 詳細は <a href="git-pull.html">git-pull(1)</a>
+を参照してください。</p></div>
+<div class="paragraph"><p>git はまた、CVS ライクなモードで使用することもできます。 つまり、中央リポジトリを持ち、様々なユーザが変更を push
+するような使用法です。詳細は <a href="git-push.html">git-push(1)</a> と <a href="gitcvs-migration.html">gitcvs-migration(7)</a> を参照してください。</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_履歴の探索">履歴の探索</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>git の履歴は一連の相関的なコミットにより表されています。 我々は既に <em>git-log</em> コマンドがそれらのコミットをリスト表示するのを見ました。各
+git log エントリの最初の行が、そのコミットに対する名前を示していることに注意してください：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git log
+commit c82a22c39cbc32576f64f5c6b3f24b99ea8149c7
+Author: Junio C Hamano &lt;junkio@cox.net&gt;
+Date:   Tue May 16 17:18:22 2006 -0700
+
+    merge-base: Clarify the comments on post processing.</code></pre>
+</div></div>
+<div class="paragraph"><p>この名前を'git-show'コマンドで使用すると、そのコミットに関する詳細を見ることができます。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git show c82a22c39cbc32576f64f5c6b3f24b99ea8149c7</code></pre>
+</div></div>
+<div class="paragraph"><p>しかし、それ以外にもコミットを参照する方法があります。そのコミットを一意に特定できるだけの十分な長さをもった先頭の数文字を用いる方法です：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git show c82a22c39c   # コミット名の最初の数文字で
+                        # 大抵は十分です
+$ git show HEAD         # 現在のブランチの先端(tip)
+$ git show experimental # ブランチ "experimental" の先端(tip)</code></pre>
+</div></div>
+<div class="paragraph"><p>全てのコミットは常に１つの "parent"(親) のコミットを持ち、プロジェクトの１つ前の状態を指し示しています：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git show HEAD^  # HEAD の親を表示
+$ git show HEAD^^ # HEAD の祖父を表示
+$ git show HEAD~4 # HEAD の４つ前を表示</code></pre>
+</div></div>
+<div class="paragraph"><p>マージコミットは１つ以上の親を持つ場合があることに注意してください：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git show HEAD^1 # HEAD の１つ目の親を表示(HEADと同じ)
+$ git show HEAD^2 # HEAD の２つ目の親を表示</code></pre>
+</div></div>
+<div class="paragraph"><p>コミットに名前をつけることもできます；次のコマンド</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git tag v2.5 1b2e1d63ff</code></pre>
+</div></div>
+<div class="paragraph"><p>を実行すると、"v2.5" という名前で 1b2e1d63ff を参照できるようになります。
+この名前を(例えば、リリースバージョンを特定する為に)他の人々と共有するには、 "tag" オブジェクトを作成し、それに署名をつけるべきです。； 詳細は
+<a href="git-tag.html">git-tag(1)</a> を参照してください。</p></div>
+<div class="paragraph"><p>コミットを引数にとるどんな git コマンドも、この名前を利用できます。例えば以下のように：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git diff v2.5 HEAD     # 現在の HEAD を v2.5 と比較
+$ git branch stable v2.5 # v2.5の位置に "stable" という名前の新しい
+                         # ブランチを作成
+$ git reset --hard HEAD^ # 現在のブランチと作業ディレクトリをリセットし、
+                         # HEAD^ の状態にします</code></pre>
+</div></div>
+<div class="paragraph"><p>上記の最後のコマンドに注意してください：このコマンドは作業ディレクトリ内の変更を失うことに加えて、このブランチにあった全ての保留中のコミットを削除してしまうでしょう。
+もしこのブランチがそれらコミットを含む唯一のブランチであった場合、それらコミットは削除されてしまいます。また、他の開発者が pull
+するような公開ブランチでは <em>git-reset</em> は使用しないでください。もしそうすると、他の開発者に
+履歴をきれいにするための不要なマージ作業をさせることになってしまいます。あなたが push
+した変更を元に戻す必要があるる場合は、<em>git-revert</em> を代わりに使用してください。</p></div>
+<div class="paragraph"><p><em>git-grep</em> コマンドは当該プロジェクトの任意のバージョン内の文字列を検索します。 例えば、</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git grep "hello" v2.5</code></pre>
+</div></div>
+<div class="paragraph"><p>は v2.5 内の "hello" を全文検索します。</p></div>
+<div class="paragraph"><p>コミット名を省いた場合、<em>git-grep</em> は現在のディレクトリ内でGit管理下にある全ファイルを検索します。 従って、次のコマンド</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git grep "hello"</code></pre>
+</div></div>
+<div class="paragraph"><p>は、Gitにより管理されているファイルだけを検索するのに便利です。</p></div>
+<div class="paragraph"><p>多くのGit コマンドはまた、コミットの集合を扱うこともできます。その方法は何通りもあります。以下は、<em>git-log</em> における使用例です。</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git log v2.5..v2.6            # v2.5 から 2.6 までのコミット
+$ git log v2.5..                # v2.5 以降のコミット
+$ git log --since="2 weeks ago" # 最近２週間のコミット
+$ git log v2.5.. Makefile       # v2.5 以降に Makefile を
+                                # 変更しているコミット</code></pre>
+</div></div>
+<div class="paragraph"><p><code>git log</code> にはコミットの "範囲" も指定できます。その際、範囲指定の１つ目は必ずしも２つ目の祖先である必要はありません；例えば、ブランチ
+"stable-release" と "master" の先端(tip)が、ある時点の共通のコミットから枝分かれしている場合、次のコマンド</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git log stable..master</code></pre>
+</div></div>
+<div class="paragraph"><p>は、ブランチ master にあって、ブランチ stable に存在しないコミットを一覧表示します。一方、次のコマンド</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git log master..stable</code></pre>
+</div></div>
+<div class="paragraph"><p>は、ブランチ stable にあって、ブランチ master に存在しないコミットを一覧表示します。</p></div>
+<div class="paragraph"><p><em>git-log</em> コマンドには弱点があります:
+それはコミットのリスト表示に関するものです。履歴が枝分かれし両者がマージされた開発ラインを持つ場合、<em>git-log</em> の
+コミットの表示順序には意味がありません。（訳注：とはいえ、--graph のオプションを付ければ、マージの関係が確認できるので大きな問題ではありません）</p></div>
+<div class="paragraph"><p>複数の貢献者を持つ多くのプロジェクト(例えば Linux カーネルや git自身)では、頻繁にマージが行われます。<em>gitk</em>
+はそれら履歴をビジュアルに表示するので 大変重宝します。 例えば、次のコマンド</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ gitk --since="2 weeks ago" drivers/</code></pre>
+</div></div>
+<div class="paragraph"><p>は最近２週間に "drivers" ディレクトリを修正したコミットを表示します。 (注意: gitk のフォントはコントロールキーを押さえながら "-"
+か "+" を押すことで調整できます。)</p></div>
+<div class="paragraph"><p>最後に、オプションとしてファイル名を引数に取る大抵のコマンドが コミットにファイル名を付けられる点を説明します。
+あるファイルの特定のバージョンを指し示すには次のようにします：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git diff v2.5:Makefile HEAD:Makefile.in</code></pre>
+</div></div>
+<div class="paragraph"><p><em>git-show</em> コマンドでも、次のようにファイルを指定できます：</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ git show v2.5:Makefile</code></pre>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_次のステップ">次のステップ</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>このチュートリアルは、あなたがプロジェクトで分散リビジョン管理を行う基礎としては十分な内容です。しかし、Gitの奥深さと能力を十分理解するには、Gitの基礎となる２つのシンプルな概念を理解する必要があります。：</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+オブジェクトデータベース：プロジェクト(ファイル、ディレクトリ、コミット)の履歴を格納するために使われる簡潔なシステムです
+</p>
+</li>
+<li>
+<p>
+indexファイル：これはディレクトリツリーの状態を管理するキャッシュです。コミットを作成する時、作業ディレクトリをチェックアウトする時、
+    マージ時に必要となる様々なツリーを保持するのに使用されます。
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>チュートリアルのパート２では、 オブジェクトデータベース、indexファイル、そして Git
+を最大限利用するため必要となる残りの部分について説明します。 <a href="gittutorial-2.html">gittutorial-2(7)</a>を参照して下さい.</p></div>
+<div class="paragraph"><p>今すぐ続きを学習したくない人は、下記のなかから興味のあるものを読んでみても良いかもしれません：</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="git-format-patch.html">git-format-patch(1)</a>, <a href="git-am.html">git-am(1)</a>: これらコマンドは 一連の git コミットの
+    E-mail パッチへの変換と、その逆をします。Linux カーネルのように E-mail のパッチに強く依存している プロジェクトで役に立ちます。
+</p>
+</li>
+<li>
+<p>
+<a href="git-bisect.html">git-bisect(1)</a>:
+    プロジェクトで不具合を見つけた時に、履歴からその元になったコミットを探し出して原因を調査することがあると思います。git bisect
+    は二分探索によりコミットを探す手助けをします。 多くのマージブランチを持つ複雑で非線形な場合にも、 最適な探索ができます。
+</p>
+</li>
+<li>
+<p>
+<a href="gitworkflows.html">gitworkflows(7)</a>: 推奨するワークフローの概要紹介
+</p>
+</li>
+<li>
+<p>
+<a href="everyday.html">約20個のコマンドによる日々の Git活用</a>
+</p>
+</li>
+<li>
+<p>
+<a href="gitcvs-migration.html">gitcvs-migration(7)</a>: CVSユーザのためのGit移行ガイド
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_関連項目">関連項目</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><a href="gittutorial-2.html">gittutorial-2(7)</a>, <a href="gitcvs-migration.html">gitcvs-migration(7)</a>,
+<a href="gitcore-tutorial.html">gitcore-tutorial(7)</a>, <a href="gitglossary.html">gitglossary(7)</a>, <a href="git-help.html">git-help(1)</a>,
+<a href="everyday.html">Everyday git</a>, <a href="user-manual.html">Gitユーザマニュアル</a></p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_git">GIT</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><a href="git.html">git(1)</a> スイートの一部</p></div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2014-02-02 00:04:55 JST
+</div>
+</div>
+</body>
+</html>
